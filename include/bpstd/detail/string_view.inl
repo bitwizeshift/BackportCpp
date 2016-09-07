@@ -209,11 +209,7 @@ namespace bpstd {
   {
     const size_type max_length = pos > m_size ? 0 : m_size - pos;
 
-  #if BFG_COMPILER_EXCEPTIONS_ENABLED
     return pos < m_size ? basic_string_view<CharT,Traits>( m_str + pos, len > max_length ? max_length : len ) : throw std::out_of_range("Index out of range in basic_string_view::substr");
-  #else
-    return basic_string_view<CharT,Traits>( m_str + pos, len > max_length ? max_length : len );
-  #endif
   }
 
   //--------------------------------------------------------------------------
@@ -622,22 +618,6 @@ namespace bpstd {
     return lhs.compare(rhs) == 0;
   }
 
-  template<typename CharT, typename Traits, std::size_t N>
-  inline bool operator == ( const basic_string_view<CharT,Traits>& lhs,
-                            CharT (&rhs)[N] )
-    noexcept
-  {
-    return lhs == basic_string_view<CharT,Traits>(rhs);
-  }
-
-  template<typename CharT, typename Traits, std::size_t N>
-  inline bool operator == ( CharT (&lhs)[N],
-                            const basic_string_view<CharT,Traits>& rhs )
-    noexcept
-  {
-    return basic_string_view<CharT,Traits>(lhs) == rhs;
-  }
-
   template<typename CharT, typename Traits>
   inline bool operator == ( basic_string_view<CharT,Traits> lhs,
                             const CharT* rhs )
@@ -678,22 +658,6 @@ namespace bpstd {
     return lhs.compare(rhs) != 0;
   }
 
-  template<typename CharT, typename Traits, std::size_t N>
-  inline bool operator != ( const basic_string_view<CharT,Traits>& lhs,
-                            CharT (&rhs)[N] )
-    noexcept
-  {
-    return lhs != basic_string_view<CharT,Traits>(rhs);
-  }
-
-  template<typename CharT, typename Traits, std::size_t N>
-  inline bool operator != ( CharT (&lhs)[N],
-                            const basic_string_view<CharT,Traits>& rhs )
-    noexcept
-  {
-    return basic_string_view<CharT,Traits>(lhs) != rhs;
-  }
-
   template<typename CharT, typename Traits>
   inline bool operator != ( const basic_string_view<CharT,Traits>& lhs,
                             const CharT* rhs )
@@ -731,22 +695,6 @@ namespace bpstd {
     noexcept
   {
     return lhs.compare(rhs) < 0;
-  }
-
-  template<typename CharT, typename Traits, std::size_t N>
-  inline bool operator < ( const basic_string_view<CharT,Traits>& lhs,
-                           CharT (&rhs)[N] )
-    noexcept
-  {
-    return lhs < basic_string_view<CharT,Traits>(rhs);
-  }
-
-  template<typename CharT, typename Traits, std::size_t N>
-  inline bool operator < ( CharT (&lhs)[N],
-                           const basic_string_view<CharT,Traits>& rhs )
-    noexcept
-  {
-    return basic_string_view<CharT,Traits>(lhs) < rhs;
   }
 
   template<typename CharT, typename Traits>
@@ -789,22 +737,6 @@ namespace bpstd {
     return lhs.compare(rhs) > 0;
   }
 
-  template<typename CharT, typename Traits, std::size_t N>
-  inline bool operator > ( const basic_string_view<CharT,Traits>& lhs,
-                           CharT (&rhs)[N] )
-    noexcept
-  {
-    return lhs > basic_string_view<CharT,Traits>(rhs);
-  }
-
-  template<typename CharT, typename Traits, std::size_t N>
-  inline bool operator > ( CharT (&lhs)[N],
-                           const basic_string_view<CharT,Traits>& rhs )
-    noexcept
-  {
-    return basic_string_view<CharT,Traits>(lhs) > rhs;
-  }
-
   template<typename CharT, typename Traits>
   inline bool operator > ( const basic_string_view<CharT,Traits>& lhs,
                            const CharT* rhs )
@@ -845,22 +777,6 @@ namespace bpstd {
     return lhs.compare(rhs) <= 0;
   }
 
-  template<typename CharT, typename Traits, std::size_t N>
-  inline bool operator <= ( const basic_string_view<CharT,Traits>& lhs,
-                            CharT (&rhs)[N] )
-    noexcept
-  {
-    return lhs <= basic_string_view<CharT,Traits>(rhs);
-  }
-
-  template<typename CharT, typename Traits, std::size_t N>
-  inline bool operator <= ( CharT (&lhs)[N],
-                            const basic_string_view<CharT,Traits>& rhs )
-    noexcept
-  {
-    return basic_string_view<CharT,Traits>(lhs) <= rhs;
-  }
-
   template<typename CharT, typename Traits>
   inline bool operator <= ( const basic_string_view<CharT,Traits>& lhs,
                             const CharT* rhs )
@@ -899,22 +815,6 @@ namespace bpstd {
     noexcept
   {
     return lhs.compare(rhs) >= 0;
-  }
-
-  template<typename CharT, typename Traits, std::size_t N>
-  inline bool operator >= ( const basic_string_view<CharT,Traits>& lhs,
-                            CharT (&rhs)[N] )
-    noexcept
-  {
-    return lhs >= basic_string_view<CharT,Traits>(rhs);
-  }
-
-  template<typename CharT, typename Traits, std::size_t N>
-  inline bool operator >= ( CharT (&lhs)[N],
-                            const basic_string_view<CharT,Traits>& rhs )
-    noexcept
-  {
-    return basic_string_view<CharT,Traits>(lhs) >= rhs;
   }
 
   template<typename CharT, typename Traits>
