@@ -209,7 +209,7 @@ namespace bpstd {
   {
     const size_type max_length = pos > m_size ? 0 : m_size - pos;
 
-    return pos < m_size ? basic_string_view<CharT,Traits>( m_str + pos, len > max_length ? max_length : len ) : throw std::out_of_range("Index out of range in basic_string_view::substr");
+    return pos <= m_size ? basic_string_view<CharT,Traits>( m_str + pos, len > max_length ? max_length : len ) : throw std::out_of_range("Index out of range in basic_string_view::substr");
   }
 
   //--------------------------------------------------------------------------
