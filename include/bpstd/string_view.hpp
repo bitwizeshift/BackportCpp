@@ -35,10 +35,12 @@
 #ifndef BPSTD_STRING_VIEW_HPP
 #define BPSTD_STRING_VIEW_HPP
 
-#include <algorithm>
-#include <string>
-#include <ostream>
-
+#include <algorithm>  // std::
+#include <string>     // std::char_traits
+#include <ostream>    // std::basic_ostream
+#include <cstddef>    // std::size_t
+#include <memory>     // std::allocator
+#include <stdexcept>  // std::out_of_range
 namespace bpstd { // back-port std
 
   ////////////////////////////////////////////////////////////////////////////
