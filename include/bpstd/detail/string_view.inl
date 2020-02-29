@@ -194,7 +194,9 @@ namespace bpstd {
                                           size_type pos)
     const
   {
-    if(pos >= m_size) throw std::out_of_range("Index out of range in basic_string_view::copy");
+    if(pos >= m_size) {
+      throw std::out_of_range("Index out of range in basic_string_view::copy");
+    }
 
     const size_type rcount = std::min(m_size - pos,count+1);
     std::copy( m_str + pos, m_str + pos + rcount, dest);
@@ -209,7 +211,11 @@ namespace bpstd {
   {
     const size_type max_length = pos > m_size ? 0 : m_size - pos;
 
-    return pos <= m_size ? basic_string_view<CharT,Traits>(m_str + pos, len > max_length ? max_length : len ) : throw std::out_of_range("Index out of range in basic_string_view::substr");
+    if (pos > size()) {
+      throw std::out_of_range("Index out of range in basic_string_view::substr");
+    }
+
+    return basic_string_view(m_str + pos, std::min(len, max_length) );
   }
 
   //--------------------------------------------------------------------------
@@ -278,16 +284,22 @@ namespace bpstd {
                                           size_type pos)
     const
   {
-    const size_type max_index = m_size - v.size();
+    // Can't find a substring if the substring is bigger than this
+    if (pos > size()) {
+      return npos;
+    }
+    if ((pos + v.size()) > size()) {
+      return npos;
+    }
 
-    for(size_type i = pos; i < max_index; ++i) {
-      size_type j = v.size()-1;
-      for(; j >= 0; --j) {
-        if(v[j] != m_str[i+j]) {
-          break;
-        }
+    const auto offset = pos;
+    const auto increments = size() - v.size();
+
+    for (auto i = 0u; i <= increments; ++i) {
+      const auto j = i + offset;
+      if (substr(j, v.size()) == v) {
+        return j;
       }
-      if((j+1)==0) return i;
     }
     return npos;
   }
@@ -327,17 +339,24 @@ namespace bpstd {
                                            size_type pos)
     const
   {
-    const size_type max_index = m_size - v.size();
-
-    for(size_type i = std::min(max_index-1,pos); i >= 0; --i) {
-      size_type j = 0;
-      for(; j < v.size(); ++j) {
-        if(v[j] != m_str[i-j]) {
-          break;
-        }
-      }
-      if(j==v.size()) return i;
+    if (empty()) {
+      return v.empty() ? 0u : npos;
     }
+    if (v.empty()) {
+      return std::min(size() - 1, pos);
+    }
+    if (v.size() > size()) {
+      return npos;
+    }
+
+    auto i = std::min(pos, (size() - v.size()));
+    while (i != npos) {
+      if (substr(i, v.size()) == v) {
+        return i;
+      }
+      --i;
+    }
+
     return npos;
   }
 
@@ -376,13 +395,13 @@ namespace bpstd {
                                                    size_type pos)
     const
   {
-    for(size_type i = pos; i < m_size; ++i) {
-      for(size_type j = 0; j < v.size(); ++j) {
-        if(v[j] == m_str[i]) {
-          return i;
-        }
+    const auto max_index = size();
+    for (auto i = pos; i < max_index;  ++i) {
+      if (is_one_of(m_str[i],v)) {
+        return i;
       }
     }
+
     return npos;
   }
 
@@ -421,13 +440,18 @@ namespace bpstd {
                                                   size_type pos)
     const
   {
-    for(size_type i = std::min(m_size-1,pos); i >= 0; --i) {
-      for(size_type j = 0; j < v.size(); ++j) {
-        if(v[j] == m_str[i]) {
-          return i;
-        }
+    if (empty()) {
+      return npos;
+    }
+    const auto max_index = std::min(size() - 1, pos);
+    for (auto i = 0u; i <= max_index;  ++i) {
+      const auto j = max_index - i;
+
+      if (is_one_of(m_str[j],v)) {
+        return j;
       }
     }
+
     return npos;
   }
 
@@ -466,14 +490,13 @@ namespace bpstd {
                                                        size_type pos)
     const
   {
-    for(size_type i = pos; i < m_size; ++i) {
-      for(size_type j = 0; j < v.size(); ++j) {
-        if(v[j] == m_str[i]) {
-          break;
-        }
+    const auto max_index = size();
+    for (auto i = pos; i < max_index;  ++i) {
+      if (!is_one_of(m_str[i],v)) {
         return i;
       }
     }
+
     return npos;
   }
 
@@ -513,14 +536,18 @@ namespace bpstd {
                                                       size_type pos)
     const
   {
-    for(size_type i = std::min(m_size-1,pos); i >= 0; --i) {
-      for(size_type j = 0; j < v.size(); ++j) {
-        if(v[j] == m_str[i]) {
-          break;
-        }
-        return i;
+    if (empty()) {
+      return npos;
+    }
+    const auto max_index = std::min(size() - 1, pos);
+    for (auto i = 0u; i <= max_index;  ++i) {
+      const auto j = max_index - i;
+
+      if (!is_one_of(m_str[j],v)) {
+        return j;
       }
     }
+
     return npos;
   }
 
@@ -618,6 +645,18 @@ namespace bpstd {
     const noexcept
   {
     return crend();
+  }
+
+  template <typename CharT, typename Traits>
+  inline bool basic_string_view<CharT,Traits>::is_one_of(CharT c,
+                                                         basic_string_view str)
+  {
+    for (auto s : str) {
+      if (c == s) {
+        return true;
+      }
+    }
+    return false;
   }
 
   //--------------------------------------------------------------------------

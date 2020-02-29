@@ -430,6 +430,12 @@ namespace bpstd { // back-port std
     const char_type* m_str;  ///< The internal string type
     size_type        m_size; ///< The size of this string
 
+    /// \brief Checks whether \p c is one of the characters in \p str
+    ///
+    /// \param c the character to check
+    /// \param str the characters to compare against
+    /// \return true if \p c is one of the characters in \p str
+    static bool is_one_of(CharT c, basic_string_view str);
   };
 
   template <typename CharT, typename Traits>
