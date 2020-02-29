@@ -106,7 +106,7 @@ namespace bpstd { // back-port std
     ///
     /// \param str the string to view
     template<typename Allocator>
-    constexpr basic_string_view(const std::basic_string<CharT,Traits,Allocator>& str) noexcept;
+    basic_string_view(const std::basic_string<CharT,Traits,Allocator>& str) noexcept;
 
     /// \brief Constructs a basic_string_view from an ansi-string
     ///

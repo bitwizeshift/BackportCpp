@@ -18,7 +18,7 @@ namespace bpstd {
 
   template<typename CharT, typename Traits>
   template<typename Allocator>
-  inline constexpr basic_string_view<CharT,Traits>::basic_string_view(const std::basic_string<CharT,Traits,Allocator>& str)
+  inline basic_string_view<CharT,Traits>::basic_string_view(const std::basic_string<CharT,Traits,Allocator>& str)
     noexcept
     : m_str(str.c_str()),
       m_size(str.size())
