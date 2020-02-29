@@ -1,7 +1,8 @@
 /**
  * \file string_view.hpp
  *
- * \brief todo: fill in documentation
+ * \brief This header contains the definition of the string_view type, as
+ *        described by the C++17 standard.
  *
  * \author Matthew Rodusek (matthew.rodusek@gmail.com)
  * \copyright Matthew Rodusek
