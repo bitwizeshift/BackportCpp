@@ -60,7 +60,7 @@ namespace bpstd { // back-port std
 
     using char_type   = CharT;
     using traits_type = Traits;
-    using size_type   = size_t;
+    using size_type   = std::size_t;
 
     using value_type      = CharT;
     using reference       = value_type&;
@@ -169,13 +169,13 @@ namespace bpstd { // back-port std
     ///
     /// \param pos the index to access
     /// \return const reference to the character
-    constexpr const_reference operator[]( size_t pos ) const noexcept;
+    constexpr const_reference operator[]( size_type pos ) const noexcept;
 
     /// \brief Accesses the element at index \p pos
     ///
     /// \param pos the index to access
     /// \return const reference to the character
-    constexpr const_reference at( size_t pos ) const;
+    constexpr const_reference at( size_type pos ) const;
 
     /// \brief Access the first character of the string
     ///

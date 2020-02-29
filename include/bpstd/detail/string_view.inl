@@ -101,7 +101,7 @@ namespace bpstd {
 
   template<typename CharT, typename Traits>
   inline constexpr typename basic_string_view<CharT,Traits>::const_reference
-    basic_string_view<CharT,Traits>::operator[]( size_t pos )
+    basic_string_view<CharT,Traits>::operator[]( size_type pos )
     const noexcept
   {
     return m_str[pos];
@@ -109,7 +109,7 @@ namespace bpstd {
 
   template<typename CharT, typename Traits>
   inline constexpr typename basic_string_view<CharT,Traits>::const_reference
-    basic_string_view<CharT,Traits>::at( size_t pos )
+    basic_string_view<CharT,Traits>::at( size_type pos )
     const
   {
     return pos < m_size ? m_str[pos] : throw std::out_of_range("Input out of range in basic_string_view::at"), m_str[pos];
@@ -203,8 +203,8 @@ namespace bpstd {
 
   template<typename CharT, typename Traits>
   inline basic_string_view<CharT,Traits>
-    basic_string_view<CharT,Traits>::substr( size_t pos,
-                                             size_t len )
+    basic_string_view<CharT,Traits>::substr( size_type pos,
+                                             size_type len )
     const
   {
     const size_type max_length = pos > m_size ? 0 : m_size - pos;
