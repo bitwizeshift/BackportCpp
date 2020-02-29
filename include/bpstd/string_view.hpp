@@ -95,29 +95,29 @@ namespace bpstd { // back-port std
     /// \brief Constructs a basic_string_view by copying another one
     ///
     /// \param other the string view being copied
-    constexpr basic_string_view( const basic_string_view& other ) noexcept = default;
+    constexpr basic_string_view(const basic_string_view& other) noexcept = default;
 
     /// \brief Constructs a basic_string_view by moving anothe rone
     ///
     /// \param other the string view being moved
-    constexpr basic_string_view( basic_string_view&& other ) noexcept = default;
+    constexpr basic_string_view(basic_string_view&& other) noexcept = default;
 
     /// \brief Constructs a basic_string_view from a std::basic_string
     ///
     /// \param str the string to view
     template<typename Allocator>
-    constexpr basic_string_view( const std::basic_string<CharT,Traits,Allocator>& str ) noexcept;
+    constexpr basic_string_view(const std::basic_string<CharT,Traits,Allocator>& str) noexcept;
 
     /// \brief Constructs a basic_string_view from an ansi-string
     ///
     /// \param str the string to view
-    constexpr basic_string_view( const char_type* str ) noexcept;
+    constexpr basic_string_view(const char_type* str) noexcept;
 
     /// \brief Constructs a basic_string_view from an ansi string of a given size
     ///
     /// \param str the string to view
     /// \param count the size of the string
-    constexpr basic_string_view( const char_type* str, size_type count ) noexcept;
+    constexpr basic_string_view(const char_type* str, size_type count) noexcept;
 
     //------------------------------------------------------------------------
     // Assignment
@@ -128,7 +128,7 @@ namespace bpstd { // back-port std
     ///
     /// \param view the string to view
     /// \return reference to \c (*this)
-    basic_string_view& operator=( const basic_string_view& view ) = default;
+    basic_string_view& operator=(const basic_string_view& view) = default;
 
     //------------------------------------------------------------------------
     // Capacity
@@ -175,13 +175,13 @@ namespace bpstd { // back-port std
     ///
     /// \param pos the index to access
     /// \return const reference to the character
-    constexpr const_reference operator[]( size_type pos ) const noexcept;
+    constexpr const_reference operator[](size_type pos) const noexcept;
 
     /// \brief Accesses the element at index \p pos
     ///
     /// \param pos the index to access
     /// \return const reference to the character
-    constexpr const_reference at( size_type pos ) const;
+    constexpr const_reference at(size_type pos) const;
 
     /// \brief Access the first character of the string
     ///
@@ -207,19 +207,19 @@ namespace bpstd { // back-port std
     /// The behavior is undefined if n > size().
     ///
     /// \param n number of characters to remove from the start of the view
-    void remove_prefix( size_type n ) noexcept;
+    void remove_prefix(size_type n) noexcept;
 
     /// \brief Moves the end of the view back by n characters.
     ///
     /// The behavior is undefined if n > size().
     ///
     /// \param n number of characters to remove from the end of the view
-    void remove_suffix( size_type n ) noexcept;
+    void remove_suffix(size_type n) noexcept;
 
     /// \brief Exchanges the view with that of v.
     ///
     /// \param v view to swap with
-    void swap( basic_string_view& v ) noexcept;
+    void swap(basic_string_view& v) noexcept;
 
     //------------------------------------------------------------------------
     // Conversions
@@ -234,7 +234,7 @@ namespace bpstd { // back-port std
     /// \return A basic_string containing a copy of the characters of the current view.
     template<class Allocator = std::allocator<CharT>>
     constexpr std::basic_string<CharT, Traits, Allocator>
-      to_string( const Allocator& a = Allocator() ) const;
+      to_string(const Allocator& a = Allocator()) const;
 
     /// \copydoc basic_string_view::to_string
     template<class Allocator>
@@ -260,7 +260,7 @@ namespace bpstd { // back-port std
     /// \param pos the position of the first character in the substring
     /// \param len the length of the substring
     /// \return the created substring
-    basic_string_view substr( size_t pos = 0, size_t len = npos ) const;
+    basic_string_view substr(size_t pos = 0, size_t len = npos) const;
 
     //------------------------------------------------------------------------
 
@@ -270,7 +270,7 @@ namespace bpstd { // back-port std
     /// \return negative value if this view is less than the other character
     ///         sequence, zero if the both character sequences are equal, positive
     ///         value if this view is greater than the other character sequence.
-    int compare( basic_string_view v ) const noexcept;
+    int compare(basic_string_view v) const noexcept;
 
     /// \brief Compares two character sequences
     ///
@@ -280,7 +280,7 @@ namespace bpstd { // back-port std
     /// \return negative value if this view is less than the other character
     ///         sequence, zero if the both character sequences are equal, positive
     ///         value if this view is greater than the other character sequence.
-    int compare( size_type pos, size_type count, basic_string_view v ) const;
+    int compare(size_type pos, size_type count, basic_string_view v) const;
 
     /// \brief Compares two character sequences
     ///
@@ -301,7 +301,7 @@ namespace bpstd { // back-port std
     /// \return negative value if this view is less than the other character
     ///         sequence, zero if the both character sequences are equal, positive
     ///         value if this view is greater than the other character sequence.
-    int compare( const char_type* s ) const;
+    int compare(const char_type* s) const;
 
     /// \brief Compares two character sequences
     ///
@@ -311,7 +311,7 @@ namespace bpstd { // back-port std
     /// \return negative value if this view is less than the other character
     ///         sequence, zero if the both character sequences are equal, positive
     ///         value if this view is greater than the other character sequence.
-    int compare( size_type pos, size_type count, const char_type* s ) const;
+    int compare(size_type pos, size_type count, const char_type* s) const;
 
     /// \brief Compares two character sequences
     ///
@@ -327,63 +327,63 @@ namespace bpstd { // back-port std
 
     //------------------------------------------------------------------------
 
-    size_type find( basic_string_view v, size_type pos = 0 ) const;
+    size_type find(basic_string_view v, size_type pos = 0) const;
 
-    size_type find( char_type c, size_type pos = 0 ) const;
+    size_type find(char_type c, size_type pos = 0) const;
 
-    size_type find( const char_type* s, size_type pos, size_type count ) const;
+    size_type find(const char_type* s, size_type pos, size_type count) const;
 
-    size_type find( const char_type* s, size_type pos = 0 ) const;
-
-    //------------------------------------------------------------------------
-
-    size_type rfind( basic_string_view v, size_type pos = npos ) const;
-
-    size_type rfind( char_type c, size_type pos = npos ) const;
-
-    size_type rfind( const char_type* s, size_type pos, size_type count ) const;
-
-    size_type rfind( const char_type* s, size_type pos = npos ) const;
+    size_type find(const char_type* s, size_type pos = 0) const;
 
     //------------------------------------------------------------------------
 
-    size_type find_first_of( basic_string_view v, size_type pos = 0 ) const;
+    size_type rfind(basic_string_view v, size_type pos = npos) const;
 
-    size_type find_first_of( char_type c, size_type pos = 0 ) const;
+    size_type rfind(char_type c, size_type pos = npos) const;
 
-    size_type find_first_of( const char_type* s, size_type pos, size_type count ) const;
+    size_type rfind(const char_type* s, size_type pos, size_type count) const;
 
-    size_type find_first_of( const char_type* s, size_type pos = 0 ) const;
-
-    //------------------------------------------------------------------------
-
-    size_type find_last_of( basic_string_view v, size_type pos = npos ) const;
-
-    size_type find_last_of( char_type c, size_type pos = npos ) const;
-
-    size_type find_last_of( const char_type* s, size_type pos, size_type count ) const;
-
-    size_type find_last_of( const char_type* s, size_type pos = npos ) const;
+    size_type rfind(const char_type* s, size_type pos = npos) const;
 
     //------------------------------------------------------------------------
 
-    size_type find_first_not_of( basic_string_view v, size_type pos = 0 ) const;
+    size_type find_first_of(basic_string_view v, size_type pos = 0) const;
 
-    size_type find_first_not_of( char_type c, size_type pos = 0 ) const;
+    size_type find_first_of(char_type c, size_type pos = 0) const;
 
-    size_type find_first_not_of( const char_type* s, size_type pos, size_type count ) const;
+    size_type find_first_of(const char_type* s, size_type pos, size_type count) const;
 
-    size_type find_first_not_of( const char_type* s, size_type pos = 0 ) const;
+    size_type find_first_of(const char_type* s, size_type pos = 0) const;
 
     //------------------------------------------------------------------------
 
-    size_type find_last_not_of( basic_string_view v, size_type pos = npos ) const;
+    size_type find_last_of(basic_string_view v, size_type pos = npos) const;
 
-    size_type find_last_not_of( char_type c, size_type pos = npos ) const;
+    size_type find_last_of(char_type c, size_type pos = npos) const;
 
-    size_type find_last_not_of( const char_type* s, size_type pos, size_type count ) const;
+    size_type find_last_of(const char_type* s, size_type pos, size_type count) const;
 
-    size_type find_last_not_of( const char_type* s, size_type pos = npos ) const;
+    size_type find_last_of(const char_type* s, size_type pos = npos) const;
+
+    //------------------------------------------------------------------------
+
+    size_type find_first_not_of(basic_string_view v, size_type pos = 0) const;
+
+    size_type find_first_not_of(char_type c, size_type pos = 0) const;
+
+    size_type find_first_not_of(const char_type* s, size_type pos, size_type count) const;
+
+    size_type find_first_not_of(const char_type* s, size_type pos = 0) const;
+
+    //------------------------------------------------------------------------
+
+    size_type find_last_not_of(basic_string_view v, size_type pos = npos) const;
+
+    size_type find_last_not_of(char_type c, size_type pos = npos) const;
+
+    size_type find_last_not_of(const char_type* s, size_type pos, size_type count) const;
+
+    size_type find_last_not_of(const char_type* s, size_type pos = npos) const;
 
     //------------------------------------------------------------------------
     // Iterators
@@ -442,69 +442,35 @@ namespace bpstd { // back-port std
   /// \param str the string to print
   /// \return reference to the output stream
   template<typename CharT, typename Traits>
-  std::basic_ostream<CharT,Traits>& operator << ( std::basic_ostream<CharT,Traits>& o,
-                                                  const basic_string_view<CharT,Traits>& str );
+  std::basic_ostream<CharT,Traits>& operator<<(std::basic_ostream<CharT,Traits>& o,
+                                               const basic_string_view<CharT,Traits>& str);
 
   template<typename CharT, typename Traits>
-  void swap( basic_string_view<CharT,Traits>& lhs,
-             basic_string_view<CharT,Traits>& rhs ) noexcept;
+  void swap(basic_string_view<CharT,Traits>& lhs,
+            basic_string_view<CharT,Traits>& rhs) noexcept;
 
   //--------------------------------------------------------------------------
   // Comparison Functions
   //--------------------------------------------------------------------------
 
-  /// \brief Compares equality between the two basic_string_views
-  ///
-  /// \param lhs the left string view
-  /// \param rhs the right string view
-  /// \return true if the two strings are the same
   template<typename CharT, typename Traits>
-  bool operator == ( const basic_string_view<CharT,Traits>& lhs,
-                     const basic_string_view<CharT,Traits>& rhs ) noexcept;
-
-
-  /// \brief Compares inequality between the two basic_string_views
-  ///
-  /// \param lhs the left string view
-  /// \param rhs the right string view
-  /// \return true if the two strings are different
+  bool operator==(const basic_string_view<CharT,Traits>& lhs,
+                  const basic_string_view<CharT,Traits>& rhs) noexcept;
   template<typename CharT, typename Traits>
-  bool operator != ( const basic_string_view<CharT,Traits>& lhs,
-                     const basic_string_view<CharT,Traits>& rhs ) noexcept;
-
-  /// \brief Checks if the left string is less than the right substring
-  ///
-  /// \param lhs the left string view
-  /// \param rhs the right string view
-  /// \return true if the left string has a character less than the right
-  ///         string, or if the right string is shorter than the left string
+  bool operator!=(const basic_string_view<CharT,Traits>& lhs,
+                  const basic_string_view<CharT,Traits>& rhs) noexcept;
   template<typename CharT, typename Traits>
-  bool operator < ( const basic_string_view<CharT,Traits>& lhs,
-                    const basic_string_view<CharT,Traits>& rhs ) noexcept;
-
-  ///
-  /// \param lhs
-  /// \param rhs
-  /// \return
+  bool operator<(const basic_string_view<CharT,Traits>& lhs,
+                 const basic_string_view<CharT,Traits>& rhs) noexcept;
   template<typename CharT, typename Traits>
-  bool operator > ( const basic_string_view<CharT,Traits>& lhs,
-                    const basic_string_view<CharT,Traits>& rhs ) noexcept;
-
-  ///
-  /// \param lhs
-  /// \param rhs
-  /// \return
+  bool operator>(const basic_string_view<CharT,Traits>& lhs,
+                 const basic_string_view<CharT,Traits>& rhs) noexcept;
   template<typename CharT, typename Traits>
-  bool operator <= ( const basic_string_view<CharT,Traits>& lhs,
-                     const basic_string_view<CharT,Traits>& rhs ) noexcept;
-
-  ///
-  /// \param lhs
-  /// \param rhs
-  /// \return
+  bool operator<=(const basic_string_view<CharT,Traits>& lhs,
+                  const basic_string_view<CharT,Traits>& rhs) noexcept;
   template<typename CharT, typename Traits>
-  bool operator >= ( const basic_string_view<CharT,Traits>& lhs,
-                     const basic_string_view<CharT,Traits>& rhs ) noexcept;
+  bool operator>=(const basic_string_view<CharT,Traits>& lhs,
+                  const basic_string_view<CharT,Traits>& rhs) noexcept;
 
   //--------------------------------------------------------------------------
   // Type Aliases
