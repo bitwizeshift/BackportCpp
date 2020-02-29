@@ -41,6 +41,7 @@
 #include <cstddef>    // std::size_t
 #include <memory>     // std::allocator
 #include <stdexcept>  // std::out_of_range
+#include <iterator>   // std::reverse_iterator
 namespace bpstd { // back-port std
 
   ////////////////////////////////////////////////////////////////////////////
@@ -73,6 +74,8 @@ namespace bpstd { // back-port std
 
     using iterator       = const CharT*;
     using const_iterator = const CharT*;
+    using reverse_iterator = std::reverse_iterator<iterator>;
+    using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
     //------------------------------------------------------------------------
     // Public Members
@@ -387,21 +390,37 @@ namespace bpstd { // back-port std
     //------------------------------------------------------------------------
   public:
 
+    /// \{
     /// \brief Retrieves the begin iterator for this basic_string_view
     ///
     /// \return the begin iterator
     const_iterator begin() const noexcept;
+    const_iterator cbegin() const noexcept;
+    /// \}
 
+    /// \{
     /// \brief Retrieves the end iterator for this basic_string_view
     ///
     /// \return the end iterator
     const_iterator end() const noexcept;
-
-    /// \copydoc basic_string_view::begin()
-    const_iterator cbegin() const noexcept;
-
-    /// \copydoc basic_string_view::end()
     const_iterator cend() const noexcept;
+    /// \}
+
+    /// \{
+    /// \brief Retrieves the reverse begin iterator for this basic_string_view
+    ///
+    /// \return the reverse begin iterator
+    const_reverse_iterator rbegin() const noexcept;
+    const_reverse_iterator rend() const noexcept;
+    /// \}
+
+    /// \{
+    /// \brief Retrieves the reverse end iterator for this basic_string_view
+    ///
+    /// \return the reverse end iterator
+    const_reverse_iterator crbegin() const noexcept;
+    const_reverse_iterator crend() const noexcept;
+    /// \}
 
     //------------------------------------------------------------------------
     // Private Member

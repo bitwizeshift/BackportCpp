@@ -564,6 +564,14 @@ namespace bpstd {
 
   template<typename CharT, typename Traits>
   inline typename basic_string_view<CharT,Traits>::const_iterator
+    basic_string_view<CharT,Traits>::cbegin()
+    const noexcept
+  {
+    return begin();
+  }
+
+  template<typename CharT, typename Traits>
+  inline typename basic_string_view<CharT,Traits>::const_iterator
     basic_string_view<CharT,Traits>::end()
     const noexcept
   {
@@ -572,18 +580,42 @@ namespace bpstd {
 
   template<typename CharT, typename Traits>
   inline typename basic_string_view<CharT,Traits>::const_iterator
-    basic_string_view<CharT,Traits>::cbegin()
-    const noexcept
-  {
-    return m_str;
-  }
-
-  template<typename CharT, typename Traits>
-  inline typename basic_string_view<CharT,Traits>::const_iterator
     basic_string_view<CharT,Traits>::cend()
     const noexcept
   {
-    return m_str + m_size;
+    return cend();
+  }
+
+  template<typename CharT, typename Traits>
+  inline typename basic_string_view<CharT,Traits>::const_reverse_iterator
+    basic_string_view<CharT,Traits>::rbegin()
+    const noexcept
+  {
+    return const_reverse_iterator{end()};
+  }
+
+  template<typename CharT, typename Traits>
+  inline typename basic_string_view<CharT,Traits>::const_reverse_iterator
+    basic_string_view<CharT,Traits>::crbegin()
+    const noexcept
+  {
+    return rbegin();
+  }
+
+  template<typename CharT, typename Traits>
+  inline typename basic_string_view<CharT,Traits>::const_reverse_iterator
+    basic_string_view<CharT,Traits>::rend()
+    const noexcept
+  {
+    return const_reverse_iterator{begin()};
+  }
+
+  template<typename CharT, typename Traits>
+  inline typename basic_string_view<CharT,Traits>::const_reverse_iterator
+    basic_string_view<CharT,Traits>::crend()
+    const noexcept
+  {
+    return crend();
   }
 
   //--------------------------------------------------------------------------
