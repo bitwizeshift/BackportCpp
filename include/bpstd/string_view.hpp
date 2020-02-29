@@ -432,6 +432,10 @@ namespace bpstd { // back-port std
 
   };
 
+  template <typename CharT, typename Traits>
+  const typename basic_string_view<CharT,Traits>::size_type
+    basic_string_view<CharT,Traits>::npos;
+
   //--------------------------------------------------------------------------
   // Public Functions
   //--------------------------------------------------------------------------
