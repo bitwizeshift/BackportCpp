@@ -49,7 +49,7 @@ newer standard library features from C++11, C++14, C++17, and C++20.
 
 * [ ] **C++20**
   * [ ] [`bpstd::span`](include/bpstd/span.hpp)
-  * [x] [`bpstd::make_unique_for_overwrite`](include/bpstd/make_unique.hpp)
+  * [x] [`bpstd::make_unique_for_overwrite`](include/bpstd/memory.hpp)
 * [ ] **C++17**
   * [x] [`bpstd::any`](include/bpstd/any.hpp)
   * [x] [`bpstd::string_view`](include/bpstd/string_view.hpp)
@@ -64,7 +64,7 @@ newer standard library features from C++11, C++14, C++17, and C++20.
   * [x] [`_t` convenience traits](include/bpstd/type_traits.hpp)
   * [x] [`_v` convenience variables](include/bpstd/type_traits.hpp) (when compiling with `-std=c++14`)
   * [x] [deduced functional objects](include/bpstd/functional.hpp)
-  * [x] [`bpstd::make_unique`](include/bpstd/make_unique.hpp)
+  * [x] [`bpstd::make_unique`](include/bpstd/memory.hpp)
 
 ## <a name="license"></a>License
 
