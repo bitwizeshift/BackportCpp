@@ -47,6 +47,7 @@ set(header_files
   "include/bpstd/functional.hpp"
   "include/bpstd/memory.hpp"
   "include/bpstd/utility.hpp"
+  "include/bpstd/tuple.hpp"
 )
 
 add_library(${PROJECT_NAME} INTERFACE)
