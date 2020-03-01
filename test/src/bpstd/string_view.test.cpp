@@ -211,19 +211,6 @@ TEST_CASE("string_view::empty","[capacity]")
 // Element Access
 //----------------------------------------------------------------------------
 
-TEST_CASE("string_view::c_str()","[accessor]")
-{
-  const char* str = "Hello World";
-  bpstd::string_view view = str;
-
-  SECTION("Points to original data source")
-  {
-    REQUIRE( view.c_str() == str );
-  }
-}
-
-//----------------------------------------------------------------------------
-
 TEST_CASE("string_view::data()","[accessor]")
 {
   const char* str = "Hello World";
@@ -340,25 +327,6 @@ TEST_CASE("string_view::swap( string_view& )","[modifier]")
 
 //----------------------------------------------------------------------------
 // String Operations
-//----------------------------------------------------------------------------
-
-TEST_CASE("string_view::to_string()","[conversion]")
-{
-  bpstd::string_view view = "Hello World";
-
-  std::string string = view.to_string();
-
-  SECTION("Copies view to new location in std::string")
-  {
-    REQUIRE(view.data()!=string.data());
-  }
-
-  SECTION("Copied string contains same contents as view")
-  {
-    REQUIRE(string == "Hello World");
-  }
-}
-
 //----------------------------------------------------------------------------
 
 TEST_CASE("string_view::operator std::string()","[conversion]")

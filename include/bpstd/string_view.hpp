@@ -154,11 +154,6 @@ namespace bpstd { // back-port std
     //------------------------------------------------------------------------
   public:
 
-    /// \brief Gets the ansi-string of the current basic_string_view
-    ///
-    /// \return the ansi-string pointer
-    constexpr const char_type* c_str() const noexcept;
-
     /// \brief Gets the data of the current basic_string_view
     ///
     /// \note This is an alias of #c_str
@@ -221,18 +216,12 @@ namespace bpstd { // back-port std
     //------------------------------------------------------------------------
   public:
 
-    /// \brief Creates a basic_string with a copy of the content of the current view.
+    /// \brief Creates a basic_string with a copy of the content of the current
+    ///        view.
     ///
-    /// \tparam Allocator type used to allocate internal storage
-    /// \param a Allocator instance to use for allocating the new string
-    ///
-    /// \return A basic_string containing a copy of the characters of the current view.
-    template<class Allocator = std::allocator<CharT>>
-    constexpr std::basic_string<CharT, Traits, Allocator>
-      to_string(const Allocator& a = Allocator()) const;
-
-    /// \copydoc basic_string_view::to_string
-    template<class Allocator>
+    /// \return A basic_string containing a copy of the characters of the
+    ///         current view.
+    template <typename Allocator>
     explicit constexpr operator std::basic_string<CharT, Traits, Allocator>() const;
 
     //------------------------------------------------------------------------
@@ -574,14 +563,6 @@ inline constexpr bool bpstd::basic_string_view<CharT,Traits>::empty()
 
 template<typename CharT, typename Traits>
 inline constexpr const typename bpstd::basic_string_view<CharT,Traits>::char_type*
-  bpstd::basic_string_view<CharT,Traits>::c_str()
-  const noexcept
-{
-  return m_str;
-}
-
-template<typename CharT, typename Traits>
-inline constexpr const typename bpstd::basic_string_view<CharT,Traits>::char_type*
   bpstd::basic_string_view<CharT,Traits>::data()
   const noexcept
 {
@@ -653,15 +634,6 @@ inline void
 //------------------------------------------------------------------------------
 // Conversions
 //------------------------------------------------------------------------------
-
-template<typename CharT, typename Traits>
-template<class Allocator>
-inline constexpr std::basic_string<CharT, Traits, Allocator>
-  bpstd::basic_string_view<CharT,Traits>::to_string(const Allocator& a)
-  const
-{
-  return std::basic_string<CharT,Traits,Allocator>(m_str, m_size, a);
-}
 
 template<typename CharT, typename Traits>
 template<class Allocator>
