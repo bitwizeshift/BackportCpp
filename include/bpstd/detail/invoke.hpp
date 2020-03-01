@@ -30,6 +30,10 @@
 #ifndef BPSTD_DETAIL_INVOKE_HPP
 #define BPSTD_DETAIL_INVOKE_HPP
 
+#if defined(_MSC_VER) && (_MSC_VER >= 1200)
+# pragma once
+#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
+
 #include <type_traits> // std::true_type, std::false_type, etc
 #include <functional>  // std::reference_wrapper
 #include <utility>     // std::forward

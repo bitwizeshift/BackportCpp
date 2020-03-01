@@ -30,6 +30,10 @@
 #ifndef BPSTD_STRING_VIEW_HPP
 #define BPSTD_STRING_VIEW_HPP
 
+#if defined(_MSC_VER) && (_MSC_VER >= 1200)
+# pragma once
+#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
+
 #include <algorithm>  // std::min, std::max
 #include <string>     // std::char_traits
 #include <ostream>    // std::basic_ostream

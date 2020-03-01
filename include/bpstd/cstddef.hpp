@@ -30,6 +30,10 @@
 #ifndef BPSTD_CSTDDEF_HPP
 #define BPSTD_CSTDDEF_HPP
 
+#if defined(_MSC_VER) && (_MSC_VER >= 1200)
+# pragma once
+#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
+
 #include "type_traits.hpp"
 #include <type_traits> // std::is_integral
 
