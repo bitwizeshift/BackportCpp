@@ -2,7 +2,8 @@
 find_package(Catch2 REQUIRED)
 
 set(source_files
-  # TODO
+  "src/main.cpp"
+  "src/bpstd/functional.test.cpp"
 )
 
 add_executable(${PROJECT_NAME}.test
