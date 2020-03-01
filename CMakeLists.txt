@@ -45,6 +45,7 @@ set(header_files
   "include/bpstd/config.hpp"
   "include/bpstd/type_traits.hpp"
   "include/bpstd/functional.hpp"
+  "include/bpstd/memory.hpp"
 )
 
 add_library(${PROJECT_NAME} INTERFACE)
