@@ -50,6 +50,7 @@ set(header_files
   "include/bpstd/tuple.hpp"
   "include/bpstd/any.hpp"
   "include/bpstd/cstddef.hpp"
+  "include/bpstd/string_view.hpp"
 )
 
 add_library(${PROJECT_NAME} INTERFACE)
