@@ -1116,7 +1116,7 @@ inline bool bpstd::basic_string_view<CharT,Traits>::is_one_of(CharT c,
                                                               basic_string_view str)
 {
   for (auto s : str) {
-    if (c == s) {
+    if (Traits::eq(c,s)) {
       return true;
     }
   }
