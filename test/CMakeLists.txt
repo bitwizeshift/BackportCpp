@@ -6,6 +6,7 @@ set(source_files
   "src/bpstd/functional.test.cpp"
   "src/bpstd/tuple.test.cpp"
   "src/bpstd/any.test.cpp"
+  "src/bpstd/string_view.test.cpp"
 )
 
 add_executable(${PROJECT_NAME}.test
