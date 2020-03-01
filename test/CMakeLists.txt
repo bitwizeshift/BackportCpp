@@ -5,6 +5,7 @@ set(source_files
   "src/main.cpp"
   "src/bpstd/functional.test.cpp"
   "src/bpstd/tuple.test.cpp"
+  "src/bpstd/any.test.cpp"
 )
 
 add_executable(${PROJECT_NAME}.test
