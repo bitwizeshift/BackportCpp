@@ -42,6 +42,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(header_files
   "include/bpstd/detail/invoke.hpp"
+  "include/bpstd/config.hpp"
 )
 
 add_library(${PROJECT_NAME} INTERFACE)
