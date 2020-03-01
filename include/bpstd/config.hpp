@@ -62,4 +62,11 @@
 #define BPSTD_UNUSED(x) static_cast<void>(x);
 #define BPSTD_UNREACHABLE()
 
+// Use __may_alias__ attribute on gcc and clang
+#if defined(__clang__) || (defined(__GNUC__) && __GNUC__ > 5)
+# define BPSTD_MAY_ALIAS __attribute__((__may_alias__))
+#else // defined(__clang__) || defined __GNUC__
+# define BPSTD_MAY_ALIAS
+#endif // defined __clang__ || defined __GNUC__
+
 #endif /* BPSTD_CONFIG_HPP */
