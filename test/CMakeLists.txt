@@ -4,6 +4,7 @@ find_package(Catch2 REQUIRED)
 set(source_files
   "src/main.cpp"
   "src/bpstd/functional.test.cpp"
+  "src/bpstd/tuple.test.cpp"
 )
 
 add_executable(${PROJECT_NAME}.test

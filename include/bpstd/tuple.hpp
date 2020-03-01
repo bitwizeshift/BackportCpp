@@ -35,7 +35,7 @@
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
 #include "type_traits.hpp" // invoke_result
-#include "utilities.hpp"   // index_sequence
+#include "utility.hpp"     // index_sequence
 #include "functional.hpp"  // invoke
 
 #include <tuple>   // std::tuple_element, and to proxy API
