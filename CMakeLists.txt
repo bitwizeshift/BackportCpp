@@ -51,6 +51,7 @@ set(header_files
   "include/bpstd/any.hpp"
   "include/bpstd/cstddef.hpp"
   "include/bpstd/string_view.hpp"
+  "include/bpstd/optional.hpp"
 )
 
 add_library(${PROJECT_NAME} INTERFACE)
