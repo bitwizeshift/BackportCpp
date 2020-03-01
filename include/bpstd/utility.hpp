@@ -1,0 +1,154 @@
+/*****************************************************************************
+ * \file utility.hpp
+ *
+ * \brief This header provides definitions from the C++ header <utility>
+ *****************************************************************************/
+
+/*
+  The MIT License (MIT)
+
+  Copyright (c) 2020 Matthew Rodusek All rights reserved.
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+*/
+#ifndef BPSTD_UTILITY_HPP
+#define BPSTD_UTILITY_HPP
+
+#if defined(_MSC_VER) && (_MSC_VER >= 1200)
+# pragma once
+#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
+
+#include "config.hpp"
+#include "type_traits.hpp" // add_const_t
+
+#include <cstddef> // std::size_t
+
+namespace bpstd {
+
+  /// \brief This function is a special disambiguation tag for variadic
+  ///        functions, used in any and optional
+  ///
+  /// \note Calling this function results in undefined behaviour.
+  struct in_place_t
+  {
+    explicit in_place_t() = default;
+  };
+  BPSTD_CPP17_INLINE constexpr in_place_t in_place{};
+
+  /// \brief This function is a special disambiguation tag for variadic
+  ///        functions, used in any and optional
+  ///
+  /// \note Calling this function results in undefined behaviour.
+  template<typename T>
+  struct in_place_type_t
+  {
+    explicit in_place_type_t() = default;
+  };
+
+#if BPSTD_HAS_TEMPLATE_VARIABLES
+  template<typename T>
+  BPSTD_CPP17_INLINE constexpr in_place_type_t<T> in_place_type{};
+#endif
+
+  /// \brief This function is a special disambiguation tag for variadic
+  ///        functions, used in any and optional
+  ///
+  /// \note Calling this function results in undefined behaviour.
+  template<std::size_t I> struct in_place_index_t
+  {
+    explicit in_place_index_t() = default;
+  };
+
+#if BPSTD_HAS_TEMPLATE_VARIABLES
+  template<std::size_t I>
+  BPSTD_CPP17_INLINE constexpr in_place_index_t<I> in_place_index{};
+#endif
+
+  /// \brief Forms an lvalue reference to const type of t
+  ///
+  /// \param t the type to form an lvalue reference to
+  /// \return the reference to const T
+  template <typename T>
+  constexpr add_const_t<T>& as_const(T& t) noexcept;
+  template <typename T>
+  void as_const(const T&&) = delete;
+
+  /// \brief Replaces the value of obj with new_value and returns the old value
+  ///        of obj.
+  ///
+  /// \pre \p T must meet the requirements of MoveConstructible.
+  ///
+  /// \pre It must be possible to move-assign objects of type \p U to objects of
+  ///      type \p T
+  ///
+  /// \param obj object whose value to replace
+  /// \param new_value the value to assign to obj
+  template <typename T, typename U = T>
+  BPSTD_CPP14_CONSTEXPR T exchange(T& obj, U&& new_value);
+
+  template <typename T, T... Ints>
+  struct integer_sequence
+  {
+    using value_type = T;
+
+    static constexpr std::size_t size() noexcept { return sizeof...(Ints); }
+  };
+
+  template <std::size_t... Ints>
+  using index_sequence = integer_sequence<std::size_t, Ints...>;
+
+  namespace detail {
+    template <typename T, bool End, T N, T...Tails>
+    struct make_integer_sequence_impl
+      : make_integer_sequence_impl<T,((N-1) == T(0)), N-1, N-1, Tails...>{};
+
+    template <typename T, T N, T...Tails>
+    struct make_integer_sequence_impl<T, true, N, Tails...>
+      : type_identity<integer_sequence<T, Tails...>>{};
+
+  } // namespace detail
+
+  template <typename T, T N>
+  using make_integer_sequence
+    = typename detail::make_integer_sequence_impl<T, (N==T(0)), N>::type;
+
+  template<std::size_t N>
+  using make_index_sequence = make_integer_sequence<std::size_t, N>;
+
+  template<typename... T>
+  using index_sequence_for = make_index_sequence<sizeof...(T)>;
+
+} // namespace bpstd
+
+template <typename T>
+inline constexpr bpstd::add_const_t<T>& bpstd::as_const(T& t)
+  noexcept
+{
+  return t;
+}
+
+template <typename T, typename U>
+inline BPSTD_CPP14_CONSTEXPR T bpstd::exchange(T& obj, U&& new_value)
+{
+  auto old_value = std::move(obj);
+  obj = std::forward<U>(new_value);
+  return old_value;
+}
+
+#endif /* BPSTD_UTILITY_HPP */
