@@ -46,7 +46,7 @@ namespace bpstd { // back-port std
   ///
   /// \ingroup core
   ////////////////////////////////////////////////////////////////////////////
-  template<
+  template <
     typename CharT,
     typename Traits = std::char_traits<CharT>
   >
@@ -100,7 +100,7 @@ namespace bpstd { // back-port std
     /// \brief Constructs a basic_string_view from a std::basic_string
     ///
     /// \param str the string to view
-    template<typename Allocator>
+    template <typename Allocator>
     basic_string_view(const std::basic_string<CharT,Traits,Allocator>& str) noexcept;
 
     /// \brief Constructs a basic_string_view from an ansi-string
@@ -235,9 +235,9 @@ namespace bpstd { // back-port std
     /// \param dest pointer to the destination character string
     /// \param count requested substring length
     /// \param pos position of the first character
-    size_type copy( char_type* dest,
-                    size_type count = npos,
-                    size_type pos = 0 ) const;
+    size_type copy(char_type* dest,
+                   size_type count = npos,
+                   size_type pos = 0) const;
 
     /// \brief Returns a substring of this viewed string
     ///
@@ -312,61 +312,43 @@ namespace bpstd { // back-port std
     //------------------------------------------------------------------------
 
     size_type find(basic_string_view v, size_type pos = 0) const;
-
     size_type find(char_type c, size_type pos = 0) const;
-
     size_type find(const char_type* s, size_type pos, size_type count) const;
-
     size_type find(const char_type* s, size_type pos = 0) const;
 
     //------------------------------------------------------------------------
 
     size_type rfind(basic_string_view v, size_type pos = npos) const;
-
     size_type rfind(char_type c, size_type pos = npos) const;
-
     size_type rfind(const char_type* s, size_type pos, size_type count) const;
-
     size_type rfind(const char_type* s, size_type pos = npos) const;
 
     //------------------------------------------------------------------------
 
     size_type find_first_of(basic_string_view v, size_type pos = 0) const;
-
     size_type find_first_of(char_type c, size_type pos = 0) const;
-
     size_type find_first_of(const char_type* s, size_type pos, size_type count) const;
-
     size_type find_first_of(const char_type* s, size_type pos = 0) const;
 
     //------------------------------------------------------------------------
 
     size_type find_last_of(basic_string_view v, size_type pos = npos) const;
-
     size_type find_last_of(char_type c, size_type pos = npos) const;
-
     size_type find_last_of(const char_type* s, size_type pos, size_type count) const;
-
     size_type find_last_of(const char_type* s, size_type pos = npos) const;
 
     //------------------------------------------------------------------------
 
     size_type find_first_not_of(basic_string_view v, size_type pos = 0) const;
-
     size_type find_first_not_of(char_type c, size_type pos = 0) const;
-
     size_type find_first_not_of(const char_type* s, size_type pos, size_type count) const;
-
     size_type find_first_not_of(const char_type* s, size_type pos = 0) const;
 
     //------------------------------------------------------------------------
 
     size_type find_last_not_of(basic_string_view v, size_type pos = npos) const;
-
     size_type find_last_not_of(char_type c, size_type pos = npos) const;
-
     size_type find_last_not_of(const char_type* s, size_type pos, size_type count) const;
-
     size_type find_last_not_of(const char_type* s, size_type pos = npos) const;
 
     //------------------------------------------------------------------------
@@ -423,7 +405,7 @@ namespace bpstd { // back-port std
   };
 
   template <typename CharT, typename Traits>
-  const typename bpstd::basic_string_view<CharT,Traits>::size_type
+  constexpr typename bpstd::basic_string_view<CharT,Traits>::size_type
     basic_string_view<CharT,Traits>::npos;
 
   //------------------------------------------------------------------------------
@@ -435,11 +417,11 @@ namespace bpstd { // back-port std
   /// \param o   The output stream to print to
   /// \param str the string to print
   /// \return reference to the output stream
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   std::basic_ostream<CharT,Traits>& operator<<(std::basic_ostream<CharT,Traits>& o,
                                                const basic_string_view<CharT,Traits>& str);
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   void swap(basic_string_view<CharT,Traits>& lhs,
             basic_string_view<CharT,Traits>& rhs) noexcept;
 
@@ -447,22 +429,22 @@ namespace bpstd { // back-port std
   // Comparison Functions
   //------------------------------------------------------------------------------
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   bool operator==(const basic_string_view<CharT,Traits>& lhs,
                   const basic_string_view<CharT,Traits>& rhs) noexcept;
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   bool operator!=(const basic_string_view<CharT,Traits>& lhs,
                   const basic_string_view<CharT,Traits>& rhs) noexcept;
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   bool operator<(const basic_string_view<CharT,Traits>& lhs,
                  const basic_string_view<CharT,Traits>& rhs) noexcept;
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   bool operator>(const basic_string_view<CharT,Traits>& lhs,
                  const basic_string_view<CharT,Traits>& rhs) noexcept;
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   bool operator<=(const basic_string_view<CharT,Traits>& lhs,
                   const basic_string_view<CharT,Traits>& rhs) noexcept;
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   bool operator>=(const basic_string_view<CharT,Traits>& lhs,
                   const basic_string_view<CharT,Traits>& rhs) noexcept;
 
@@ -485,7 +467,7 @@ namespace bpstd { // back-port std
 // Constructor
 //------------------------------------------------------------------------------
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline constexpr bpstd::basic_string_view<CharT,Traits>::basic_string_view()
   noexcept
   : m_str{nullptr},
@@ -494,8 +476,8 @@ inline constexpr bpstd::basic_string_view<CharT,Traits>::basic_string_view()
 
 }
 
-template<typename CharT, typename Traits>
-template<typename Allocator>
+template <typename CharT, typename Traits>
+template <typename Allocator>
 inline bpstd::basic_string_view<CharT,Traits>::basic_string_view(const std::basic_string<CharT,Traits,Allocator>& str)
   noexcept
   : m_str{str.c_str()},
@@ -504,7 +486,7 @@ inline bpstd::basic_string_view<CharT,Traits>::basic_string_view(const std::basi
 
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline constexpr bpstd::basic_string_view<CharT,Traits>::basic_string_view(const char_type* str)
   noexcept
   : m_str{str},
@@ -513,7 +495,7 @@ inline constexpr bpstd::basic_string_view<CharT,Traits>::basic_string_view(const
 
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline constexpr bpstd::basic_string_view<CharT,Traits>::basic_string_view(const char_type* str, size_type count)
   noexcept
   : m_str{str},
@@ -526,7 +508,7 @@ inline constexpr bpstd::basic_string_view<CharT,Traits>::basic_string_view(const
 // Capacity
 //------------------------------------------------------------------------------
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline constexpr typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::size()
   const noexcept
@@ -534,7 +516,7 @@ inline constexpr typename bpstd::basic_string_view<CharT,Traits>::size_type
   return m_size;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline constexpr typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::length()
   const noexcept
@@ -542,7 +524,7 @@ inline constexpr typename bpstd::basic_string_view<CharT,Traits>::size_type
   return size();
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline constexpr typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::max_size()
   const noexcept
@@ -550,7 +532,7 @@ inline constexpr typename bpstd::basic_string_view<CharT,Traits>::size_type
   return npos - 1;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline constexpr bool bpstd::basic_string_view<CharT,Traits>::empty()
   const noexcept
 {
@@ -561,7 +543,7 @@ inline constexpr bool bpstd::basic_string_view<CharT,Traits>::empty()
 // Element Access
 //------------------------------------------------------------------------------
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline constexpr const typename bpstd::basic_string_view<CharT,Traits>::char_type*
   bpstd::basic_string_view<CharT,Traits>::data()
   const noexcept
@@ -569,7 +551,7 @@ inline constexpr const typename bpstd::basic_string_view<CharT,Traits>::char_typ
   return m_str;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline constexpr typename bpstd::basic_string_view<CharT,Traits>::const_reference
   bpstd::basic_string_view<CharT,Traits>::operator[](size_type pos)
   const noexcept
@@ -577,7 +559,7 @@ inline constexpr typename bpstd::basic_string_view<CharT,Traits>::const_referenc
   return m_str[pos];
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline constexpr typename bpstd::basic_string_view<CharT,Traits>::const_reference
   bpstd::basic_string_view<CharT,Traits>::at(size_type pos)
   const
@@ -585,7 +567,7 @@ inline constexpr typename bpstd::basic_string_view<CharT,Traits>::const_referenc
   return pos < m_size ? m_str[pos] : throw std::out_of_range("Input out of range in basic_string_view::at"), m_str[pos];
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline constexpr typename bpstd::basic_string_view<CharT,Traits>::const_reference
   bpstd::basic_string_view<CharT,Traits>::front( )
   const noexcept
@@ -593,7 +575,7 @@ inline constexpr typename bpstd::basic_string_view<CharT,Traits>::const_referenc
   return *m_str;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline constexpr typename bpstd::basic_string_view<CharT,Traits>::const_reference
   bpstd::basic_string_view<CharT,Traits>::back( )
   const noexcept
@@ -605,7 +587,7 @@ inline constexpr typename bpstd::basic_string_view<CharT,Traits>::const_referenc
 // Modifiers
 //------------------------------------------------------------------------------
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline void
   bpstd::basic_string_view<CharT,Traits>::remove_prefix(size_type n)
   noexcept
@@ -613,7 +595,7 @@ inline void
   m_str += n, m_size -= n;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline void
   bpstd::basic_string_view<CharT,Traits>::remove_suffix(size_type n)
   noexcept
@@ -621,7 +603,7 @@ inline void
   m_size -= n;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline void
   bpstd::basic_string_view<CharT,Traits>::swap(basic_string_view& v)
   noexcept
@@ -635,8 +617,8 @@ inline void
 // Conversions
 //------------------------------------------------------------------------------
 
-template<typename CharT, typename Traits>
-template<class Allocator>
+template <typename CharT, typename Traits>
+template <class Allocator>
 inline constexpr bpstd::basic_string_view<CharT,Traits>::operator
   std::basic_string<CharT, Traits, Allocator>()
   const
@@ -648,7 +630,7 @@ inline constexpr bpstd::basic_string_view<CharT,Traits>::operator
 // String Operations
 //------------------------------------------------------------------------------
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::copy(char_type* dest,
                                                size_type count,
@@ -664,7 +646,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return rcount;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline bpstd::basic_string_view<CharT,Traits>
   bpstd::basic_string_view<CharT,Traits>::substr(size_type pos,
                                                  size_type len)
@@ -681,17 +663,26 @@ inline bpstd::basic_string_view<CharT,Traits>
 
 //------------------------------------------------------------------------------
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline int bpstd::basic_string_view<CharT,Traits>::compare(basic_string_view v)
   const noexcept
 {
   const size_type rlen = std::min(m_size,v.m_size);
   const int compare = Traits::compare(m_str,v.m_str,rlen);
 
-  return (compare ? compare : (m_size < v.m_size ? -1 : (m_size > v.m_size ? 1 : 0)));
+  if (compare != 0) {
+    return compare;
+  }
+  if (m_size < v.m_size) {
+    return -1;
+  }
+  if (m_size > v.m_size) {
+    return 1;
+  }
+  return 0;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline int bpstd::basic_string_view<CharT,Traits>::compare(size_type pos,
                                                            size_type count,
                                                            basic_string_view v)
@@ -700,7 +691,7 @@ inline int bpstd::basic_string_view<CharT,Traits>::compare(size_type pos,
   return substr(pos,count).compare(v);
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline int bpstd::basic_string_view<CharT,Traits>::compare(size_type pos1,
                                                            size_type count1,
                                                            basic_string_view v,
@@ -711,14 +702,14 @@ inline int bpstd::basic_string_view<CharT,Traits>::compare(size_type pos1,
   return substr(pos1,count1).compare(v.substr(pos2,count2));
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline int bpstd::basic_string_view<CharT,Traits>::compare(const char_type* s)
   const
 {
   return compare(basic_string_view<CharT,Traits>(s));
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline int bpstd::basic_string_view<CharT,Traits>::compare(size_type pos,
                                                            size_type count,
                                                            const char_type* s)
@@ -727,7 +718,7 @@ inline int bpstd::basic_string_view<CharT,Traits>::compare(size_type pos,
   return substr(pos, count).compare(basic_string_view<CharT,Traits>(s));
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline int bpstd::basic_string_view<CharT,Traits>::compare(size_type pos,
                                                            size_type count1,
                                                            const char_type* s,
@@ -739,7 +730,7 @@ inline int bpstd::basic_string_view<CharT,Traits>::compare(size_type pos,
 
 //------------------------------------------------------------------------------
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find(basic_string_view v,
                                                size_type pos)
@@ -765,7 +756,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return npos;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find(char_type c,
                                                size_type pos)
@@ -774,7 +765,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return find(basic_string_view<CharT,Traits>(&c, 1), pos);
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find(const char_type* s, size_type pos,
                                                size_type count)
@@ -783,7 +774,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return find(basic_string_view<CharT,Traits>(s, count), pos);
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find(const char_type* s,
                                                size_type pos)
@@ -794,7 +785,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 
 //------------------------------------------------------------------------------
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::rfind(basic_string_view v,
                                                 size_type pos)
@@ -821,7 +812,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return npos;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::rfind(char_type c,
                                                 size_type pos)
@@ -830,7 +821,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return rfind(basic_string_view<CharT,Traits>(&c, 1), pos);
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::rfind(const char_type* s,
                                                 size_type pos,
@@ -840,7 +831,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return rfind(basic_string_view<CharT,Traits>(s, count), pos);
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::rfind(const char_type* s,
                                                 size_type pos)
@@ -851,7 +842,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 
 //------------------------------------------------------------------------------
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_of(basic_string_view v,
                                                         size_type pos)
@@ -867,7 +858,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return npos;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_of(char_type c,
                                                         size_type pos)
@@ -876,7 +867,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return find_first_of(basic_string_view<CharT,Traits>(&c, 1), pos);
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_of(const char_type* s,
                                                         size_type pos,
@@ -886,7 +877,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return find_first_of(basic_string_view<CharT,Traits>(s, count), pos);
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_of(const char_type* s,
                                                         size_type pos)
@@ -897,7 +888,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 
 //------------------------------------------------------------------------------
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_of(basic_string_view v,
                                                        size_type pos)
@@ -918,7 +909,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return npos;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_of(char_type c,
                                                        size_type pos)
@@ -927,7 +918,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return find_last_of(basic_string_view<CharT,Traits>(&c, 1), pos);
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_of(const char_type* s,
                                                        size_type pos,
@@ -937,7 +928,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return find_last_of(basic_string_view<CharT,Traits>(s, count), pos);
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_of(const char_type* s,
                                                        size_type pos)
@@ -948,7 +939,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 
 //------------------------------------------------------------------------------
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_not_of(basic_string_view v,
                                                             size_type pos)
@@ -964,7 +955,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return npos;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_not_of(char_type c,
                                                             size_type pos)
@@ -973,7 +964,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return find_first_not_of(basic_string_view<CharT,Traits>(&c, 1), pos);
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_not_of(const char_type* s,
                                                             size_type pos,
@@ -983,7 +974,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return find_first_not_of(basic_string_view<CharT,Traits>(s, count), pos);
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_not_of(const char_type* s,
                                                             size_type pos)
@@ -994,7 +985,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 
 //------------------------------------------------------------------------------
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_not_of(basic_string_view v,
                                                            size_type pos)
@@ -1015,7 +1006,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return npos;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_not_of(char_type c,
                                                            size_type pos)
@@ -1024,7 +1015,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return find_last_not_of(basic_string_view<CharT,Traits>(&c, 1), pos);
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_not_of(const char_type* s,
                                                            size_type pos,
@@ -1034,7 +1025,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   return find_last_not_of(basic_string_view<CharT,Traits>(s, count), pos);
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_not_of(const char_type* s,
                                                            size_type pos)
@@ -1047,7 +1038,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 // Iterator
 //------------------------------------------------------------------------------
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
   bpstd::basic_string_view<CharT,Traits>::begin()
   const noexcept
@@ -1055,7 +1046,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
   return m_str;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
   bpstd::basic_string_view<CharT,Traits>::cbegin()
   const noexcept
@@ -1063,7 +1054,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
   return begin();
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
   bpstd::basic_string_view<CharT,Traits>::end()
   const noexcept
@@ -1071,7 +1062,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
   return m_str + m_size;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
   bpstd::basic_string_view<CharT,Traits>::cend()
   const noexcept
@@ -1079,7 +1070,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
   return cend();
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
   bpstd::basic_string_view<CharT,Traits>::rbegin()
   const noexcept
@@ -1087,7 +1078,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
   return const_reverse_iterator{end()};
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
   bpstd::basic_string_view<CharT,Traits>::crbegin()
   const noexcept
@@ -1095,7 +1086,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
   return rbegin();
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
   bpstd::basic_string_view<CharT,Traits>::rend()
   const noexcept
@@ -1103,7 +1094,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
   return const_reverse_iterator{begin()};
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
   bpstd::basic_string_view<CharT,Traits>::crend()
   const noexcept
@@ -1127,7 +1118,7 @@ inline bool bpstd::basic_string_view<CharT,Traits>::is_one_of(CharT c,
 // Public Functions
 //------------------------------------------------------------------------------
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 std::basic_ostream<CharT,Traits>&
   bpstd::operator<<(std::basic_ostream<CharT,Traits>& o,
                     const basic_string_view<CharT,Traits>& str)
@@ -1136,7 +1127,7 @@ std::basic_ostream<CharT,Traits>&
   return o;
 }
 
-template<typename CharT, typename Traits>
+template <typename CharT, typename Traits>
 inline void bpstd::swap(basic_string_view<CharT,Traits>& lhs,
                         basic_string_view<CharT,Traits>& rhs)
   noexcept
@@ -1150,7 +1141,7 @@ inline void bpstd::swap(basic_string_view<CharT,Traits>& lhs,
 
 namespace bpstd {
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator==(const basic_string_view<CharT,Traits>& lhs,
                         const basic_string_view<CharT,Traits>& rhs)
     noexcept
@@ -1158,7 +1149,7 @@ namespace bpstd {
     return lhs.compare(rhs) == 0;
   }
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator==(basic_string_view<CharT,Traits> lhs,
                           const CharT* rhs)
     noexcept
@@ -1166,7 +1157,7 @@ namespace bpstd {
     return lhs == basic_string_view<CharT,Traits>(rhs);
   }
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator==(const CharT* lhs,
                           const basic_string_view<CharT,Traits>& rhs)
     noexcept
@@ -1174,14 +1165,14 @@ namespace bpstd {
     return basic_string_view<CharT,Traits>(lhs) == rhs;
   }
 
-  template<typename CharT, typename Traits, typename Allocator>
+  template <typename CharT, typename Traits, typename Allocator>
   inline bool operator==(const std::basic_string<CharT,Traits,Allocator>& lhs,
                           const basic_string_view<CharT,Traits>& rhs)
   {
     return basic_string_view<CharT,Traits>(lhs) == rhs;
   }
 
-  template<typename CharT, typename Traits, typename Allocator>
+  template <typename CharT, typename Traits, typename Allocator>
   inline bool operator==(const basic_string_view<CharT,Traits>& lhs,
                           const std::basic_string<CharT,Traits,Allocator>& rhs)
   {
@@ -1190,7 +1181,7 @@ namespace bpstd {
 
   //------------------------------------------------------------------------------
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator!=(const basic_string_view<CharT,Traits>& lhs,
                           const basic_string_view<CharT,Traits>& rhs)
     noexcept
@@ -1198,7 +1189,7 @@ namespace bpstd {
     return lhs.compare(rhs) != 0;
   }
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator!=(const basic_string_view<CharT,Traits>& lhs,
                           const CharT* rhs)
     noexcept
@@ -1206,7 +1197,7 @@ namespace bpstd {
     return lhs != basic_string_view<CharT,Traits>(rhs);
   }
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator!=(const CharT* lhs,
                           const basic_string_view<CharT,Traits>& rhs)
     noexcept
@@ -1214,14 +1205,14 @@ namespace bpstd {
     return basic_string_view<CharT,Traits>(lhs) != rhs;
   }
 
-  template<typename CharT, typename Traits, typename Allocator>
+  template <typename CharT, typename Traits, typename Allocator>
   inline bool operator!=(const std::basic_string<CharT,Traits,Allocator>& lhs,
                           const basic_string_view<CharT,Traits>& rhs)
   {
     return basic_string_view<CharT,Traits>(lhs) != rhs;
   }
 
-  template<typename CharT, typename Traits, typename Allocator>
+  template <typename CharT, typename Traits, typename Allocator>
   inline bool operator!=(const basic_string_view<CharT,Traits>& lhs,
                           const std::basic_string<CharT,Traits,Allocator>& rhs)
   {
@@ -1229,7 +1220,7 @@ namespace bpstd {
   }
   //------------------------------------------------------------------------------
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator<(const basic_string_view<CharT,Traits>& lhs,
                         const basic_string_view<CharT,Traits>& rhs)
     noexcept
@@ -1237,7 +1228,7 @@ namespace bpstd {
     return lhs.compare(rhs) < 0;
   }
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator<(const basic_string_view<CharT,Traits>& lhs,
                         const CharT* rhs)
     noexcept
@@ -1245,7 +1236,7 @@ namespace bpstd {
     return lhs < basic_string_view<CharT,Traits>(rhs);
   }
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator<(const CharT* lhs,
                         const basic_string_view<CharT,Traits>& rhs)
     noexcept
@@ -1253,14 +1244,14 @@ namespace bpstd {
     return basic_string_view<CharT,Traits>(lhs) < rhs;
   }
 
-  template<typename CharT, typename Traits, typename Allocator>
+  template <typename CharT, typename Traits, typename Allocator>
   inline bool operator<(const std::basic_string<CharT,Traits,Allocator>& lhs,
                         const basic_string_view<CharT,Traits>& rhs)
   {
     return basic_string_view<CharT,Traits>(lhs) < rhs;
   }
 
-  template<typename CharT, typename Traits, typename Allocator>
+  template <typename CharT, typename Traits, typename Allocator>
   inline bool operator<(const basic_string_view<CharT,Traits>& lhs,
                         const std::basic_string<CharT,Traits,Allocator>& rhs)
   {
@@ -1269,7 +1260,7 @@ namespace bpstd {
 
   //------------------------------------------------------------------------------
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator>(const basic_string_view<CharT,Traits>& lhs,
                         const basic_string_view<CharT,Traits>& rhs)
     noexcept
@@ -1277,7 +1268,7 @@ namespace bpstd {
     return lhs.compare(rhs) > 0;
   }
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator>(const basic_string_view<CharT,Traits>& lhs,
                         const CharT* rhs)
     noexcept
@@ -1285,7 +1276,7 @@ namespace bpstd {
     return lhs > basic_string_view<CharT,Traits>(rhs);
   }
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator>(const CharT* lhs,
                         const basic_string_view<CharT,Traits>& rhs)
     noexcept
@@ -1293,14 +1284,14 @@ namespace bpstd {
     return basic_string_view<CharT,Traits>(lhs) > rhs;
   }
 
-  template<typename CharT, typename Traits, typename Allocator>
+  template <typename CharT, typename Traits, typename Allocator>
   inline bool operator>(const std::basic_string<CharT,Traits,Allocator>& lhs,
                         const basic_string_view<CharT,Traits>& rhs)
   {
     return basic_string_view<CharT,Traits>(lhs) > rhs;
   }
 
-  template<typename CharT, typename Traits, typename Allocator>
+  template <typename CharT, typename Traits, typename Allocator>
   inline bool operator>(const basic_string_view<CharT,Traits>& lhs,
                         const std::basic_string<CharT,Traits,Allocator>& rhs)
   {
@@ -1309,7 +1300,7 @@ namespace bpstd {
 
   //------------------------------------------------------------------------------
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator<=(const basic_string_view<CharT,Traits>& lhs,
                           const basic_string_view<CharT,Traits>& rhs)
     noexcept
@@ -1317,7 +1308,7 @@ namespace bpstd {
     return lhs.compare(rhs) <= 0;
   }
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator<=(const basic_string_view<CharT,Traits>& lhs,
                           const CharT* rhs)
     noexcept
@@ -1325,7 +1316,7 @@ namespace bpstd {
     return lhs <= basic_string_view<CharT,Traits>(rhs);
   }
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator<=(const CharT* lhs,
                           const basic_string_view<CharT,Traits>& rhs)
     noexcept
@@ -1333,14 +1324,14 @@ namespace bpstd {
     return basic_string_view<CharT,Traits>(lhs) <= rhs;
   }
 
-  template<typename CharT, typename Traits, typename Allocator>
+  template <typename CharT, typename Traits, typename Allocator>
   inline bool operator<=(const std::basic_string<CharT,Traits,Allocator>& lhs,
                           const basic_string_view<CharT,Traits>& rhs)
   {
     return basic_string_view<CharT,Traits>(lhs) <= rhs;
   }
 
-  template<typename CharT, typename Traits, typename Allocator>
+  template <typename CharT, typename Traits, typename Allocator>
   inline bool operator<=(const basic_string_view<CharT,Traits>& lhs,
                           const std::basic_string<CharT,Traits,Allocator>& rhs)
   {
@@ -1349,7 +1340,7 @@ namespace bpstd {
 
   //------------------------------------------------------------------------------
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator>=(const basic_string_view<CharT,Traits>& lhs,
                           const basic_string_view<CharT,Traits>& rhs)
     noexcept
@@ -1357,7 +1348,7 @@ namespace bpstd {
     return lhs.compare(rhs) >= 0;
   }
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator>=(const basic_string_view<CharT,Traits>& lhs,
                           const CharT* rhs)
     noexcept
@@ -1365,7 +1356,7 @@ namespace bpstd {
     return lhs >= basic_string_view<CharT,Traits>(rhs);
   }
 
-  template<typename CharT, typename Traits>
+  template <typename CharT, typename Traits>
   inline bool operator>=(const CharT* lhs,
                           const basic_string_view<CharT,Traits>& rhs)
     noexcept
@@ -1373,14 +1364,14 @@ namespace bpstd {
     return basic_string_view<CharT,Traits>(lhs) >= rhs;
   }
 
-  template<typename CharT, typename Traits, typename Allocator>
+  template <typename CharT, typename Traits, typename Allocator>
   inline bool operator>=(const std::basic_string<CharT,Traits,Allocator>& lhs,
                           const basic_string_view<CharT,Traits>& rhs)
   {
     return basic_string_view<CharT,Traits>(lhs) >= rhs;
   }
 
-  template<typename CharT, typename Traits, typename Allocator>
+  template <typename CharT, typename Traits, typename Allocator>
   inline bool operator>=(const basic_string_view<CharT,Traits>& lhs,
                           const std::basic_string<CharT,Traits,Allocator>& rhs)
   {
