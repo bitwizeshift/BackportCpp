@@ -44,6 +44,7 @@ set(header_files
   "include/bpstd/detail/invoke.hpp"
   "include/bpstd/config.hpp"
   "include/bpstd/type_traits.hpp"
+  "include/bpstd/functional.hpp"
 )
 
 add_library(${PROJECT_NAME} INTERFACE)
