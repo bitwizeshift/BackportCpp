@@ -49,22 +49,22 @@ newer standard library features from C++11, C++14, C++17, and C++20.
 
 * [ ] **C++20**
   * [ ] [`bpstd::span`](include/bpstd/span.hpp)
-  * [ ] [`bpstd::make_unique_for_overwrite`](include/bpstd/make_unique.hpp)
+  * [x] [`bpstd::make_unique_for_overwrite`](include/bpstd/make_unique.hpp)
 * [ ] **C++17**
   * [ ] [`bpstd::any`](include/bpstd/any.hpp)
   * [ ] [`bpstd::string_view`](include/bpstd/string_view.hpp)
   * [ ] [`bpstd::optional`](include/bpstd/optional.hpp)
   * [ ] [`bpstd::variant`](include/bpstd/variant.hpp)
-  * [ ] [`bpstd::invoke`](include/bpstd/functional.hpp)
-  * [ ] [`bpstd::not_fn`](include/bpstd/functional.hpp)
+  * [x] [`bpstd::invoke`](include/bpstd/functional.hpp)
+  * [x] [`bpstd::not_fn`](include/bpstd/functional.hpp)
   * [ ] [`bpstd::make_from_tuple`](include/bpstd/tuple.hpp)
   * [ ] [`bpstd::apply`](include/bpstd/tuple.hpp)
   * [ ] [`bpstd::byte`](include/bpstd/cstddef.hpp)
-* [ ] **C++14**
-  * [ ] [`_t` convenience traits](include/bpstd/type_traits.hpp)
-  * [ ] [`_v` convenience variables](include/bpstd/type_traits.hpp) (when compiling with `-std=c++14`)
-  * [ ] [deduced functional objects](include/bpstd/functional.hpp)
-  * [ ] [`bpstd::make_unique`](include/bpstd/make_unique.hpp)
+* [x] **C++14**
+  * [x] [`_t` convenience traits](include/bpstd/type_traits.hpp)
+  * [x] [`_v` convenience variables](include/bpstd/type_traits.hpp) (when compiling with `-std=c++14`)
+  * [x] [deduced functional objects](include/bpstd/functional.hpp)
+  * [x] [`bpstd::make_unique`](include/bpstd/make_unique.hpp)
 
 ## <a name="license"></a>License
 
