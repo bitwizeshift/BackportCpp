@@ -53,6 +53,7 @@ set(header_files
   "include/bpstd/string_view.hpp"
   "include/bpstd/optional.hpp"
   "include/bpstd/iterator.hpp"
+  "include/bpstd/span.hpp"
 )
 
 add_library(${PROJECT_NAME} INTERFACE)
