@@ -34,6 +34,8 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
+#include "config.hpp" // BPSTD_CPP14_CONSTEXPR
+
 #include <algorithm>  // std::min, std::max
 #include <string>     // std::char_traits
 #include <ostream>    // std::basic_ostream
@@ -41,6 +43,7 @@
 #include <memory>     // std::allocator
 #include <stdexcept>  // std::out_of_range
 #include <iterator>   // std::reverse_iterator
+
 namespace bpstd { // back-port std
 
   //////////////////////////////////////////////////////////////////////////////
@@ -50,13 +53,8 @@ namespace bpstd { // back-port std
   /// This class describes an object that can refer to a constant contiguous
   /// sequence of char-like objects with the first element of the sequence
   /// at position zero.
-  ///
-  /// \ingroup core
   //////////////////////////////////////////////////////////////////////////////
-  template <
-    typename CharT,
-    typename Traits = std::char_traits<CharT>
-  >
+  template <typename CharT, typename Traits = std::char_traits<CharT>>
   class basic_string_view
   {
     //--------------------------------------------------------------------------
@@ -204,19 +202,19 @@ namespace bpstd { // back-port std
     /// The behavior is undefined if n > size().
     ///
     /// \param n number of characters to remove from the start of the view
-    void remove_prefix(size_type n) noexcept;
+    BPSTD_CPP14_CONSTEXPR void remove_prefix(size_type n) noexcept;
 
     /// \brief Moves the end of the view back by n characters.
     ///
     /// The behavior is undefined if n > size().
     ///
     /// \param n number of characters to remove from the end of the view
-    void remove_suffix(size_type n) noexcept;
+    BPSTD_CPP14_CONSTEXPR void remove_suffix(size_type n) noexcept;
 
     /// \brief Exchanges the view with that of v.
     ///
     /// \param v view to swap with
-    void swap(basic_string_view& v) noexcept;
+    BPSTD_CPP14_CONSTEXPR void swap(basic_string_view& v) noexcept;
 
     //--------------------------------------------------------------------------
     // Conversions
@@ -242,16 +240,17 @@ namespace bpstd { // back-port std
     /// \param dest pointer to the destination character string
     /// \param count requested substring length
     /// \param pos position of the first character
-    size_type copy(char_type* dest,
-                   size_type count = npos,
-                   size_type pos = 0) const;
+    BPSTD_CPP14_CONSTEXPR size_type copy(char_type* dest,
+                                         size_type count = npos,
+                                         size_type pos = 0) const;
 
     /// \brief Returns a substring of this viewed string
     ///
     /// \param pos the position of the first character in the substring
     /// \param len the length of the substring
     /// \return the created substring
-    basic_string_view substr(size_t pos = 0, size_t len = npos) const;
+    BPSTD_CPP14_CONSTEXPR basic_string_view substr(size_t pos = 0,
+                                                   size_t len = npos) const;
 
     //--------------------------------------------------------------------------
 
@@ -261,7 +260,7 @@ namespace bpstd { // back-port std
     /// \return negative value if this view is less than the other character
     ///         sequence, zero if the both character sequences are equal, positive
     ///         value if this view is greater than the other character sequence.
-    int compare(basic_string_view v) const noexcept;
+    BPSTD_CPP14_CONSTEXPR int compare(basic_string_view v) const noexcept;
 
     /// \brief Compares two character sequences
     ///
@@ -271,7 +270,7 @@ namespace bpstd { // back-port std
     /// \return negative value if this view is less than the other character
     ///         sequence, zero if the both character sequences are equal, positive
     ///         value if this view is greater than the other character sequence.
-    int compare(size_type pos, size_type count, basic_string_view v) const;
+    BPSTD_CPP14_CONSTEXPR int compare(size_type pos, size_type count, basic_string_view v) const;
 
     /// \brief Compares two character sequences
     ///
@@ -283,8 +282,11 @@ namespace bpstd { // back-port std
     /// \return negative value if this view is less than the other character
     ///         sequence, zero if the both character sequences are equal, positive
     ///         value if this view is greater than the other character sequence.
-    int compare( size_type pos1, size_type count1, basic_string_view v,
-                 size_type pos2, size_type count2 ) const;
+    BPSTD_CPP14_CONSTEXPR int compare(size_type pos1,
+                                      size_type count1,
+                                      basic_string_view v,
+                                      size_type pos2,
+                                      size_type count2) const;
 
     /// \brief Compares two character sequences
     ///
@@ -292,7 +294,7 @@ namespace bpstd { // back-port std
     /// \return negative value if this view is less than the other character
     ///         sequence, zero if the both character sequences are equal, positive
     ///         value if this view is greater than the other character sequence.
-    int compare(const char_type* s) const;
+    BPSTD_CPP14_CONSTEXPR int compare(const char_type* s) const;
 
     /// \brief Compares two character sequences
     ///
@@ -302,7 +304,9 @@ namespace bpstd { // back-port std
     /// \return negative value if this view is less than the other character
     ///         sequence, zero if the both character sequences are equal, positive
     ///         value if this view is greater than the other character sequence.
-    int compare(size_type pos, size_type count, const char_type* s) const;
+    BPSTD_CPP14_CONSTEXPR int compare(size_type pos,
+                                      size_type count,
+                                      const char_type* s) const;
 
     /// \brief Compares two character sequences
     ///
@@ -313,50 +317,81 @@ namespace bpstd { // back-port std
     /// \return negative value if this view is less than the other character
     ///         sequence, zero if the both character sequences are equal, positive
     ///         value if this view is greater than the other character sequence.
-    int compare( size_type pos, size_type count1, const char_type* s,
-                 size_type count2 ) const;
+    BPSTD_CPP14_CONSTEXPR int compare(size_type pos,
+                                      size_type count1,
+                                      const char_type* s,
+                                      size_type count2) const;
 
     //--------------------------------------------------------------------------
 
-    size_type find(basic_string_view v, size_type pos = 0) const;
-    size_type find(char_type c, size_type pos = 0) const;
-    size_type find(const char_type* s, size_type pos, size_type count) const;
-    size_type find(const char_type* s, size_type pos = 0) const;
+    BPSTD_CPP14_CONSTEXPR size_type find(basic_string_view v,
+                                         size_type pos = 0) const;
+    BPSTD_CPP14_CONSTEXPR size_type find(char_type c,
+                                         size_type pos = 0) const;
+    BPSTD_CPP14_CONSTEXPR size_type find(const char_type* s,
+                                         size_type pos,
+                                         size_type count) const;
+    BPSTD_CPP14_CONSTEXPR size_type find(const char_type* s,
+                                         size_type pos = 0) const;
 
     //--------------------------------------------------------------------------
 
-    size_type rfind(basic_string_view v, size_type pos = npos) const;
-    size_type rfind(char_type c, size_type pos = npos) const;
-    size_type rfind(const char_type* s, size_type pos, size_type count) const;
-    size_type rfind(const char_type* s, size_type pos = npos) const;
+    BPSTD_CPP14_CONSTEXPR size_type rfind(basic_string_view v,
+                                          size_type pos = npos) const;
+    BPSTD_CPP14_CONSTEXPR size_type rfind(char_type c,
+                                          size_type pos = npos) const;
+    BPSTD_CPP14_CONSTEXPR size_type rfind(const char_type* s,
+                                          size_type pos,
+                                          size_type count) const;
+    BPSTD_CPP14_CONSTEXPR size_type rfind(const char_type* s,
+                                          size_type pos = npos) const;
 
     //--------------------------------------------------------------------------
 
-    size_type find_first_of(basic_string_view v, size_type pos = 0) const;
-    size_type find_first_of(char_type c, size_type pos = 0) const;
-    size_type find_first_of(const char_type* s, size_type pos, size_type count) const;
-    size_type find_first_of(const char_type* s, size_type pos = 0) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_first_of(basic_string_view v,
+                                                  size_type pos = 0) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_first_of(char_type c,
+                                                  size_type pos = 0) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_first_of(const char_type* s,
+                                                  size_type pos,
+                                                  size_type count) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_first_of(const char_type* s,
+                                                  size_type pos = 0) const;
 
     //--------------------------------------------------------------------------
 
-    size_type find_last_of(basic_string_view v, size_type pos = npos) const;
-    size_type find_last_of(char_type c, size_type pos = npos) const;
-    size_type find_last_of(const char_type* s, size_type pos, size_type count) const;
-    size_type find_last_of(const char_type* s, size_type pos = npos) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_last_of(basic_string_view v,
+                                                 size_type pos = npos) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_last_of(char_type c,
+                                                 size_type pos = npos) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_last_of(const char_type* s,
+                                                 size_type pos, size_type count) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_last_of(const char_type* s,
+                                                 size_type pos = npos) const;
 
     //--------------------------------------------------------------------------
 
-    size_type find_first_not_of(basic_string_view v, size_type pos = 0) const;
-    size_type find_first_not_of(char_type c, size_type pos = 0) const;
-    size_type find_first_not_of(const char_type* s, size_type pos, size_type count) const;
-    size_type find_first_not_of(const char_type* s, size_type pos = 0) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_first_not_of(basic_string_view v,
+                                                      size_type pos = 0) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_first_not_of(char_type c,
+                                                      size_type pos = 0) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_first_not_of(const char_type* s,
+                                                      size_type pos,
+                                                      size_type count) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_first_not_of(const char_type* s,
+                                                      size_type pos = 0) const;
 
     //--------------------------------------------------------------------------
 
-    size_type find_last_not_of(basic_string_view v, size_type pos = npos) const;
-    size_type find_last_not_of(char_type c, size_type pos = npos) const;
-    size_type find_last_not_of(const char_type* s, size_type pos, size_type count) const;
-    size_type find_last_not_of(const char_type* s, size_type pos = npos) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_last_not_of(basic_string_view v,
+                                                     size_type pos = npos) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_last_not_of(char_type c,
+                                                     size_type pos = npos) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_last_not_of(const char_type* s,
+                                                     size_type pos,
+                                                     size_type count) const;
+    BPSTD_CPP14_CONSTEXPR size_type find_last_not_of(const char_type* s,
+                                                     size_type pos = npos) const;
 
     //--------------------------------------------------------------------------
     // Iterators
@@ -367,32 +402,32 @@ namespace bpstd { // back-port std
     /// \brief Retrieves the begin iterator for this basic_string_view
     ///
     /// \return the begin iterator
-    const_iterator begin() const noexcept;
-    const_iterator cbegin() const noexcept;
+    BPSTD_CPP14_CONSTEXPR const_iterator begin() const noexcept;
+    BPSTD_CPP14_CONSTEXPR const_iterator cbegin() const noexcept;
     /// \}
 
     /// \{
     /// \brief Retrieves the end iterator for this basic_string_view
     ///
     /// \return the end iterator
-    const_iterator end() const noexcept;
-    const_iterator cend() const noexcept;
+    BPSTD_CPP14_CONSTEXPR const_iterator end() const noexcept;
+    BPSTD_CPP14_CONSTEXPR const_iterator cend() const noexcept;
     /// \}
 
     /// \{
     /// \brief Retrieves the reverse begin iterator for this basic_string_view
     ///
     /// \return the reverse begin iterator
-    const_reverse_iterator rbegin() const noexcept;
-    const_reverse_iterator rend() const noexcept;
+    BPSTD_CPP14_CONSTEXPR const_reverse_iterator rbegin() const noexcept;
+    BPSTD_CPP14_CONSTEXPR const_reverse_iterator rend() const noexcept;
     /// \}
 
     /// \{
     /// \brief Retrieves the reverse end iterator for this basic_string_view
     ///
     /// \return the reverse end iterator
-    const_reverse_iterator crbegin() const noexcept;
-    const_reverse_iterator crend() const noexcept;
+    BPSTD_CPP14_CONSTEXPR const_reverse_iterator crbegin() const noexcept;
+    BPSTD_CPP14_CONSTEXPR const_reverse_iterator crend() const noexcept;
     /// \}
 
     //--------------------------------------------------------------------------
@@ -408,7 +443,7 @@ namespace bpstd { // back-port std
     /// \param c the character to check
     /// \param str the characters to compare against
     /// \return true if \p c is one of the characters in \p str
-    static bool is_one_of(CharT c, basic_string_view str);
+    static BPSTD_CPP14_CONSTEXPR bool is_one_of(CharT c, basic_string_view str);
   };
 
   template <typename CharT, typename Traits>
@@ -437,23 +472,29 @@ namespace bpstd { // back-port std
   //----------------------------------------------------------------------------
 
   template <typename CharT, typename Traits>
-  bool operator==(const basic_string_view<CharT,Traits>& lhs,
-                  const basic_string_view<CharT,Traits>& rhs) noexcept;
+  BPSTD_CPP14_CONSTEXPR bool
+    operator==(const basic_string_view<CharT,Traits>& lhs,
+               const basic_string_view<CharT,Traits>& rhs) noexcept;
   template <typename CharT, typename Traits>
-  bool operator!=(const basic_string_view<CharT,Traits>& lhs,
-                  const basic_string_view<CharT,Traits>& rhs) noexcept;
+  BPSTD_CPP14_CONSTEXPR bool
+    operator!=(const basic_string_view<CharT,Traits>& lhs,
+               const basic_string_view<CharT,Traits>& rhs) noexcept;
   template <typename CharT, typename Traits>
-  bool operator<(const basic_string_view<CharT,Traits>& lhs,
-                 const basic_string_view<CharT,Traits>& rhs) noexcept;
+  BPSTD_CPP14_CONSTEXPR bool
+    operator<(const basic_string_view<CharT,Traits>& lhs,
+              const basic_string_view<CharT,Traits>& rhs) noexcept;
   template <typename CharT, typename Traits>
-  bool operator>(const basic_string_view<CharT,Traits>& lhs,
-                 const basic_string_view<CharT,Traits>& rhs) noexcept;
+  BPSTD_CPP14_CONSTEXPR bool
+    operator>(const basic_string_view<CharT,Traits>& lhs,
+              const basic_string_view<CharT,Traits>& rhs) noexcept;
   template <typename CharT, typename Traits>
-  bool operator<=(const basic_string_view<CharT,Traits>& lhs,
-                  const basic_string_view<CharT,Traits>& rhs) noexcept;
+  BPSTD_CPP14_CONSTEXPR bool
+    operator<=(const basic_string_view<CharT,Traits>& lhs,
+               const basic_string_view<CharT,Traits>& rhs) noexcept;
   template <typename CharT, typename Traits>
-  bool operator>=(const basic_string_view<CharT,Traits>& lhs,
-                  const basic_string_view<CharT,Traits>& rhs) noexcept;
+  BPSTD_CPP14_CONSTEXPR bool
+    operator>=(const basic_string_view<CharT,Traits>& lhs,
+               const basic_string_view<CharT,Traits>& rhs) noexcept;
 
   //----------------------------------------------------------------------------
   // Type Aliases
@@ -600,7 +641,7 @@ inline constexpr typename bpstd::basic_string_view<CharT,Traits>::const_referenc
 //------------------------------------------------------------------------------
 
 template <typename CharT, typename Traits>
-inline void
+inline BPSTD_CPP14_CONSTEXPR void
   bpstd::basic_string_view<CharT,Traits>::remove_prefix(size_type n)
   noexcept
 {
@@ -608,7 +649,7 @@ inline void
 }
 
 template <typename CharT, typename Traits>
-inline void
+inline BPSTD_CPP14_CONSTEXPR void
   bpstd::basic_string_view<CharT,Traits>::remove_suffix(size_type n)
   noexcept
 {
@@ -616,7 +657,7 @@ inline void
 }
 
 template <typename CharT, typename Traits>
-inline void
+inline BPSTD_CPP14_CONSTEXPR void
   bpstd::basic_string_view<CharT,Traits>::swap(basic_string_view& v)
   noexcept
 {
@@ -643,7 +684,7 @@ inline constexpr bpstd::basic_string_view<CharT,Traits>::operator
 //------------------------------------------------------------------------------
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::copy(char_type* dest,
                                                size_type count,
                                                size_type pos)
@@ -659,7 +700,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline bpstd::basic_string_view<CharT,Traits>
+inline BPSTD_CPP14_CONSTEXPR bpstd::basic_string_view<CharT,Traits>
   bpstd::basic_string_view<CharT,Traits>::substr(size_type pos,
                                                  size_type len)
   const
@@ -676,7 +717,8 @@ inline bpstd::basic_string_view<CharT,Traits>
 //------------------------------------------------------------------------------
 
 template <typename CharT, typename Traits>
-inline int bpstd::basic_string_view<CharT,Traits>::compare(basic_string_view v)
+inline BPSTD_CPP14_CONSTEXPR int
+  bpstd::basic_string_view<CharT,Traits>::compare(basic_string_view v)
   const noexcept
 {
   const size_type rlen = std::min(m_size,v.m_size);
@@ -695,46 +737,51 @@ inline int bpstd::basic_string_view<CharT,Traits>::compare(basic_string_view v)
 }
 
 template <typename CharT, typename Traits>
-inline int bpstd::basic_string_view<CharT,Traits>::compare(size_type pos,
-                                                           size_type count,
-                                                           basic_string_view v)
+inline BPSTD_CPP14_CONSTEXPR int
+  bpstd::basic_string_view<CharT,Traits>::compare(size_type pos,
+                                                  size_type count,
+                                                  basic_string_view v)
   const
 {
   return substr(pos,count).compare(v);
 }
 
 template <typename CharT, typename Traits>
-inline int bpstd::basic_string_view<CharT,Traits>::compare(size_type pos1,
-                                                           size_type count1,
-                                                           basic_string_view v,
-                                                           size_type pos2,
-                                                           size_type count2)
+inline BPSTD_CPP14_CONSTEXPR int
+  bpstd::basic_string_view<CharT,Traits>::compare(size_type pos1,
+                                                  size_type count1,
+                                                  basic_string_view v,
+                                                  size_type pos2,
+                                                  size_type count2)
   const
 {
   return substr(pos1,count1).compare(v.substr(pos2,count2));
 }
 
 template <typename CharT, typename Traits>
-inline int bpstd::basic_string_view<CharT,Traits>::compare(const char_type* s)
+inline BPSTD_CPP14_CONSTEXPR int
+  bpstd::basic_string_view<CharT,Traits>::compare(const char_type* s)
   const
 {
   return compare(basic_string_view<CharT,Traits>(s));
 }
 
 template <typename CharT, typename Traits>
-inline int bpstd::basic_string_view<CharT,Traits>::compare(size_type pos,
-                                                           size_type count,
-                                                           const char_type* s)
+inline BPSTD_CPP14_CONSTEXPR int
+  bpstd::basic_string_view<CharT,Traits>::compare(size_type pos,
+                                                  size_type count,
+                                                  const char_type* s)
   const
 {
   return substr(pos, count).compare(basic_string_view<CharT,Traits>(s));
 }
 
 template <typename CharT, typename Traits>
-inline int bpstd::basic_string_view<CharT,Traits>::compare(size_type pos,
-                                                           size_type count1,
-                                                           const char_type* s,
-                                                           size_type count2)
+inline BPSTD_CPP14_CONSTEXPR int
+  bpstd::basic_string_view<CharT,Traits>::compare(size_type pos,
+                                                  size_type count1,
+                                                  const char_type* s,
+                                                  size_type count2)
   const
 {
   return substr(pos, count1).compare(basic_string_view<CharT,Traits>(s, count2));
@@ -743,7 +790,7 @@ inline int bpstd::basic_string_view<CharT,Traits>::compare(size_type pos,
 //------------------------------------------------------------------------------
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find(basic_string_view v,
                                                size_type pos)
   const
@@ -769,7 +816,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find(char_type c,
                                                size_type pos)
   const
@@ -778,7 +825,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find(const char_type* s, size_type pos,
                                                size_type count)
   const
@@ -787,7 +834,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find(const char_type* s,
                                                size_type pos)
   const
@@ -798,7 +845,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 //------------------------------------------------------------------------------
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::rfind(basic_string_view v,
                                                 size_type pos)
   const
@@ -825,7 +872,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::rfind(char_type c,
                                                 size_type pos)
   const
@@ -834,7 +881,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::rfind(const char_type* s,
                                                 size_type pos,
                                                 size_type count)
@@ -844,7 +891,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::rfind(const char_type* s,
                                                 size_type pos)
   const
@@ -855,7 +902,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 //------------------------------------------------------------------------------
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_of(basic_string_view v,
                                                         size_type pos)
   const
@@ -871,7 +918,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_of(char_type c,
                                                         size_type pos)
   const
@@ -880,7 +927,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_of(const char_type* s,
                                                         size_type pos,
                                                         size_type count)
@@ -890,7 +937,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_of(const char_type* s,
                                                         size_type pos)
   const
@@ -901,7 +948,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 //------------------------------------------------------------------------------
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_of(basic_string_view v,
                                                        size_type pos)
   const
@@ -922,7 +969,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_of(char_type c,
                                                        size_type pos)
   const
@@ -931,7 +978,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_of(const char_type* s,
                                                        size_type pos,
                                                        size_type count)
@@ -941,7 +988,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_of(const char_type* s,
                                                        size_type pos)
   const
@@ -952,7 +999,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 //------------------------------------------------------------------------------
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_not_of(basic_string_view v,
                                                             size_type pos)
   const
@@ -968,7 +1015,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_not_of(char_type c,
                                                             size_type pos)
   const
@@ -977,7 +1024,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_not_of(const char_type* s,
                                                             size_type pos,
                                                             size_type count)
@@ -987,7 +1034,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_first_not_of(const char_type* s,
                                                             size_type pos)
   const
@@ -998,7 +1045,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 //------------------------------------------------------------------------------
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_not_of(basic_string_view v,
                                                            size_type pos)
   const
@@ -1019,7 +1066,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_not_of(char_type c,
                                                            size_type pos)
   const
@@ -1028,7 +1075,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_not_of(const char_type* s,
                                                            size_type pos,
                                                            size_type count)
@@ -1038,7 +1085,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::size_type
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::size_type
   bpstd::basic_string_view<CharT,Traits>::find_last_not_of(const char_type* s,
                                                            size_type pos)
   const
@@ -1051,7 +1098,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::size_type
 //------------------------------------------------------------------------------
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::const_iterator
   bpstd::basic_string_view<CharT,Traits>::begin()
   const noexcept
 {
@@ -1059,7 +1106,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::const_iterator
   bpstd::basic_string_view<CharT,Traits>::cbegin()
   const noexcept
 {
@@ -1067,7 +1114,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::const_iterator
   bpstd::basic_string_view<CharT,Traits>::end()
   const noexcept
 {
@@ -1075,7 +1122,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::const_iterator
   bpstd::basic_string_view<CharT,Traits>::cend()
   const noexcept
 {
@@ -1083,7 +1130,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::const_iterator
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
   bpstd::basic_string_view<CharT,Traits>::rbegin()
   const noexcept
 {
@@ -1091,7 +1138,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
   bpstd::basic_string_view<CharT,Traits>::crbegin()
   const noexcept
 {
@@ -1099,7 +1146,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
   bpstd::basic_string_view<CharT,Traits>::rend()
   const noexcept
 {
@@ -1107,7 +1154,7 @@ inline typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
 }
 
 template <typename CharT, typename Traits>
-inline typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
+inline BPSTD_CPP14_CONSTEXPR typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
   bpstd::basic_string_view<CharT,Traits>::crend()
   const noexcept
 {
@@ -1115,8 +1162,9 @@ inline typename bpstd::basic_string_view<CharT,Traits>::const_reverse_iterator
 }
 
 template <typename CharT, typename Traits>
-inline bool bpstd::basic_string_view<CharT,Traits>::is_one_of(CharT c,
-                                                              basic_string_view str)
+inline BPSTD_CPP14_CONSTEXPR bool
+  bpstd::basic_string_view<CharT,Traits>::is_one_of(CharT c,
+                                                    basic_string_view str)
 {
   for (auto s : str) {
     if (Traits::eq(c,s)) {
@@ -1154,24 +1202,25 @@ inline void bpstd::swap(basic_string_view<CharT,Traits>& lhs,
 namespace bpstd {
 
   template <typename CharT, typename Traits>
-  inline bool operator==(const basic_string_view<CharT,Traits>& lhs,
-                        const basic_string_view<CharT,Traits>& rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator==(const basic_string_view<CharT,Traits>& lhs,
+               const basic_string_view<CharT,Traits>& rhs)
     noexcept
   {
     return lhs.compare(rhs) == 0;
   }
 
   template <typename CharT, typename Traits>
-  inline bool operator==(basic_string_view<CharT,Traits> lhs,
-                          const CharT* rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator==(basic_string_view<CharT,Traits> lhs, const CharT* rhs)
     noexcept
   {
     return lhs == basic_string_view<CharT,Traits>(rhs);
   }
 
   template <typename CharT, typename Traits>
-  inline bool operator==(const CharT* lhs,
-                          const basic_string_view<CharT,Traits>& rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator==(const CharT* lhs, const basic_string_view<CharT,Traits>& rhs)
     noexcept
   {
     return basic_string_view<CharT,Traits>(lhs) == rhs;
@@ -1179,14 +1228,15 @@ namespace bpstd {
 
   template <typename CharT, typename Traits, typename Allocator>
   inline bool operator==(const std::basic_string<CharT,Traits,Allocator>& lhs,
-                          const basic_string_view<CharT,Traits>& rhs)
+                         const basic_string_view<CharT,Traits>& rhs)
   {
     return basic_string_view<CharT,Traits>(lhs) == rhs;
   }
 
   template <typename CharT, typename Traits, typename Allocator>
-  inline bool operator==(const basic_string_view<CharT,Traits>& lhs,
-                          const std::basic_string<CharT,Traits,Allocator>& rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator==(const basic_string_view<CharT,Traits>& lhs,
+               const std::basic_string<CharT,Traits,Allocator>& rhs)
   {
     return lhs == basic_string_view<CharT,Traits>(rhs);
   }
@@ -1194,24 +1244,25 @@ namespace bpstd {
   //----------------------------------------------------------------------------
 
   template <typename CharT, typename Traits>
-  inline bool operator!=(const basic_string_view<CharT,Traits>& lhs,
-                          const basic_string_view<CharT,Traits>& rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator!=(const basic_string_view<CharT,Traits>& lhs,
+               const basic_string_view<CharT,Traits>& rhs)
     noexcept
   {
     return lhs.compare(rhs) != 0;
   }
 
   template <typename CharT, typename Traits>
-  inline bool operator!=(const basic_string_view<CharT,Traits>& lhs,
-                          const CharT* rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator!=(const basic_string_view<CharT,Traits>& lhs, const CharT* rhs)
     noexcept
   {
     return lhs != basic_string_view<CharT,Traits>(rhs);
   }
 
   template <typename CharT, typename Traits>
-  inline bool operator!=(const CharT* lhs,
-                          const basic_string_view<CharT,Traits>& rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator!=(const CharT* lhs, const basic_string_view<CharT,Traits>& rhs)
     noexcept
   {
     return basic_string_view<CharT,Traits>(lhs) != rhs;
@@ -1219,38 +1270,39 @@ namespace bpstd {
 
   template <typename CharT, typename Traits, typename Allocator>
   inline bool operator!=(const std::basic_string<CharT,Traits,Allocator>& lhs,
-                          const basic_string_view<CharT,Traits>& rhs)
+                         const basic_string_view<CharT,Traits>& rhs)
   {
     return basic_string_view<CharT,Traits>(lhs) != rhs;
   }
 
   template <typename CharT, typename Traits, typename Allocator>
   inline bool operator!=(const basic_string_view<CharT,Traits>& lhs,
-                          const std::basic_string<CharT,Traits,Allocator>& rhs)
+                         const std::basic_string<CharT,Traits,Allocator>& rhs)
   {
     return lhs != basic_string_view<CharT,Traits>(rhs);
   }
   //----------------------------------------------------------------------------
 
   template <typename CharT, typename Traits>
-  inline bool operator<(const basic_string_view<CharT,Traits>& lhs,
-                        const basic_string_view<CharT,Traits>& rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator<(const basic_string_view<CharT,Traits>& lhs,
+              const basic_string_view<CharT,Traits>& rhs)
     noexcept
   {
     return lhs.compare(rhs) < 0;
   }
 
   template <typename CharT, typename Traits>
-  inline bool operator<(const basic_string_view<CharT,Traits>& lhs,
-                        const CharT* rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator<(const basic_string_view<CharT,Traits>& lhs, const CharT* rhs)
     noexcept
   {
     return lhs < basic_string_view<CharT,Traits>(rhs);
   }
 
   template <typename CharT, typename Traits>
-  inline bool operator<(const CharT* lhs,
-                        const basic_string_view<CharT,Traits>& rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator<(const CharT* lhs, const basic_string_view<CharT,Traits>& rhs)
     noexcept
   {
     return basic_string_view<CharT,Traits>(lhs) < rhs;
@@ -1273,24 +1325,25 @@ namespace bpstd {
   //----------------------------------------------------------------------------
 
   template <typename CharT, typename Traits>
-  inline bool operator>(const basic_string_view<CharT,Traits>& lhs,
-                        const basic_string_view<CharT,Traits>& rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator>(const basic_string_view<CharT,Traits>& lhs,
+              const basic_string_view<CharT,Traits>& rhs)
     noexcept
   {
     return lhs.compare(rhs) > 0;
   }
 
   template <typename CharT, typename Traits>
-  inline bool operator>(const basic_string_view<CharT,Traits>& lhs,
-                        const CharT* rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator>(const basic_string_view<CharT,Traits>& lhs, const CharT* rhs)
     noexcept
   {
     return lhs > basic_string_view<CharT,Traits>(rhs);
   }
 
   template <typename CharT, typename Traits>
-  inline bool operator>(const CharT* lhs,
-                        const basic_string_view<CharT,Traits>& rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator>(const CharT* lhs, const basic_string_view<CharT,Traits>& rhs)
     noexcept
   {
     return basic_string_view<CharT,Traits>(lhs) > rhs;
@@ -1313,24 +1366,25 @@ namespace bpstd {
   //----------------------------------------------------------------------------
 
   template <typename CharT, typename Traits>
-  inline bool operator<=(const basic_string_view<CharT,Traits>& lhs,
-                          const basic_string_view<CharT,Traits>& rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator<=(const basic_string_view<CharT,Traits>& lhs,
+               const basic_string_view<CharT,Traits>& rhs)
     noexcept
   {
     return lhs.compare(rhs) <= 0;
   }
 
   template <typename CharT, typename Traits>
-  inline bool operator<=(const basic_string_view<CharT,Traits>& lhs,
-                          const CharT* rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator<=(const basic_string_view<CharT,Traits>& lhs, const CharT* rhs)
     noexcept
   {
     return lhs <= basic_string_view<CharT,Traits>(rhs);
   }
 
   template <typename CharT, typename Traits>
-  inline bool operator<=(const CharT* lhs,
-                          const basic_string_view<CharT,Traits>& rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator<=(const CharT* lhs, const basic_string_view<CharT,Traits>& rhs)
     noexcept
   {
     return basic_string_view<CharT,Traits>(lhs) <= rhs;
@@ -1338,14 +1392,14 @@ namespace bpstd {
 
   template <typename CharT, typename Traits, typename Allocator>
   inline bool operator<=(const std::basic_string<CharT,Traits,Allocator>& lhs,
-                          const basic_string_view<CharT,Traits>& rhs)
+                         const basic_string_view<CharT,Traits>& rhs)
   {
     return basic_string_view<CharT,Traits>(lhs) <= rhs;
   }
 
   template <typename CharT, typename Traits, typename Allocator>
   inline bool operator<=(const basic_string_view<CharT,Traits>& lhs,
-                          const std::basic_string<CharT,Traits,Allocator>& rhs)
+                         const std::basic_string<CharT,Traits,Allocator>& rhs)
   {
     return lhs <= basic_string_view<CharT,Traits>(rhs);
   }
@@ -1353,24 +1407,25 @@ namespace bpstd {
   //----------------------------------------------------------------------------
 
   template <typename CharT, typename Traits>
-  inline bool operator>=(const basic_string_view<CharT,Traits>& lhs,
-                          const basic_string_view<CharT,Traits>& rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator>=(const basic_string_view<CharT,Traits>& lhs,
+               const basic_string_view<CharT,Traits>& rhs)
     noexcept
   {
     return lhs.compare(rhs) >= 0;
   }
 
   template <typename CharT, typename Traits>
-  inline bool operator>=(const basic_string_view<CharT,Traits>& lhs,
-                          const CharT* rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator>=(const basic_string_view<CharT,Traits>& lhs, const CharT* rhs)
     noexcept
   {
     return lhs >= basic_string_view<CharT,Traits>(rhs);
   }
 
   template <typename CharT, typename Traits>
-  inline bool operator>=(const CharT* lhs,
-                          const basic_string_view<CharT,Traits>& rhs)
+  inline BPSTD_CPP14_CONSTEXPR bool
+    operator>=(const CharT* lhs, const basic_string_view<CharT,Traits>& rhs)
     noexcept
   {
     return basic_string_view<CharT,Traits>(lhs) >= rhs;
@@ -1378,14 +1433,14 @@ namespace bpstd {
 
   template <typename CharT, typename Traits, typename Allocator>
   inline bool operator>=(const std::basic_string<CharT,Traits,Allocator>& lhs,
-                          const basic_string_view<CharT,Traits>& rhs)
+                         const basic_string_view<CharT,Traits>& rhs)
   {
     return basic_string_view<CharT,Traits>(lhs) >= rhs;
   }
 
   template <typename CharT, typename Traits, typename Allocator>
   inline bool operator>=(const basic_string_view<CharT,Traits>& lhs,
-                          const std::basic_string<CharT,Traits,Allocator>& rhs)
+                         const std::basic_string<CharT,Traits,Allocator>& rhs)
   {
     return lhs >= basic_string_view<CharT,Traits>(rhs);
   }
