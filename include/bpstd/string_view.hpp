@@ -54,7 +54,7 @@ namespace bpstd { // back-port std
     typename CharT,
     typename Traits = std::char_traits<CharT>
   >
-  class basic_string_view final
+  class basic_string_view
   {
     //------------------------------------------------------------------------
     // Public Member Types
