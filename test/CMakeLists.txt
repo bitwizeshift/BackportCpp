@@ -8,6 +8,7 @@ set(source_files
   "src/bpstd/any.test.cpp"
   "src/bpstd/string_view.test.cpp"
   "src/bpstd/optional.test.cpp"
+  "src/bpstd/span.test.cpp"
 )
 
 add_executable(${PROJECT_NAME}.test
