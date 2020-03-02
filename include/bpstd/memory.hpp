@@ -34,10 +34,11 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
-#include "type_traits.hpp"
+#include "type_traits.hpp" // conditional_t, void_t
 
-#include <memory>  // std::unique_ptr
-#include <cstddef> // std::size_t
+#include <memory>      // std::unique_ptr
+#include <cstddef>     // std::size_t
+#include <type_traits> // std::declval
 
 namespace bpstd {
 
@@ -122,6 +123,57 @@ namespace bpstd {
   std::unique_ptr<typename detail::make_unique_result<T>::bounded_array>
     make_unique_for_overwrite() = delete;
 
+  //----------------------------------------------------------------------------
+
+  namespace detail {
+
+    template <typename T, typename = void>
+    struct has_to_address : false_type{};
+
+    template <typename T>
+    struct has_to_address<T,void_t<decltype(std::pointer_traits<T>::to_address(std::declval<const T&>()))>>
+      : true_type{};
+
+    //--------------------------------------------------------------------------
+
+    template <bool, typename T>
+    struct operator_deref
+    {
+      using type = decltype(std::declval<const T&>().operator->());
+    };
+
+    template <typename T>
+    struct operator_deref<true, T>{};
+
+    //--------------------------------------------------------------------------
+
+    template <typename T, typename = void>
+    struct to_address_result
+      : operator_deref<std::is_pointer<remove_cvref_t<T>>::value, T>{};
+
+    template <typename T>
+    struct to_address_result<T,void_t<decltype(std::pointer_traits<T>::to_address(std::declval<const T&>()))>>
+    {
+      using type = decltype(std::pointer_traits<T>::to_address(std::declval<const T&>()));
+    };
+
+    template <typename T>
+    using to_address_result_t = typename to_address_result<T>::type;
+
+  } // namespace detail
+
+  /// \{
+  /// \brief Converts a pointer-like type to a raw pointer by recursively
+  ///        calling to_address on it
+  ///
+  /// \param p the pointer-like type
+  /// \return the pointer
+  template <typename T>
+  constexpr T* to_address(T* p) noexcept;
+  template <typename T>
+  constexpr detail::to_address_result_t<T> to_address(const T& p) noexcept;
+  /// \}
+
 } // namespace bpstd
 
 template <typename T, typename...Args>
@@ -150,6 +202,48 @@ inline std::unique_ptr<typename bpstd::detail::make_unique_result<T>::unbounded_
   bpstd::make_unique_for_overwrite(std::size_t size)
 {
   return std::unique_ptr<T[]>{new remove_extent_t<T>[size]};
+}
+
+namespace bpstd {
+  namespace detail {
+
+    template <typename T>
+    inline constexpr auto
+      to_address_impl(const T& p, std::true_type)
+      -> decltype(std::pointer_traits<T>::to_address(std::declval<const T&>()))
+    {
+      return to_address(std::pointer_traits<T>::to_address(p));
+    }
+
+    template <typename T>
+    inline constexpr auto
+      to_address_impl(const T& p, std::false_type)
+      -> decltype(std::declval<const T&>().operator->())
+    {
+      return to_address(p.operator->());
+    }
+
+  } // namespace detail
+} // namespace bpstd
+
+template <typename T>
+inline constexpr T* bpstd::to_address(T* p)
+  noexcept
+{
+  static_assert(
+    !std::is_function<T>::value,
+    "T* must not be a function pointer"
+  );
+
+  return p;
+}
+
+template <typename T>
+inline constexpr bpstd::detail::to_address_result_t<T>
+  bpstd::to_address(const T& p)
+  noexcept
+{
+  return detail::to_address_impl(p, detail::has_to_address<T>{});
 }
 
 #endif /* BPSTD_MEMORY_HPP */
