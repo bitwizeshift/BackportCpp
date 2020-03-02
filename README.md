@@ -47,8 +47,9 @@ newer standard library features from C++11, C++14, C++17, and C++20.
 
 ## Features
 
-* [ ] **C++20**
-  * [ ] [`bpstd::span`](include/bpstd/span.hpp)
+* [x] **C++20**
+  * [x] [`bpstd::span`](include/bpstd/span.hpp)
+  * [x] [`bpstd::to_address`](include/bpstd/memory.hpp)
   * [x] [`bpstd::make_unique_for_overwrite`](include/bpstd/memory.hpp)
 * [ ] **C++17**
   * [x] [`bpstd::any`](include/bpstd/any.hpp)
