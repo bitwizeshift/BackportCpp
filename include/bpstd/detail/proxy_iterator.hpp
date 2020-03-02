@@ -106,6 +106,13 @@ namespace bpstd {
       /// \param it the iterator to construct this proxy_iterator
       constexpr explicit proxy_iterator(const Iterator& it) noexcept;
 
+      /// \brief Convert-constructs a proxy_iterator from a proxy iterator with
+      ///        the same tag
+      ///
+      /// \param it the iterator
+      template <typename UIterator>
+      constexpr proxy_iterator(const proxy_iterator<UIterator,U>& it) noexcept;
+
       /// \brief Copy-constructs a proxy_iterator
       ///
       /// \param other the iterator to copy
@@ -115,6 +122,12 @@ namespace bpstd {
       ///
       /// \param other the iterator to move
       constexpr proxy_iterator(proxy_iterator&& other) noexcept = default;
+
+      /// \brief Copy-assigns a proxy_iterator
+      ///
+      /// \param other the iterator to copy
+      template <typename UIterator>
+      proxy_iterator& operator=(const proxy_iterator<UIterator,U>& it) noexcept;
 
       /// \brief Copy-assigns a proxy_iterator
       ///
@@ -173,6 +186,8 @@ namespace bpstd {
     private:
 
       Iterator m_iter; ///< The iterator used for iteration
+
+      template <typename, typename> friend class proxy_iterator;
     };
 
     //==========================================================================
@@ -206,7 +221,7 @@ namespace bpstd {
 //==============================================================================
 
 //------------------------------------------------------------------------------
-// Constructors
+// Constructors / Assignment
 //------------------------------------------------------------------------------
 
 template<typename Iterator, typename U>
@@ -216,6 +231,27 @@ inline constexpr bpstd::detail::proxy_iterator<Iterator,U>::
   : m_iter{it}
 {
 
+}
+
+template<typename Iterator, typename U>
+template <typename UIterator>
+inline constexpr bpstd::detail::proxy_iterator<Iterator,U>
+  ::proxy_iterator(const proxy_iterator<UIterator,U>& it)
+  noexcept
+  : m_iter{it.m_iter}
+{
+
+}
+
+template<typename Iterator, typename U>
+template <typename UIterator>
+inline bpstd::detail::proxy_iterator<Iterator,U>&
+  bpstd::detail::proxy_iterator<Iterator,U>::operator=(const proxy_iterator<UIterator,U>& it)
+  noexcept
+{
+  m_iter = it.m_iter;
+
+  return (*this);
 }
 
 //------------------------------------------------------------------------------
