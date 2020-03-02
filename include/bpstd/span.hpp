@@ -192,10 +192,8 @@ namespace bpstd {
     using reference       = element_type&;
     using const_reference = const element_type&;
 
-    using iterator               = T*;
-    using const_iterator         = const T*;
-    using reverse_iterator       = std::reverse_iterator<iterator>;
-    using const_reverse_iterator = std::reverse_iterator<const_iterator>;
+    using iterator         = T*;
+    using reverse_iterator = std::reverse_iterator<iterator>;
 
     //--------------------------------------------------------------------------
     // Public Member Constants
