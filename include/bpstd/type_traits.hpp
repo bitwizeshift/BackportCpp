@@ -138,7 +138,7 @@ namespace bpstd {
 
 #if BPSTD_HAS_TEMPLATE_VARIABLES
   template<typename B>
-  BPSTD_CPP17_INLINE constexpr auto negation_v = negation<Bs>::value;
+  BPSTD_CPP17_INLINE constexpr auto negation_v = negation<B>::value;
 #endif
 
   //----------------------------------------------------------------------------
