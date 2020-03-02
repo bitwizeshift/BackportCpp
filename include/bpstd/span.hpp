@@ -153,6 +153,18 @@ namespace bpstd {
   // class : span
   //============================================================================
 
+  //////////////////////////////////////////////////////////////////////////////
+  /// \brief This class is a non-owning view of a contiguous piece of memory
+  ///
+  /// This type describes an object that can refer to a contiguous sequence of
+  /// objects with the first element of the sequence at position zero. A span
+  /// can either have a static extent, in which case the number of elements in
+  /// the sequence is known and encoded in the type, or a dynamic extent,
+  /// in which case the size is known at runtime.
+  ///
+  /// \tparam T the underlying type of the span
+  /// \tparam Extent the extent (size) of the span
+  //////////////////////////////////////////////////////////////////////////////
   template <typename T, std::size_t Extent = dynamic_extent>
   class span
   {
