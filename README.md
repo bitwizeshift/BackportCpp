@@ -1,5 +1,5 @@
 [![Github Issues](https://img.shields.io/github/issues/bitwizeshift/bpstd.svg)](http://github.com/bitwizeshift/bpstd/issues)
-[![Tested Compilers](https://img.shields.io/badge/compilers-gcc%20%7C%20clang-blue.svg)](#tested-compilers)
+[![Tested Compilers](https://img.shields.io/badge/compilers-gcc%20%7C%20clang%20%7C%20msvc-blue.svg)](#tested-compilers)
 [![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](http://bitwizeshift.github.io/bpstd)
 [![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/bitwizeshift/bpstd/master/LICENSE.md)
 [![Github Releases](https://img.shields.io/github/release/bitwizeshift/bpstd.svg)](https://github.com/bitwizeshift/bpstd/releases)
