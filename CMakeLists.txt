@@ -88,7 +88,6 @@ endif ()
 # Installation
 ##############################################################################
 
-return()
 if (IS_SUBPROJECT)
   return()
 endif ()
