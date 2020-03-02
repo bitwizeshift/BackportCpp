@@ -187,7 +187,7 @@ template <typename T>
 inline std::unique_ptr<typename bpstd::detail::make_unique_result<T>::unbounded_array>
   bpstd::make_unique(std::size_t size)
 {
-  return std::unique_ptr<T[]>{new remove_extent_t<T>[size]()};
+  return std::unique_ptr<T>{new remove_extent_t<T>[size]()};
 }
 
 template <typename T>
@@ -201,7 +201,7 @@ template <typename T>
 inline std::unique_ptr<typename bpstd::detail::make_unique_result<T>::unbounded_array>
   bpstd::make_unique_for_overwrite(std::size_t size)
 {
-  return std::unique_ptr<T[]>{new remove_extent_t<T>[size]};
+  return std::unique_ptr<T>{new remove_extent_t<T>[size]};
 }
 
 namespace bpstd {
