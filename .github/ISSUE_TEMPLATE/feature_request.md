@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
+about: Request a standard library type that is absent from this project
 
 ---
 
@@ -12,15 +12,14 @@ about: Suggest an idea for this project
 
 ### Description
 <!--
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+**Is there a standard library type that we're missing? Please describe.**
+A clear and concise description of what is missing, and why you think it
+belongs in this project.
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+**Attach any useful documentation, links, etc**
+If there's a good cppreference page or ISO documentation outlining the type,
+please attach links here.
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
-
-**Additional context**
-Add any other context or screenshots about the feature request here.
+**Does a reference implementation already exist?**
+If you know of an existing reference implementation, please link it here
 -->
