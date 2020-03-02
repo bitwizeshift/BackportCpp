@@ -43,22 +43,25 @@
 #include <iterator>   // std::reverse_iterator
 namespace bpstd { // back-port std
 
-  ////////////////////////////////////////////////////////////////////////////
-  /// \brief A wrapper around non-owned strings.
+  //////////////////////////////////////////////////////////////////////////////
+  /// \brief A semantic non-owning wrapper around contiguous character
+  ///        sequences.
   ///
-  /// This is an implementation of the C++17 string_view proposal
+  /// This class describes an object that can refer to a constant contiguous
+  /// sequence of char-like objects with the first element of the sequence
+  /// at position zero.
   ///
   /// \ingroup core
-  ////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
   template <
     typename CharT,
     typename Traits = std::char_traits<CharT>
   >
   class basic_string_view
   {
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
     // Public Member Types
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
   public:
 
     using char_type   = CharT;
@@ -76,16 +79,16 @@ namespace bpstd { // back-port std
     using reverse_iterator = std::reverse_iterator<iterator>;
     using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
     // Public Members
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
   public:
 
     static constexpr size_type npos = size_type(-1);
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
     // Constructors
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
   public:
 
     /// \brief Default constructs a basic_string_view without any content
@@ -118,9 +121,9 @@ namespace bpstd { // back-port std
     /// \param count the size of the string
     constexpr basic_string_view(const char_type* str, size_type count) noexcept;
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
     // Assignment
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
   public:
 
     /// \brief Assigns a basic_string_view from an ansi-string
@@ -129,9 +132,9 @@ namespace bpstd { // back-port std
     /// \return reference to \c (*this)
     basic_string_view& operator=(const basic_string_view& view) = default;
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
     // Capacity
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
   public:
 
     /// \brief Returns the length of the string, in terms of bytes
@@ -153,9 +156,9 @@ namespace bpstd { // back-port std
     /// \return whether the basic_string_view is empty
     constexpr bool empty() const noexcept;
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
     // Element Access
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
   public:
 
     /// \brief Gets the data of the current basic_string_view
@@ -191,9 +194,9 @@ namespace bpstd { // back-port std
     /// \return reference to the last character of the string
     constexpr const_reference back() const noexcept;
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
     // Modifiers
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
   public:
 
     /// \brief Moves the start of the view forward by n characters.
@@ -215,9 +218,9 @@ namespace bpstd { // back-port std
     /// \param v view to swap with
     void swap(basic_string_view& v) noexcept;
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
     // Conversions
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
   public:
 
     /// \brief Creates a basic_string with a copy of the content of the current
@@ -228,9 +231,9 @@ namespace bpstd { // back-port std
     template <typename Allocator>
     explicit constexpr operator std::basic_string<CharT, Traits, Allocator>() const;
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
     // Operations
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
   public:
 
     /// \brief Copies the substring [pos, pos + rcount) to the character string pointed
@@ -250,7 +253,7 @@ namespace bpstd { // back-port std
     /// \return the created substring
     basic_string_view substr(size_t pos = 0, size_t len = npos) const;
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
 
     /// \brief Compares two character sequences
     ///
@@ -313,51 +316,51 @@ namespace bpstd { // back-port std
     int compare( size_type pos, size_type count1, const char_type* s,
                  size_type count2 ) const;
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
 
     size_type find(basic_string_view v, size_type pos = 0) const;
     size_type find(char_type c, size_type pos = 0) const;
     size_type find(const char_type* s, size_type pos, size_type count) const;
     size_type find(const char_type* s, size_type pos = 0) const;
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
 
     size_type rfind(basic_string_view v, size_type pos = npos) const;
     size_type rfind(char_type c, size_type pos = npos) const;
     size_type rfind(const char_type* s, size_type pos, size_type count) const;
     size_type rfind(const char_type* s, size_type pos = npos) const;
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
 
     size_type find_first_of(basic_string_view v, size_type pos = 0) const;
     size_type find_first_of(char_type c, size_type pos = 0) const;
     size_type find_first_of(const char_type* s, size_type pos, size_type count) const;
     size_type find_first_of(const char_type* s, size_type pos = 0) const;
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
 
     size_type find_last_of(basic_string_view v, size_type pos = npos) const;
     size_type find_last_of(char_type c, size_type pos = npos) const;
     size_type find_last_of(const char_type* s, size_type pos, size_type count) const;
     size_type find_last_of(const char_type* s, size_type pos = npos) const;
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
 
     size_type find_first_not_of(basic_string_view v, size_type pos = 0) const;
     size_type find_first_not_of(char_type c, size_type pos = 0) const;
     size_type find_first_not_of(const char_type* s, size_type pos, size_type count) const;
     size_type find_first_not_of(const char_type* s, size_type pos = 0) const;
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
 
     size_type find_last_not_of(basic_string_view v, size_type pos = npos) const;
     size_type find_last_not_of(char_type c, size_type pos = npos) const;
     size_type find_last_not_of(const char_type* s, size_type pos, size_type count) const;
     size_type find_last_not_of(const char_type* s, size_type pos = npos) const;
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
     // Iterators
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
   public:
 
     /// \{
@@ -392,9 +395,9 @@ namespace bpstd { // back-port std
     const_reverse_iterator crend() const noexcept;
     /// \}
 
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
     // Private Member
-    //------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
   private:
 
     const char_type* m_str;  ///< The internal string type
@@ -412,9 +415,9 @@ namespace bpstd { // back-port std
   constexpr typename bpstd::basic_string_view<CharT,Traits>::size_type
     basic_string_view<CharT,Traits>::npos;
 
-  //------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------
   // Public Functions
-  //------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------
 
   /// \brief Overload for ostream output of basic_string_view
   ///
@@ -429,9 +432,9 @@ namespace bpstd { // back-port std
   void swap(basic_string_view<CharT,Traits>& lhs,
             basic_string_view<CharT,Traits>& rhs) noexcept;
 
-  //------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------
   // Comparison Functions
-  //------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------
 
   template <typename CharT, typename Traits>
   bool operator==(const basic_string_view<CharT,Traits>& lhs,
@@ -452,9 +455,9 @@ namespace bpstd { // back-port std
   bool operator>=(const basic_string_view<CharT,Traits>& lhs,
                   const basic_string_view<CharT,Traits>& rhs) noexcept;
 
-  //------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------
   // Type Aliases
-  //------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------
 
   using string_view    = basic_string_view<char>;
   using wstring_view   = basic_string_view<wchar_t>;
@@ -482,7 +485,8 @@ inline constexpr bpstd::basic_string_view<CharT,Traits>::basic_string_view()
 
 template <typename CharT, typename Traits>
 template <typename Allocator>
-inline bpstd::basic_string_view<CharT,Traits>::basic_string_view(const std::basic_string<CharT,Traits,Allocator>& str)
+inline bpstd::basic_string_view<CharT,Traits>
+  ::basic_string_view(const std::basic_string<CharT,Traits,Allocator>& str)
   noexcept
   : m_str{str.c_str()},
     m_size{str.size()}
@@ -491,7 +495,8 @@ inline bpstd::basic_string_view<CharT,Traits>::basic_string_view(const std::basi
 }
 
 template <typename CharT, typename Traits>
-inline constexpr bpstd::basic_string_view<CharT,Traits>::basic_string_view(const char_type* str)
+inline constexpr bpstd::basic_string_view<CharT,Traits>
+  ::basic_string_view(const char_type* str)
   noexcept
   : m_str{str},
     m_size{traits_type::length(str)}
@@ -500,7 +505,8 @@ inline constexpr bpstd::basic_string_view<CharT,Traits>::basic_string_view(const
 }
 
 template <typename CharT, typename Traits>
-inline constexpr bpstd::basic_string_view<CharT,Traits>::basic_string_view(const char_type* str, size_type count)
+inline constexpr bpstd::basic_string_view<CharT,Traits>
+  ::basic_string_view(const char_type* str, size_type count)
   noexcept
   : m_str{str},
     m_size{count}
@@ -540,7 +546,7 @@ template <typename CharT, typename Traits>
 inline constexpr bool bpstd::basic_string_view<CharT,Traits>::empty()
   const noexcept
 {
-  return m_size == 0;
+  return m_size == 0u;
 }
 
 //------------------------------------------------------------------------------
@@ -568,12 +574,14 @@ inline constexpr typename bpstd::basic_string_view<CharT,Traits>::const_referenc
   bpstd::basic_string_view<CharT,Traits>::at(size_type pos)
   const
 {
-  return pos < m_size ? m_str[pos] : throw std::out_of_range("Input out of range in basic_string_view::at"), m_str[pos];
+  return (pos < m_size)
+       ? m_str[pos]
+       : throw std::out_of_range{"Input out of range in basic_string_view::at"};
 }
 
 template <typename CharT, typename Traits>
 inline constexpr typename bpstd::basic_string_view<CharT,Traits>::const_reference
-  bpstd::basic_string_view<CharT,Traits>::front( )
+  bpstd::basic_string_view<CharT,Traits>::front()
   const noexcept
 {
   return *m_str;
@@ -581,7 +589,7 @@ inline constexpr typename bpstd::basic_string_view<CharT,Traits>::const_referenc
 
 template <typename CharT, typename Traits>
 inline constexpr typename bpstd::basic_string_view<CharT,Traits>::const_reference
-  bpstd::basic_string_view<CharT,Traits>::back( )
+  bpstd::basic_string_view<CharT,Traits>::back()
   const noexcept
 {
   return m_str[m_size-1];
@@ -1183,7 +1191,7 @@ namespace bpstd {
     return lhs == basic_string_view<CharT,Traits>(rhs);
   }
 
-  //------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------
 
   template <typename CharT, typename Traits>
   inline bool operator!=(const basic_string_view<CharT,Traits>& lhs,
@@ -1222,7 +1230,7 @@ namespace bpstd {
   {
     return lhs != basic_string_view<CharT,Traits>(rhs);
   }
-  //------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------
 
   template <typename CharT, typename Traits>
   inline bool operator<(const basic_string_view<CharT,Traits>& lhs,
@@ -1262,7 +1270,7 @@ namespace bpstd {
     return lhs < basic_string_view<CharT,Traits>(rhs);
   }
 
-  //------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------
 
   template <typename CharT, typename Traits>
   inline bool operator>(const basic_string_view<CharT,Traits>& lhs,
@@ -1302,7 +1310,7 @@ namespace bpstd {
     return lhs > basic_string_view<CharT,Traits>(rhs);
   }
 
-  //------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------
 
   template <typename CharT, typename Traits>
   inline bool operator<=(const basic_string_view<CharT,Traits>& lhs,
@@ -1342,7 +1350,7 @@ namespace bpstd {
     return lhs <= basic_string_view<CharT,Traits>(rhs);
   }
 
-  //------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------
 
   template <typename CharT, typename Traits>
   inline bool operator>=(const basic_string_view<CharT,Traits>& lhs,
