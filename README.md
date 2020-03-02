@@ -20,6 +20,8 @@ if using C++14, more `constexpr` is available to the user than with C++11)
   A brief rational for while this library was created
 * [Features](#features) \
   A summary of all existing features in **Backport**
+* [FAQ](#faq) \
+  Frequently asked questions about this library
 * [API Reference](https://bitwizeshift.github.io/bpstd/api/latest/manual.html) \
   For doxygen-generated API information
 * [Legal](doc/legal.md) \
@@ -47,11 +49,11 @@ newer standard library features from C++11, C++14, C++17, and C++20.
 
 ## Features
 
-* [x] **C++20**
+* **C++20**
   * [x] [`bpstd::span`](include/bpstd/span.hpp)
   * [x] [`bpstd::to_address`](include/bpstd/memory.hpp)
   * [x] [`bpstd::make_unique_for_overwrite`](include/bpstd/memory.hpp)
-* [ ] **C++17**
+* **C++17**
   * [x] [`bpstd::any`](include/bpstd/any.hpp)
   * [x] [`bpstd::string_view`](include/bpstd/string_view.hpp)
   * [x] [`bpstd::optional`](include/bpstd/optional.hpp)
@@ -61,11 +63,28 @@ newer standard library features from C++11, C++14, C++17, and C++20.
   * [x] [`bpstd::make_from_tuple`](include/bpstd/tuple.hpp)
   * [x] [`bpstd::apply`](include/bpstd/tuple.hpp)
   * [x] [`bpstd::byte`](include/bpstd/cstddef.hpp)
-* [x] **C++14**
+* **C++14**
   * [x] [`_t` convenience traits](include/bpstd/type_traits.hpp)
   * [x] [`_v` convenience variables](include/bpstd/type_traits.hpp) (when compiling with `-std=c++14`)
   * [x] [deduced functional objects](include/bpstd/functional.hpp)
   * [x] [`bpstd::make_unique`](include/bpstd/memory.hpp)
+
+## FAQ
+
+### Where is `std::filesystem`?
+
+This library aims to deliver a _header-only_ solution to the many missing
+types that have been introduced in newer standard libraries. `std::filesystem`
+is a bit complicated to handle, since it introduces a dependency on the
+operating system being compiled against. Implementing `std::filesystem` will
+generally require conditional compilation, and -- for best practices --
+separate source files in order to insulate use of system headers (lest this
+library introduce the perils of the `<windows.h>` macros). This would change the
+library fundamentally so that it is no longer a header-only solution -- and this
+is not desirable.
+
+Third-party implementations of `std::filesystem` should exist, which can be
+independently used.
 
 ## <a name="license"></a>License
 
