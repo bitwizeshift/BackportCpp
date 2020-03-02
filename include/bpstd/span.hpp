@@ -30,6 +30,7 @@
 #ifndef BPSTD_SPAN_HPP
 #define BPSTD_SPAN_HPP
 
+#include "detail/proxy_iterator.hpp"
 #include "config.hpp"
 #include "cstddef.hpp" // byte
 #include "memory.hpp"  // to_address
@@ -192,7 +193,7 @@ namespace bpstd {
     using reference       = element_type&;
     using const_reference = const element_type&;
 
-    using iterator         = T*;
+    using iterator         = detail::proxy_iterator<T*,detail::span_storage_type<T,Extent>>;
     using reverse_iterator = std::reverse_iterator<iterator>;
 
     //--------------------------------------------------------------------------
@@ -671,7 +672,7 @@ inline constexpr typename bpstd::span<T,Extent>::iterator
   bpstd::span<T,Extent>::begin()
   const noexcept
 {
-  return data();
+  return iterator{data()};
 }
 
 template <typename T, std::size_t Extent>
@@ -679,7 +680,7 @@ inline constexpr typename bpstd::span<T,Extent>::iterator
   bpstd::span<T,Extent>::end()
   const noexcept
 {
-  return data() + size();
+  return iterator{data() + size()};
 }
 
 template <typename T, std::size_t Extent>

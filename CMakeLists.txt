@@ -42,6 +42,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(header_files
   "include/bpstd/detail/invoke.hpp"
+  "include/bpstd/detail/proxy_iterator.hpp"
   "include/bpstd/config.hpp"
   "include/bpstd/type_traits.hpp"
   "include/bpstd/functional.hpp"
