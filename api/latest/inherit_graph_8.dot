@@ -1,0 +1,8 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="bpstd::bit_or\< void \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/d00/structbpstd_1_1bit__or_3_01void_01_4.html",tooltip=" "];
+}
