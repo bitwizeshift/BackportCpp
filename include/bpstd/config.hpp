@@ -37,7 +37,9 @@
 #if !defined(__cplusplus)
 # error This library requires a C++ compiler
 #endif
-#if __cplusplus < 201103L
+
+// _MSC_VER check is due to MSVC not defining __cplusplus to be 201103L
+#if !defined(_MSC_VER) && __cplusplus < 201103L
 # error This library must be compiled with C++11 support
 #endif
 
