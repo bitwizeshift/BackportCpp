@@ -617,7 +617,7 @@ inline constexpr typename bpstd::basic_string_view<CharT,Traits>::const_referenc
 {
   return (pos < m_size)
        ? m_str[pos]
-       : throw std::out_of_range{"Input out of range in basic_string_view::at"};
+       : (throw std::out_of_range{"Input out of range in basic_string_view::at"}), m_str[pos];
 }
 
 template <typename CharT, typename Traits>
