@@ -74,7 +74,7 @@ TEST_CASE("span::span(It, size_type)", "[ctor]")
   {
     SECTION("It is a raw-pointer")
     {
-      auto arr = std::array<int,3>{1,2,3};
+      auto arr = std::array<int,3>{{1,2,3}};
 
       auto sut = bpstd::span<int>{arr.data(), arr.size()};
 
@@ -90,7 +90,7 @@ TEST_CASE("span::span(It, size_type)", "[ctor]")
 
     SECTION("It is an iterator")
     {
-      auto vec = std::vector<int>{1,2,3};
+      auto vec = std::vector<int>{{1,2,3}};
 
       auto sut = bpstd::span<int>{vec.begin(), vec.size()};
 
@@ -108,7 +108,7 @@ TEST_CASE("span::span(It, size_type)", "[ctor]")
   {
     SECTION("It is a raw-pointer")
     {
-      auto arr = std::array<int, 3u>{1,2,3};
+      auto arr = std::array<int, 3u>{{1,2,3}};
 
       auto sut = bpstd::span<int, 3u>{arr.data(), arr.size()};
 
@@ -124,7 +124,7 @@ TEST_CASE("span::span(It, size_type)", "[ctor]")
 
     SECTION("It is an iterator")
     {
-      auto vec = std::vector<int>{1,2,3};
+      auto vec = std::vector<int>{{1,2,3}};
 
       auto sut = bpstd::span<int, 3u>{vec.begin(), vec.size()};
 
@@ -144,7 +144,7 @@ TEST_CASE("span::span(It, End)", "[ctor]")
 {
   SECTION("Constructed with dynamic extent")
   {
-    auto vec = std::vector<int>{1,2,3};
+    auto vec = std::vector<int>{{1,2,3}};
 
     auto sut = bpstd::span<int>{vec.begin(), vec.end()};
 
@@ -160,7 +160,7 @@ TEST_CASE("span::span(It, End)", "[ctor]")
 
   SECTION("Constructed with fixed extent")
   {
-    auto vec = std::vector<int>{1,2,3};
+    auto vec = std::vector<int>{{1,2,3}};
 
     auto sut = bpstd::span<int, 3u>{vec.begin(), vec.end()};
 
@@ -214,7 +214,7 @@ TEST_CASE("span::span(std::array<U,N>&)", "[ctor]")
 {
   SECTION("Constructed with dynamic extent")
   {
-    auto arr = std::array<int,3>{1,2,3};
+    auto arr = std::array<int,3>{{1,2,3}};
 
     auto sut = bpstd::span<int>{arr};
 
@@ -230,7 +230,7 @@ TEST_CASE("span::span(std::array<U,N>&)", "[ctor]")
 
   SECTION("Constructed with fixed extent")
   {
-    auto arr = std::array<int,3>{1,2,3};
+    auto arr = std::array<int,3>{{1,2,3}};
 
     auto sut = bpstd::span<int, 3u>{arr};
 
@@ -249,7 +249,7 @@ TEST_CASE("span::span(const std::array<U,N>&)", "[ctor]")
 {
   SECTION("Constructed with dynamic extent")
   {
-    const auto arr = std::array<int,3>{1,2,3};
+    const auto arr = std::array<int,3>{{1,2,3}};
 
     auto sut = bpstd::span<const int>{arr};
 
@@ -265,7 +265,7 @@ TEST_CASE("span::span(const std::array<U,N>&)", "[ctor]")
 
   SECTION("Constructed with fixed extent")
   {
-    const auto arr = std::array<int,3>{1,2,3};
+    const auto arr = std::array<int,3>{{1,2,3}};
 
     auto sut = bpstd::span<const int, 3u>{arr};
 
@@ -284,7 +284,7 @@ TEST_CASE("span::span(const span<U, N>&)", "[ctor]")
 {
   SECTION("Constructed with dynamic extent")
   {
-    auto arr = std::array<int,3>{1,2,3};
+    auto arr = std::array<int,3>{{1,2,3}};
     auto span = bpstd::span<int, 3u>{arr};
 
     auto sut = bpstd::span<int>{span};
@@ -301,7 +301,7 @@ TEST_CASE("span::span(const span<U, N>&)", "[ctor]")
 
   SECTION("Constructed with fixed extent")
   {
-    auto arr = std::array<int,3>{1,2,3};
+    auto arr = std::array<int,3>{{1,2,3}};
     auto span = bpstd::span<int, 3u>{arr};
 
     auto sut = bpstd::span<const int, 3u>{span};
@@ -325,7 +325,7 @@ TEST_CASE("span::front()", "[element access]")
 {
   SECTION("Retrieves the front element of the span")
   {
-    auto arr = std::array<int, 3>{1,2,3};
+    auto arr = std::array<int, 3>{{1,2,3}};
 
     auto sut = bpstd::span<int>{arr};
 
@@ -337,7 +337,7 @@ TEST_CASE("span::back()", "[element access]")
 {
   SECTION("Retrieves the front element of the span")
   {
-    auto arr = std::array<int, 3>{1,2,3};
+    auto arr = std::array<int, 3>{{1,2,3}};
 
     auto sut = bpstd::span<int>{arr};
 
@@ -349,7 +349,7 @@ TEST_CASE("span::operator[](size_type)", "[element access]")
 {
   SECTION("Retrieves the element at index")
   {
-    auto arr = std::array<int, 3>{1,2,3};
+    auto arr = std::array<int, 3>{{1,2,3}};
 
     auto sut = bpstd::span<int>{arr};
 
@@ -363,7 +363,7 @@ TEST_CASE("span::size()", "[observers]")
 {
   SECTION("Span is fixed")
   {
-    auto arr = std::array<int,2>{1,2};
+    auto arr = std::array<int,2>{{1,2}};
 
     auto sut = bpstd::span<int,2>{arr};
 
@@ -374,7 +374,7 @@ TEST_CASE("span::size()", "[observers]")
   }
   SECTION("Span is dynamic")
   {
-    auto arr = std::array<int,1>{1};
+    auto arr = std::array<int,1>{{1}};
 
     auto sut = bpstd::span<int>{arr};
 
@@ -389,7 +389,7 @@ TEST_CASE("span::size_bytes()", "[observers]")
 {
   SECTION("Returns sizeof(T) * size()")
   {
-    auto arr = std::array<int,3>{1,2,3};
+    auto arr = std::array<int,3>{{1,2,3}};
     auto sut = bpstd::span<int>{arr};
 
     REQUIRE(sut.size_bytes() == (sut.size() * sizeof(decltype(sut)::element_type)));
@@ -412,7 +412,7 @@ TEST_CASE("span::empty()", "[observers]")
 
     SECTION("Input container is empty")
     {
-      auto arr = std::array<int,0>{};
+      auto arr = std::array<int,0>{{}};
       auto sut = bpstd::span<int>{arr};
 
       SECTION("empty returns true")
@@ -423,7 +423,7 @@ TEST_CASE("span::empty()", "[observers]")
 
     SECTION("Input container is not empty")
     {
-      auto arr = std::array<int,3>{1,2,3};
+      auto arr = std::array<int,3>{{1,2,3}};
       auto sut = bpstd::span<int>{arr};
 
       SECTION("empty returns false")
@@ -445,7 +445,7 @@ TEST_CASE("span::empty()", "[observers]")
 
   SECTION("Span is fixed size nonzero")
   {
-    auto arr = std::array<int,3>{1,2,3};
+    auto arr = std::array<int,3>{{1,2,3}};
     auto sut = bpstd::span<int,3>{arr};
 
     SECTION("empty returns false")
@@ -463,7 +463,7 @@ TEST_CASE("span::first<...>()", "[subspan]")
 {
   SECTION("Span is dynamic size")
   {
-    auto arr = std::array<int,3u>{1,2,3};
+    auto arr = std::array<int,3u>{{1,2,3}};
     auto sut = bpstd::span<int>{arr};
 
     auto result = sut.first<2u>();
@@ -480,7 +480,7 @@ TEST_CASE("span::first<...>()", "[subspan]")
 
   SECTION("Span is fixed size")
   {
-    auto arr = std::array<int,3u>{1,2,3};
+    auto arr = std::array<int,3u>{{1,2,3}};
     auto sut = bpstd::span<int,3u>{arr};
 
     auto result = sut.first<2u>();
@@ -500,7 +500,7 @@ TEST_CASE("span::first(size_type)", "[subspan]")
 {
   SECTION("Span is dynamic size")
   {
-    auto arr = std::array<int,3u>{1,2,3};
+    auto arr = std::array<int,3u>{{1,2,3}};
     auto sut = bpstd::span<int>{arr};
 
     auto result = sut.first(2u);
@@ -517,7 +517,7 @@ TEST_CASE("span::first(size_type)", "[subspan]")
 
   SECTION("Span is fixed size")
   {
-    auto arr = std::array<int,3u>{1,2,3};
+    auto arr = std::array<int,3u>{{1,2,3}};
     auto sut = bpstd::span<int,3u>{arr};
 
     auto result = sut.first(2u);
@@ -539,7 +539,7 @@ TEST_CASE("span::last<...>()", "[subspan]")
 {
   SECTION("Span is dynamic size")
   {
-    auto arr = std::array<int,3u>{1,2,3};
+    auto arr = std::array<int,3u>{{1,2,3}};
     auto sut = bpstd::span<int>{arr};
 
     auto result = sut.last<2u>();
@@ -556,7 +556,7 @@ TEST_CASE("span::last<...>()", "[subspan]")
 
   SECTION("Span is fixed size")
   {
-    auto arr = std::array<int,3u>{1,2,3};
+    auto arr = std::array<int,3u>{{1,2,3}};
     auto sut = bpstd::span<int,3u>{arr};
 
     auto result = sut.last<2u>();
@@ -576,7 +576,7 @@ TEST_CASE("span::last(size_type)", "[subspan]")
 {
   SECTION("Span is dynamic size")
   {
-    auto arr = std::array<int,3u>{1,2,3};
+    auto arr = std::array<int,3u>{{1,2,3}};
     auto sut = bpstd::span<int>{arr};
 
     auto result = sut.last(2u);
@@ -593,7 +593,7 @@ TEST_CASE("span::last(size_type)", "[subspan]")
 
   SECTION("Span is fixed size")
   {
-    auto arr = std::array<int,3u>{1,2,3};
+    auto arr = std::array<int,3u>{{1,2,3}};
     auto sut = bpstd::span<int,3u>{arr};
 
     auto result = sut.last(2u);
@@ -615,7 +615,7 @@ TEST_CASE("span::subspan<...>()", "[subspan]")
 {
   SECTION("Span is dynamic size")
   {
-    auto arr = std::array<int,3u>{1,2,3};
+    auto arr = std::array<int,3u>{{1,2,3}};
     auto sut = bpstd::span<int>{arr};
 
     SECTION("Offset is 0")
@@ -725,7 +725,7 @@ TEST_CASE("span::subspan<...>()", "[subspan]")
 
   SECTION("Span is fixed size")
   {
-    auto arr = std::array<int,3u>{1,2,3};
+    auto arr = std::array<int,3u>{{1,2,3}};
     auto sut = bpstd::span<int,3u>{arr};
 
     SECTION("Offset is 0")
@@ -838,7 +838,7 @@ TEST_CASE("span::subspan(...)", "[subspan]")
 {
   SECTION("Span is dynamic size")
   {
-    auto arr = std::array<int,3u>{1,2,3};
+    auto arr = std::array<int,3u>{{1,2,3}};
     auto sut = bpstd::span<int>{arr};
 
     SECTION("Offset is 0")
@@ -948,7 +948,7 @@ TEST_CASE("span::subspan(...)", "[subspan]")
 
   SECTION("Span is fixed size")
   {
-    auto arr = std::array<int,3u>{1,2,3};
+    auto arr = std::array<int,3u>{{1,2,3}};
     auto sut = bpstd::span<int,3u>{arr};
 
     SECTION("Offset is 0")
@@ -1063,7 +1063,7 @@ TEST_CASE("span::subspan(...)", "[subspan]")
 
 TEST_CASE("span::begin/span::end", "[iterators]")
 {
-  auto arr = std::array<int,3u>{1,2,3};
+  auto arr = std::array<int,3u>{{1,2,3}};
   auto sut = bpstd::span<int>{arr};
 
   auto result = std::equal(sut.begin(), sut.end(), arr.begin());
@@ -1072,7 +1072,7 @@ TEST_CASE("span::begin/span::end", "[iterators]")
 
 TEST_CASE("span::rbegin/span::rend", "[iterators]")
 {
-  auto arr = std::array<int,3u>{1,2,3};
+  auto arr = std::array<int,3u>{{1,2,3}};
   auto sut = bpstd::span<int>{arr};
 
   auto result = std::equal(sut.rbegin(), sut.rend(), arr.rbegin());

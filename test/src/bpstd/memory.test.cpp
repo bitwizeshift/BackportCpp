@@ -81,7 +81,7 @@ TEST_CASE("make_unique_for_overwrite<T[]>(...)", "[memory]")
 
 TEST_CASE("to_address(...)", "[memory]")
 {
-  auto vec = std::vector<int>{1,2,3,4};
+  auto vec = std::vector<int>{{1,2,3,4}};
 
   auto* p = bpstd::to_address(vec.begin());
 
