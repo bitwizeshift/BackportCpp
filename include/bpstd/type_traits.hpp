@@ -184,7 +184,10 @@ namespace bpstd {
   //----------------------------------------------------------------------------
 
   template <typename T>
-  using is_null_pointer = std::is_null_pointer<T>;
+  struct is_null_pointer : false_type{};
+
+  template <>
+  struct is_null_pointer<decltype(nullptr)> : true_type{};
 
 #if BPSTD_HAS_TEMPLATE_VARIABLES
   template <typename T>
