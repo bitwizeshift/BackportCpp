@@ -1,0 +1,46 @@
+name: Deploy Conan
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    name: Deployment Agent
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+
+      - name: Install
+        run: |
+          sudo apt-get install -y g++-9 g++-9-multilib
+          echo "::set-env name=CC::gcc-9"
+          echo "::set-env name=CXX::g++-9"
+          python -m pip install --upgrade pip
+          pip install conan
+          conan --version
+
+      - name: Prepare
+        run: |
+          conan remote add bintray ${{ secrets.BINTRAY_REMOTE_URL }}
+          conan user -p ${{ secrets.BINTRAY_API_KEY }} -r bintray ${{ secrets.BINTRAY_USERNAME }}
+          version=$(conan inspect $(pwd) --attribute version | sed 's@version: @@g')
+          echo "::set-env name=CONAN_PACKAGE_PATH::Backport/${version}@backport/stable"
+
+      - name: Package
+        run: |
+          conan create . "backport/stable"
+
+      - name: Test Package
+        run: |
+          echo "${CONAN_PACKAGE_PATH}"
+          conan test $(pwd)/.conan/test_package "${CONAN_PACKAGE_PATH}"
+
+      - name: Deploy
+        run: |
+          conan upload "${full_package}" -r bintray --all

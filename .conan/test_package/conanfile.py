@@ -15,8 +15,4 @@ class BackportConanTest(ConanFile):
     pass
 
   def test(self):
-    os.chdir("bin")
-    if str(self.settings.os) in ["Windows", "Linux", "Macos"]:
-        self.run("test-package")
-    else:
-      self.output.warn("Skipping unit test execution due to cross compiling for {}".format(self.settings.os))
+    pass
