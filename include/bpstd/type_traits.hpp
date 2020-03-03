@@ -40,6 +40,19 @@
 #include <type_traits>
 #include <cstddef> // std::size_t
 
+// GCC versions prior to gcc-5 did not implement the type traits for triviality
+// in completion. Several traits are implemented under a different names from
+// pre-standardization, such as 'has_trivial_copy_destructor' instead of
+// 'is_trivially_destructible'. However, most of these cannot be implemented
+// without compiler support.
+//
+// https://gcc.gnu.org/onlinedocs/libstdc++/manual/status.html#status.iso.2014
+#if !defined(__clang__) && defined(__GNUC__) && __GNUC__ < 5
+# define BPSTD_HAS_TRIVIAL_TYPE_TRAITS 0
+#else
+# define BPSTD_HAS_TRIVIAL_TYPE_TRAITS 1
+#endif
+
 namespace bpstd {
 
   //============================================================================
@@ -475,8 +488,20 @@ namespace bpstd {
 
   //----------------------------------------------------------------------------
 
+#if BPSTD_HAS_TRIVIAL_TYPE_TRAITS
+
   template <typename T>
   using is_trivially_copyable = std::is_trivially_copyable<T>;
+
+#else
+
+  // std::is_trivially_copyable is not implemented in gcc < 5, and unfortunately
+  // can't be implemented without compiler intrinsics. This definition is
+  // left out to avoid problems
+  template <typename T>
+  using is_trivially_copyable = false_type;
+
+#endif
 
 #if BPSTD_HAS_TEMPLATE_VARIABLES
   template <typename T>
@@ -715,8 +740,34 @@ namespace bpstd {
 
   //----------------------------------------------------------------------------
 
-  template <std::size_t Len, typename...Ts>
-  using aligned_union = std::aligned_union<Len, Ts...>;
+  namespace detail {
+
+    template <std::size_t...Sizes>
+    struct largest;
+
+    template <std::size_t Size0, std::size_t Size1, std::size_t...Sizes>
+    struct largest<Size0, Size1, Sizes...>
+      : largest<(Size0 > Size1 ? Size0 : Size1), Sizes...>{};
+
+    template <std::size_t Size0>
+    struct largest<Size0> : integral_constant<std::size_t,Size0>{};
+
+  } // namespace detail
+
+  // gcc < 5 does not implement 'std::aligned_union', despite it being a type
+  // in the C++11 standard -- so it's implemented here to ensure that its
+  // available.
+  template <std::size_t Len, typename... Ts>
+  struct aligned_union
+  {
+    static constexpr std::size_t alignment_value = detail::largest<alignof(Ts)...>::value;
+    static constexpr std::size_t size_value = detail::largest<Len, sizeof(Ts)...>::value;
+
+    struct type
+    {
+      alignas(alignment_value) char buffer[size_value];
+    };
+  };
 
   template <std::size_t Len, typename...Ts>
   using aligned_union_t = typename aligned_union<Len, Ts...>::type;
@@ -767,8 +818,21 @@ namespace bpstd {
 
   //----------------------------------------------------------------------------
 
+#if BPSTD_HAS_TRIVIAL_TYPE_TRAITS
+
   template <typename T, typename...Args>
   using is_trivially_constructible = std::is_trivially_constructible<T, Args...>;
+
+#else
+
+  // std::is_trivially_constructible is not implemented in gcc < 5, and
+  // there exists no utilities to implement it in the language without extensions.
+  // This is left defined to false_type so that the trait may be used, despite
+  // yielding incorrect results
+  template <typename T, typename...Args>
+  using is_trivially_constructible = false_type;
+
+#endif
 
 #if BPSTD_HAS_TEMPLATE_VARIABLES
   template <typename T, typename...Args>
@@ -797,8 +861,20 @@ namespace bpstd {
 
   //----------------------------------------------------------------------------
 
+#if BPSTD_HAS_TRIVIAL_TYPE_TRAITS
+
   template <typename T>
   using is_trivially_default_constructible = std::is_trivially_default_constructible<T>;
+
+#else
+
+  // std::is_trivially_default_constructible is not implemented in gcc < 5,
+  // however there exists a non-standard
+  // 'std::has_trivial_default_constructor' which performs a similar check
+  template <typename T>
+  using is_trivially_default_constructible = std::has_trivial_default_constructor<T>;
+
+#endif
 
 #if BPSTD_HAS_TEMPLATE_VARIABLES
   template <typename T>
@@ -827,8 +903,20 @@ namespace bpstd {
 
   //----------------------------------------------------------------------------
 
+#if BPSTD_HAS_TRIVIAL_TYPE_TRAITS
+
   template <typename T>
   using is_trivially_copy_constructible = std::is_trivially_copy_constructible<T>;
+
+#else
+
+  // std::is_trivially_copy_constructible is not implemented in gcc < 5,
+  // however there exists a non-standard
+  // 'std::has_trivial_copy_constructor' which performs a similar check
+  template <typename T>
+  using is_trivially_copy_constructible = std::has_trivial_copy_constructor<T>;
+
+#endif
 
 #if BPSTD_HAS_TEMPLATE_VARIABLES
   template <typename T>
@@ -857,8 +945,21 @@ namespace bpstd {
 
   //----------------------------------------------------------------------------
 
+#if BPSTD_HAS_TRIVIAL_TYPE_TRAITS
+
   template <typename T>
   using is_trivially_move_constructible = std::is_trivially_move_constructible<T>;
+
+#else
+
+  // std::is_trivially_move_constructible is not implemented in gcc < 5, and
+  // there exists no utilities to implement it in the language without extensions.
+  // This is left defined to false_type so that the trait may be used, despite
+  // yielding incorrect results
+  template <typename T>
+  using is_trivially_move_constructible = false_type;
+
+#endif
 
 #if BPSTD_HAS_TEMPLATE_VARIABLES
   template <typename T>
@@ -887,8 +988,21 @@ namespace bpstd {
 
   //----------------------------------------------------------------------------
 
+#if BPSTD_HAS_TRIVIAL_TYPE_TRAITS
+
   template <typename T, typename U>
   using is_trivially_assignable = std::is_trivially_assignable<T, U>;
+
+#else
+
+  // std::is_trivially_assignable is not implemented in gcc < 5, and
+  // there exists no utilities to implement it in the language without extensions.
+  // This is left defined to false_type so that the trait may be used, despite
+  // yielding incorrect results
+  template <typename T, typename U>
+  using is_trivially_assignable = false_type;
+
+#endif
 
 #if BPSTD_HAS_TEMPLATE_VARIABLES
   template <typename T, typename U>
@@ -917,8 +1031,20 @@ namespace bpstd {
 
   //----------------------------------------------------------------------------
 
+#if BPSTD_HAS_TRIVIAL_TYPE_TRAITS
+
   template <typename T>
   using is_trivially_copy_assignable = std::is_trivially_copy_assignable<T>;
+
+#else
+
+  // std::is_trivially_copy_assignable is not implemented in gcc < 5,
+  // however there exists a non-standard
+  // 'std::has_trivial_copy_assign' which performs a similar check
+  template <typename T>
+  using is_trivially_copy_assignable = std::has_trivial_copy_assign<T>;
+
+#endif
 
 #if BPSTD_HAS_TEMPLATE_VARIABLES
   template <typename T>
@@ -947,8 +1073,21 @@ namespace bpstd {
 
   //----------------------------------------------------------------------------
 
+#if BPSTD_HAS_TRIVIAL_TYPE_TRAITS
+
   template <typename T>
   using is_trivially_move_assignable = std::is_trivially_move_assignable<T>;
+
+#else
+
+  // std::is_trivially_move_assignable is not implemented in gcc < 5, and
+  // there exists no utilities to implement it in the language without extensions.
+  // This is left defined to false_type so that the trait may be used, despite
+  // yielding incorrect results
+  template <typename T>
+  using is_trivially_move_assignable = false_type;
+
+#endif
 
 #if BPSTD_HAS_TEMPLATE_VARIABLES
   template <typename T>
@@ -977,8 +1116,20 @@ namespace bpstd {
 
   //----------------------------------------------------------------------------
 
+#if BPSTD_HAS_TRIVIAL_TYPE_TRAITS
+
   template <typename T>
   using is_trivially_destructible = std::is_trivially_destructible<T>;
+
+#else
+
+  // std::is_trivially_destructible is not implemented in gcc < 5, however there
+  // exists a non-standard '__has_trivial_destructor' which performs a
+  // similar check
+  template <typename T>
+  using is_trivially_destructible = bool_constant<(__has_trivial_destructor(T))>;
+
+#endif
 
 #if BPSTD_HAS_TEMPLATE_VARIABLES
   template <typename T>
