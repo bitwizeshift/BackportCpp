@@ -125,7 +125,7 @@ namespace bpstd {
 
       /// \brief Copy-assigns a proxy_iterator
       ///
-      /// \param other the iterator to copy
+      /// \param it the iterator to copy
       template <typename UIterator>
       proxy_iterator& operator=(const proxy_iterator<UIterator,U>& it) noexcept;
 
