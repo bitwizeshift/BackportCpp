@@ -72,7 +72,7 @@ function(add_self_containment_test name)
 
     if( NOT EXISTS "${output_path}" OR "${absolute_header}" IS_NEWER_THAN "${output_path}" )
 
-      file(WRITE "${output_path}" "#include \"${relative_header}\" // IWYU pragma: keep")
+      file(WRITE "${output_path}" "#include \"${relative_header}\" // IWYU pragma: keep\n")
 
     endif()
 
