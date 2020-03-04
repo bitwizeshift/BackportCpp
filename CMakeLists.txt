@@ -65,8 +65,13 @@ target_include_directories(${PROJECT_NAME}
   INTERFACE $<INSTALL_INTERFACE:include>
 )
 
-if ( "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang" OR
-     "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" )
+if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang" AND
+    "${CMAKE_CXX_SIMULATE_ID}" STREQUAL "MSVC")
+  # clang-cl does not appear to implement '-pedantic' or 'pedantic-errors',
+  # so this case needs to be handled specifically
+  add_compile_options(-Wall -Werror -Wextra)
+elseif ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang" OR
+        "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" )
   add_compile_options(-Wall -Werror -Wextra -pedantic -pedantic-errors)
 elseif( "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC" )
   # TODO: Determine MSVC necessary compiler flags
