@@ -1,8 +1,10 @@
-[![Github Issues](https://img.shields.io/github/issues/bitwizeshift/bpstd.svg)](http://github.com/bitwizeshift/bpstd/issues)
+[![Build Status](https://github.com/bitwizeshift/BackportCpp/workflows/build/badge.svg)](https://github.com/bitwizeshift/BackportCpp/actions)
+[![Github Issues](https://img.shields.io/github/issues/bitwizeshift/BackportCpp.svg)](http://github.com/bitwizeshift/BackportCpp/issues)
 [![Tested Compilers](https://img.shields.io/badge/compilers-gcc%20%7C%20clang%20%7C%20msvc-blue.svg)](#tested-compilers)
-[![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](http://bitwizeshift.github.io/bpstd)
-[![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/bitwizeshift/bpstd/master/LICENSE.md)
-[![Github Releases](https://img.shields.io/github/release/bitwizeshift/bpstd.svg)](https://github.com/bitwizeshift/bpstd/releases)
+[![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](http://bitwizeshift.github.io/BackportCpp)
+[![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/bitwizeshift/BackportCpp/master/LICENSE)
+[![Github Releases](https://img.shields.io/github/release/bitwizeshift/BackportCpp.svg)](https://github.com/bitwizeshift/BackportCpp/releases)
+[![Download](https://api.bintray.com/packages/bitwizeshift/Backport/Backport%3Abackport/images/download.svg)](https://bintray.com/bitwizeshift/Backport/Backport%3Abackport/_latestVersion)
 
 # C++ Backport
 
@@ -22,7 +24,7 @@ if using C++14, more `constexpr` is available to the user than with C++11)
   A summary of all existing features in **Backport**
 * [FAQ](#faq) \
   Frequently asked questions about this library
-* [API Reference](https://bitwizeshift.github.io/bpstd/api/latest/manual.html) \
+* [API Reference](https://bitwizeshift.github.io/BackportCpp/api/latest/manual.html) \
   For doxygen-generated API information
 * [Legal](doc/legal.md) \
   Information about how to attribute this project
