@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['readme',['README',['../d3/dcc/md__r_e_a_d_m_e.html',1,'']]],
   ['rbegin',['rbegin',['../db/dba/classbpstd_1_1basic__string__view.html#ad9fecf562b22e04840bbc03542ddadef',1,'bpstd::basic_string_view']]],
   ['remove_5fprefix',['remove_prefix',['../db/dba/classbpstd_1_1basic__string__view.html#a487dd38e8fe3b2c1c3ac0c25aa8db4f1',1,'bpstd::basic_string_view']]],
   ['remove_5fsuffix',['remove_suffix',['../db/dba/classbpstd_1_1basic__string__view.html#a17e8a57f6bd6df1c8ecb97c6b7e8a7e0',1,'bpstd::basic_string_view']]],
