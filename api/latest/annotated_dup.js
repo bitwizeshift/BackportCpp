@@ -1,6 +1,7 @@
 var annotated_dup =
 [
     [ "bpstd", null, [
+      [ "aligned_union", "d1/d91/structbpstd_1_1aligned__union.html", "d1/d91/structbpstd_1_1aligned__union" ],
       [ "any", "d8/dbe/classbpstd_1_1any.html", "d8/dbe/classbpstd_1_1any" ],
       [ "bad_any_cast", "da/d5e/classbpstd_1_1bad__any__cast.html", null ],
       [ "bad_optional_access", "df/dbf/classbpstd_1_1bad__optional__access.html", "df/dbf/classbpstd_1_1bad__optional__access" ],
@@ -32,9 +33,11 @@ var annotated_dup =
       [ "in_place_type_t", "da/d39/structbpstd_1_1in__place__type__t.html", "da/d39/structbpstd_1_1in__place__type__t" ],
       [ "integer_sequence", "d6/d35/structbpstd_1_1integer__sequence.html", "d6/d35/structbpstd_1_1integer__sequence" ],
       [ "is_bounded_array", "d4/d05/structbpstd_1_1is__bounded__array.html", null ],
-      [ "is_bounded_array< T[N]>", "de/dfb/structbpstd_1_1is__bounded__array_3_01_t_0f_n_0e_4.html", null ],
+      [ "is_bounded_array< T[N]>", "df/d39/structbpstd_1_1is__bounded__array_3_01_t[_n]_4.html", null ],
+      [ "is_null_pointer", "de/d22/structbpstd_1_1is__null__pointer.html", null ],
+      [ "is_null_pointer< decltype(nullptr)>", "d2/dd6/structbpstd_1_1is__null__pointer_3_01decltype_07nullptr_08_4.html", null ],
       [ "is_unbounded_array", "db/dde/structbpstd_1_1is__unbounded__array.html", null ],
-      [ "is_unbounded_array< T[]>", "d9/dc9/structbpstd_1_1is__unbounded__array_3_01_t_0f_0e_4.html", null ],
+      [ "is_unbounded_array< T[]>", "dc/da5/structbpstd_1_1is__unbounded__array_3_01_t[]_4.html", null ],
       [ "less", "d4/dcb/structbpstd_1_1less.html", "d4/dcb/structbpstd_1_1less" ],
       [ "less< void >", "d2/d2f/structbpstd_1_1less_3_01void_01_4.html", "d2/d2f/structbpstd_1_1less_3_01void_01_4" ],
       [ "less_equal", "d9/df5/structbpstd_1_1less__equal.html", "d9/df5/structbpstd_1_1less__equal" ],

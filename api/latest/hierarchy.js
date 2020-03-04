@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "bpstd::aligned_union< Len, Ts >", "d1/d91/structbpstd_1_1aligned__union.html", null ],
     [ "bpstd::any", "d8/dbe/classbpstd_1_1any.html", null ],
     [ "B1", null, [
       [ "bpstd::conjunction< B1 >", "d5/dd4/structbpstd_1_1conjunction_3_01_b1_01_4.html", null ],
@@ -63,20 +64,25 @@ var hierarchy =
     [ "bpstd::not_equal_to< T >", "dc/dfb/structbpstd_1_1not__equal__to.html", null ],
     [ "bpstd::not_equal_to< void >", "d1/d98/structbpstd_1_1not__equal__to_3_01void_01_4.html", null ],
     [ "bpstd::nullopt_t", "d7/dae/structbpstd_1_1nullopt__t.html", null ],
-    [ "bpstd::optional< T >", "d8/d86/classbpstd_1_1optional.html", null ],
+    [ "bpstd::detail::optional_base< T, std::is_trivially_destructible< T >::value >", null, [
+      [ "bpstd::optional< T >", "d8/d86/classbpstd_1_1optional.html", null ]
+    ] ],
     [ "bpstd::plus< T >", "df/d02/structbpstd_1_1plus.html", null ],
     [ "bpstd::plus< void >", "df/dd7/structbpstd_1_1plus_3_01void_01_4.html", null ],
     [ "bpstd::span< T, Extent >", "d4/dd8/classbpstd_1_1span.html", null ],
+    [ "bpstd::aligned_union< Len, Ts >::type", "d1/d91/structbpstd_1_1aligned__union.html#d4/d86/structbpstd_1_1aligned__union_1_1type", null ],
     [ "bpstd::type_identity< T >", "d8/d70/structbpstd_1_1type__identity.html", null ],
     [ "bpstd::type_identity< integer_sequence< T, Tails... > >", "d8/d70/structbpstd_1_1type__identity.html", null ],
     [ "bpstd::type_identity< void >", "d8/d70/structbpstd_1_1type__identity.html", null ],
     [ "false_type", null, [
       [ "bpstd::disjunction<... >", "d1/d38/structbpstd_1_1disjunction.html", null ],
       [ "bpstd::is_bounded_array< T >", "d4/d05/structbpstd_1_1is__bounded__array.html", null ],
+      [ "bpstd::is_null_pointer< T >", "de/d22/structbpstd_1_1is__null__pointer.html", null ],
       [ "bpstd::is_unbounded_array< T >", "db/dde/structbpstd_1_1is__unbounded__array.html", null ]
     ] ],
     [ "true_type", null, [
-      [ "bpstd::is_bounded_array< T[N]>", "de/dfb/structbpstd_1_1is__bounded__array_3_01_t_0f_n_0e_4.html", null ],
-      [ "bpstd::is_unbounded_array< T[]>", "d9/dc9/structbpstd_1_1is__unbounded__array_3_01_t_0f_0e_4.html", null ]
+      [ "bpstd::is_bounded_array< T[N]>", "df/d39/structbpstd_1_1is__bounded__array_3_01_t[_n]_4.html", null ],
+      [ "bpstd::is_null_pointer< decltype(nullptr)>", "d2/dd6/structbpstd_1_1is__null__pointer_3_01decltype_07nullptr_08_4.html", null ],
+      [ "bpstd::is_unbounded_array< T[]>", "dc/da5/structbpstd_1_1is__unbounded__array_3_01_t[]_4.html", null ]
     ] ]
 ];

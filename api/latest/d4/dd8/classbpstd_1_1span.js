@@ -24,12 +24,12 @@ var classbpstd_1_1span =
     [ "empty", "d4/dd8/classbpstd_1_1span.html#a2b9de294b67e3966f469701fc608fd84", null ],
     [ "end", "d4/dd8/classbpstd_1_1span.html#a0319e41a842c0850905f36a81c6ceec1", null ],
     [ "first", "d4/dd8/classbpstd_1_1span.html#a48e3694dc0b3705b84007bb6f4251dc6", null ],
-    [ "first", "d4/dd8/classbpstd_1_1span.html#a74b56f882003232cc084ffbb67e512f5", null ],
     [ "first", "d4/dd8/classbpstd_1_1span.html#ab722ed3f67fa726268682c669a83ed9d", null ],
+    [ "first", "d4/dd8/classbpstd_1_1span.html#a74b56f882003232cc084ffbb67e512f5", null ],
     [ "front", "d4/dd8/classbpstd_1_1span.html#a28cc29b76df840ed735b52f4d90aff84", null ],
     [ "last", "d4/dd8/classbpstd_1_1span.html#af61a391adabb8c1f3a623275f2e9c1bf", null ],
-    [ "last", "d4/dd8/classbpstd_1_1span.html#aa220acf025568b27a79a8c7c38d5c145", null ],
     [ "last", "d4/dd8/classbpstd_1_1span.html#ac062933ea02c47cfcfb595be09c01473", null ],
+    [ "last", "d4/dd8/classbpstd_1_1span.html#aa220acf025568b27a79a8c7c38d5c145", null ],
     [ "operator=", "d4/dd8/classbpstd_1_1span.html#a3f74e976b55106082f7a2df63200fe6f", null ],
     [ "operator[]", "d4/dd8/classbpstd_1_1span.html#a4c2a5e88825fcd611f1691bcb38b4324", null ],
     [ "rbegin", "d4/dd8/classbpstd_1_1span.html#a35e62d3fbacf331c45836b46209600f6", null ],
@@ -37,6 +37,6 @@ var classbpstd_1_1span =
     [ "size", "d4/dd8/classbpstd_1_1span.html#a37ec427a86193bb2ab1a9b4eede5bea4", null ],
     [ "size_bytes", "d4/dd8/classbpstd_1_1span.html#a5af5a7ded4c4e35a0621d65a68d5ece9", null ],
     [ "subspan", "d4/dd8/classbpstd_1_1span.html#a2c70efd282fd7e0b8d301d39544cf2b8", null ],
-    [ "subspan", "d4/dd8/classbpstd_1_1span.html#a6f2e5ee444250edfcce9f864c2ffbbd4", null ],
-    [ "subspan", "d4/dd8/classbpstd_1_1span.html#a61ed48cb791075f7fe964e5bfbcdc24b", null ]
+    [ "subspan", "d4/dd8/classbpstd_1_1span.html#a61ed48cb791075f7fe964e5bfbcdc24b", null ],
+    [ "subspan", "d4/dd8/classbpstd_1_1span.html#a6f2e5ee444250edfcce9f864c2ffbbd4", null ]
 ];
