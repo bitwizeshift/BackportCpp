@@ -61,7 +61,7 @@
 # define BPSTD_HAS_INLINE_VARIABLES 0
 #endif
 
-#define BPSTD_UNUSED(x) static_cast<void>(x);
+#define BPSTD_UNUSED(x) static_cast<void>(x)
 #define BPSTD_UNREACHABLE()
 
 // Use __may_alias__ attribute on gcc and clang
