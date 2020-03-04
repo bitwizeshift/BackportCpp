@@ -463,7 +463,7 @@ constexpr std::size_t bpstd::span<T,Extent>::extent;
 //------------------------------------------------------------------------------
 
 template <typename T, std::size_t Extent>
-template <std::size_t, typename>
+template <std::size_t UExtent, typename>
 inline constexpr bpstd::span<T,Extent>::span()
   noexcept
   : m_storage{nullptr, detail::extent_storage<0>{}}
