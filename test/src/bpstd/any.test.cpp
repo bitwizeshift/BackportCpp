@@ -35,14 +35,12 @@ namespace {
   // A testing string that is sufficiently long enough to avoid string SBO.
   // This is used so that MSAN & LSAN can validate memory issues
   const auto string_value = // NOLINT
-    std::string{
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-      "Cras consequat et augue auctor porttitor."
-    };
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+    "Cras consequat et augue auctor porttitor.";
 
   struct large_object
   {
-    large_object() noexcept : buffer{}{};
+    large_object() noexcept : buffer{}{}
     large_object( std::string value ) : value{ std::move(value) }, buffer{}{}
     large_object( large_object&& other ) = default;
     large_object( const large_object& other ) = default;
@@ -84,7 +82,7 @@ TEST_CASE("any::any( any&& )","[ctor]")
 {
   SECTION("Source contains value")
   {
-    auto original = bpstd::any{::string_value};
+    auto original = bpstd::any{std::string{::string_value}};
     auto& original_type = original.type();
 
     auto moved = std::move(original);
@@ -99,7 +97,7 @@ TEST_CASE("any::any( any&& )","[ctor]")
     }
     SECTION("Contains same value")
     {
-      REQUIRE( bpstd::any_cast<std::string>(moved) == ::string_value );
+      REQUIRE( bpstd::any_cast<std::string>(moved) == std::string{::string_value} );
     }
   }
   SECTION("Source does not contain value")
@@ -123,7 +121,7 @@ TEST_CASE("any::any( const any& )","[ctor]")
 {
   SECTION("Source contains value")
   {
-    auto original = bpstd::any{::string_value};
+    auto original = bpstd::any{std::string{::string_value}};
     auto& original_type = original.type();
 
     auto copy = original;
@@ -138,7 +136,7 @@ TEST_CASE("any::any( const any& )","[ctor]")
     }
     SECTION("Contains same value")
     {
-      REQUIRE( bpstd::any_cast<std::string>(copy) == ::string_value );
+      REQUIRE( bpstd::any_cast<std::string>(copy) == std::string{::string_value} );
     }
   }
   SECTION("Source does not contain value")
@@ -182,7 +180,7 @@ TEST_CASE("any::any( ValueType&& )","[ctor]")
 
 TEST_CASE("any::any( in_place_type_t<ValueType>, Args&&... )","[ctor]")
 {
-  const auto value    = ::string_value;
+  const auto value    = std::string{::string_value};
   const auto expected = std::string{value,2,7};
 
   auto a = bpstd::any{ bpstd::in_place_type_t<std::string>{}, value, 2, 7 };
@@ -230,7 +228,7 @@ TEST_CASE("any::operator=( any&& )","[assignment]")
     }
     SECTION("Source contains a value")
     {
-      const auto value = ::string_value;
+      const auto value = std::string{::string_value};
       auto source = bpstd::any{value};
 
       destination = std::move(source);
@@ -266,7 +264,7 @@ TEST_CASE("any::operator=( any&& )","[assignment]")
     }
     SECTION("Source contains a value")
     {
-      const auto value = ::string_value;
+      const auto value = std::string{::string_value};
       auto source = bpstd::any{value};
 
       destination = std::move(source);
@@ -306,7 +304,7 @@ TEST_CASE("any::operator=( const any& )","[assignment]")
     }
     SECTION("Source contains a value")
     {
-      const auto value = ::string_value;
+      const auto value = std::string{::string_value};
       auto source = bpstd::any{value};
 
       destination = source;
@@ -342,7 +340,7 @@ TEST_CASE("any::operator=( const any& )","[assignment]")
     }
     SECTION("Source contains a value")
     {
-      const auto value = ::string_value;
+      const auto value = std::string{::string_value};
       auto source = bpstd::any{value};
 
       destination = source;
@@ -367,7 +365,7 @@ TEST_CASE("any::operator=( ValueType&& )","[assignment]")
 {
   SECTION("Destination contains a value")
   {
-    const auto value = ::string_value;
+    const auto value = std::string{::string_value};
     auto original = bpstd::any{5};
 
     original = value;
@@ -389,7 +387,7 @@ TEST_CASE("any::operator=( ValueType&& )","[assignment]")
   {
     auto original = bpstd::any{};
 
-    const auto value = ::string_value;
+    const auto value = std::string{::string_value};
 
     original = value;
 
@@ -499,7 +497,7 @@ TEST_CASE("any::emplace( Args&&... )","[modifiers]")
 
     SECTION("new value fits in small buffer")
     {
-      const auto lhs_value = ::string_value;
+      const auto lhs_value = std::string{::string_value};
 
       lhs.emplace<std::string>(lhs_value);
 
@@ -514,7 +512,7 @@ TEST_CASE("any::emplace( Args&&... )","[modifiers]")
     }
     SECTION("new value does not fit in small buffer")
     {
-      const auto lhs_value = ::string_value;
+      const auto lhs_value = std::string{::string_value};
 
       lhs.emplace<::large_object>(lhs_value);
 
@@ -532,7 +530,7 @@ TEST_CASE("any::emplace( Args&&... )","[modifiers]")
   {
     SECTION("new value fits in small buffer")
     {
-      const auto lhs_value = ::string_value;
+      const auto lhs_value = std::string{::string_value};
       auto lhs = bpstd::any{};
 
       lhs.emplace<std::string>( lhs_value );
@@ -544,7 +542,7 @@ TEST_CASE("any::emplace( Args&&... )","[modifiers]")
     }
     SECTION("new value does not fit in small buffer")
     {
-      const auto lhs_value = ::string_value;
+      const auto lhs_value = std::string{::string_value};
       auto lhs = bpstd::any{};
 
       lhs.emplace<::large_object>( lhs_value );
