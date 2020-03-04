@@ -444,9 +444,6 @@ inline const void* bpstd::any::internal_storage_handler<T>
 
       return static_cast<const void*>(&typeid(T));
     }
-    default:
-      BPSTD_UNREACHABLE();
-      break;
   }
   return nullptr;
 }
@@ -557,8 +554,6 @@ inline const void* bpstd::any::external_storage_handler<T>
 
       return &typeid(T);
     }
-    default:
-      BPSTD_UNREACHABLE();
   }
   return nullptr;
 }
