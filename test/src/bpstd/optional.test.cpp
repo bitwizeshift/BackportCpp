@@ -38,6 +38,11 @@ namespace {
 
     }
 
+    dtor_test(const dtor_test&) = default;
+    dtor_test(dtor_test&&) = default;
+    dtor_test& operator=(const dtor_test&) = default;
+    dtor_test& operator=(dtor_test&&) = default;
+
     ~dtor_test()
     {
       m_is_called = true;
