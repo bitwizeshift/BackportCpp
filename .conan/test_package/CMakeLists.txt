@@ -17,8 +17,3 @@ add_executable(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
   PRIVATE Backport::Backport
 )
-set_target_properties(${PROJECT_NAME}
-  PROPERTIES
-    OUTPUT_NAME "test-package"
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
-)

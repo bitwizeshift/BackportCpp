@@ -38,9 +38,8 @@ jobs:
 
       - name: Test Package
         run: |
-          echo "${CONAN_PACKAGE_PATH}"
           conan test $(pwd)/.conan/test_package "${CONAN_PACKAGE_PATH}"
 
       - name: Deploy
         run: |
-          conan upload "${full_package}" -r bintray --all
+          conan upload "${CONAN_PACKAGE_PATH}" -r bintray --all
