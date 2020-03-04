@@ -55,7 +55,42 @@ namespace bpstd {
 
   namespace detail {
     template <typename Fn>
-    struct not_fn_t;
+    struct not_fn_t
+    {
+      Fn fn;
+
+      template <typename...Args>
+      BPSTD_CPP14_CONSTEXPR auto operator()(Args&&... args) &
+        noexcept(noexcept(!::bpstd::invoke(fn, std::forward<Args>(args)...)))
+        -> decltype(!::bpstd::invoke(fn, std::forward<Args>(args)...))
+      {
+        return !::bpstd::invoke(fn, std::forward<Args>(args)...);
+      }
+
+      template <typename...Args>
+      BPSTD_CPP14_CONSTEXPR auto operator()(Args&&... args) &&
+        noexcept(noexcept(!::bpstd::invoke(std::move(fn), std::forward<Args>(args)...)))
+        -> decltype(!::bpstd::invoke(std::move(fn), std::forward<Args>(args)...))
+      {
+        return !::bpstd::invoke(std::move(fn), std::forward<Args>(args)...);
+      }
+
+      template <typename...Args>
+      constexpr auto operator()(Args&&... args) const&
+        noexcept(noexcept(!::bpstd::invoke(fn, std::forward<Args>(args)...)))
+        -> decltype(!::bpstd::invoke(fn, std::forward<Args>(args)...))
+      {
+        return !::bpstd::invoke(fn, std::forward<Args>(args)...);
+      }
+
+      template <typename...Args>
+      constexpr auto operator()(Args&&... args) const&&
+        noexcept(noexcept(!::bpstd::invoke(std::move(fn), std::forward<Args>(args)...)))
+        -> decltype(!::bpstd::invoke(std::move(fn), std::forward<Args>(args)...))
+      {
+        return !::bpstd::invoke(std::move(fn), std::forward<Args>(args)...);
+      }
+    };
   } // namespace detail
 
   /// \brief Creates a forwarding call wrapper that returns the negation of the
@@ -598,44 +633,6 @@ constexpr bpstd::invoke_result_t<Func,Args...>
 //==============================================================================
 // definition : not_fn
 //==============================================================================
-
-template <typename Fn>
-struct bpstd::detail::not_fn_t
-{
-  Fn fn;
-
-  template <typename...Args>
-  BPSTD_CPP14_CONSTEXPR auto operator()(Args&&... args) &
-    noexcept(noexcept(!invoke(fn, std::forward<Args>(args)...)))
-    -> decltype(!invoke(fn, std::forward<Args>(args)...))
-  {
-    return !invoke(fn, std::forward<Args>(args)...);
-  }
-
-  template <typename...Args>
-  BPSTD_CPP14_CONSTEXPR auto operator()(Args&&... args) &&
-    noexcept(noexcept(!invoke(std::move(fn), std::forward<Args>(args)...)))
-    -> decltype(!invoke(std::move(fn), std::forward<Args>(args)...))
-  {
-    return !invoke(std::move(fn), std::forward<Args>(args)...);
-  }
-
-  template <typename...Args>
-  constexpr auto operator()(Args&&... args) const&
-    noexcept(noexcept(!invoke(fn, std::forward<Args>(args)...)))
-    -> decltype(!invoke(fn, std::forward<Args>(args)...))
-  {
-    return !invoke(fn, std::forward<Args>(args)...);
-  }
-
-  template <typename...Args>
-  constexpr auto operator()(Args&&... args) const&&
-    noexcept(noexcept(!invoke(std::move(fn), std::forward<Args>(args)...)))
-    -> decltype(!invoke(std::move(fn), std::forward<Args>(args)...))
-  {
-    return !invoke(std::move(fn), std::forward<Args>(args)...);
-  }
-};
 
 template <typename Fn>
 constexpr bpstd::detail::not_fn_t<bpstd::decay_t<Fn>> bpstd::not_fn(Fn&& fn)

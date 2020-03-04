@@ -114,7 +114,7 @@ namespace bpstd {
                                                   Tuple&& tuple,
                                                   index_sequence<I...>)
     {
-      return invoke(
+      return ::bpstd::invoke(
         std::forward<Fn>(fn),
         std::get<I>(std::forward<Tuple>(tuple))...
       );
