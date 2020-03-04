@@ -40,13 +40,9 @@ namespace {
 
   struct large_object
   {
-    large_object() noexcept : buffer{}{}
     large_object( std::string str ) : value{ std::move(str) }, buffer{}{}
     large_object( large_object&& other ) = default;
     large_object( const large_object& other ) = default;
-
-    large_object& operator=( large_object&& other ) = default;
-    large_object& operator=( const large_object& other ) = default;
 
     std::string value;
     // a buffer bigger than any's internal buffer

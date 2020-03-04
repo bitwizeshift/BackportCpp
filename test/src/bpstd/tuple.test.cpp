@@ -71,9 +71,6 @@ namespace {
     test_object() : x{0}, s{nullptr}{}
     test_object(int xp, const char* sp) : x{xp}, s{sp}{}
     test_object(test_object&&) = default;
-    test_object(const test_object&) = default;
-    test_object& operator=(test_object&&) = default;
-    test_object& operator=(const test_object&) = default;
 
     int x;
     const char* s;
