@@ -3,7 +3,7 @@
 [![Tested Compilers](https://img.shields.io/badge/compilers-gcc%20%7C%20clang%20%7C%20msvc-blue.svg)](#tested-compilers)
 [![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](http://bitwizeshift.github.io/BackportCpp)
 [![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/bitwizeshift/BackportCpp/master/LICENSE)
-[![Github Releases](https://img.shields.io/github/release/bitwizeshift/BackportCpp.svg)](https://github.com/bitwizeshift/BackportCpp/releases)
+[![Github Releases](https://img.shields.io/github/v/release/bitwizeshift/BackportCpp.svg?include_prereleases)](https://github.com/bitwizeshift/BackportCpp/releases)
 [![Download](https://api.bintray.com/packages/bitwizeshift/Backport/Backport%3Abackport/images/download.svg)](https://bintray.com/bitwizeshift/Backport/Backport%3Abackport/_latestVersion)
 
 # C++ Backport
