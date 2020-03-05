@@ -69,7 +69,7 @@ namespace {
   struct test_object
   {
     test_object() : x{0}, s{nullptr}{}
-    test_object(int x, const char* s) : x{x}, s{s}{}
+    test_object(int xp, const char* sp) : x{xp}, s{sp}{}
     test_object(test_object&&) = default;
     test_object(const test_object&) = default;
     test_object& operator=(test_object&&) = default;

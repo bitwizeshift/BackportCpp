@@ -41,7 +41,7 @@ namespace {
   struct large_object
   {
     large_object() noexcept : buffer{}{}
-    large_object( std::string value ) : value{ std::move(value) }, buffer{}{}
+    large_object( std::string str ) : value{ std::move(str) }, buffer{}{}
     large_object( large_object&& other ) = default;
     large_object( const large_object& other ) = default;
 
