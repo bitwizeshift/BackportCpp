@@ -35,19 +35,20 @@ jobs:
           ubuntu-18.04-clang-7,
           ubuntu-18.04-clang-8,
           ubuntu-18.04-clang-9,
-          windows-2016-cl,
-          windows-2016-clang-cl,
-          windows-2016-clang,
-          windows-2016-gcc,
-          windows-2019-cl,
-          windows-2019-clang-cl,
-          windows-2019-clang,
-          windows-2019-gcc,
+          windows-latest-cl-vs2015,
+          windows-latest-cl-vs2017,
+          windows-latest-cl-vs2019,
+          windows-latest-clang-cl,
+          windows-latest-clang,
+          windows-latest-gcc,
           macOS-latest-xcode-11.0,
           macOS-latest-xcode-11.3,
         ]
 
         include:
+
+          # Linux
+
           - name: ubuntu-18.04-gcc-4.9
             os: ubuntu-18.04
             compiler: gcc
@@ -133,37 +134,36 @@ jobs:
             compiler: clang
             version: "9"
 
-          - name: windows-2016-cl
-            os: windows-2016
-            compiler: cl
+          # Windows
 
-          - name: windows-2016-clang-cl
-            os: windows-2016
+          - name: windows-latest-cl-vs2015
+            os: windows-latest
+            compiler: cl
+            version: "14.0"
+
+          - name: windows-latest-cl-vs2017
+            os: windows-latest
+            compiler: cl
+            version: "14.16"
+
+          - name: windows-latest-cl-vs2019
+            os: windows-latest
+            compiler: cl
+            version: "14.24"
+
+          - name: windows-latest-clang-cl
+            os: windows-latest
             compiler: clang-cl
 
-          - name: windows-2016-clang
-            os: windows-2016
+          - name: windows-latest-clang
+            os: windows-latest
             compiler: clang
 
-          - name: windows-2019-cl
-            os: windows-2019
-            compiler: cl
-
-          - name: windows-2016-gcc
-            os: windows-2016
+          - name: windows-latest-gcc
+            os: windows-latest
             compiler: gcc
 
-          - name: windows-2019-clang-cl
-            os: windows-2019
-            compiler: clang-cl
-
-          - name: windows-2019-clang
-            os: windows-2019
-            compiler: clang
-
-          - name: windows-2019-gcc
-            os: windows-2019
-            compiler: gcc
+          # macOS
 
           - name: macOS-latest-xcode-11.0
             os: macOS-latest
@@ -262,7 +262,7 @@ jobs:
 
       - name: Configure x64
         if: runner.os == 'Windows'
-        run: .github\workflows\vsenv.bat -arch=x64 -host_arch=x64
+        run: .github\workflows\vsenv.bat -arch=x64 -host_arch=x64 -vcvars_ver="${{ matrix.version }}"
 
       - name: Build & Test Debug x64
         run: |
@@ -289,7 +289,7 @@ jobs:
         if: (runner.os == 'Windows' && matrix.compiler != 'gcc') || runner.os == 'Linux'
         run: |
           if ("${{ runner.os }}" -eq "Windows") {
-            & .github\workflows\vsenv.bat -arch=x86 -host_arch=x64
+            & .github\workflows\vsenv.bat -arch=x86 -host_arch=x64 -vcvars_ver=${{ matrix.version }}
           }
           if ("${{ matrix.compiler }}" -notcontains "cl") {
             echo "::set-env name=CXXFLAGS::$env:CXXFLAGS -m32"
