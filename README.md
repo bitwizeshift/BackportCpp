@@ -1,7 +1,7 @@
 [![Build Status](https://github.com/bitwizeshift/BackportCpp/workflows/build/badge.svg)](https://github.com/bitwizeshift/BackportCpp/actions)
 [![Github Issues](https://img.shields.io/github/issues/bitwizeshift/BackportCpp.svg)](http://github.com/bitwizeshift/BackportCpp/issues)
 [![Tested Compilers](https://img.shields.io/badge/compilers-gcc%20%7C%20clang%20%7C%20msvc-blue.svg)](#tested-compilers)
-[![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](http://bitwizeshift.github.io/BackportCpp)
+[![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](https://bitwizeshift.github.io/BackportCpp/api/latest)
 [![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/bitwizeshift/BackportCpp/master/LICENSE)
 [![Github Releases](https://img.shields.io/github/v/release/bitwizeshift/BackportCpp.svg?include_prereleases)](https://github.com/bitwizeshift/BackportCpp/releases)
 [![Download](https://api.bintray.com/packages/bitwizeshift/Backport/Backport%3Abackport/images/download.svg)](https://bintray.com/bitwizeshift/Backport/Backport%3Abackport/_latestVersion)
@@ -24,7 +24,7 @@ if using C++14, more `constexpr` is available to the user than with C++11)
   A summary of all existing features in **Backport**
 * [FAQ](#faq) \
   Frequently asked questions about this library
-* [API Reference](https://bitwizeshift.github.io/BackportCpp/api/latest/manual.html) \
+* [API Reference](https://bitwizeshift.github.io/BackportCpp/api/latest) \
   For doxygen-generated API information
 * [Legal](doc/legal.md) \
   Information about how to attribute this project
@@ -42,12 +42,13 @@ support. In any case, much of the newer C++ library types don't actually
 require newer C++ language features -- but provide significant value to the
 developer by creating a new vocabulary that doesn't exist in prior versions.
 
-Much of the newer utilities may also have parallels in **Boost** libraries,
+Much of the newer utilities may also have parallels in Boost libraries,
 however many organizations are unable to adopt this -- either due to the domain
-being too constrained, or due **Boost** being a large dependency to introduce.
+being too constrained, or due to Boost being a large dependency to introduce.
 
-As a result, this library exists as a standalone, **header-only** drop-in for
-newer standard library features from C++11, C++14, C++17, and C++20.
+As a result, this library exists as a standalone, **header-only**,
+dependency-free drop-in for newer standard library features from C++11, C++14,
+C++17, and C++20.
 
 ## Features
 
@@ -87,6 +88,34 @@ is not desirable.
 
 Third-party implementations of `std::filesystem` should exist, which can be
 independently used.
+
+## Tested Compilers
+
+This library has been tested against the following compilers / systems
+
+| Compiler         | Operating System                                          |
+|------------------|-----------------------------------------------------------|
+| gcc-4.9          | Ubuntu 18.04                                              |
+| gcc-5.0          | Ubuntu 18.04                                              |
+| gcc-6            | Ubuntu 18.04                                              |
+| gcc-7            | Ubuntu 18.04                                              |
+| gcc-8            | Ubuntu 18.04                                              |
+| gcc-9            | Ubuntu 18.04                                              |
+| clang-3.5        | ubuntu 18.04                                              |
+| clang-3.6        | ubuntu 18.04                                              |
+| clang-3.7        | ubuntu 18.04                                              |
+| clang-3.8        | ubuntu 18.04                                              |
+| clang-3.9        | ubuntu 18.04                                              |
+| clang-4.0        | ubuntu 18.04                                              |
+| clang-5.0        | ubuntu 18.04                                              |
+| clang-6.0        | ubuntu 18.04                                              |
+| clang-7          | ubuntu 18.04                                              |
+| clang-8          | ubuntu 18.04                                              |
+| clang-9          | ubuntu 18.04                                              |
+| xcode-11.0       | macOS 10 (latest)                                         |
+| xcode-11.3       | macOS 10 (latest)                                         |
+| MSVC 19.16.27035 | Windows Server 2016                                       |
+| MSVC 19.16.27035 | Windows Server 2019                                       |
 
 ## <a name="license"></a>License
 
