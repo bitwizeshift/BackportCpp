@@ -261,7 +261,7 @@ class bpstd::span&lt; T, Extent &gt;</h3>
 <div class="memtemplate">
 template&lt;typename T , std::size_t Extent&gt; </div>
 <div class="memtemplate">
-template&lt;std::size_t , typename &gt; </div>
+template&lt;std::size_t UExtent, typename &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -333,7 +333,7 @@ template&lt;typename It , typename &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">it</td><td>the iterator </td></tr>
-    <tr><td class="paramname">count</td><td></td></tr>
+    <tr><td class="paramname">count</td><td>the number of entries in the sequence </td></tr>
   </table>
   </dd>
 </dl>
@@ -564,7 +564,7 @@ template&lt;typename U, std::size_t N, typename &gt; </div>
 </ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">arr</td><td>the array reference </td></tr>
+    <tr><td class="paramname">s</td><td>the span </td></tr>
   </table>
   </dd>
 </dl>
