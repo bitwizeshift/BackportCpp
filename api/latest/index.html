@@ -83,7 +83,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="title">Backport Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a href="https://github.com/bitwizeshift/BackportCpp/actions"></a> <a href="http://github.com/bitwizeshift/BackportCpp/issues"></a> <a href="#tested-compilers"></a> <a href="http://bitwizeshift.github.io/BackportCpp"></a> <a href="https://raw.githubusercontent.com/bitwizeshift/BackportCpp/master/LICENSE"></a> <a href="https://github.com/bitwizeshift/BackportCpp/releases"></a> <a href="https://bintray.com/bitwizeshift/Backport/Backport%3Abackport/_latestVersion"></a></p>
+<div class="textblock"><p><a href="https://github.com/bitwizeshift/BackportCpp/actions"></a> <a href="http://github.com/bitwizeshift/BackportCpp/issues"></a> <a href="#tested-compilers"></a> <a href="https://bitwizeshift.github.io/BackportCpp/api/latest"></a> <a href="https://raw.githubusercontent.com/bitwizeshift/BackportCpp/master/LICENSE"></a> <a href="https://github.com/bitwizeshift/BackportCpp/releases"></a> <a href="https://bintray.com/bitwizeshift/Backport/Backport%3Abackport/_latestVersion"></a></p>
 <h1>C++ Backport</h1>
 <p><b>Backport</b> is an ongoing effort to bring modern C++ utilities to be compatible with C++11.</p>
 <p>It is a header-only library that implements much of the functionality from C++14, C++17, and C++20 to be compatible with C++11. <code>constexpr</code> support is conditionally enabled based on the language setting of the compiler (e.g. if using C++14, more <code>constexpr</code> is available to the user than with C++11)</p>
@@ -92,15 +92,15 @@ $(document).ready(function(){initNavTree('index.html','');});
 <li><a href="#rationale">Rationale</a> \ A brief rational for while this library was created</li>
 <li><a href="#features">Features</a> \ A summary of all existing features in <b>Backport</b></li>
 <li><a href="#faq">FAQ</a> \ Frequently asked questions about this library</li>
-<li><a href="https://bitwizeshift.github.io/BackportCpp/api/latest/manual.html">API Reference</a> \ For doxygen-generated API information</li>
+<li><a href="https://bitwizeshift.github.io/BackportCpp/api/latest">API Reference</a> \ For doxygen-generated API information</li>
 <li>Legal \ Information about how to attribute this project</li>
 <li>How to install \ For a quick guide on how to install/use this in other projects</li>
 <li>.github/CONTRIBUTING.md "Contributing Guidelines" \ Guidelines that must be followed in order to contribute to <b>Backport</b></li>
 </ul>
 <h2>Rationale</h2>
 <p>C++11 was release <em>9 years ago</em>, and yet many organizations still have yet to move onto more modern releases. In some cases this is due to security reasons, in others it may be that the toolchains don't yet exist for more modern C++ support. In any case, much of the newer C++ library types don't actually require newer C++ language features &ndash; but provide significant value to the developer by creating a new vocabulary that doesn't exist in prior versions.</p>
-<p>Much of the newer utilities may also have parallels in <b>Boost</b> libraries, however many organizations are unable to adopt this &ndash; either due to the domain being too constrained, or due <b>Boost</b> being a large dependency to introduce.</p>
-<p>As a result, this library exists as a standalone, <b>header-only</b> drop-in for newer standard library features from C++11, C++14, C++17, and C++20.</p>
+<p>Much of the newer utilities may also have parallels in Boost libraries, however many organizations are unable to adopt this &ndash; either due to the domain being too constrained, or due to Boost being a large dependency to introduce.</p>
+<p>As a result, this library exists as a standalone, <b>header-only</b>, dependency-free drop-in for newer standard library features from C++11, C++14, C++17, and C++20.</p>
 <h2>Features</h2>
 <ul>
 <li><b>C++20</b><ul>
@@ -133,6 +133,54 @@ $(document).ready(function(){initNavTree('index.html','');});
 <h3>Where is <code>std::filesystem</code>?</h3>
 <p>This library aims to deliver a <em>header-only</em> solution to the many missing types that have been introduced in newer standard libraries. <code>std::filesystem</code> is a bit complicated to handle, since it introduces a dependency on the operating system being compiled against. Implementing <code>std::filesystem</code> will generally require conditional compilation, and &ndash; for best practices &ndash; separate source files in order to insulate use of system headers (lest this library introduce the perils of the <code>&lt;windows.h&gt;</code> macros). This would change the library fundamentally so that it is no longer a header-only solution &ndash; and this is not desirable.</p>
 <p>Third-party implementations of <code>std::filesystem</code> should exist, which can be independently used.</p>
+<h2>Tested Compilers</h2>
+<p>This library has been tested against the following compilers / systems</p>
+<table class="doxtable">
+<tr>
+<th>Compiler </th><th>Operating System  </th></tr>
+<tr>
+<td>gcc-4.9 </td><td>Ubuntu 18.04 </td></tr>
+<tr>
+<td>gcc-5.0 </td><td>Ubuntu 18.04 </td></tr>
+<tr>
+<td>gcc-6 </td><td>Ubuntu 18.04 </td></tr>
+<tr>
+<td>gcc-7 </td><td>Ubuntu 18.04 </td></tr>
+<tr>
+<td>gcc-8 </td><td>Ubuntu 18.04 </td></tr>
+<tr>
+<td>gcc-9 </td><td>Ubuntu 18.04 </td></tr>
+<tr>
+<td>clang-3.5 </td><td>ubuntu 18.04 </td></tr>
+<tr>
+<td>clang-3.6 </td><td>ubuntu 18.04 </td></tr>
+<tr>
+<td>clang-3.7 </td><td>ubuntu 18.04 </td></tr>
+<tr>
+<td>clang-3.8 </td><td>ubuntu 18.04 </td></tr>
+<tr>
+<td>clang-3.9 </td><td>ubuntu 18.04 </td></tr>
+<tr>
+<td>clang-4.0 </td><td>ubuntu 18.04 </td></tr>
+<tr>
+<td>clang-5.0 </td><td>ubuntu 18.04 </td></tr>
+<tr>
+<td>clang-6.0 </td><td>ubuntu 18.04 </td></tr>
+<tr>
+<td>clang-7 </td><td>ubuntu 18.04 </td></tr>
+<tr>
+<td>clang-8 </td><td>ubuntu 18.04 </td></tr>
+<tr>
+<td>clang-9 </td><td>ubuntu 18.04 </td></tr>
+<tr>
+<td>xcode-11.0 </td><td>macOS 10 (latest) </td></tr>
+<tr>
+<td>xcode-11.3 </td><td>macOS 10 (latest) </td></tr>
+<tr>
+<td>MSVC 19.16.27035 </td><td>Windows Server 2016 </td></tr>
+<tr>
+<td>MSVC 19.16.27035 </td><td>Windows Server 2019 </td></tr>
+</table>
 <h2><a class="anchor" id="license"></a>License</h2>
 <div class="image">
 <img src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png" align="right"/>
