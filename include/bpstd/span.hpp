@@ -224,7 +224,7 @@ namespace bpstd {
     /// * to_address(it) is convertible to T*
     ///
     /// \param it the iterator
-    /// \param count
+    /// \param count the number of entries in the sequence
     template <typename It,
               typename = enable_if_t<is_iter_convertible<It>::value>>
     constexpr span(It it, size_type count) noexcept;
@@ -278,7 +278,7 @@ namespace bpstd {
     /// * Extent is dynamic_extent or N is the same as Extent
     /// * U is at most a cv-qualification difference from T
     ///
-    /// \param arr the array reference
+    /// \param s the span
     template <typename U, std::size_t N,
               typename = enable_if_t<detail::is_allowed_extent_conversion<N,Extent>::value>>
     constexpr span(const span<U, N>& s) noexcept;

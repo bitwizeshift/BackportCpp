@@ -135,13 +135,13 @@ namespace bpstd { // back-port std
     //--------------------------------------------------------------------------
   public:
 
+    /// \{
     /// \brief Returns the length of the string, in terms of bytes
     ///
     /// \return the length of the string, in terms of bytes
     constexpr size_type size() const noexcept;
-
-    /// \copydoc basic_string_view::size
     constexpr size_type length() const noexcept;
+    /// \}
 
     /// \brief The largest possible number of char-like objects that can be
     ///        referred to by a basic_string_view.

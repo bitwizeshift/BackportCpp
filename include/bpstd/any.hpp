@@ -102,11 +102,10 @@ namespace bpstd {
 
     /// \brief Constructs this any using \p value for the underlying instance
     ///
-    /// \tparam ValueType
-    /// \param value
+    /// \param value the value to construct this any out of
     template<typename ValueType,
-              typename=enable_if_t<!is_same<decay_t<ValueType>,any>::value &&
-                                    is_copy_constructible<decay_t<ValueType>>::value>>
+             typename=enable_if_t<!is_same<decay_t<ValueType>,any>::value &&
+                                   is_copy_constructible<decay_t<ValueType>>::value>>
     any(ValueType&& value);
 
     /// \brief Constructs an 'any' of type ValueType by forwarding \p args to
@@ -117,8 +116,8 @@ namespace bpstd {
     ///
     /// \param args the arguments to forward to ValueType's constructor
     template<typename ValueType, typename...Args,
-              typename=enable_if_t<is_constructible<decay_t<ValueType>,Args...>::value &&
-                                   is_copy_constructible<decay_t<ValueType>>::value>>
+             typename=enable_if_t<is_constructible<decay_t<ValueType>,Args...>::value &&
+                                  is_copy_constructible<decay_t<ValueType>>::value>>
     explicit any(in_place_type_t<ValueType>, Args&&...args);
 
     /// \brief Constructs an 'any' of type ValueType by forwarding \p args to

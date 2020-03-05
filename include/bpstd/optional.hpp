@@ -466,7 +466,7 @@ namespace bpstd {
     /// \note This constructor is explicit if and only if
     ///       std::is_convertible_v<U&&, T> is false
     ///
-    /// \param other
+    /// \param other the other optional to move
     template <typename U,
               enable_if_t<detail::optional_is_move_convertible<T,U>::value && std::is_convertible<U&&, T>::value>* =nullptr>
     optional(optional<U>&& other);
@@ -481,11 +481,10 @@ namespace bpstd {
     /// direct-list-initializing) an object of type T from the arguments
     /// std::forward<Args>(args)...
     ///
-    /// \param tag     The in_place tag
-    /// \param args... the arguments to pass to T's constructor
+    /// \param args the arguments to pass to T's constructor
     template <typename...Args,
               typename=enable_if_t<std::is_constructible<T,Args...>::value>>
-    constexpr explicit optional(in_place_t tag, Args&&... args);
+    constexpr explicit optional(in_place_t, Args&&... args);
 
     /// \brief Constructs an optional object that contains a value
     ///
@@ -493,9 +492,8 @@ namespace bpstd {
     /// direct-list-initializing) an object of type T from the arguments
     /// std::forward<std::initializer_list<U>>(ilist), std::forward<Args>(args)...
     ///
-    /// \param tag     The in_place tag
-    /// \param ilist   An initializer list of entries to forward
-    /// \param args... the arguments to pass to T's constructor
+    /// \param ilist An initializer list of entries to forward
+    /// \param args  the arguments to pass to T's constructor
     template <typename U, typename...Args,
               typename=enable_if_t<std::is_constructible<T, std::initializer_list<U>&, Args...>::value>>
     constexpr explicit optional(in_place_t,
@@ -747,7 +745,7 @@ namespace bpstd {
     /// If \c *this already contains a value before the call, the contained
     /// value is destroyed by calling its destructor.
     ///
-    /// \param args... the arguments to pass to the constructor
+    /// \param args the arguments to pass to the constructor
     template <typename...Args>
     void emplace(Args&&...args);
 
@@ -757,7 +755,7 @@ namespace bpstd {
     /// value is destroyed by calling its destructor.
     ///
     /// \param ilist   the initializer list to pass to the constructor
-    /// \param args... the arguments to pass to the constructor
+    /// \param args the arguments to pass to the constructor
     template <typename U,typename...Args >
     void emplace(std::initializer_list<U> ilist, Args&&...args);
   };
@@ -850,7 +848,7 @@ namespace bpstd {
   /// \brief Creates an optional object of type \p T from the given \p args
   ///
   /// \tparam T the type to construct
-  /// \param args... the arguments to pass to \p T's constructor
+  /// \param args the arguments to pass to \p T's constructor
   template <typename T, typename... Args >
   constexpr optional<T> make_optional(Args&&... args);
 
@@ -858,8 +856,8 @@ namespace bpstd {
   ///        \p il \p args
   ///
   /// \tparam T the type to construct
-  /// \param il      the initializer list to pass
-  /// \param args... the arguments to pass to \p T's constructor
+  /// \param il   the initializer list to pass
+  /// \param args the arguments to pass to \p T's constructor
   template <typename T, typename U, typename... Args >
   constexpr optional<T> make_optional(std::initializer_list<U> il, Args&&... args);
 
