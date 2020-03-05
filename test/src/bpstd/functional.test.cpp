@@ -64,6 +64,7 @@ namespace {
 
 }
 
+
 //==============================================================================
 // Static Tests
 //==============================================================================
@@ -146,6 +147,22 @@ TEST_CASE("invoke(...)", "[functional]")
     SECTION("Call is non-const")
     {
       auto sut = ::mutable_functor{42};
+
+      auto result = bpstd::invoke(sut, 42);
+
+      REQUIRE(result);
+    }
+    SECTION("Call is nothrow-const")
+    {
+      auto sut = ::nothrow_const_functor{42};
+
+      auto result = bpstd::invoke(sut, 42);
+
+      REQUIRE(result);
+    }
+    SECTION("Call is nothrow-non-const")
+    {
+      auto sut = ::nothrow_mutable_functor{42};
 
       auto result = bpstd::invoke(sut, 42);
 

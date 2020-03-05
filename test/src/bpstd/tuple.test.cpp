@@ -101,6 +101,22 @@ TEST_CASE("apply(...)", "[functional]")
 
       REQUIRE(result);
     }
+    SECTION("Call is nothrow-const")
+    {
+      auto sut = ::nothrow_const_functor{42};
+
+      auto result = bpstd::apply(sut, std::make_tuple(42));
+
+      REQUIRE(result);
+    }
+    SECTION("Call is nothrow-non-const")
+    {
+      auto sut = ::nothrow_mutable_functor{42};
+
+      auto result = bpstd::apply(sut, std::make_tuple(42));
+
+      REQUIRE(result);
+    }
   }
   SECTION("Function is non-member function")
   {
