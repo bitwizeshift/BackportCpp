@@ -114,8 +114,12 @@ This library has been tested against the following compilers / systems
 | clang-9          | ubuntu 18.04                                              |
 | xcode-11.0       | macOS 10 (latest)                                         |
 | xcode-11.3       | macOS 10 (latest)                                         |
-| MSVC 19.16.27035 | Windows Server 2016                                       |
-| MSVC 19.16.27035 | Windows Server 2019                                       |
+| MSVC-2015 (14.0) | Windows Server (latest)                                   |
+| MSVC-2017 (14.16)| Windows Server (latest)                                   |
+| MSVC-2019 (14.24)| Windows Server (latest)                                   |
+| clang-cl-9       | Windows Server (latest)                                   |
+| clang-9          | Windows Server (latest)                                   |
+| gcc-8.1          | Windows Server (latest)                                   |
 
 ## <a name="license"></a>License
 
