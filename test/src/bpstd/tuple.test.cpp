@@ -290,7 +290,7 @@ TEST_CASE("make_from_tuple<T>(...)", "[functional]")
   SECTION("Can construct with convertible objects")
   {
     const char* str = "hello world";
-    const unsigned x = 42u;
+    const short x = 42;
     auto sut = bpstd::make_from_tuple<::test_object>(std::make_tuple(x, str));
 
     SECTION("Constructs object")

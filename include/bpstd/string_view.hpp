@@ -43,6 +43,7 @@
 #include <memory>     // std::allocator
 #include <stdexcept>  // std::out_of_range
 #include <iterator>   // std::reverse_iterator
+#include <ios>        // std::streamsize
 
 namespace bpstd { // back-port std
 
@@ -1183,7 +1184,7 @@ std::basic_ostream<CharT,Traits>&
   bpstd::operator<<(std::basic_ostream<CharT,Traits>& o,
                     const basic_string_view<CharT,Traits>& str)
 {
-  o.write(str.data(),str.size());
+  o.write(str.data(),static_cast<std::streamsize>(str.size()));
   return o;
 }
 

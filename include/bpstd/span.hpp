@@ -484,7 +484,7 @@ template <typename T, std::size_t Extent>
 template <typename It, typename End, typename>
 inline constexpr bpstd::span<T,Extent>::span(It it, End end)
   noexcept
-  : m_storage{to_address(it), (end - it)}
+  : m_storage{to_address(it), static_cast<size_type>(end - it)}
 {
 
 }

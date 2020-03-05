@@ -183,7 +183,7 @@ TEST_CASE("any::any( in_place_type_t<ValueType>, Args&&... )","[ctor]")
   const auto value    = std::string{::string_value};
   const auto expected = std::string{value,2,7};
 
-  auto a = bpstd::any{ bpstd::in_place_type_t<std::string>{}, value, 2, 7 };
+  auto a = bpstd::any{ bpstd::in_place_type_t<std::string>{}, value, 2u, 7u };
 
   SECTION("Constructs an any with by calling the underlying T constructor")
   {
