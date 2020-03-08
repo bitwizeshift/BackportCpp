@@ -35,11 +35,17 @@
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
 #include "config.hpp"
+#include "detail/move.hpp" // IWYU pragma: export
 #include "type_traits.hpp" // add_const_t
 
+#include <utility> // to proxy the API
 #include <cstddef> // std::size_t
 
 namespace bpstd {
+
+  //============================================================================
+  // struct : in_place_t
+  //============================================================================
 
   /// \brief This function is a special disambiguation tag for variadic
   ///        functions, used in any and optional
@@ -50,6 +56,10 @@ namespace bpstd {
     explicit in_place_t() = default;
   };
   BPSTD_CPP17_INLINE constexpr in_place_t in_place{};
+
+  //============================================================================
+  // in_place_type_t
+  //============================================================================
 
   /// \brief This function is a special disambiguation tag for variadic
   ///        functions, used in any and optional
@@ -66,6 +76,10 @@ namespace bpstd {
   BPSTD_CPP17_INLINE constexpr in_place_type_t<T> in_place_type{};
 #endif
 
+  //============================================================================
+  // in_place_index_t
+  //============================================================================
+
   /// \brief This function is a special disambiguation tag for variadic
   ///        functions, used in any and optional
   ///
@@ -79,6 +93,32 @@ namespace bpstd {
   template<std::size_t I>
   BPSTD_CPP17_INLINE constexpr in_place_index_t<I> in_place_index{};
 #endif
+
+  //============================================================================
+  // non-member functions
+  //============================================================================
+
+  //----------------------------------------------------------------------------
+  // Utilities
+  //----------------------------------------------------------------------------
+
+  /// \brief Casts \p x to an rvalue
+  ///
+  /// \param x the parameter to move
+  /// \return rvalue reference to \p x
+  template <typename T>
+  constexpr remove_reference_t<T>&& move( T&& t ) noexcept;
+
+  /// \brief Moves a type \p x if it move-construction is non-throwing
+  ///
+  /// \param x the parameter to move
+  /// \return an rvalue reference if nothrow moveable, const reference otherwise
+  template <typename T>
+  constexpr typename bpstd::conditional<
+    !bpstd::is_nothrow_move_constructible<T>::value && bpstd::is_copy_constructible<T>::value,
+    const T&,
+    T&&
+  >::type move_if_noexcept(T& x) noexcept;
 
   /// \brief Forms an lvalue reference to const type of t
   ///
@@ -101,6 +141,10 @@ namespace bpstd {
   /// \param new_value the value to assign to obj
   template <typename T, typename U = T>
   BPSTD_CPP14_CONSTEXPR T exchange(T& obj, U&& new_value);
+
+  //============================================================================
+  // struct : integer_sequence
+  //============================================================================
 
   template <typename T, T... Ints>
   struct integer_sequence
@@ -136,6 +180,31 @@ namespace bpstd {
 
 } // namespace bpstd
 
+//==============================================================================
+// non-member functions
+//==============================================================================
+
+//------------------------------------------------------------------------------
+// Utilities
+//------------------------------------------------------------------------------
+
+template <typename T>
+inline constexpr typename bpstd::conditional<
+  !bpstd::is_nothrow_move_constructible<T>::value && bpstd::is_copy_constructible<T>::value,
+  const T&,
+  T&&
+>::type bpstd::move_if_noexcept(T& x)
+  noexcept
+{
+  using result_type = conditional_t<
+    !is_nothrow_move_constructible<T>::value && is_copy_constructible<T>::value,
+    const T&,
+    T&&
+  >;
+
+  return static_cast<result_type>(x);
+}
+
 template <typename T>
 inline constexpr bpstd::add_const_t<T>& bpstd::as_const(T& t)
   noexcept
@@ -146,8 +215,8 @@ inline constexpr bpstd::add_const_t<T>& bpstd::as_const(T& t)
 template <typename T, typename U>
 inline BPSTD_CPP14_CONSTEXPR T bpstd::exchange(T& obj, U&& new_value)
 {
-  auto old_value = std::move(obj);
-  obj = std::forward<U>(new_value);
+  auto old_value = bpstd::move(obj);
+  obj = bpstd::forward<U>(new_value);
   return old_value;
 }
 
