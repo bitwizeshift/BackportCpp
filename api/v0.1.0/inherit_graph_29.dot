@@ -1,0 +1,13 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node67 [label="true_type",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node67 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="bpstd::is_bounded_array\l\< T[N]\>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d39/structbpstd_1_1is__bounded__array_3_01_t[_n]_4.html"];
+  Node67 -> Node69 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node69 [label="bpstd::is_null_pointer\l\< decltype(nullptr)\>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/dd6/structbpstd_1_1is__null__pointer_3_01decltype_07nullptr_08_4.html"];
+  Node67 -> Node70 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node70 [label="bpstd::is_unbounded\l_array\< T[]\>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/da5/structbpstd_1_1is__unbounded__array_3_01_t[]_4.html"];
+}
