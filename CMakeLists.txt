@@ -56,6 +56,8 @@ set(header_files
   "include/bpstd/optional.hpp"
   "include/bpstd/iterator.hpp"
   "include/bpstd/span.hpp"
+  "include/bpstd/chrono.hpp"
+  "include/bpstd/string.hpp"
 )
 
 add_library(${PROJECT_NAME} INTERFACE)
