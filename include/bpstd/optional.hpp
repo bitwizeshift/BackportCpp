@@ -37,15 +37,13 @@
 #include "detail/enable_overload.hpp" // enable_overload_if, disable_overload_if
 
 #include "config.hpp"
-#include "utility.hpp"     // in_place_t
+#include "utility.hpp"     // in_place_t, forward, move
 #include "functional.hpp"  // invoke_result_t
 #include "type_traits.hpp"
 
 #include <initializer_list> // std::initializer_list
 #include <type_traits>      // enable_if
-#include <utility>          // std::forward, std::move
 #include <stdexcept>        // std::logic_error
-#include <utility>          // std::forward, std::move
 #include <new>              // placement new
 
 namespace bpstd {
@@ -216,7 +214,7 @@ namespace bpstd {
 
         template <typename...Args>
         constexpr storage_type(in_place_t, Args&&...args)
-          : something(std::forward<Args>(args)...){}
+          : something(bpstd::forward<Args>(args)...){}
         constexpr storage_type() : nothing(){}
       };
 
@@ -285,7 +283,7 @@ namespace bpstd {
 
         template <typename...Args>
         storage_type(in_place_t, Args&&...args)
-          : something(std::forward<Args>(args)...){}
+          : something(bpstd::forward<Args>(args)...){}
         storage_type() : nothing(){}
         ~storage_type(){}
       };
@@ -894,7 +892,7 @@ template <typename...Args>
 inline constexpr bpstd::detail::optional_base<T,true>
   ::optional_base(in_place_t, Args&&...args)
   noexcept(std::is_nothrow_constructible<T,Args...>::value)
-  : m_storage(in_place, std::forward<Args>(args)...),
+  : m_storage(in_place, bpstd::forward<Args>(args)...),
     m_engaged{true}
 {
 
@@ -933,7 +931,7 @@ template <typename T>
 template <typename...Args>
 inline void bpstd::detail::optional_base<T,true>::construct(Args&&...args)
 {
-  m_storage.something = T(std::forward<Args>(args)...);
+  m_storage.something = T(bpstd::forward<Args>(args)...);
   m_engaged = true;
 }
 
@@ -965,7 +963,7 @@ template <typename...Args>
 inline bpstd::detail::optional_base<T,false>
   ::optional_base(in_place_t, Args&&...args)
   noexcept(std::is_nothrow_constructible<T,Args...>::value)
-  : m_storage(in_place, std::forward<Args>(args)...),
+  : m_storage(in_place, bpstd::forward<Args>(args)...),
     m_engaged{true}
 {
 
@@ -1015,7 +1013,7 @@ template <typename T>
 template <typename...Args>
 inline void bpstd::detail::optional_base<T,false>::construct(Args&&...args)
 {
-  new (&m_storage.something) T(std::forward<Args>(args)...);
+  new (&m_storage.something) T(bpstd::forward<Args>(args)...);
   m_engaged = true;
 }
 
@@ -1072,7 +1070,7 @@ inline bpstd::optional<T>
 {
   if (other.has_value())
   {
-    base_type::construct(std::move(*other));
+    base_type::construct(bpstd::move(*other));
   }
 }
 
@@ -1112,7 +1110,7 @@ inline bpstd::optional<T>::optional(optional<U>&& other)
 {
   if (other.has_value())
   {
-    base_type::construct(std::move(*other));
+    base_type::construct(bpstd::move(*other));
   }
 }
 template <typename T>
@@ -1123,14 +1121,14 @@ inline bpstd::optional<T>::optional(optional<U>&& other)
 {
   if (other.has_value())
   {
-    base_type::construct(std::move(*other));
+    base_type::construct(bpstd::move(*other));
   }
 }
 
 template <typename T>
 template <typename...Args, typename>
 inline constexpr bpstd::optional<T>::optional(in_place_t, Args&&...args)
-  : base_type{ in_place, std::forward<Args>(args)... }
+  : base_type{ in_place, bpstd::forward<Args>(args)... }
 {
 
 }
@@ -1141,7 +1139,7 @@ inline constexpr bpstd::optional<T>
   ::optional( in_place_t,
               std::initializer_list<U> ilist,
               Args&&...args )
-  : base_type{ in_place, ilist, std::forward<Args>(args)... }
+  : base_type{ in_place, ilist, bpstd::forward<Args>(args)... }
 {
 
 }
@@ -1150,7 +1148,7 @@ template <typename T>
 template <typename U,
          bpstd::enable_if_t<bpstd::detail::optional_is_value_convertible<T,U>::value && std::is_convertible<U&&, T>::value>*>
 inline constexpr bpstd::optional<T>::optional(U&& value)
-  : base_type{ in_place, std::forward<U>(value) }
+  : base_type{ in_place, bpstd::forward<U>(value) }
 {
 
 }
@@ -1159,7 +1157,7 @@ template <typename T>
 template <typename U,
          bpstd::enable_if_t<bpstd::detail::optional_is_value_convertible<T,U>::value && !std::is_convertible<U&&, T>::value>*>
 inline constexpr bpstd::optional<T>::optional(U&& value)
-  : base_type{ in_place, std::forward<U>(value) }
+  : base_type{ in_place, bpstd::forward<U>(value) }
 {
 
 }
@@ -1193,11 +1191,11 @@ inline bpstd::optional<T>&
   bpstd::optional<T>::operator=(detail::enable_overload_if_t<std::is_move_constructible<T>::value && std::is_move_assignable<T>::value,optional&&> other)
 {
   if (has_value() && other.has_value()) {
-    (*base_type::val()) = std::move(*other);
+    (*base_type::val()) = bpstd::move(*other);
   } else if (has_value()) {
     base_type::destruct();
   } else if (other.has_value()) {
-    base_type::construct(std::move( *other ));
+    base_type::construct(bpstd::move( *other ));
   }
 
   return (*this);
@@ -1209,9 +1207,9 @@ inline bpstd::optional<T>&
   bpstd::optional<T>::operator=(U&& value)
 {
   if (has_value()) {
-    (*base_type::val()) = std::forward<U>(value);
+    (*base_type::val()) = bpstd::forward<U>(value);
   } else {
-    base_type::construct(std::forward<U>(value));
+    base_type::construct(bpstd::forward<U>(value));
   }
   return (*this);
 }
@@ -1267,7 +1265,7 @@ inline BPSTD_CPP14_CONSTEXPR typename bpstd::optional<T>::value_type&&
   bpstd::optional<T>::operator*()
   && noexcept
 {
-  return std::move(*base_type::val());
+  return bpstd::move(*base_type::val());
 }
 
 //-----------------------------------------------------------------------------
@@ -1285,7 +1283,7 @@ inline constexpr const typename bpstd::optional<T>::value_type&&
   bpstd::optional<T>::operator*()
   const && noexcept
 {
-  return std::move(*base_type::val());
+  return bpstd::move(*base_type::val());
 }
 
 //-----------------------------------------------------------------------------
@@ -1307,7 +1305,7 @@ inline BPSTD_CPP14_CONSTEXPR typename bpstd::optional<T>::value_type&&
   &&
 {
   if (static_cast<bool>(*this)) {
-    return std::move(*base_type::val());
+    return bpstd::move(*base_type::val());
   }
   throw bad_optional_access{};
 }
@@ -1331,7 +1329,7 @@ inline BPSTD_CPP14_CONSTEXPR const typename bpstd::optional<T>::value_type&&
   const &&
 {
   if (static_cast<bool>(*this)) {
-    return std::move(*base_type::val());
+    return bpstd::move(*base_type::val());
   }
   throw bad_optional_access{};
 }
@@ -1344,7 +1342,7 @@ inline constexpr typename bpstd::optional<T>::value_type
   bpstd::optional<T>::value_or(U&& default_value)
   const&
 {
-  return bool(*this) ? (*base_type::val()) : std::forward<U>(default_value);
+  return bool(*this) ? (*base_type::val()) : bpstd::forward<U>(default_value);
 }
 
 template <typename T>
@@ -1353,7 +1351,7 @@ inline BPSTD_CPP14_CONSTEXPR typename bpstd::optional<T>::value_type
   bpstd::optional<T>::value_or(U&& default_value)
   &&
 {
-  return bool(*this) ? (*base_type::val()) : std::forward<U>(default_value);
+  return bool(*this) ? (*base_type::val()) : bpstd::forward<U>(default_value);
 }
 
 //-----------------------------------------------------------------------------
@@ -1368,10 +1366,10 @@ inline void bpstd::optional<T>::swap(optional& other)
   if (has_value() && other.has_value()){
     swap(*base_type::val(), *other);
   } else if (has_value()) {
-    other = std::move(*this);
+    other = bpstd::move(*this);
     reset(); // leave this unengaged
   } else if (other.has_value()) {
-    *this = std::move(other);
+    *this = bpstd::move(other);
     other.reset(); // leave 'other' unengaged
   }
 }
@@ -1390,7 +1388,7 @@ template <typename...Args>
 inline void bpstd::optional<T>::emplace(Args&&...args)
 {
   base_type::destruct();
-  base_type::construct(std::forward<Args>(args)...);
+  base_type::construct(bpstd::forward<Args>(args)...);
 }
 
 template <typename T>
@@ -1399,7 +1397,7 @@ inline void bpstd::optional<T>::emplace(std::initializer_list<U> ilist,
                                         Args&&...args)
 {
   base_type::destruct();
-  base_type::construct(ilist, std::forward<Args>(args)...);
+  base_type::construct(ilist, bpstd::forward<Args>(args)...);
 }
 
 //=============================================================================
@@ -1680,14 +1678,14 @@ template <typename T>
 inline constexpr
   bpstd::optional<bpstd::decay_t<T>> bpstd::make_optional(T&& value)
 {
-  return optional<decay_t<T>>(std::forward<T>(value));
+  return optional<decay_t<T>>(bpstd::forward<T>(value));
 }
 
 template <typename T, typename... Args >
 inline constexpr
   bpstd::optional<T> bpstd::make_optional(Args&&... args)
 {
-  return optional<T>(in_place, std::forward<Args>(args)...);
+  return optional<T>(in_place, bpstd::forward<Args>(args)...);
 }
 
 template <typename T, typename U, typename... Args >

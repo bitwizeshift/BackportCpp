@@ -35,6 +35,7 @@
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
 #include "type_traits.hpp" // conditional_t, void_t
+#include "utility.hpp"     // forward
 
 #include <memory>      // std::unique_ptr
 #include <cstddef>     // std::size_t
@@ -180,7 +181,7 @@ template <typename T, typename...Args>
 inline std::unique_ptr<typename bpstd::detail::make_unique_result<T>::object>
   bpstd::make_unique(Args&&...args)
 {
-  return std::unique_ptr<T>{new T(std::forward<Args>(args)...)};
+  return std::unique_ptr<T>{new T(bpstd::forward<Args>(args)...)};
 }
 
 template <typename T>

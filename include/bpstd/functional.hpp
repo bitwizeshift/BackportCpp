@@ -36,9 +36,9 @@
 
 #include "config.hpp"
 #include "type_traits.hpp"
+#include "utility.hpp"
 #include "detail/invoke.hpp"
 
-#include <utility>    // std::forward
 #include <functional> // to proxy API
 
 namespace bpstd {
@@ -61,34 +61,34 @@ namespace bpstd {
 
       template <typename...Args>
       BPSTD_CPP14_CONSTEXPR auto operator()(Args&&... args) &
-        noexcept(noexcept(!::bpstd::invoke(fn, std::forward<Args>(args)...)))
-        -> decltype(!::bpstd::invoke(fn, std::forward<Args>(args)...))
+        noexcept(noexcept(!::bpstd::invoke(fn, ::bpstd::forward<Args>(args)...)))
+        -> decltype(!::bpstd::invoke(fn, ::bpstd::forward<Args>(args)...))
       {
-        return !::bpstd::invoke(fn, std::forward<Args>(args)...);
+        return !::bpstd::invoke(fn, bpstd::forward<Args>(args)...);
       }
 
       template <typename...Args>
       BPSTD_CPP14_CONSTEXPR auto operator()(Args&&... args) &&
-        noexcept(noexcept(!::bpstd::invoke(std::move(fn), std::forward<Args>(args)...)))
-        -> decltype(!::bpstd::invoke(std::move(fn), std::forward<Args>(args)...))
+        noexcept(noexcept(!::bpstd::invoke(std::move(fn), ::bpstd::forward<Args>(args)...)))
+        -> decltype(!::bpstd::invoke(std::move(fn), ::bpstd::forward<Args>(args)...))
       {
-        return !::bpstd::invoke(std::move(fn), std::forward<Args>(args)...);
+        return !::bpstd::invoke(std::move(fn), bpstd::forward<Args>(args)...);
       }
 
       template <typename...Args>
       constexpr auto operator()(Args&&... args) const&
-        noexcept(noexcept(!::bpstd::invoke(fn, std::forward<Args>(args)...)))
-        -> decltype(!::bpstd::invoke(fn, std::forward<Args>(args)...))
+        noexcept(noexcept(!::bpstd::invoke(fn, ::bpstd::forward<Args>(args)...)))
+        -> decltype(!::bpstd::invoke(fn, ::bpstd::forward<Args>(args)...))
       {
-        return !::bpstd::invoke(fn, std::forward<Args>(args)...);
+        return !::bpstd::invoke(fn, bpstd::forward<Args>(args)...);
       }
 
       template <typename...Args>
       constexpr auto operator()(Args&&... args) const&&
-        noexcept(noexcept(!::bpstd::invoke(std::move(fn), std::forward<Args>(args)...)))
-        -> decltype(!::bpstd::invoke(std::move(fn), std::forward<Args>(args)...))
+        noexcept(noexcept(!::bpstd::invoke(std::move(fn), ::bpstd::forward<Args>(args)...)))
+        -> decltype(!::bpstd::invoke(std::move(fn), ::bpstd::forward<Args>(args)...))
       {
-        return !::bpstd::invoke(std::move(fn), std::forward<Args>(args)...);
+        return !::bpstd::invoke(std::move(fn), bpstd::forward<Args>(args)...);
       }
     };
   } // namespace detail
@@ -123,9 +123,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) + std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) + ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) + std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) + bpstd::forward<U>(rhs);
     }
   };
 
@@ -150,9 +150,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) - std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) - ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) - std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) - bpstd::forward<U>(rhs);
     }
   };
 
@@ -177,9 +177,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) * std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) * ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) * std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) * bpstd::forward<U>(rhs);
     }
   };
 
@@ -204,9 +204,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) / std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) / ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) / std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) / bpstd::forward<U>(rhs);
     }
   };
 
@@ -231,9 +231,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) % std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) % ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) % std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) % bpstd::forward<U>(rhs);
     }
   };
 
@@ -258,9 +258,9 @@ namespace bpstd {
 
     template <typename T>
     constexpr auto operator()(T&& arg) const
-      -> decltype(-std::forward<T>(arg))
+      -> decltype(-::bpstd::forward<T>(arg))
     {
-      return -std::forward<T>(arg);
+      return -bpstd::forward<T>(arg);
     }
   };
 
@@ -285,9 +285,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) == std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) == ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) == std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) == bpstd::forward<U>(rhs);
     }
   };
 
@@ -312,9 +312,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) != std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) != ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) != std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) != bpstd::forward<U>(rhs);
     }
   };
 
@@ -339,9 +339,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) > std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) > ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) > std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) > bpstd::forward<U>(rhs);
     }
   };
 
@@ -366,9 +366,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) >= std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) >= ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) >= std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) >= bpstd::forward<U>(rhs);
     }
   };
 
@@ -393,9 +393,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) < std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) < ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) < std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) < bpstd::forward<U>(rhs);
     }
   };
 
@@ -420,9 +420,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) <= std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) <= ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) <= std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) <= bpstd::forward<U>(rhs);
     }
   };
 
@@ -447,9 +447,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) && std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) && ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) && std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) && bpstd::forward<U>(rhs);
     }
   };
 
@@ -474,9 +474,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) || std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) || ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) || std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) || bpstd::forward<U>(rhs);
     }
   };
 
@@ -501,9 +501,9 @@ namespace bpstd {
 
     template <typename T>
     constexpr auto operator()(T&& arg) const
-      -> decltype(!std::forward<T>(arg))
+      -> decltype(!::bpstd::forward<T>(arg))
     {
-      return !std::forward<T>(arg);
+      return !bpstd::forward<T>(arg);
     }
   };
 
@@ -528,9 +528,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) & std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) & ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) & std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) & bpstd::forward<U>(rhs);
     }
   };
 
@@ -555,9 +555,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) | std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) | ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) | std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) | bpstd::forward<U>(rhs);
     }
   };
 
@@ -582,9 +582,9 @@ namespace bpstd {
 
     template <typename T, typename U>
     constexpr auto operator()(T&& lhs, U&& rhs) const
-      -> decltype(std::forward<T>(lhs) ^ std::forward<U>(rhs))
+      -> decltype(::bpstd::forward<T>(lhs) ^ ::bpstd::forward<U>(rhs))
     {
-      return std::forward<T>(lhs) ^ std::forward<U>(rhs);
+      return bpstd::forward<T>(lhs) ^ bpstd::forward<U>(rhs);
     }
   };
 
@@ -609,9 +609,9 @@ namespace bpstd {
 
     template <typename T>
     constexpr auto operator()(T&& arg) const
-      -> decltype(~std::forward<T>(arg))
+      -> decltype(~::bpstd::forward<T>(arg))
     {
-      return ~std::forward<T>(arg);
+      return ~bpstd::forward<T>(arg);
     }
   };
 
@@ -626,7 +626,7 @@ constexpr bpstd::invoke_result_t<Func,Args...>
   bpstd::invoke(Func&& function, Args&&... args)
   noexcept(is_nothrow_invocable<Func,Args...>::value)
 {
-  return detail::INVOKE(std::forward<Func>(function), std::forward<Args>(args)...);
+  return detail::INVOKE(bpstd::forward<Func>(function), bpstd::forward<Args>(args)...);
 }
 
 
@@ -646,7 +646,7 @@ constexpr bpstd::detail::not_fn_t<bpstd::decay_t<Fn>> bpstd::not_fn(Fn&& fn)
     "Fn must be constructible from an instance of fn"
   );
 
-  return { std::forward<Fn>(fn) };
+  return { bpstd::forward<Fn>(fn) };
 }
 
 #endif /* BPSTD_FUNCTIONAL_HPP */

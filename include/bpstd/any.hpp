@@ -35,7 +35,7 @@
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
 #include "type_traits.hpp"  // enable_if_t, is_*
-#include "utility.hpp"      // in_place_type_t
+#include "utility.hpp"      // in_place_type_t, move, forward
 
 #include <typeinfo>         // std::bad_cast, std::type_info
 #include <initializer_list> // std::initializer_list
@@ -365,7 +365,7 @@ template<typename...Args>
 inline T* bpstd::any::internal_storage_handler<T>
   ::construct(storage& s, Args&&...args)
 {
-  return ::new(&s.internal) T(std::forward<Args>(args)...);
+  return ::new(&s.internal) T(bpstd::forward<Args>(args)...);
 }
 
 template<typename T>
@@ -373,7 +373,7 @@ template<typename U, typename...Args>
 inline T* bpstd::any::internal_storage_handler<T>
   ::construct(storage& s, std::initializer_list<U> il, Args&&...args)
 {
-  return ::new(&s.internal) T(il, std::forward<Args>(args)...);
+  return ::new(&s.internal) T(il, bpstd::forward<Args>(args)...);
 }
 
 template<typename T>
@@ -419,7 +419,7 @@ inline const void* bpstd::any::internal_storage_handler<T>
 
       // Move construct from the internal storage. '
       const auto* p = reinterpret_cast<const T*>(&other->internal);
-      construct(const_cast<storage&>(*self), std::move(*const_cast<T*>(p)));
+      construct(const_cast<storage&>(*self), bpstd::move(*const_cast<T*>(p)));
       break;
     }
 
@@ -478,7 +478,7 @@ template<typename...Args>
 inline T* bpstd::any::external_storage_handler<T>
   ::construct(storage& s, Args&&...args)
 {
-  s.external = new T(std::forward<Args>(args)...);
+  s.external = new T(bpstd::forward<Args>(args)...);
   return static_cast<T*>(s.external);
 }
 
@@ -487,7 +487,7 @@ template<typename U, typename...Args>
 inline T* bpstd::any::external_storage_handler<T>
   ::construct(storage& s, std::initializer_list<U> il, Args&&...args)
 {
-  s.external = new T(il, std::forward<Args>(args)...);
+  s.external = new T(il, bpstd::forward<Args>(args)...);
   return static_cast<T*>(s.external);
 }
 
@@ -533,7 +533,7 @@ inline const void* bpstd::any::external_storage_handler<T>
 
       const auto p = static_cast<const T*>(other->external);
       // Move construct from the internal storage. '
-      construct(const_cast<storage&>(*self), std::move(*const_cast<T*>(p)));
+      construct(const_cast<storage&>(*self), bpstd::move(*const_cast<T*>(p)));
       break;
     }
 
@@ -606,7 +606,7 @@ inline bpstd::any::any(ValueType&& value)
   // Set handler after constructing, in case of exception
   using handler_type = storage_handler<decay_t<ValueType>>;
 
-  handler_type::construct(m_storage, std::forward<ValueType>(value));
+  handler_type::construct(m_storage, bpstd::forward<ValueType>(value));
   m_storage_handler = &handler_type::handle;
 }
 
@@ -618,7 +618,7 @@ inline bpstd::any::any(in_place_type_t<ValueType>, Args&&...args)
   // Set handler after constructing, in case of exception
   using handler_type = storage_handler<decay_t<ValueType>>;
 
-  handler_type::construct(m_storage, std::forward<Args>(args)...);
+  handler_type::construct(m_storage, bpstd::forward<Args>(args)...);
   m_storage_handler = &handler_type::handle;
 }
 
@@ -632,7 +632,7 @@ inline bpstd::any::any(in_place_type_t<ValueType>,
   // Set handler after constructing, in case of exception
   using handler_type = storage_handler<decay_t<ValueType>>;
 
-  handler_type::construct(m_storage, il, std::forward<Args>(args)...);
+  handler_type::construct(m_storage, il, bpstd::forward<Args>(args)...);
   m_storage_handler = &handler_type::handle;
 }
 
@@ -680,7 +680,7 @@ inline bpstd::any& bpstd::any::operator=(ValueType&& value)
 
   reset();
 
-  handler_type::construct(m_storage, std::forward<ValueType>(value));
+  handler_type::construct(m_storage, bpstd::forward<ValueType>(value));
   m_storage_handler = &handler_type::handle;
 
   return (*this);
@@ -699,7 +699,7 @@ inline bpstd::decay_t<ValueType>&
   reset();
 
   auto& result = *handler_type::construct(m_storage,
-                                          std::forward<Args>(args)...);
+                                          bpstd::forward<Args>(args)...);
   m_storage_handler = &handler_type::handle;
 
   return result;
@@ -716,7 +716,7 @@ inline bpstd::decay_t<ValueType>&
 
   auto& result = *handler_type::construct(m_storage,
                                           il,
-                                          std::forward<Args>(args)...);
+                                          bpstd::forward<Args>(args)...);
   m_storage_handler = &handler_type::handle;
 
   return result;
@@ -827,7 +827,7 @@ inline T bpstd::any_cast(any&& operand)
   if (p == nullptr) {
     throw bad_any_cast{};
   }
-  return static_cast<T>(std::move(*p));
+  return static_cast<T>(bpstd::move(*p));
 }
 
 template<typename T>

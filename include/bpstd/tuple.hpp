@@ -35,12 +35,11 @@
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
 #include "type_traits.hpp" // invoke_result
-#include "utility.hpp"     // index_sequence
+#include "utility.hpp"     // index_sequence, forward
 #include "functional.hpp"  // invoke
 
 #include <tuple>   // std::tuple_element, and to proxy API
 #include <cstddef> // std::size_t
-#include <utility> // std::forward
 
 namespace bpstd {
 
@@ -115,8 +114,8 @@ namespace bpstd {
                                                   index_sequence<I...>)
     {
       return ::bpstd::invoke(
-        std::forward<Fn>(fn),
-        std::get<I>(std::forward<Tuple>(tuple))...
+        bpstd::forward<Fn>(fn),
+        std::get<I>(bpstd::forward<Tuple>(tuple))...
       );
     }
   } // namespace detail
@@ -127,8 +126,8 @@ inline constexpr bpstd::detail::apply_result_t<Fn, Tuple>
   bpstd::apply(Fn&& fn, Tuple&& tuple)
 {
   return detail::apply_impl(
-    std::forward<Fn>(fn),
-    std::forward<Tuple>(tuple),
+    bpstd::forward<Fn>(fn),
+    bpstd::forward<Tuple>(tuple),
     make_index_sequence<tuple_size<remove_reference_t<Tuple>>::value>{}
   );
 }
@@ -142,7 +141,7 @@ namespace bpstd {
     template <typename T, typename Tuple, std::size_t... I>
     constexpr T make_from_tuple_impl(Tuple&& tuple, index_sequence<I...>)
     {
-      return T(std::get<I>(std::forward<Tuple>(tuple))...);
+      return T(std::get<I>(bpstd::forward<Tuple>(tuple))...);
     }
   } // namespace detail
 } // namespace bpstd
@@ -151,7 +150,7 @@ template <typename T, typename Tuple>
 inline constexpr T bpstd::make_from_tuple(Tuple&& tuple)
 {
   return detail::make_from_tuple_impl<T>(
-    std::forward<Tuple>(tuple),
+    bpstd::forward<Tuple>(tuple),
     make_index_sequence<tuple_size<remove_reference_t<Tuple>>::value>{}
   );
 }
