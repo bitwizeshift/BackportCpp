@@ -1,27 +1,33 @@
 var indexSectionsWithContent =
 {
-  0: "abcdefghilmnoprstv",
+  0: "abcdefghilmnoprstuv",
   1: "abcdegilmnopst",
-  2: "abcdefhlmorstv",
-  3: "v",
-  4: "a"
+  2: "acfimostu",
+  3: "abcdefhilmnorstv",
+  4: "n",
+  5: "v",
+  6: "a"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "functions",
-  3: "typedefs",
-  4: "related"
+  2: "files",
+  3: "functions",
+  4: "variables",
+  5: "typedefs",
+  6: "related"
 };
 
 var indexSectionLabels =
 {
   0: "All",
   1: "Classes",
-  2: "Functions",
-  3: "Typedefs",
-  4: "Friends"
+  2: "Files",
+  3: "Functions",
+  4: "Variables",
+  5: "Typedefs",
+  6: "Friends"
 };
 
