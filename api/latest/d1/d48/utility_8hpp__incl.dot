@@ -4,12 +4,13 @@ digraph "include/bpstd/utility.hpp"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node0 [label="include/bpstd/utility.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="config.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/dfd/config_8hpp.html",tooltip="This header provides configuration data for the bpstd library. "];
+  Node1 [label="detail/config.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node0 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="detail/move.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node0 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="type_traits.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/d54/type__traits_8hpp.html",tooltip="This header provides definitions from the C++ header <type_traits> "];
   Node3 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="detail/invoke.hpp",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node3 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
