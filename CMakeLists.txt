@@ -44,7 +44,7 @@ set(header_files
   "include/bpstd/detail/move.hpp"
   "include/bpstd/detail/invoke.hpp"
   "include/bpstd/detail/proxy_iterator.hpp"
-  "include/bpstd/config.hpp"
+  "include/bpstd/detail/config.hpp"
   "include/bpstd/type_traits.hpp"
   "include/bpstd/functional.hpp"
   "include/bpstd/memory.hpp"

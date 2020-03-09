@@ -34,7 +34,8 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
-#include "config.hpp"
+#include "detail/config.hpp"
+#include "detail/move.hpp"   // move, forward
 #include "detail/invoke.hpp" // detail::INVOKE
 
 #include <type_traits>

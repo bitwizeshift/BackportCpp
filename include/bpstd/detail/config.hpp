@@ -27,8 +27,8 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 */
-#ifndef BPSTD_CONFIG_HPP
-#define BPSTD_CONFIG_HPP
+#ifndef BPSTD_DETAIL_CONFIG_HPP
+#define BPSTD_DETAIL_CONFIG_HPP
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1200)
 # pragma once
@@ -71,4 +71,4 @@
 # define BPSTD_MAY_ALIAS
 #endif // defined __clang__ || defined __GNUC__
 
-#endif /* BPSTD_CONFIG_HPP */
+#endif /* BPSTD_DETAIL_CONFIG_HPP */

@@ -35,7 +35,7 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
-#include "../config.hpp"
+#include "config.hpp"
 #include <iterator>
 
 namespace bpstd {

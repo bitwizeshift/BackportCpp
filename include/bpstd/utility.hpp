@@ -34,7 +34,7 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
-#include "config.hpp"
+#include "detail/config.hpp"
 #include "detail/move.hpp" // IWYU pragma: export
 #include "type_traits.hpp" // add_const_t
 

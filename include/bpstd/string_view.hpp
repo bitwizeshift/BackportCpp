@@ -34,7 +34,7 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
-#include "config.hpp" // BPSTD_CPP14_CONSTEXPR
+#include "detail/config.hpp" // BPSTD_CPP14_CONSTEXPR
 
 #include <algorithm>  // std::min, std::max
 #include <string>     // std::char_traits

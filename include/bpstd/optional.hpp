@@ -35,8 +35,8 @@
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
 #include "detail/enable_overload.hpp" // enable_overload_if, disable_overload_if
+#include "detail/config.hpp"
 
-#include "config.hpp"
 #include "utility.hpp"     // in_place_t, forward, move
 #include "functional.hpp"  // invoke_result_t
 #include "type_traits.hpp"

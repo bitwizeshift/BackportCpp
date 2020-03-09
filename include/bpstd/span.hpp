@@ -31,7 +31,8 @@
 #define BPSTD_SPAN_HPP
 
 #include "detail/proxy_iterator.hpp"
-#include "config.hpp"
+#include "detail/config.hpp"
+
 #include "cstddef.hpp" // byte
 #include "memory.hpp"  // to_address
 #include "type_traits.hpp" // conjunction, remove_cvref_t, etc
