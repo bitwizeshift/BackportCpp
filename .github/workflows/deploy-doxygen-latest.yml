@@ -45,12 +45,14 @@ jobs:
           cd "dist"
           git add --all
 
-          git commit \
-            -m "📖 Deploy codedocs to Github Pages" \
-            -m "Documentation updated by build ${{ github.run_number }}." \
-            -m "Commit: '${{ github.sha }}'" \
-            --author "GitHub Action <action@github.com>" \
-            --no-gpg-sign
+          if ! git diff-index --quiet HEAD --; then
+            git commit \
+              -m "📖 Deploy codedocs to Github Pages" \
+              -m "Documentation updated by build ${{ github.run_number }}." \
+              -m "Commit: '${{ github.sha }}'" \
+              --author "GitHub Action <action@github.com>" \
+              --no-gpg-sign
+          fi
           cd ..
 
       - name: Publish
