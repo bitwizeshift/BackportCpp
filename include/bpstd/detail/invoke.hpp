@@ -1,8 +1,8 @@
-/*****************************************************************************
- * \file invoke.hpp
- *
- * \brief This internal header provides the definition of the INVOKE overload
- *****************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+/// \file invoke.hpp
+///
+/// \brief This internal header provides the definition of the INVOKE overload
+////////////////////////////////////////////////////////////////////////////////
 
 /*
   The MIT License (MIT)

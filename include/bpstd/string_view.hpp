@@ -1,8 +1,8 @@
-/*****************************************************************************
- * \file string_view.hpp
- *
- * \brief This header provides definitions from the C++ header <string_view>
- *****************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+/// \file string_view.hpp
+///
+/// \brief This header provides definitions from the C++ header <string_view>
+////////////////////////////////////////////////////////////////////////////////
 
 /*
   The MIT License (MIT)

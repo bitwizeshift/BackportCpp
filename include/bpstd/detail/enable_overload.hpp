@@ -1,9 +1,9 @@
-/*****************************************************************************
- * \file enable_overload.hpp
- *
- * \brief This internal header provides the definition of a SFINAE utility
- *        for conditionally enabling overloads
- *****************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+/// \file enable_overload.hpp
+///
+/// \brief This internal header provides the definition of a SFINAE utility
+///        for conditionally enabling overloads
+////////////////////////////////////////////////////////////////////////////////
 
 /*
   The MIT License (MIT)

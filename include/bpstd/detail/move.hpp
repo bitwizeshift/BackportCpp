@@ -1,8 +1,8 @@
-/*****************************************************************************
- * \file move.hpp
- *
- * \brief This internal header provides the definition of the move and forward
- *****************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+/// \file move.hpp
+///
+/// \brief This internal header provides the definition of the move and forward
+////////////////////////////////////////////////////////////////////////////////
 
 /*
   The MIT License (MIT)

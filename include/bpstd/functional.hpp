@@ -1,8 +1,8 @@
-/*****************************************************************************
- * \file functional.hpp
- *
- * \brief This header provides definitions from the C++ header <functional>
- *****************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+/// \file functional.hpp
+///
+/// \brief This header provides definitions from the C++ header <functional>
+////////////////////////////////////////////////////////////////////////////////
 
 /*
   The MIT License (MIT)

@@ -1,8 +1,8 @@
-/*****************************************************************************
- * \file type_traits.hpp
- *
- * \brief This header provides definitions from the C++ header <type_traits>
- *****************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+/// \file type_traits.hpp
+///
+/// \brief This header provides definitions from the C++ header <type_traits>
+////////////////////////////////////////////////////////////////////////////////
 
 /*
   The MIT License (MIT)

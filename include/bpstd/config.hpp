@@ -1,8 +1,8 @@
-/*****************************************************************************
- * \file config.hpp
- *
- * \brief This header provides configuration data for the bpstd library
- *****************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+/// \file config.hpp
+///
+/// \brief This header provides configuration data for the bpstd library
+////////////////////////////////////////////////////////////////////////////////
 
 /*
   The MIT License (MIT)

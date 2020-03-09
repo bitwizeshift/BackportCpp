@@ -1,9 +1,9 @@
-/*****************************************************************************
- * \file proxy_iterator.hpp
- *
- * \brief This internal header provides the definition of an iterator wrapper
- *        type used for uniqueness
- *****************************************************************************/
+////////////////////////////////////////////////////////////////////////////////
+/// \file proxy_iterator.hpp
+///
+/// \brief This internal header provides the definition of an iterator wrapper
+///       type used for uniqueness
+////////////////////////////////////////////////////////////////////////////////
 
 /*
   The MIT License (MIT)
