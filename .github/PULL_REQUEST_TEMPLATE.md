@@ -2,7 +2,7 @@
 <!--
 Replace the empty checkboxes [ ] below with checked ones [x] accordingly
 -->
-- [ ] I have read the [CONTRIBUTING](../CONTRIBUTING.md) guidelines
+- [ ] I have read the [CONTRIBUTING](CONTRIBUTING.md) guidelines
 - [ ] The coding style is consistent with the rest of the library
 - [ ] My branch's history is clean and coherent. This could be done through
       at least one of the following practices:
