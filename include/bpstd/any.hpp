@@ -834,7 +834,7 @@ template<typename T>
 inline T bpstd::any_cast(const any& operand)
 {
   auto* p = any_cast<T>(&operand);
-  if (p) {
+  if (p == nullptr) {
     throw bad_any_cast{};
   }
   return static_cast<T>(*p);
