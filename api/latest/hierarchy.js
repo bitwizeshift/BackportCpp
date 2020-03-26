@@ -23,6 +23,8 @@ var hierarchy =
       [ "bpstd::disjunction< B1, Bn... >", "d2/d7b/structbpstd_1_1disjunction_3_01_b1_00_01_bn_8_8_8_01_4.html", null ]
     ] ],
     [ "bpstd::conjunction<... >", "de/d3f/structbpstd_1_1conjunction.html", null ],
+    [ "bpstd::conjunction< is_move_constructible< remove_cvref_t< remove_extent_t< T > > >, is_move_assignable< remove_cvref_t< remove_extent_t< T > > >, is_lvalue_reference< T > >", "de/d3f/structbpstd_1_1conjunction.html", null ],
+    [ "bpstd::conjunction< is_nothrow_move_constructible< remove_cvref_t< remove_extent_t< T > > >, is_nothrow_move_assignable< remove_cvref_t< remove_extent_t< T > > >, is_lvalue_reference< T > >", "de/d3f/structbpstd_1_1conjunction.html", null ],
     [ "bpstd::divides< T >", "dd/dd3/structbpstd_1_1divides.html", null ],
     [ "bpstd::divides< void >", "db/d72/structbpstd_1_1divides_3_01void_01_4.html", null ],
     [ "bpstd::equal_to< T >", "de/d68/structbpstd_1_1equal__to.html", null ],

@@ -618,6 +618,26 @@ template&lt;typename Base , typename Derived &gt; </td></tr>
 template&lt;typename From , typename To &gt; </td></tr>
 <tr class="memitem:abb6cd5c71441d214cbcccde458a8e22c"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::is_convertible</b> = std::is_convertible&lt; From, To &gt;</td></tr>
 <tr class="separator:abb6cd5c71441d214cbcccde458a8e22c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47ba1c7636831208dc039224da686b5e"><td class="memTemplParams" colspan="2"><a id="a47ba1c7636831208dc039224da686b5e"></a>
+template&lt;typename From , typename To &gt; </td></tr>
+<tr class="memitem:a47ba1c7636831208dc039224da686b5e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::is_nothrow_convertible</b> = bool_constant&lt; detail::is_nothrow_convertible_impl&lt; is_convertible&lt; From, To &gt;::value, From, To &gt;::value &gt;</td></tr>
+<tr class="separator:a47ba1c7636831208dc039224da686b5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8eb911ad92be09a316c5b23932fd6d25"><td class="memTemplParams" colspan="2"><a id="a8eb911ad92be09a316c5b23932fd6d25"></a>
+template&lt;typename T , typename U &gt; </td></tr>
+<tr class="memitem:a8eb911ad92be09a316c5b23932fd6d25"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::is_swappable_with</b> = detail::is_swappable_with&lt; remove_cvref_t&lt; T &gt; &amp;, remove_cvref_t&lt; U &gt; &amp; &gt;</td></tr>
+<tr class="separator:a8eb911ad92be09a316c5b23932fd6d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac11913d4955e1c5d3d5b186d2f09185c"><td class="memTemplParams" colspan="2"><a id="ac11913d4955e1c5d3d5b186d2f09185c"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac11913d4955e1c5d3d5b186d2f09185c"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::is_swappable</b> = is_swappable_with&lt; T, T &gt;</td></tr>
+<tr class="separator:ac11913d4955e1c5d3d5b186d2f09185c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a06be68beeed1119948f390a668e057"><td class="memTemplParams" colspan="2"><a id="a7a06be68beeed1119948f390a668e057"></a>
+template&lt;typename T , typename U &gt; </td></tr>
+<tr class="memitem:a7a06be68beeed1119948f390a668e057"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::is_nothrow_swappable_with</b> = detail::is_nothrow_swappable_with&lt; remove_cvref_t&lt; T &gt; &amp;, remove_cvref_t&lt; U &gt; &amp; &gt;</td></tr>
+<tr class="separator:a7a06be68beeed1119948f390a668e057"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab07b62b4fb6f283a678807123d8507fb"><td class="memTemplParams" colspan="2"><a id="ab07b62b4fb6f283a678807123d8507fb"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ab07b62b4fb6f283a678807123d8507fb"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::is_nothrow_swappable</b> = is_nothrow_swappable_with&lt; T, T &gt;</td></tr>
+<tr class="separator:ab07b62b4fb6f283a678807123d8507fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This header provides definitions from the C++ header &lt;type_traits&gt; </p>
