@@ -581,3 +581,139 @@ TEST_CASE("any::reset()","[modifiers]")
     }
   }
 }
+
+TEST_CASE("any_cast(any_cast&)", "[utilities]")
+{
+  const auto value = int{52};
+  auto sut = bpstd::any{value};
+
+  SECTION("Cast to correct type")
+  {
+    SECTION("Casts to the specified type")
+    {
+      const auto result = bpstd::any_cast<int>(sut);
+
+      REQUIRE(result == value);
+    }
+  }
+
+  SECTION("Cast to incorrect type")
+  {
+    SECTION("Throws bad_any_cast")
+    {
+      REQUIRE_THROWS_AS(bpstd::any_cast<long>(sut), bpstd::bad_any_cast);
+    }
+  }
+}
+
+TEST_CASE("any_cast(const any_cast&)", "[utilities]")
+{
+  const auto value = int{52};
+  const auto sut = bpstd::any{value};
+
+  SECTION("Cast to correct type")
+  {
+    SECTION("Casts to the specified type")
+    {
+      const auto result = bpstd::any_cast<int>(sut);
+
+      REQUIRE(result == value);
+    }
+  }
+
+  SECTION("Cast to incorrect type")
+  {
+    SECTION("Throws bad_any_cast")
+    {
+      REQUIRE_THROWS_AS(bpstd::any_cast<long>(sut), bpstd::bad_any_cast);
+    }
+  }
+}
+
+TEST_CASE("any_cast(any_cast*)", "[utilities]")
+{
+  SECTION("Input is null")
+  {
+    auto* x = bpstd::any_cast<int>(static_cast<bpstd::any*>(nullptr));
+
+    SECTION("Output is null")
+    {
+      REQUIRE( x == nullptr );
+    }
+  }
+
+  SECTION("Input is non-null")
+  {
+    const auto value = int{52};
+    auto sut = bpstd::any{value};
+
+    SECTION("Cast to correct type")
+    {
+      auto* result = bpstd::any_cast<int>(&sut);
+
+      SECTION("Result is not null")
+      {
+        REQUIRE(result != nullptr);
+      }
+
+      SECTION("Gets stored value")
+      {
+        REQUIRE(*result == value);
+      }
+    }
+
+    SECTION("Cast to incorrect type")
+    {
+      const auto* result = bpstd::any_cast<long>(&sut);
+
+      SECTION("Result is null")
+      {
+        REQUIRE(result == nullptr);
+      }
+    }
+  }
+}
+
+TEST_CASE("any_cast(const any_cast*)", "[utilities]")
+{
+  SECTION("Input is null")
+  {
+    auto* x = bpstd::any_cast<int>(static_cast<const bpstd::any*>(nullptr));
+
+    SECTION("Output is null")
+    {
+      REQUIRE( x == nullptr );
+    }
+  }
+
+  SECTION("Input is non-null")
+  {
+    const auto value = int{52};
+    const auto sut = bpstd::any{value};
+
+    SECTION("Cast to correct type")
+    {
+      auto* result = bpstd::any_cast<int>(&sut);
+
+      SECTION("Result is not null")
+      {
+        REQUIRE(result != nullptr);
+      }
+
+      SECTION("Gets stored value")
+      {
+        REQUIRE(*result == value);
+      }
+    }
+
+    SECTION("Cast to incorrect type")
+    {
+      const auto* result = bpstd::any_cast<long>(&sut);
+
+      SECTION("Result is null")
+      {
+        REQUIRE(result == nullptr);
+      }
+    }
+  }
+}
