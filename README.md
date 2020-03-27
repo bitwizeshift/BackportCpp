@@ -52,25 +52,144 @@ C++17, and C++20.
 
 ## Features
 
-* **C++20**
-  * [x] [`bpstd::span`](include/bpstd/span.hpp)
-  * [x] [`bpstd::to_address`](include/bpstd/memory.hpp)
-  * [x] [`bpstd::make_unique_for_overwrite`](include/bpstd/memory.hpp)
-* **C++17**
-  * [x] [`bpstd::any`](include/bpstd/any.hpp)
-  * [x] [`bpstd::string_view`](include/bpstd/string_view.hpp)
-  * [x] [`bpstd::optional`](include/bpstd/optional.hpp)
-  * [ ] [`bpstd::variant`](include/bpstd/variant.hpp)
-  * [x] [`bpstd::invoke`](include/bpstd/functional.hpp)
-  * [x] [`bpstd::not_fn`](include/bpstd/functional.hpp)
-  * [x] [`bpstd::make_from_tuple`](include/bpstd/tuple.hpp)
-  * [x] [`bpstd::apply`](include/bpstd/tuple.hpp)
-  * [x] [`bpstd::byte`](include/bpstd/cstddef.hpp)
-* **C++14**
-  * [x] [`_t` convenience traits](include/bpstd/type_traits.hpp)
-  * [x] [`_v` convenience variables](include/bpstd/type_traits.hpp) (when compiling with `-std=c++14`)
-  * [x] [deduced functional objects](include/bpstd/functional.hpp)
-  * [x] [`bpstd::make_unique`](include/bpstd/memory.hpp)
+#### C++20
+
+| Status | Feature                                                 | Paper(s)        |
+|--------|---------------------------------------------------------|-----------------|
+| ✅    | `bpstd::span`                                            | [`P0122R7`][01227]<br> [`P1024R3`][10243]<br> [`P1976R2`][19762]<br> [`P0317R1`][03171] |
+| ✅    | `bpstd::to_address`                                      | [`P0653R2`][06532] |
+| ✅ (1) | `bpstd::make_unique_for_overwrite`                      | [`P1020R1`][10201]<br> [`P1973R1`][19731] |
+| ✅     | `bpstd::is_nothrow_convertible`                         | [`P0758R1`][07581] |
+1. The papers also include `make_shared_for_overwrite` and `allocate_shared_for_overwrite`,
+   but these are intentionally not implemented -- since it is impossible to implement
+   efficiently without also authoring `shared_ptr` (since to join the node allocations
+   requires internal support)
+
+<!-- span -->
+[01227]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0122r7.pdf
+[10243]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1024r3.pdf
+[19762]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/p1976r2.html
+<!-- to_address -->
+[06532]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0653r2.html
+<!-- make_unique_for_overwrite -->
+[10201]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p1020r1.html
+[19731]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/p1973r1.pdf
+<!-- is_nothrow_convertible -->
+[07581]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0758r1.html
+
+#### C++17
+
+| Status | Feature                                                 | Paper(s)        |
+|--------|---------------------------------------------------------|-----------------|
+| ❌ (1) | File System                                            | [`P0218R1`][02181]<br> [`P0219R1`][02191]<br> [`P0392R0`][03920]<br> [`P0317R1`][03171] |
+| ✅     | `bpstd::optional`                                     | [`N3793`][3793] |
+| ✅     | `bpstd::any`                                          | [`N3804`][3804] |
+| ✅     | `bpstd::string_view`                                  | [`N3921`][3921] |
+| ✅     |  uniform container access (non-member `size()`, `data()`, etc | [`N4280`][4280] |
+| ✅     | `bpstd::apply`                                        | [`N3915`][3915] |
+| ✅     | `bpstd::make_from_tuple`                              | [`P0209R2`][02092] |
+| ✅     | `bpstd::as_const`                                     | [`P0007R1`][00071] |
+| 🚧     | `bpstd::variant`                                      | [`P0088R3`][00883]<br> [`P0032R3`][00323]<br> [`P0393R3`][03933] |
+| 🚧     | `bpstd::uncaught_exceptions`                          | [`N4152`][4152]<br> [`N4259`][4259] |
+| ✅     | `bpstd::byte`                                         | [`P0298R3`][02983] |
+| ✅     | `bpstd::not_fn`                                       | [`P0005R4`][00054] |
+| ✅     | `bpstd::invoke`                                       | [`N4169`][4169] |
+| ✅     | `bpstd::void_t`                                       | [`N3911`][3911] |
+| ✅     | `bpstd::bool_constant`                                | [`N4389`][4389] |
+| ✅     | Traits for swappability                               | [`P0185R1`][01851] |
+| 🚧     | Polymorphic allocators and memory resources           | [`N3916`](3916) |
+
+1. See [this answer](#where-is-stdfilesystem) in FAQ
+
+<!-- file system -->
+[02181]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0218r1.html
+[02191]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0219r1.html
+[03920]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0392r0.pdf
+[03171]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0317r1.html
+<!-- optional -->
+[3793]: http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2013/n3793.html
+<!-- variant -->
+[00883]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0088r3.html
+[00323]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0032r3.pdf
+[03933]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0393r3.html
+<!-- any -->
+[3804]: http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2013/n3804.html
+<!-- string_view -->
+[3921]: http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2014/n3921.html
+<!-- uniform container access -->
+[4280]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4280.pdf
+<!-- apply -->
+[3915]: http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2014/n3915.pdf
+<!-- make_from_tuple -->
+[02092]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0209r2.pdf
+<!-- as_const -->
+[00071]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0007r1.html
+<!-- uncaught_exceptions -->
+[4152]: http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2014/n4152.pdf
+[4259]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4259.pdf
+<!-- byte -->
+[02983]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0298r3.pdf
+<!-- not_fn -->
+[00054]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0005r4.html
+<!-- invoke -->
+[4169]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4169.html
+<!-- void_t -->
+[3911]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3911.pdf
+<!-- bool_constant -->
+[4389]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4389.html
+<!-- nothrow_swappable -->
+[01851]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0185r1.html
+<!-- Polymorphic Allocators -->
+[N3916]: http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2014/n3916.pdf
+
+### C++14
+
+| Status | Feature                                                 | Paper(s)        |
+|--------|---------------------------------------------------------|-----------------|
+| ✅     | Type alias versions of standard transformation traits   | [`N3655`][3655] |
+| ✅     | Transparent operator functors (`bpstd::greater<>`, etc) | [`N3421`][3421] |
+| ✅     | `bpstd::tuple_element_t`                                | [`N3887`][3887] |
+| ❌ (1) | SFINAE-friendly `bpstd::result_of`                      | [`N3670`][3670] |
+| 🚧     | Addressing tuples by type                               | [`N3462`][3462] |
+| ➖ (2) | `bpstd::is_final`                                       | [`LWG 2112`][39452112] |
+| ✅     | `bpstd::is_null_pointer`                                | [`LWG 2247`][38222247] |
+| 🚧     | `bpstd::make_reverse_iterator`                          | [`LWG 2285`][39452285] |
+| ✅     | `bpstd::exchange`                                       | [`N3668`][3668] |
+| ✅     | `bpstd::make_unique`                                    | [`N3656`][3656] |
+| ✅     | Compile-time integer sequences (`bpstd::integer_sequence`) | [`N3658`][3658] |
+| ✅     | User-defined literals for standard library types (`bpstd::chrono_literals`, `bpstd::string_literals`) | [`N3642`][3642] |
+| 🚧     | User-defined literals for `bpstd::complex` (`bpstd::complex_literals`) | [`N3779`][3779] |
+
+1. Obsolete. Replaced by `bpstd::invoke_result`
+2. Not implementable without compiler support. Pre-C++14, requires specializations
+   and will default to `false_type`
+
+<!-- alias of transformation traits -->
+[3655]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3655.pdf
+<!-- transparent operator functors -->
+[3421]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3421.htm
+<!-- tuple_element_t -->
+[3887]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3887.pdf
+<!-- sfinae-friendly result_of -->
+[3670]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3670.html
+<!-- addressing tuples by type -->
+[3462]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3462.html
+<!-- is_final -->
+[39452112]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3945.html#2112
+<!-- is_null_pointer -->
+[38222247]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3822.html#2247
+<!-- make_reverse_iterator -->
+[39452285]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3945.html#2285
+<!-- exchange -->
+[3668]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3668.html
+<!-- make_unique -->
+[3656]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3656.htm
+<!-- compile-time integer_sequence -->
+[3658]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3658.html
+<!-- user defined literals for complex -->
+[3779]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3779.pdf
+<!-- user defined literals for chrono/string -->
+[3642]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3642.pdf
 
 ## FAQ
 
