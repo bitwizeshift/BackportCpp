@@ -168,6 +168,7 @@ namespace bpstd {
       // Constructors / Assignment
       //---------------------------------------------------------------------
     public:
+      // cppcheck-suppress noExplicitConstructor
       constexpr optional_base(nullopt_t) noexcept;
 
       template <typename...Args>
@@ -235,6 +236,7 @@ namespace bpstd {
       //---------------------------------------------------------------------
     protected:
 
+      // cppcheck-suppress noExplicitConstructor
       optional_base(nullopt_t) noexcept;
 
       template <typename...Args>
@@ -366,6 +368,7 @@ namespace bpstd {
     /// \{
     /// \brief Constructs an optional that does not contain a value
     constexpr optional() noexcept;
+    // cppcheck-suppress noExplicitConstructor
     constexpr optional(nullopt_t) noexcept;
     /// \}
 
@@ -381,6 +384,7 @@ namespace bpstd {
     /// \note This constructor is defined as deleted if std::is_copy_constructible_v<T> is false
     ///
     /// \param other the optional to copy
+    // cppcheck-suppress noExplicitConstructor
     optional(detail::enable_overload_if_t<std::is_copy_constructible<T>::value,const optional&> other);
     optional(detail::disable_overload_if_t<std::is_copy_constructible<T>::value,const optional&> other) = delete;
 
@@ -398,6 +402,7 @@ namespace bpstd {
     /// \note This constructor is defined as deleted if std::is_move_constructible_v<T> is false
     ///
     /// \param other the optional to move
+    // cppcheck-suppress noExplicitConstructor
     optional(detail::enable_overload_if_t<std::is_move_constructible<T>::value,optional&&> other);
     optional(detail::disable_overload_if_t<std::is_move_constructible<T>::value,optional&&> other) = delete;
 
@@ -431,6 +436,7 @@ namespace bpstd {
     /// \param other the other type to convert
     template <typename U,
               enable_if_t<detail::optional_is_copy_convertible<T,U>::value && std::is_convertible<const U&, T>::value>* =nullptr>
+    // cppcheck-suppress noExplicitConstructor
     optional(const optional<U>& other);
     template <typename U,
               enable_if_t<detail::optional_is_copy_convertible<T,U>::value && !std::is_convertible<const U&, T>::value>* =nullptr>
@@ -467,6 +473,7 @@ namespace bpstd {
     /// \param other the other optional to move
     template <typename U,
               enable_if_t<detail::optional_is_move_convertible<T,U>::value && std::is_convertible<U&&, T>::value>* =nullptr>
+    // cppcheck-suppress noExplicitConstructor
     optional(optional<U>&& other);
     template <typename U,
               enable_if_t<detail::optional_is_move_convertible<T,U>::value && !std::is_convertible<U&&, T>::value>* =nullptr>
@@ -519,10 +526,11 @@ namespace bpstd {
     /// \param value the value to copy
     template <typename U=T,
               enable_if_t<detail::optional_is_value_convertible<T,U>::value && std::is_convertible<U&&, T>::value>* =nullptr>
+    // cppcheck-suppress noExplicitConstructor
     constexpr optional(U&& value);
     template <typename U=T,
               enable_if_t<detail::optional_is_value_convertible<T,U>::value && !std::is_convertible<U&&, T>::value>* =nullptr>
-    explicit constexpr optional(U&& value);
+    constexpr explicit optional(U&& value);
     /// \}
 
     //-----------------------------------------------------------------------

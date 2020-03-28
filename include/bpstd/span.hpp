@@ -58,7 +58,7 @@ namespace bpstd {
       constexpr extent_storage() noexcept = default;
 
       template <std::size_t UExtent>
-      constexpr extent_storage(extent_storage<UExtent>)
+      constexpr explicit extent_storage(extent_storage<UExtent>)
       {
         static_assert(
           UExtent == Extent,
@@ -66,7 +66,7 @@ namespace bpstd {
         );
       }
 
-      constexpr extent_storage(std::size_t)
+      constexpr explicit extent_storage(std::size_t)
       {
 
       }
@@ -82,13 +82,13 @@ namespace bpstd {
     {
     public:
       template <std::size_t Extent>
-      explicit constexpr extent_storage(extent_storage<Extent> ext)
+      constexpr explicit extent_storage(extent_storage<Extent> ext)
         : m_size{ext.size()}
       {
 
       }
 
-      explicit constexpr extent_storage(std::size_t size)
+      constexpr explicit extent_storage(std::size_t size)
         : m_size{size}
       {
 
@@ -253,6 +253,7 @@ namespace bpstd {
     /// \param arr the array reference
     template <std::size_t N,
               typename = enable_if_t<detail::is_allowed_extent_conversion<N,Extent>::value>>
+    // cppcheck-suppress noExplicitConstructor
     constexpr span(element_type (&arr)[N]) noexcept;
 
     /// \{
@@ -266,9 +267,11 @@ namespace bpstd {
     /// \param arr the array reference
     template <typename U, std::size_t N,
               typename = enable_if_t<detail::is_allowed_extent_conversion<N,Extent>::value>>
+    // cppcheck-suppress noExplicitConstructor
     constexpr span(std::array<U, N>& arr) noexcept;
     template <typename U, std::size_t N,
               typename = enable_if_t<detail::is_allowed_extent_conversion<N,Extent>::value>>
+    // cppcheck-suppress noExplicitConstructor
     constexpr span(const std::array<U, N>& arr) noexcept;
     /// \}
 
@@ -282,6 +285,7 @@ namespace bpstd {
     /// \param s the span
     template <typename U, std::size_t N,
               typename = enable_if_t<detail::is_allowed_extent_conversion<N,Extent>::value>>
+    // cppcheck-suppress noExplicitConstructor
     constexpr span(const span<U, N>& s) noexcept;
 
     /// \brief Constructs a span by copying \p other

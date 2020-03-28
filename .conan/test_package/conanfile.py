@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import os
 from conans import ConanFile, CMake
 
 class BackportConanTest(ConanFile):
