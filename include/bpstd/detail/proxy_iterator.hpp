@@ -101,6 +101,10 @@ namespace bpstd {
       //------------------------------------------------------------------------
     public:
 
+      /// \brief Default constructs this proxy_iterator by default-constructing
+      ///        the underlying iterator
+      constexpr proxy_iterator() = default;
+
       /// \brief Constructs a proxy_iterator from a given pointer
       ///
       /// \param it the iterator to construct this proxy_iterator
