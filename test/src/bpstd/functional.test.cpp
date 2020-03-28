@@ -60,7 +60,7 @@ namespace {
   };
 
   bool equal(int x, int y) { return x == y; }
-  bool nothrow_equal(int x, int y) { return x == y; }
+  bool nothrow_equal(int x, int y) noexcept { return x == y; }
 
 }
 
