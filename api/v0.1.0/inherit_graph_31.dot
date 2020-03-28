@@ -3,5 +3,11 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="bpstd::less\< void \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/d2f/structbpstd_1_1less_3_01void_01_4.html"];
+  Node69 [label="true_type",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node69 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="bpstd::is_bounded_array\l\< T[N]\>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d39/structbpstd_1_1is__bounded__array_3_01_t[_n]_4.html"];
+  Node69 -> Node71 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node71 [label="bpstd::is_null_pointer\l\< decltype(nullptr)\>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/dd6/structbpstd_1_1is__null__pointer_3_01decltype_07nullptr_08_4.html"];
+  Node69 -> Node72 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node72 [label="bpstd::is_unbounded\l_array\< T[]\>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/da5/structbpstd_1_1is__unbounded__array_3_01_t[]_4.html"];
 }

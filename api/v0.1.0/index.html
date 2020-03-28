@@ -102,33 +102,107 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>Much of the newer utilities may also have parallels in Boost libraries, however many organizations are unable to adopt this &ndash; either due to the domain being too constrained, or due to Boost being a large dependency to introduce.</p>
 <p>As a result, this library exists as a standalone, <b>header-only</b>, dependency-free drop-in for newer standard library features from C++11, C++14, C++17, and C++20.</p>
 <h2>Features</h2>
-<ul>
-<li><b>C++20</b><ul>
-<li>[x] <a href="include/bpstd/span.hpp"><code>bpstd::span</code></a></li>
-<li>[x] <a href="include/bpstd/memory.hpp"><code>bpstd::to_address</code></a></li>
-<li>[x] <a href="include/bpstd/memory.hpp"><code>bpstd::make_unique_for_overwrite</code></a></li>
-</ul>
-</li>
-<li><b>C++17</b><ul>
-<li>[x] <a href="include/bpstd/any.hpp"><code>bpstd::any</code></a></li>
-<li>[x] <a href="include/bpstd/string_view.hpp"><code>bpstd::string_view</code></a></li>
-<li>[x] <a href="include/bpstd/optional.hpp"><code>bpstd::optional</code></a></li>
-<li>[ ] <a href="include/bpstd/variant.hpp"><code>bpstd::variant</code></a></li>
-<li>[x] <a href="include/bpstd/functional.hpp"><code>bpstd::invoke</code></a></li>
-<li>[x] <a href="include/bpstd/functional.hpp"><code>bpstd::not_fn</code></a></li>
-<li>[x] <a href="include/bpstd/tuple.hpp"><code>bpstd::make_from_tuple</code></a></li>
-<li>[x] <a href="include/bpstd/tuple.hpp"><code>bpstd::apply</code></a></li>
-<li>[x] <a href="include/bpstd/cstddef.hpp"><code>bpstd::byte</code></a></li>
-</ul>
-</li>
-<li><b>C++14</b><ul>
-<li>[x] <a href="include/bpstd/type_traits.hpp"><code>_t</code> convenience traits</a></li>
-<li>[x] <a href="include/bpstd/type_traits.hpp"><code>_v</code> convenience variables</a> (when compiling with <code>-std=c++14</code>)</li>
-<li>[x] <a href="include/bpstd/functional.hpp">deduced functional objects</a></li>
-<li>[x] <a href="include/bpstd/memory.hpp"><code>bpstd::make_unique</code></a></li>
-</ul>
-</li>
-</ul>
+<h4>C++20</h4>
+<table class="doxtable">
+<tr>
+<th>Status </th><th>Feature </th><th>Paper(s)  </th></tr>
+<tr>
+<td>✅ </td><td><code><a class="el" href="d4/dd8/classbpstd_1_1span.html" title="This class is a non-owning view of a contiguous piece of memory. ">bpstd::span</a></code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0122r7.pdf"><code>P0122R7</code></a><br />
+ <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1024r3.pdf"><code>P1024R3</code></a><br />
+ <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/p1976r2.html"><code>P1976R2</code></a><br />
+ <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0317r1.html"><code>P0317R1</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code>bpstd::to_address</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0653r2.html"><code>P0653R2</code></a> </td></tr>
+<tr>
+<td>✅ (1) </td><td><code>bpstd::make_unique_for_overwrite</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p1020r1.html"><code>P1020R1</code></a><br />
+ <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/p1973r1.pdf"><code>P1973R1</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code>bpstd::is_nothrow_convertible</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0758r1.html"><code>P0758R1</code></a> </td></tr>
+</table>
+<p>1. The papers also include <code>make_shared_for_overwrite</code> and <code>allocate_shared_for_overwrite</code>, but these are intentionally not implemented &ndash; since it is impossible to implement efficiently without also authoring <code>shared_ptr</code> (since to join the node allocations requires internal support)</p>
+<h4>C++17</h4>
+<table class="doxtable">
+<tr>
+<th>Status </th><th>Feature </th><th>Paper(s)  </th></tr>
+<tr>
+<td>❌ (1) </td><td>File System </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0218r1.html"><code>P0218R1</code></a><br />
+ <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0219r1.html"><code>P0219R1</code></a><br />
+ <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0392r0.pdf"><code>P0392R0</code></a><br />
+ <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0317r1.html"><code>P0317R1</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code><a class="el" href="d8/d86/classbpstd_1_1optional.html" title="The class template optional manages an optional contained value, i.e. a value that may or may not be ...">bpstd::optional</a></code> </td><td><a href="http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2013/n3793.html"><code>N3793</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code><a class="el" href="d8/dbe/classbpstd_1_1any.html" title="An object that can hold values of any type via type-erasure. ">bpstd::any</a></code> </td><td><a href="http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2013/n3804.html"><code>N3804</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code>bpstd::string_view</code> </td><td><a href="http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2014/n3921.html"><code>N3921</code></a> </td></tr>
+<tr>
+<td>✅ </td><td>uniform container access (non-member <code><a class="el" href="d9/dde/iterator_8hpp.html#a0b079705c04cc4cde1fbdfc348e263a2" title="Gets the size of a container. ">size()</a></code>, <code><a class="el" href="d9/dde/iterator_8hpp.html#a0e7ead1a711cfc57a60a76facf624f13" title="Gets a pointer to the data from c. ">data()</a></code>, etc </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4280.pdf"><code>N4280</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code>bpstd::apply</code> </td><td><a href="http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2014/n3915.pdf"><code>N3915</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code>bpstd::make_from_tuple</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0209r2.pdf"><code>P0209R2</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code>bpstd::as_const</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0007r1.html"><code>P0007R1</code></a> </td></tr>
+<tr>
+<td>🚧 </td><td><code>bpstd::variant</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0088r3.html"><code>P0088R3</code></a><br />
+ <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0032r3.pdf"><code>P0032R3</code></a><br />
+ <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0393r3.html"><code>P0393R3</code></a> </td></tr>
+<tr>
+<td>🚧 </td><td><code>bpstd::uncaught_exceptions</code> </td><td><a href="http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2014/n4152.pdf"><code>N4152</code></a><br />
+ <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4259.pdf"><code>N4259</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code>bpstd::byte</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0298r3.pdf"><code>P0298R3</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code>bpstd::not_fn</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0005r4.html"><code>P0005R4</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code>bpstd::invoke</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4169.html"><code>N4169</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code>bpstd::void_t</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3911.pdf"><code>N3911</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code>bpstd::bool_constant</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4389.html"><code>N4389</code></a> </td></tr>
+<tr>
+<td>✅ </td><td>Traits for swappability </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0185r1.html"><code>P0185R1</code></a> </td></tr>
+<tr>
+<td>🚧 </td><td>Polymorphic allocators and memory resources </td><td>[<code>N3916</code>](3916) </td></tr>
+</table>
+<ol type="1">
+<li>See <a href="#where-is-stdfilesystem">this answer</a> in FAQ</li>
+</ol>
+<h3>C++14</h3>
+<table class="doxtable">
+<tr>
+<th>Status </th><th>Feature </th><th>Paper(s)  </th></tr>
+<tr>
+<td>✅ </td><td>Type alias versions of standard transformation traits </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3655.pdf"><code>N3655</code></a> </td></tr>
+<tr>
+<td>✅ </td><td>Transparent operator functors (<code><a class="el" href="df/dfc/structbpstd_1_1greater.html">bpstd::greater</a>&lt;&gt;</code>, etc) </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3421.htm"><code>N3421</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code>bpstd::tuple_element_t</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3887.pdf"><code>N3887</code></a> </td></tr>
+<tr>
+<td>❌ (1) </td><td>SFINAE-friendly <code>bpstd::result_of</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3670.html"><code>N3670</code></a> </td></tr>
+<tr>
+<td>🚧 </td><td>Addressing tuples by type </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3462.html"><code>N3462</code></a> </td></tr>
+<tr>
+<td>➖ (2) </td><td><code>bpstd::is_final</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3945.html#2112"><code>LWG 2112</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code><a class="el" href="de/d22/structbpstd_1_1is__null__pointer.html">bpstd::is_null_pointer</a></code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3822.html#2247"><code>LWG 2247</code></a> </td></tr>
+<tr>
+<td>🚧 </td><td><code>bpstd::make_reverse_iterator</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3945.html#2285"><code>LWG 2285</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code>bpstd::exchange</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3668.html"><code>N3668</code></a> </td></tr>
+<tr>
+<td>✅ </td><td><code>bpstd::make_unique</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3656.htm"><code>N3656</code></a> </td></tr>
+<tr>
+<td>✅ </td><td>Compile-time integer sequences (<code><a class="el" href="d6/d35/structbpstd_1_1integer__sequence.html">bpstd::integer_sequence</a></code>) </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3658.html"><code>N3658</code></a> </td></tr>
+<tr>
+<td>✅ </td><td>User-defined literals for standard library types (<code>bpstd::chrono_literals</code>, <code>bpstd::string_literals</code>) </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3642.pdf"><code>N3642</code></a> </td></tr>
+<tr>
+<td>🚧 </td><td>User-defined literals for <code>bpstd::complex</code> (<code>bpstd::complex_literals</code>) </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3779.pdf"><code>N3779</code></a> </td></tr>
+</table>
+<ol type="1">
+<li>Obsolete. Replaced by <code>bpstd::invoke_result</code></li>
+<li>Not implementable without compiler support. Pre-C++14, requires specializations and will default to <code>false_type</code></li>
+</ol>
 <h2>FAQ</h2>
 <h3>Where is <code>std::filesystem</code>?</h3>
 <p>This library aims to deliver a <em>header-only</em> solution to the many missing types that have been introduced in newer standard libraries. <code>std::filesystem</code> is a bit complicated to handle, since it introduces a dependency on the operating system being compiled against. Implementing <code>std::filesystem</code> will generally require conditional compilation, and &ndash; for best practices &ndash; separate source files in order to insulate use of system headers (lest this library introduce the perils of the <code>&lt;windows.h&gt;</code> macros). This would change the library fundamentally so that it is no longer a header-only solution &ndash; and this is not desirable.</p>
