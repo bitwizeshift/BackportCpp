@@ -36,10 +36,33 @@
 
 #include "type_traits.hpp" // common_type_t
 
+#include <iterator>
 #include <cstddef> // std::size_t
 #include <initializer_list>
 
 namespace bpstd {
+
+  //============================================================================
+  // class : reverse_iterator
+  //============================================================================
+
+  template <typename T>
+  using reverse_iterator = std::reverse_iterator<T>;
+
+  //============================================================================
+  // non-member functions : class : reverse_iterator
+  //============================================================================
+
+  /// \brief Makes a reverse_iterator given an iterator \p i
+  ///
+  /// This is a convenience function template that constructs a
+  /// reverse_iterator for the given iterator \p i with the type deduced from
+  /// the type of the argument.
+  ///
+  /// \param i the iterator
+  /// \return the reverse_iterator
+  template <typename Iterator>
+  constexpr reverse_iterator<Iterator> make_reverse_iterator(Iterator i);
 
   //============================================================================
   // non-member functions
@@ -127,6 +150,21 @@ namespace bpstd {
   constexpr std::ptrdiff_t ssize(const T (&array)[N]) noexcept;
 
 } // namespace bpstd
+
+//==============================================================================
+// non-member functions : class : reverse_iterator
+//==============================================================================
+
+//------------------------------------------------------------------------------
+// Utilities
+//------------------------------------------------------------------------------
+
+template <typename Iterator>
+inline constexpr bpstd::reverse_iterator<Iterator>
+  bpstd::make_reverse_iterator(Iterator i)
+{
+  return reverse_iterator<Iterator>{i};
+}
 
 //==============================================================================
 // non-member functions
