@@ -442,15 +442,21 @@ namespace bpstd {
 
   //----------------------------------------------------------------------------
 
-  // is_final is only defined in C++14
 #if __cplusplus >= 201402L
+  // is_final is only defined in C++14
   template <typename T>
-  using is_final = std::is_final<T>;
+  struct is_final : std::is_final<T>{};
+#else
+  // is_final requires compiler-support to implement.
+  // Without this support, the best we can do is require explicit
+  // specializations of 'is_final' for any types that are known to be final
+  template <typename T>
+  struct is_final : false_type{};
+#endif
 
 #if BPSTD_HAS_TEMPLATE_VARIABLES
   template <typename T>
   BPSTD_CPP17_INLINE constexpr auto is_final_v = is_final<T>::value;
-#endif
 #endif
 
   //----------------------------------------------------------------------------
