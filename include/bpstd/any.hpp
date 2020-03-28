@@ -106,6 +106,7 @@ namespace bpstd {
     template<typename ValueType,
              typename=enable_if_t<!is_same<decay_t<ValueType>,any>::value &&
                                    is_copy_constructible<decay_t<ValueType>>::value>>
+    // cppcheck-suppress noExplicitConstructor
     any(ValueType&& value);
 
     /// \brief Constructs an 'any' of type ValueType by forwarding \p args to

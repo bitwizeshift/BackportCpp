@@ -762,13 +762,15 @@ namespace bpstd {
   struct aligned_union
   {
     static constexpr std::size_t alignment_value = detail::largest<alignof(Ts)...>::value;
-    static constexpr std::size_t size_value = detail::largest<Len, sizeof(Ts)...>::value;
 
     struct type
     {
-      alignas(alignment_value) char buffer[size_value];
+      alignas(alignment_value) char buffer[detail::largest<Len, sizeof(Ts)...>::value];
     };
   };
+
+  template <std::size_t Len, typename... Ts>
+  constexpr std::size_t aligned_union<Len,Ts...>::alignment_value;
 
   template <std::size_t Len, typename...Ts>
   using aligned_union_t = typename aligned_union<Len, Ts...>::type;
