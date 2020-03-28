@@ -153,7 +153,7 @@ C++17, and C++20.
 | 🚧     | Addressing tuples by type                               | [`N3462`][3462] |
 | ➖ (2) | `bpstd::is_final`                                       | [`LWG 2112`][39452112] |
 | ✅     | `bpstd::is_null_pointer`                                | [`LWG 2247`][38222247] |
-| 🚧     | `bpstd::make_reverse_iterator`                          | [`LWG 2285`][39452285] |
+| ✅     | `bpstd::make_reverse_iterator`                          | [`LWG 2285`][39452285] |
 | ✅     | `bpstd::exchange`                                       | [`N3668`][3668] |
 | ✅     | `bpstd::make_unique`                                    | [`N3656`][3656] |
 | ✅     | Compile-time integer sequences (`bpstd::integer_sequence`) | [`N3658`][3658] |
