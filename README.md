@@ -90,7 +90,7 @@ C++17, and C++20.
 | ✅     | `bpstd::make_from_tuple`                              | [`P0209R2`][02092] |
 | ✅     | `bpstd::as_const`                                     | [`P0007R1`][00071] |
 | 🚧     | `bpstd::variant`                                      | [`P0088R3`][00883]<br> [`P0032R3`][00323]<br> [`P0393R3`][03933] |
-| 🚧     | `bpstd::uncaught_exceptions`                          | [`N4152`][4152]<br> [`N4259`][4259] |
+| ✅     | `bpstd::uncaught_exceptions`                          | [`N4152`][4152]<br> [`N4259`][4259] |
 | ✅     | `bpstd::byte`                                         | [`P0298R3`][02983] |
 | ✅     | `bpstd::not_fn`                                       | [`P0005R4`][00054] |
 | ✅     | `bpstd::invoke`                                       | [`N4169`][4169] |
