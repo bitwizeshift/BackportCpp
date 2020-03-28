@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0ae408a0a23245898a1f761363e28685)](https://app.codacy.com/manual/bitwizeshift/BackportCpp?utm_source=github.com&utm_medium=referral&utm_content=bitwizeshift/BackportCpp&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://github.com/bitwizeshift/BackportCpp/workflows/build/badge.svg)](https://github.com/bitwizeshift/BackportCpp/actions)
 [![Github Issues](https://img.shields.io/github/issues/bitwizeshift/BackportCpp.svg)](http://github.com/bitwizeshift/BackportCpp/issues)
 [![Tested Compilers](https://img.shields.io/badge/compilers-gcc%20%7C%20clang%20%7C%20msvc-blue.svg)](#tested-compilers)
