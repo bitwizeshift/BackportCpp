@@ -9,7 +9,9 @@ digraph "Graphical Class Hierarchy"
   Node73 -> Node75 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node75 [label="bpstd::is_bounded_array\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d05/structbpstd_1_1is__bounded__array.html"];
   Node73 -> Node76 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node76 [label="bpstd::is_null_pointer\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d22/structbpstd_1_1is__null__pointer.html"];
+  Node76 [label="bpstd::is_final\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/df9/structbpstd_1_1is__final.html"];
   Node73 -> Node77 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node77 [label="bpstd::is_unbounded\l_array\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/dde/structbpstd_1_1is__unbounded__array.html"];
+  Node77 [label="bpstd::is_null_pointer\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d22/structbpstd_1_1is__null__pointer.html"];
+  Node73 -> Node78 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node78 [label="bpstd::is_unbounded\l_array\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/dde/structbpstd_1_1is__unbounded__array.html"];
 }

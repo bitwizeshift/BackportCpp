@@ -141,6 +141,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dd6/structbpstd_1_1is__null__pointer_3_01decltype_07nullptr_08_4.html">bpstd::is_null_pointer&lt; decltype(nullptr)&gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/df9/structbpstd_1_1is__final.html">bpstd::is_final&lt; T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d05/structbpstd_1_1is__bounded__array.html">bpstd::is_bounded_array&lt; T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d39/structbpstd_1_1is__bounded__array_3_01_t[_n]_4.html">bpstd::is_bounded_array&lt; T[N]&gt;</a></td></tr>
@@ -659,13 +661,13 @@ template&lt;typename T &gt; </td></tr>
 struct bpstd::aligned_union&lt; Len, Ts &gt;::type</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d54/type__traits_8hpp_source.html#l00767">767</a> of file <a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d54/type__traits_8hpp_source.html#l00772">772</a> of file <a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
-<a id="a3379bed9a529968687315592031201c7"></a>char</td>
+<a id="add1681dc58e99d22763ae41dee7fbd21"></a>char</td>
 <td class="fieldname">
-buffer[size_value]</td>
+buffer[detail::largest&lt; Len, sizeof(Ts)... &gt;::value]</td>
 <td class="fielddoc">
 </td></tr>
 </table>

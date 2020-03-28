@@ -79,6 +79,7 @@ var hierarchy =
     [ "false_type", null, [
       [ "bpstd::disjunction<... >", "d1/d38/structbpstd_1_1disjunction.html", null ],
       [ "bpstd::is_bounded_array< T >", "d4/d05/structbpstd_1_1is__bounded__array.html", null ],
+      [ "bpstd::is_final< T >", "dc/df9/structbpstd_1_1is__final.html", null ],
       [ "bpstd::is_null_pointer< T >", "de/d22/structbpstd_1_1is__null__pointer.html", null ],
       [ "bpstd::is_unbounded_array< T >", "db/dde/structbpstd_1_1is__unbounded__array.html", null ]
     ] ],

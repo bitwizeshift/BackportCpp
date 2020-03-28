@@ -12,5 +12,6 @@ var searchData=
   ['bit_5for',['bit_or',['../dc/d6e/structbpstd_1_1bit__or.html',1,'bpstd']]],
   ['bit_5for_3c_20void_20_3e',['bit_or&lt; void &gt;',['../dc/d00/structbpstd_1_1bit__or_3_01void_01_4.html',1,'bpstd']]],
   ['bit_5fxor',['bit_xor',['../d4/d2b/structbpstd_1_1bit__xor.html',1,'bpstd']]],
-  ['bit_5fxor_3c_20void_20_3e',['bit_xor&lt; void &gt;',['../dc/d83/structbpstd_1_1bit__xor_3_01void_01_4.html',1,'bpstd']]]
+  ['bit_5fxor_3c_20void_20_3e',['bit_xor&lt; void &gt;',['../dc/d83/structbpstd_1_1bit__xor_3_01void_01_4.html',1,'bpstd']]],
+  ['bpstd_5funcaught_5fexceptions_5femulated',['BPSTD_UNCAUGHT_EXCEPTIONS_EMULATED',['../d7/d1e/exception_8hpp.html#af2779e81f80425827088dad9c53282bf',1,'exception.hpp']]]
 ];

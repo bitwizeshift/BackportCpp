@@ -10,13 +10,14 @@ var type__traits_8hpp =
     [ "negation", "d1/dbd/structbpstd_1_1negation.html", null ],
     [ "is_null_pointer", "de/d22/structbpstd_1_1is__null__pointer.html", null ],
     [ "is_null_pointer< decltype(nullptr)>", "d2/dd6/structbpstd_1_1is__null__pointer_3_01decltype_07nullptr_08_4.html", null ],
+    [ "is_final", "dc/df9/structbpstd_1_1is__final.html", null ],
     [ "is_bounded_array", "d4/d05/structbpstd_1_1is__bounded__array.html", null ],
     [ "is_bounded_array< T[N]>", "df/d39/structbpstd_1_1is__bounded__array_3_01_t[_n]_4.html", null ],
     [ "is_unbounded_array", "db/dde/structbpstd_1_1is__unbounded__array.html", null ],
     [ "is_unbounded_array< T[]>", "dc/da5/structbpstd_1_1is__unbounded__array_3_01_t[]_4.html", null ],
     [ "aligned_union", "d1/d91/structbpstd_1_1aligned__union.html", "d1/d91/structbpstd_1_1aligned__union" ],
     [ "type", "d1/d91/structbpstd_1_1aligned__union.html#d4/d86/structbpstd_1_1aligned__union_1_1type", [
-      [ "buffer", "d1/d91/structbpstd_1_1aligned__union.html#a3379bed9a529968687315592031201c7", null ]
+      [ "buffer", "d1/d91/structbpstd_1_1aligned__union.html#add1681dc58e99d22763ae41dee7fbd21", null ]
     ] ],
     [ "BPSTD_HAS_TRIVIAL_TYPE_TRAITS", "dc/d54/type__traits_8hpp.html#a3edd72b06f4e50a28e97b7e3c6af8ae0", null ],
     [ "add_const", "dc/d54/type__traits_8hpp.html#a9e4d27371695ebbb4ca68a4cb932aaab", null ],

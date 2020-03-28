@@ -98,16 +98,13 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:ae602c20418f7fa33b66e7288bd413077"><td class="memItemLeft" align="right" valign="top"><a id="ae602c20418f7fa33b66e7288bd413077"></a>
 static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>alignment_value</b> = detail::largest&lt;alignof(Ts)...&gt;::value</td></tr>
 <tr class="separator:ae602c20418f7fa33b66e7288bd413077"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1d14047b8573ee993f457ec2f7ba564"><td class="memItemLeft" align="right" valign="top"><a id="af1d14047b8573ee993f457ec2f7ba564"></a>
-static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>size_value</b> = detail::largest&lt;Len, sizeof(Ts)...&gt;::value</td></tr>
-<tr class="separator:af1d14047b8573ee993f457ec2f7ba564"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;std::size_t Len, typename... Ts&gt;<br />
 struct bpstd::aligned_union&lt; Len, Ts &gt;</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d54/type__traits_8hpp_source.html#l00762">762</a> of file <a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d54/type__traits_8hpp_source.html#l00768">768</a> of file <a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>.</p>
 </div><hr/><h2 class="groupheader">Class Documentation</h2>
 <a name="d4/d86/structbpstd_1_1aligned__union_1_1type" id="d4/d86/structbpstd_1_1aligned__union_1_1type"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#d4/d86/structbpstd_1_1aligned__union_1_1type">&#9670;&nbsp;</a></span>bpstd::aligned_union::type</h2>
@@ -124,13 +121,13 @@ struct bpstd::aligned_union&lt; Len, Ts &gt;</h3>
 struct bpstd::aligned_union&lt; Len, Ts &gt;::type</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d54/type__traits_8hpp_source.html#l00767">767</a> of file <a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d54/type__traits_8hpp_source.html#l00772">772</a> of file <a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
-<a id="a3379bed9a529968687315592031201c7"></a>char</td>
+<a id="add1681dc58e99d22763ae41dee7fbd21"></a>char</td>
 <td class="fieldname">
-buffer[size_value]</td>
+buffer[detail::largest&lt; Len, sizeof(Ts)... &gt;::value]</td>
 <td class="fielddoc">
 </td></tr>
 </table>

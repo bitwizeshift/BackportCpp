@@ -5,5 +5,6 @@ var searchData=
   ['end',['end',['../db/dba/classbpstd_1_1basic__string__view.html#a358e6651f8e6798f780e552110d1bd37',1,'bpstd::basic_string_view']]],
   ['equal_5fto',['equal_to',['../de/d68/structbpstd_1_1equal__to.html',1,'bpstd']]],
   ['equal_5fto_3c_20void_20_3e',['equal_to&lt; void &gt;',['../de/dd3/structbpstd_1_1equal__to_3_01void_01_4.html',1,'bpstd']]],
+  ['exception_2ehpp',['exception.hpp',['../d7/d1e/exception_8hpp.html',1,'']]],
   ['exchange',['exchange',['../d1/d4e/utility_8hpp.html#af1d39eec653549c1925505cd581437e1',1,'bpstd']]]
 ];

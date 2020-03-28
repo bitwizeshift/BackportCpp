@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['tuple_2ehpp',['tuple.hpp',['../d3/d6f/tuple_8hpp.html',1,'']]],
-  ['type_5ftraits_2ehpp',['type_traits.hpp',['../dc/d54/type__traits_8hpp.html',1,'']]]
+  ['span_2ehpp',['span.hpp',['../da/de1/span_8hpp.html',1,'']]],
+  ['string_2ehpp',['string.hpp',['../d4/da0/string_8hpp.html',1,'']]],
+  ['string_5fview_2ehpp',['string_view.hpp',['../da/db5/string__view_8hpp.html',1,'']]]
 ];

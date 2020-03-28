@@ -80,6 +80,7 @@ $(document).ready(function(){initNavTree('d9/dde/iterator_8hpp.html','../../');}
 
 <div class="header">
   <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">iterator.hpp File Reference</div>  </div>
@@ -89,6 +90,7 @@ $(document).ready(function(){initNavTree('d9/dde/iterator_8hpp.html','../../');}
 <p>This header provides definitions from the C++ header &lt;iterator&gt;  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>&quot;</code><br />
+<code>#include &lt;iterator&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;initializer_list&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -103,8 +105,19 @@ $(document).ready(function(){initNavTree('d9/dde/iterator_8hpp.html','../../');}
 </div>
 <p><a href="../../d9/dde/iterator_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a6994e0a245cbf39ff92c8c67dacef659"><td class="memTemplParams" colspan="2"><a id="a6994e0a245cbf39ff92c8c67dacef659"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a6994e0a245cbf39ff92c8c67dacef659"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::reverse_iterator</b> = std::reverse_iterator&lt; T &gt;</td></tr>
+<tr class="separator:a6994e0a245cbf39ff92c8c67dacef659"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a5476ce49c1b7cdf065d57b6ceecb3f7d"><td class="memTemplParams" colspan="2">template&lt;typename Iterator &gt; </td></tr>
+<tr class="memitem:a5476ce49c1b7cdf065d57b6ceecb3f7d"><td class="memTemplItemLeft" align="right" valign="top">constexpr reverse_iterator&lt; Iterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dde/iterator_8hpp.html#a5476ce49c1b7cdf065d57b6ceecb3f7d">bpstd::make_reverse_iterator</a> (Iterator i)</td></tr>
+<tr class="memdesc:a5476ce49c1b7cdf065d57b6ceecb3f7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes a reverse_iterator given an iterator <code>i</code>.  <a href="../../d9/dde/iterator_8hpp.html#a5476ce49c1b7cdf065d57b6ceecb3f7d">More...</a><br /></td></tr>
+<tr class="separator:a5476ce49c1b7cdf065d57b6ceecb3f7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2551eb714327c58ac08bad722f4b4a46"><td class="memTemplParams" colspan="2">template&lt;typename T , std::size_t N&gt; </td></tr>
 <tr class="memitem:a2551eb714327c58ac08bad722f4b4a46"><td class="memTemplItemLeft" align="right" valign="top">constexpr T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dde/iterator_8hpp.html#a2551eb714327c58ac08bad722f4b4a46">bpstd::data</a> (T(&amp;array)[N]) noexcept</td></tr>
 <tr class="memdesc:a2551eb714327c58ac08bad722f4b4a46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a pointer to the start of an array.  <a href="../../d9/dde/iterator_8hpp.html#a2551eb714327c58ac08bad722f4b4a46">More...</a><br /></td></tr>
@@ -191,7 +204,7 @@ template&lt;typename C &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to the data </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00140">140</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00178">178</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
@@ -230,7 +243,7 @@ template&lt;typename C &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to the data </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00147">147</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00185">185</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
@@ -269,7 +282,7 @@ template&lt;typename T , std::size_t N&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to the data </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00153">153</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00191">191</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
@@ -308,7 +321,7 @@ template&lt;typename E &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to the start of the initializer list </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00160">160</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00198">198</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
@@ -347,7 +360,7 @@ template&lt;typename C &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if <code>is</code> empty </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00169">169</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00207">207</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
@@ -386,7 +399,7 @@ template&lt;typename T , std::size_t N&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if N is 0 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00176">176</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00214">214</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
@@ -425,7 +438,37 @@ template&lt;typename E &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if <code>il</code> is empty </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00183">183</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00221">221</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="file_a5476ce49c1b7cdf065d57b6ceecb3f7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#file_a5476ce49c1b7cdf065d57b6ceecb3f7d">&#9670;&nbsp;</a></span>make_reverse_iterator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Iterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr reverse_iterator&lt;Iterator&gt; bpstd::make_reverse_iterator </td>
+          <td>(</td>
+          <td class="paramtype">Iterator&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Makes a reverse_iterator given an iterator <code>i</code>. </p>
+<p>This is a convenience function template that constructs a reverse_iterator for the given iterator <code>i</code> with the type deduced from the type of the argument.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>the iterator </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the reverse_iterator </dd></dl>
 
 </div>
 </div>
@@ -464,7 +507,7 @@ template&lt;typename C &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the container's size </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00192">192</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00230">230</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
@@ -503,7 +546,7 @@ template&lt;typename T , std::size_t N&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the size of an array </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00199">199</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00237">237</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
@@ -542,7 +585,7 @@ template&lt;typename C &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the size of the container </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00208">208</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00246">246</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
@@ -581,7 +624,7 @@ template&lt;typename T , std::ptrdiff_t N&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the size of an array </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00217">217</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00255">255</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
