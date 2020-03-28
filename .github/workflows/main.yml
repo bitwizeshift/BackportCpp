@@ -149,7 +149,7 @@ jobs:
           - name: windows-latest-cl-vs2019
             os: windows-latest
             compiler: cl
-            version: "14.24"
+            version: latest
 
           - name: windows-latest-clang-cl
             os: windows-latest
@@ -262,7 +262,12 @@ jobs:
 
       - name: Configure x64
         if: runner.os == 'Windows'
-        run: .github\workflows\vsenv.bat -arch=x64 -host_arch=x64 -vcvars_ver="${{ matrix.version }}"
+        run: |
+          if ("${{ matrix.version }}" -eq "latest") {
+            .github\workflows\vsenv.bat -arch=x64 -host_arch=x64
+          } else {
+            .github\workflows\vsenv.bat -arch=x64 -host_arch=x64 -vcvars_ver="${{ matrix.version }}"
+          }
 
       - name: Build & Test Debug x64
         run: |
@@ -289,7 +294,12 @@ jobs:
         if: (runner.os == 'Windows' && matrix.compiler != 'gcc') || runner.os == 'Linux'
         run: |
           if ("${{ runner.os }}" -eq "Windows") {
-            & .github\workflows\vsenv.bat -arch=x86 -host_arch=x64 -vcvars_ver=${{ matrix.version }}
+            if ("${{ matrix.version }}" -eq "latest") {
+              .github\workflows\vsenv.bat -arch=x86 -host_arch=x64
+            } else {
+              .github\workflows\vsenv.bat -arch=x86 -host_arch=x64 -vcvars_ver="${{ matrix.version }}"
+            }
+
           }
           if ("${{ matrix.compiler }}" -notcontains "cl") {
             echo "::set-env name=CXXFLAGS::$env:CXXFLAGS -m32"
