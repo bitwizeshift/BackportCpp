@@ -689,7 +689,7 @@ inline constexpr typename bpstd::span<T,Extent>::reverse_iterator
   bpstd::span<T,Extent>::rbegin()
   const noexcept
 {
-  return std::reverse_iterator<iterator>{end()};
+  return reverse_iterator(end());
 }
 
 template <typename T, std::size_t Extent>
@@ -697,7 +697,7 @@ inline constexpr typename bpstd::span<T,Extent>::reverse_iterator
   bpstd::span<T,Extent>::rend()
   const noexcept
 {
-  return std::reverse_iterator<iterator>{begin()};
+  return reverse_iterator(begin());
 }
 
 //==============================================================================
