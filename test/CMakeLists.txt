@@ -11,6 +11,7 @@ set(source_files
   "src/bpstd/span.test.cpp"
   "src/bpstd/memory.test.cpp"
   "src/bpstd/type_traits.test.cpp"
+  "src/bpstd/iterator.test.cpp"
 )
 
 add_executable(${PROJECT_NAME}.test
