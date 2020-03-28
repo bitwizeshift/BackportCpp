@@ -104,7 +104,7 @@ namespace bpstd {
 
   /// \brief Casts \p x to an rvalue
   ///
-  /// \param x the parameter to move
+  /// \param t the parameter to move
   /// \return rvalue reference to \p x
   template <typename T>
   constexpr remove_reference_t<T>&& move( T&& t ) noexcept;
