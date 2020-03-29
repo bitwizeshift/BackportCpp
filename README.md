@@ -159,7 +159,7 @@ C++17, and C++20.
 | ✅     | `bpstd::make_unique`                                    | [`N3656`][3656] |
 | ✅     | Compile-time integer sequences (`bpstd::integer_sequence`) | [`N3658`][3658] |
 | ✅     | User-defined literals for standard library types (`bpstd::chrono_literals`, `bpstd::string_literals`) | [`N3642`][3642] |
-| 🚧     | User-defined literals for `bpstd::complex` (`bpstd::complex_literals`) | [`N3779`][3779] |
+| ✅     | User-defined literals for `bpstd::complex` (`bpstd::complex_literals`) | [`N3779`][3779] |
 
 1. Obsolete. Replaced by `bpstd::invoke_result`
 2. Not implementable without compiler support. Pre-C++14, requires specializations
