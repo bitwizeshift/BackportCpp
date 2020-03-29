@@ -1,6 +1,11 @@
 var annotated_dup =
 [
     [ "bpstd", null, [
+      [ "aligned_storage", "d0/d6d/structbpstd_1_1aligned__storage.html", [
+        [ "type", "d0/d6d/structbpstd_1_1aligned__storage.html#dd/da4/structbpstd_1_1aligned__storage_1_1type", [
+          [ "storage", "d0/d6d/structbpstd_1_1aligned__storage.html#ad0c4a8b8d94cb80824c5305e51462e2c", null ]
+        ] ]
+      ] ],
       [ "aligned_union", "d1/d91/structbpstd_1_1aligned__union.html", "d1/d91/structbpstd_1_1aligned__union" ],
       [ "any", "d8/dbe/classbpstd_1_1any.html", "d8/dbe/classbpstd_1_1any" ],
       [ "bad_any_cast", "da/d5e/classbpstd_1_1bad__any__cast.html", null ],

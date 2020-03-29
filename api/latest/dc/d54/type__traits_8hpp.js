@@ -15,6 +15,14 @@ var type__traits_8hpp =
     [ "is_bounded_array< T[N]>", "df/d39/structbpstd_1_1is__bounded__array_3_01_t[_n]_4.html", null ],
     [ "is_unbounded_array", "db/dde/structbpstd_1_1is__unbounded__array.html", null ],
     [ "is_unbounded_array< T[]>", "dc/da5/structbpstd_1_1is__unbounded__array_3_01_t[]_4.html", null ],
+    [ "aligned_storage", "d0/d6d/structbpstd_1_1aligned__storage.html", [
+      [ "type", "d0/d6d/structbpstd_1_1aligned__storage.html#dd/da4/structbpstd_1_1aligned__storage_1_1type", [
+        [ "storage", "d0/d6d/structbpstd_1_1aligned__storage.html#ad0c4a8b8d94cb80824c5305e51462e2c", null ]
+      ] ]
+    ] ],
+    [ "type", "d0/d6d/structbpstd_1_1aligned__storage.html#dd/da4/structbpstd_1_1aligned__storage_1_1type", [
+      [ "storage", "d0/d6d/structbpstd_1_1aligned__storage.html#ad0c4a8b8d94cb80824c5305e51462e2c", null ]
+    ] ],
     [ "aligned_union", "d1/d91/structbpstd_1_1aligned__union.html", "d1/d91/structbpstd_1_1aligned__union" ],
     [ "type", "d1/d91/structbpstd_1_1aligned__union.html#d4/d86/structbpstd_1_1aligned__union_1_1type", [
       [ "buffer", "d1/d91/structbpstd_1_1aligned__union.html#add1681dc58e99d22763ae41dee7fbd21", null ]
@@ -32,7 +40,6 @@ var type__traits_8hpp =
     [ "add_rvalue_reference_t", "dc/d54/type__traits_8hpp.html#a7a563d9afc3549242c7badb6816d26d7", null ],
     [ "add_volatile", "dc/d54/type__traits_8hpp.html#a788c33f5dc076ead668bf7467baa0387", null ],
     [ "add_volatile_t", "dc/d54/type__traits_8hpp.html#a077fa40f9e0cae1d16a249c921172b38", null ],
-    [ "aligned_storage", "dc/d54/type__traits_8hpp.html#a9d9cf0909d40cab9714f04123e530b91", null ],
     [ "aligned_storage_t", "dc/d54/type__traits_8hpp.html#a76e6044470214422585c5dc2af440a32", null ],
     [ "aligned_union_t", "dc/d54/type__traits_8hpp.html#a250a98a4cc391fe3511fb1645d03198b", null ],
     [ "bool_constant", "dc/d54/type__traits_8hpp.html#a0bd3c75a25205b45ed6acb569df65e23", null ],

@@ -3,5 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="bpstd::not_equal_to\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/dfb/structbpstd_1_1not__equal__to.html"];
+  Node0 [label="bpstd::negate\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d6/dcf/structbpstd_1_1negate.html"];
 }

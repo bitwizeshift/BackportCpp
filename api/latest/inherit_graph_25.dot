@@ -3,5 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="bpstd::greater_equal\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d58/structbpstd_1_1greater__equal.html"];
+  Node0 [label="bpstd::equal_to\< void \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/dd3/structbpstd_1_1equal__to_3_01void_01_4.html"];
 }

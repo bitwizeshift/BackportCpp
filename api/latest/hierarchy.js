@@ -1,5 +1,7 @@
 var hierarchy =
 [
+    [ "bpstd::aligned_storage< Size, Align >", "d0/d6d/structbpstd_1_1aligned__storage.html", null ],
+    [ "bpstd::aligned_storage< buffer_size, buffer_align >", "d0/d6d/structbpstd_1_1aligned__storage.html", null ],
     [ "bpstd::aligned_union< Len, Ts >", "d1/d91/structbpstd_1_1aligned__union.html", null ],
     [ "bpstd::any", "d8/dbe/classbpstd_1_1any.html", null ],
     [ "B1", null, [
@@ -73,6 +75,7 @@ var hierarchy =
     [ "bpstd::plus< void >", "df/dd7/structbpstd_1_1plus_3_01void_01_4.html", null ],
     [ "bpstd::span< T, Extent >", "d4/dd8/classbpstd_1_1span.html", null ],
     [ "bpstd::aligned_union< Len, Ts >::type", "d1/d91/structbpstd_1_1aligned__union.html#d4/d86/structbpstd_1_1aligned__union_1_1type", null ],
+    [ "bpstd::aligned_storage< Size, Align >::type", "d0/d6d/structbpstd_1_1aligned__storage.html#dd/da4/structbpstd_1_1aligned__storage_1_1type", null ],
     [ "bpstd::type_identity< T >", "d8/d70/structbpstd_1_1type__identity.html", null ],
     [ "bpstd::type_identity< integer_sequence< T, Tails... > >", "d8/d70/structbpstd_1_1type__identity.html", null ],
     [ "bpstd::type_identity< void >", "d8/d70/structbpstd_1_1type__identity.html", null ],
