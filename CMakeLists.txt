@@ -46,6 +46,7 @@ set(header_files
   "include/bpstd/detail/proxy_iterator.hpp"
   "include/bpstd/detail/config.hpp"
   "include/bpstd/type_traits.hpp"
+  "include/bpstd/complex.hpp"
   "include/bpstd/exception.hpp"
   "include/bpstd/functional.hpp"
   "include/bpstd/memory.hpp"
