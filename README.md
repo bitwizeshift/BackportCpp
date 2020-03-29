@@ -53,7 +53,7 @@ C++17, and C++20.
 
 ## Features
 
-#### C++20
+### C++20
 
 | Status | Feature                                                 | Paper(s)        |
 |--------|---------------------------------------------------------|-----------------|
@@ -78,7 +78,7 @@ C++17, and C++20.
 <!-- is_nothrow_convertible -->
 [07581]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0758r1.html
 
-#### C++17
+### C++17
 
 | Status | Feature                                                 | Paper(s)        |
 |--------|---------------------------------------------------------|-----------------|
@@ -151,7 +151,7 @@ C++17, and C++20.
 | ✅     | Transparent operator functors (`bpstd::greater<>`, etc) | [`N3421`][3421] |
 | ✅     | `bpstd::tuple_element_t`                                | [`N3887`][3887] |
 | ❌ (1) | SFINAE-friendly `bpstd::result_of`                      | [`N3670`][3670] |
-| 🚧     | Addressing tuples by type                               | [`N3462`][3462] |
+| ✅     | Addressing tuples by type                               | [`N3462`][3462] |
 | ➖ (2) | `bpstd::is_final`                                       | [`LWG 2112`][39452112] |
 | ✅     | `bpstd::is_null_pointer`                                | [`LWG 2247`][38222247] |
 | ✅     | `bpstd::make_reverse_iterator`                          | [`LWG 2285`][39452285] |

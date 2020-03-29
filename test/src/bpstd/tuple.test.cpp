@@ -303,3 +303,155 @@ TEST_CASE("make_from_tuple<T>(...)", "[functional]")
     }
   }
 }
+
+TEST_CASE("get<T>(tuple&)", "[utility]")
+{
+  auto sut = std::tuple<int,float,double>{1,2.1f,3.14};
+
+  SECTION("T is first type in tuple")
+  {
+    SECTION("Gets reference to 0th element")
+    {
+      auto& lhs = bpstd::get<0>(sut);
+      auto& rhs = bpstd::get<int>(sut);
+
+      REQUIRE(&lhs == &rhs);
+    }
+  }
+
+  SECTION("T is middle type in tuple")
+  {
+    SECTION("Gets reference to 0th element")
+    {
+      auto& lhs = bpstd::get<1>(sut);
+      auto& rhs = bpstd::get<float>(sut);
+
+      REQUIRE(&lhs == &rhs);
+    }
+  }
+
+  SECTION("T is last type in tuple")
+  {
+    SECTION("Gets reference to 0th element")
+    {
+      auto& lhs = bpstd::get<2>(sut);
+      auto& rhs = bpstd::get<double>(sut);
+
+      REQUIRE(&lhs == &rhs);
+    }
+  }
+}
+
+TEST_CASE("get<T>(tuple&&)", "[utility]")
+{
+  auto sut = std::tuple<int,float,double>{1,2.1f,3.14};
+
+  SECTION("T is first type in tuple")
+  {
+    SECTION("Gets reference to 0th element")
+    {
+      auto&& lhs = bpstd::get<0>(bpstd::move(sut));
+      auto&& rhs = bpstd::get<int>(bpstd::move(sut));
+
+      REQUIRE(&lhs == &rhs);
+    }
+  }
+
+  SECTION("T is middle type in tuple")
+  {
+    SECTION("Gets reference to 0th element")
+    {
+      auto&& lhs = bpstd::get<1>(bpstd::move(sut));
+      auto&& rhs = bpstd::get<float>(bpstd::move(sut));
+
+      REQUIRE(&lhs == &rhs);
+    }
+  }
+
+  SECTION("T is last type in tuple")
+  {
+    SECTION("Gets reference to 0th element")
+    {
+      auto&& lhs = bpstd::get<2>(bpstd::move(sut));
+      auto&& rhs = bpstd::get<double>(bpstd::move(sut));
+
+      REQUIRE(&lhs == &rhs);
+    }
+  }
+}
+
+TEST_CASE("get<T>(const tuple&)", "[utility]")
+{
+  const auto sut = std::tuple<int,float,double>{1,2.1f,3.14};
+
+  SECTION("T is first type in tuple")
+  {
+    SECTION("Gets reference to 0th element")
+    {
+      const auto& lhs = bpstd::get<0>(sut);
+      const auto& rhs = bpstd::get<int>(sut);
+
+      REQUIRE(&lhs == &rhs);
+    }
+  }
+
+  SECTION("T is middle type in tuple")
+  {
+    SECTION("Gets reference to 0th element")
+    {
+      const auto& lhs = bpstd::get<1>(sut);
+      const auto& rhs = bpstd::get<float>(sut);
+
+      REQUIRE(&lhs == &rhs);
+    }
+  }
+
+  SECTION("T is last type in tuple")
+  {
+    SECTION("Gets reference to 0th element")
+    {
+      const auto& lhs = bpstd::get<2>(sut);
+      const auto& rhs = bpstd::get<double>(sut);
+
+      REQUIRE(&lhs == &rhs);
+    }
+  }
+}
+
+TEST_CASE("get<T>(const tuple&&)", "[utility]")
+{
+  const auto sut = std::tuple<int,float,double>{1,2.1f,3.14};
+
+  SECTION("T is first type in tuple")
+  {
+    SECTION("Gets reference to 0th element")
+    {
+      const auto&& lhs = bpstd::get<0>(bpstd::move(sut));
+      const auto&& rhs = bpstd::get<int>(bpstd::move(sut));
+
+      REQUIRE(&lhs == &rhs);
+    }
+  }
+
+  SECTION("T is middle type in tuple")
+  {
+    SECTION("Gets reference to 0th element")
+    {
+      const auto&& lhs = bpstd::get<1>(bpstd::move(sut));
+      const auto&& rhs = bpstd::get<float>(bpstd::move(sut));
+
+      REQUIRE(&lhs == &rhs);
+    }
+  }
+
+  SECTION("T is last type in tuple")
+  {
+    SECTION("Gets reference to 0th element")
+    {
+      const auto&& lhs = bpstd::get<2>(bpstd::move(sut));
+      const auto&& rhs = bpstd::get<double>(bpstd::move(sut));
+
+      REQUIRE(&lhs == &rhs);
+    }
+  }
+}

@@ -43,6 +43,17 @@
 
 namespace bpstd {
 
+  //============================================================================
+  // class : tuple
+  //============================================================================
+
+  template <typename...Types>
+  using tuple = std::tuple<Types...>;
+
+  //============================================================================
+  // utilities : tuple
+  //============================================================================
+
   template <std::size_t I, typename T>
   using tuple_element = std::tuple_element<I,T>;
 
@@ -58,6 +69,36 @@ namespace bpstd {
   template <typename T>
   BPSTD_CPP17_INLINE constexpr auto tuple_size_v = tuple_size<T>::value;
 #endif
+
+  //============================================================================
+  // non-member functions : class : tuple
+  //============================================================================
+
+  //----------------------------------------------------------------------------
+  // Utilities
+  //----------------------------------------------------------------------------
+
+  template <std::size_t N, typename... Types>
+  constexpr tuple_element_t<N,tuple<Types...>>&
+    get(tuple<Types...>&) noexcept;
+  template <std::size_t N, typename... Types>
+  constexpr tuple_element_t<N,tuple<Types...>>&&
+    get(tuple<Types...>&&) noexcept;
+  template <std::size_t N, typename... Types>
+  constexpr const tuple_element_t<N,tuple<Types...>>&
+    get(const tuple<Types...>&) noexcept;
+  template <std::size_t N, typename... Types>
+  constexpr const tuple_element_t<N,tuple<Types...>>&&
+    get(const tuple<Types...>&&) noexcept;
+
+  template <typename T, typename... Types>
+  constexpr T& get(tuple<Types...>& t) noexcept;
+  template <typename T, typename... Types>
+  constexpr T&& get(tuple<Types...>&& t) noexcept;
+  template <typename T, typename... Types>
+  constexpr const T& get(const tuple<Types...>& t) noexcept;
+  template <typename T, typename... Types>
+  constexpr const T&& get(const tuple<Types...>&& t) noexcept;
 
   //----------------------------------------------------------------------------
 
@@ -101,6 +142,92 @@ namespace bpstd {
   constexpr T make_from_tuple(Tuple&& tuple);
 
 } // namespace bpstd
+
+//==============================================================================
+// definitions : non-member functions : class : tuple
+//==============================================================================
+
+//------------------------------------------------------------------------------
+// Utilities
+//------------------------------------------------------------------------------
+
+template <std::size_t N, typename... Types>
+inline constexpr bpstd::tuple_element_t<N,bpstd::tuple<Types...>>&
+  bpstd::get(tuple<Types...>& t)
+  noexcept
+{
+  return std::get<N>(t);
+}
+
+template <std::size_t N, typename... Types>
+inline constexpr bpstd::tuple_element_t<N,bpstd::tuple<Types...>>&&
+  bpstd::get(tuple<Types...>&& t)
+  noexcept
+{
+  return move(std::get<N>(t));
+}
+
+template <std::size_t N, typename... Types>
+inline constexpr const bpstd::tuple_element_t<N,bpstd::tuple<Types...>>&
+  bpstd::get(const tuple<Types...>& t)
+  noexcept
+{
+  return std::get<N>(t);
+}
+
+template <std::size_t N, typename... Types>
+inline constexpr const bpstd::tuple_element_t<N,bpstd::tuple<Types...>>&&
+  bpstd::get(const tuple<Types...>&& t)
+  noexcept
+{
+  return move(std::get<N>(t));
+}
+
+namespace bpstd { namespace detail {
+
+  template <typename T, std::size_t Index, typename...Types>
+  struct index_of_impl;
+
+  template <typename T, std::size_t Index, typename Type0, typename...Types>
+  struct index_of_impl<T, Index, Type0, Types...>
+    : index_of_impl<T, Index + 1, Types...>{};
+
+  template <typename T, std::size_t Index, typename...Types>
+  struct index_of_impl<T, Index, T, Types...>
+    : integral_constant<std::size_t, Index>{};
+
+  template <typename T, typename...Types>
+  struct index_of : index_of_impl<T,0,Types...>{};
+
+}} // namespace bpstd::detail
+
+template <typename T, typename... Types>
+inline constexpr T& bpstd::get(tuple<Types...>& t)
+  noexcept
+{
+  return std::get<detail::index_of<T,Types...>::value>(t);
+}
+
+template <typename T, typename... Types>
+inline constexpr T&& bpstd::get(tuple<Types...>&& t)
+  noexcept
+{
+  return move(std::get<detail::index_of<T,Types...>::value>(t));
+}
+
+template <typename T, typename... Types>
+inline constexpr const T& bpstd::get(const tuple<Types...>& t)
+  noexcept
+{
+  return std::get<detail::index_of<T,Types...>::value>(t);
+}
+
+template <typename T, typename... Types>
+inline constexpr const T&& bpstd::get(const tuple<Types...>&& t)
+  noexcept
+{
+  return move(std::get<detail::index_of<T,Types...>::value>(t));
+}
 
 //==============================================================================
 // definition : apply
