@@ -740,7 +740,12 @@ namespace bpstd {
   //============================================================================
 
   template <std::size_t Size, std::size_t Align>
-  using aligned_storage = std::aligned_storage<Size, Align>;
+  struct aligned_storage
+  {
+    struct type {
+      alignas(Align) char storage[Size];
+    };
+  };
 
   template <std::size_t Size, std::size_t Align>
   using aligned_storage_t = typename aligned_storage<Size, Align>::type;
