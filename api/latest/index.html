@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>Much of the newer utilities may also have parallels in Boost libraries, however many organizations are unable to adopt this &ndash; either due to the domain being too constrained, or due to Boost being a large dependency to introduce.</p>
 <p>As a result, this library exists as a standalone, <b>header-only</b>, dependency-free drop-in for newer standard library features from C++11, C++14, C++17, and C++20.</p>
 <h2>Features</h2>
-<h4>C++20</h4>
+<h3>C++20</h3>
 <table class="doxtable">
 <tr>
 <th>Status </th><th>Feature </th><th>Paper(s)  </th></tr>
@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <td>✅ </td><td><code>bpstd::is_nothrow_convertible</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0758r1.html"><code>P0758R1</code></a> </td></tr>
 </table>
 <p>1. The papers also include <code>make_shared_for_overwrite</code> and <code>allocate_shared_for_overwrite</code>, but these are intentionally not implemented &ndash; since it is impossible to implement efficiently without also authoring <code>shared_ptr</code> (since to join the node allocations requires internal support)</p>
-<h4>C++17</h4>
+<h3>C++17</h3>
 <table class="doxtable">
 <tr>
 <th>Status </th><th>Feature </th><th>Paper(s)  </th></tr>
@@ -181,7 +181,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <tr>
 <td>❌ (1) </td><td>SFINAE-friendly <code>bpstd::result_of</code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3670.html"><code>N3670</code></a> </td></tr>
 <tr>
-<td>🚧 </td><td>Addressing tuples by type </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3462.html"><code>N3462</code></a> </td></tr>
+<td>✅ </td><td>Addressing tuples by type </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3462.html"><code>N3462</code></a> </td></tr>
 <tr>
 <td>➖ (2) </td><td><code><a class="el" href="dc/df9/structbpstd_1_1is__final.html">bpstd::is_final</a></code> </td><td><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3945.html#2112"><code>LWG 2112</code></a> </td></tr>
 <tr>
