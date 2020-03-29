@@ -102,13 +102,6 @@ namespace bpstd {
   // Utilities
   //----------------------------------------------------------------------------
 
-  /// \brief Casts \p x to an rvalue
-  ///
-  /// \param t the parameter to move
-  /// \return rvalue reference to \p x
-  template <typename T>
-  constexpr remove_reference_t<T>&& move( T&& t ) noexcept;
-
   /// \brief Moves a type \p x if it move-construction is non-throwing
   ///
   /// \param x the parameter to move
@@ -141,6 +134,49 @@ namespace bpstd {
   /// \param new_value the value to assign to obj
   template <typename T, typename U = T>
   BPSTD_CPP14_CONSTEXPR T exchange(T& obj, U&& new_value);
+
+  //============================================================================
+  // class : pair
+  //============================================================================
+
+  template <typename T, typename U>
+  using pair = std::pair<T,U>;
+
+  //============================================================================
+  // non-member functions : class : pair
+  //============================================================================
+
+  //----------------------------------------------------------------------------
+  // Utilities
+  //----------------------------------------------------------------------------
+
+  // C++11 does not implement const pair&&
+  template <std::size_t N, typename T, typename U>
+  constexpr conditional_t<N==0,T,U>& get(pair<T, U>& p) noexcept;
+  template <std::size_t N, typename T, typename U>
+  constexpr conditional_t<N==0,T,U>&& get(pair<T, U>&& p) noexcept;
+  template <std::size_t N, typename T, typename U>
+  constexpr const conditional_t<N==0,T,U>& get(const pair<T, U>& p) noexcept;
+  template <std::size_t N, typename T, typename U>
+  constexpr const conditional_t<N==0,T,U>&& get(const pair<T, U>&& p) noexcept;
+
+  template <typename T, typename U>
+  constexpr T& get(pair<T, U>& p) noexcept;
+  template <typename T, typename U>
+  constexpr T&& get(pair<T, U>&& p) noexcept;
+  template <typename T, typename U>
+  constexpr const T& get(const pair<T, U>& p) noexcept;
+  template <typename T, typename U>
+  constexpr const T&& get(const pair<T, U>&& p) noexcept;
+
+  template <typename T, typename U>
+  constexpr T& get(pair<U, T>& p) noexcept;
+  template <typename T, typename U>
+  constexpr const T& get(const pair<U, T>& p) noexcept;
+  template <typename T, typename U>
+  constexpr T&& get(pair<U, T>&& p) noexcept;
+  template <typename T, typename U>
+  constexpr const T&& get(const pair<U, T>&& p) noexcept;
 
   //============================================================================
   // struct : integer_sequence
@@ -218,6 +254,110 @@ inline BPSTD_CPP14_CONSTEXPR T bpstd::exchange(T& obj, U&& new_value)
   auto old_value = bpstd::move(obj);
   obj = bpstd::forward<U>(new_value);
   return old_value;
+}
+
+//==============================================================================
+// definitions : non-member functions : class : pair
+//==============================================================================
+
+//------------------------------------------------------------------------------
+// Utilities
+//------------------------------------------------------------------------------
+
+template <std::size_t N, typename T, typename U>
+inline constexpr bpstd::conditional_t<N==0,T,U>&
+  bpstd::get(pair<T, U>& p)
+  noexcept
+{
+  static_assert(N<=1, "N must be either 0 or 1 for get<N>(pair<T,U>)");
+
+  return std::get<N>(p);
+}
+
+template <std::size_t N, typename T, typename U>
+inline constexpr bpstd::conditional_t<N==0,T,U>&&
+  bpstd::get(pair<T, U>&& p)
+  noexcept
+{
+  static_assert(N<=1, "N must be either 0 or 1 for get<N>(pair<T,U>)");
+
+  return move(std::get<N>(p));
+}
+
+template <std::size_t N, typename T, typename U>
+inline constexpr const bpstd::conditional_t<N==0,T,U>&
+  bpstd::get(const pair<T, U>& p)
+  noexcept
+{
+  static_assert(N<=1, "N must be either 0 or 1 for get<N>(pair<T,U>)");
+
+  return std::get<N>(p);
+}
+
+template <std::size_t N, typename T, typename U>
+inline constexpr const bpstd::conditional_t<N==0,T,U>&&
+  bpstd::get(const pair<T, U>&& p)
+  noexcept
+{
+  static_assert(N<=1, "N must be either 0 or 1 for get<N>(pair<T,U>)");
+
+  return move(std::get<N>(p));
+}
+
+template <typename T, typename U>
+inline constexpr T& bpstd::get(pair<T, U>& p)
+  noexcept
+{
+  return p.first;
+}
+
+template <typename T, typename U>
+inline constexpr const T& bpstd::get(const pair<T, U>& p)
+  noexcept
+{
+  return p.first;
+}
+
+template <typename T, typename U>
+inline constexpr T&& bpstd::get(pair<T, U>&& p)
+  noexcept
+{
+  return move(p.first);
+}
+
+template <typename T, typename U>
+inline constexpr const T&& bpstd::get(const pair<T, U>&& p)
+  noexcept
+{
+  return move(p.first);
+}
+
+template <typename T, typename U>
+inline constexpr T& bpstd::get(pair<U, T>& p)
+  noexcept
+{
+  return p.second;
+}
+
+template <typename T, typename U>
+inline constexpr const T& bpstd::get(const pair<U, T>& p)
+  noexcept
+{
+  return p.second;
+}
+
+template <typename T, typename U>
+inline constexpr T&& bpstd::get(pair<U, T>&& p)
+  noexcept
+{
+  return move(p.second);
+}
+
+template <typename T, typename U>
+inline constexpr const T&& bpstd::get(const pair<U, T>&& p)
+  noexcept
+{
+  return move(p.second);
 }
 
 #endif /* BPSTD_UTILITY_HPP */
