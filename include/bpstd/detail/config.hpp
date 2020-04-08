@@ -62,7 +62,6 @@
 #endif
 
 #define BPSTD_UNUSED(x) static_cast<void>(x)
-#define BPSTD_UNREACHABLE()
 
 // Use __may_alias__ attribute on gcc and clang
 #if defined(__clang__) || (defined(__GNUC__) && __GNUC__ > 5)
@@ -70,5 +69,13 @@
 #else // defined(__clang__) || defined __GNUC__
 # define BPSTD_MAY_ALIAS
 #endif // defined __clang__ || defined __GNUC__
+
+#if defined(__clang__) || defined(__GNUC__)
+# define BPSTD_INLINE_VISIBILITY __attribute__((visibility("hidden"), always_inline, no_instrument_function))
+#elif defined(_MSC_VER)
+# define BPSTD_INLINE_VISIBILITY __forceinline
+#else
+# define inline
+#endif
 
 #endif /* BPSTD_DETAIL_CONFIG_HPP */
