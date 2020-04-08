@@ -34,9 +34,12 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
+#include "config.hpp"  // BPSTD_INLINE_VISIBILITY
 #include "move.hpp"    // forward
 #include <type_traits> // std::true_type, std::false_type, etc
 #include <functional>  // std::reference_wrapper
+
+#include <utility>
 
 namespace bpstd {
   namespace detail {
@@ -48,7 +51,8 @@ namespace bpstd {
     struct is_reference_wrapper<std::reference_wrapper<U>> : std::true_type {};
 
     template <typename Base, typename T, typename Derived, typename... Args>
-    inline constexpr auto INVOKE(T Base::*pmf, Derived&& ref, Args&&... args)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto INVOKE(T Base::*pmf, Derived&& ref, Args&&... args)
       noexcept(noexcept((::bpstd::forward<Derived>(ref).*pmf)(::bpstd::forward<Args>(args)...)))
       -> typename std::enable_if<std::is_function<T>::value &&
                                  std::is_base_of<Base, typename std::decay<Derived>::type>::value,
@@ -58,7 +62,8 @@ namespace bpstd {
     }
 
     template <typename Base, typename T, typename RefWrap, typename... Args>
-    inline constexpr auto INVOKE(T Base::*pmf, RefWrap&& ref, Args&&... args)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto INVOKE(T Base::*pmf, RefWrap&& ref, Args&&... args)
       noexcept(noexcept((ref.get().*pmf)(std::forward<Args>(args)...)))
       -> typename std::enable_if<std::is_function<T>::value &&
                           is_reference_wrapper<typename std::decay<RefWrap>::type>::value,
@@ -68,7 +73,8 @@ namespace bpstd {
     }
 
     template<typename Base, typename T, typename Pointer, typename... Args>
-    inline constexpr auto INVOKE(T Base::*pmf, Pointer&& ptr, Args&&... args)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto INVOKE(T Base::*pmf, Pointer&& ptr, Args&&... args)
       noexcept(noexcept(((*std::forward<Pointer>(ptr)).*pmf)(std::forward<Args>(args)...)))
       -> typename std::enable_if<std::is_function<T>::value &&
                           !is_reference_wrapper<typename std::decay<Pointer>::type>::value &&
@@ -79,7 +85,8 @@ namespace bpstd {
     }
 
     template<typename Base, typename T, typename Derived>
-    inline constexpr auto INVOKE(T Base::*pmd, Derived&& ref)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto INVOKE(T Base::*pmd, Derived&& ref)
       noexcept(noexcept(std::forward<Derived>(ref).*pmd))
       -> typename std::enable_if<!std::is_function<T>::value &&
                           std::is_base_of<Base, typename std::decay<Derived>::type>::value,
@@ -89,7 +96,8 @@ namespace bpstd {
     }
 
     template<typename Base, typename T, typename RefWrap>
-    inline constexpr auto INVOKE(T Base::*pmd, RefWrap&& ref)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto INVOKE(T Base::*pmd, RefWrap&& ref)
       noexcept(noexcept(ref.get().*pmd))
       -> typename std::enable_if<!std::is_function<T>::value &&
                                  is_reference_wrapper<typename std::decay<RefWrap>::type>::value,
@@ -99,7 +107,8 @@ namespace bpstd {
     }
 
     template<typename Base, typename T, typename Pointer>
-    inline constexpr auto INVOKE(T Base::*pmd, Pointer&& ptr)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto INVOKE(T Base::*pmd, Pointer&& ptr)
       noexcept(noexcept((*std::forward<Pointer>(ptr)).*pmd))
       -> typename std::enable_if<!std::is_function<T>::value &&
                           !is_reference_wrapper<typename std::decay<Pointer>::type>::value &&
@@ -110,7 +119,8 @@ namespace bpstd {
     }
 
     template<typename F, typename... Args>
-    inline constexpr auto INVOKE(F&& f, Args&&... args)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto INVOKE(F&& f, Args&&... args)
         noexcept(noexcept(std::forward<F>(f)(std::forward<Args>(args)...)))
       -> typename std::enable_if<!std::is_member_pointer<typename std::decay<F>::type>::value,
         decltype(::bpstd::forward<F>(f)(::bpstd::forward<Args>(args)...))>::type

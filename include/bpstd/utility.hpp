@@ -225,7 +225,8 @@ namespace bpstd {
 //------------------------------------------------------------------------------
 
 template <typename T>
-inline constexpr typename bpstd::conditional<
+inline BPSTD_INLINE_VISIBILITY constexpr
+typename bpstd::conditional<
   !bpstd::is_nothrow_move_constructible<T>::value && bpstd::is_copy_constructible<T>::value,
   const T&,
   T&&
@@ -242,14 +243,16 @@ inline constexpr typename bpstd::conditional<
 }
 
 template <typename T>
-inline constexpr bpstd::add_const_t<T>& bpstd::as_const(T& t)
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::add_const_t<T>& bpstd::as_const(T& t)
   noexcept
 {
   return t;
 }
 
 template <typename T, typename U>
-inline BPSTD_CPP14_CONSTEXPR T bpstd::exchange(T& obj, U&& new_value)
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+T bpstd::exchange(T& obj, U&& new_value)
 {
   auto old_value = bpstd::move(obj);
   obj = bpstd::forward<U>(new_value);
@@ -265,7 +268,8 @@ inline BPSTD_CPP14_CONSTEXPR T bpstd::exchange(T& obj, U&& new_value)
 //------------------------------------------------------------------------------
 
 template <std::size_t N, typename T, typename U>
-inline constexpr bpstd::conditional_t<N==0,T,U>&
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::conditional_t<N==0,T,U>&
   bpstd::get(pair<T, U>& p)
   noexcept
 {
@@ -275,7 +279,8 @@ inline constexpr bpstd::conditional_t<N==0,T,U>&
 }
 
 template <std::size_t N, typename T, typename U>
-inline constexpr bpstd::conditional_t<N==0,T,U>&&
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::conditional_t<N==0,T,U>&&
   bpstd::get(pair<T, U>&& p)
   noexcept
 {
@@ -285,7 +290,8 @@ inline constexpr bpstd::conditional_t<N==0,T,U>&&
 }
 
 template <std::size_t N, typename T, typename U>
-inline constexpr const bpstd::conditional_t<N==0,T,U>&
+inline BPSTD_INLINE_VISIBILITY constexpr
+const bpstd::conditional_t<N==0,T,U>&
   bpstd::get(const pair<T, U>& p)
   noexcept
 {
@@ -295,7 +301,8 @@ inline constexpr const bpstd::conditional_t<N==0,T,U>&
 }
 
 template <std::size_t N, typename T, typename U>
-inline constexpr const bpstd::conditional_t<N==0,T,U>&&
+inline BPSTD_INLINE_VISIBILITY constexpr
+const bpstd::conditional_t<N==0,T,U>&&
   bpstd::get(const pair<T, U>&& p)
   noexcept
 {
@@ -305,56 +312,64 @@ inline constexpr const bpstd::conditional_t<N==0,T,U>&&
 }
 
 template <typename T, typename U>
-inline constexpr T& bpstd::get(pair<T, U>& p)
+inline BPSTD_INLINE_VISIBILITY constexpr
+T& bpstd::get(pair<T, U>& p)
   noexcept
 {
   return p.first;
 }
 
 template <typename T, typename U>
-inline constexpr const T& bpstd::get(const pair<T, U>& p)
+inline BPSTD_INLINE_VISIBILITY constexpr
+const T& bpstd::get(const pair<T, U>& p)
   noexcept
 {
   return p.first;
 }
 
 template <typename T, typename U>
-inline constexpr T&& bpstd::get(pair<T, U>&& p)
+inline BPSTD_INLINE_VISIBILITY constexpr
+T&& bpstd::get(pair<T, U>&& p)
   noexcept
 {
   return move(p.first);
 }
 
 template <typename T, typename U>
-inline constexpr const T&& bpstd::get(const pair<T, U>&& p)
+inline BPSTD_INLINE_VISIBILITY constexpr
+const T&& bpstd::get(const pair<T, U>&& p)
   noexcept
 {
   return move(p.first);
 }
 
 template <typename T, typename U>
-inline constexpr T& bpstd::get(pair<U, T>& p)
+inline BPSTD_INLINE_VISIBILITY constexpr
+T& bpstd::get(pair<U, T>& p)
   noexcept
 {
   return p.second;
 }
 
 template <typename T, typename U>
-inline constexpr const T& bpstd::get(const pair<U, T>& p)
+inline BPSTD_INLINE_VISIBILITY constexpr
+const T& bpstd::get(const pair<U, T>& p)
   noexcept
 {
   return p.second;
 }
 
 template <typename T, typename U>
-inline constexpr T&& bpstd::get(pair<U, T>&& p)
+inline BPSTD_INLINE_VISIBILITY constexpr
+T&& bpstd::get(pair<U, T>&& p)
   noexcept
 {
   return move(p.second);
 }
 
 template <typename T, typename U>
-inline constexpr const T&& bpstd::get(const pair<U, T>&& p)
+inline BPSTD_INLINE_VISIBILITY constexpr
+const T&& bpstd::get(const pair<U, T>&& p)
   noexcept
 {
   return move(p.second);

@@ -30,8 +30,8 @@
 #ifndef BPSTD_SPAN_HPP
 #define BPSTD_SPAN_HPP
 
-#include "detail/proxy_iterator.hpp"
 #include "detail/config.hpp"
+#include "detail/proxy_iterator.hpp"
 
 #include "cstddef.hpp" // byte
 #include "memory.hpp"  // to_address
@@ -469,7 +469,8 @@ constexpr std::size_t bpstd::span<T,Extent>::extent;
 
 template <typename T, std::size_t Extent>
 template <std::size_t UExtent, typename>
-inline constexpr bpstd::span<T,Extent>::span()
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::span<T,Extent>::span()
   noexcept
   : m_storage{nullptr, detail::extent_storage<0>{}}
 {
@@ -478,7 +479,8 @@ inline constexpr bpstd::span<T,Extent>::span()
 
 template <typename T, std::size_t Extent>
 template <typename It, typename>
-inline constexpr bpstd::span<T,Extent>::span(It it, size_type count)
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::span<T,Extent>::span(It it, size_type count)
   noexcept
   : m_storage{to_address(it), count}
 {
@@ -487,7 +489,8 @@ inline constexpr bpstd::span<T,Extent>::span(It it, size_type count)
 
 template <typename T, std::size_t Extent>
 template <typename It, typename End, typename>
-inline constexpr bpstd::span<T,Extent>::span(It it, End end)
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::span<T,Extent>::span(It it, End end)
   noexcept
   : m_storage{to_address(it), static_cast<size_type>(end - it)}
 {
@@ -496,7 +499,8 @@ inline constexpr bpstd::span<T,Extent>::span(It it, End end)
 
 template <typename T, std::size_t Extent>
 template <std::size_t N, typename>
-inline constexpr bpstd::span<T,Extent>::span(element_type (&arr)[N])
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::span<T,Extent>::span(element_type (&arr)[N])
   noexcept
   : m_storage{static_cast<element_type*>(arr), detail::extent_storage<N>{}}
 {
@@ -505,7 +509,8 @@ inline constexpr bpstd::span<T,Extent>::span(element_type (&arr)[N])
 
 template <typename T, std::size_t Extent>
 template <typename U, std::size_t N, typename>
-inline constexpr bpstd::span<T,Extent>::span(std::array<U, N>& arr)
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::span<T,Extent>::span(std::array<U, N>& arr)
   noexcept
   : m_storage{arr.data(), detail::extent_storage<N>{}}
 {
@@ -514,7 +519,8 @@ inline constexpr bpstd::span<T,Extent>::span(std::array<U, N>& arr)
 
 template <typename T, std::size_t Extent>
 template <typename U, std::size_t N, typename>
-inline constexpr bpstd::span<T,Extent>::span(const std::array<U, N>& arr)
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::span<T,Extent>::span(const std::array<U, N>& arr)
   noexcept
   : m_storage{arr.data(), detail::extent_storage<N>{}}
 {
@@ -523,7 +529,8 @@ inline constexpr bpstd::span<T,Extent>::span(const std::array<U, N>& arr)
 
 template <typename T, std::size_t Extent>
 template <typename U, std::size_t N, typename>
-inline constexpr bpstd::span<T,Extent>::span(const span<U, N>& s)
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::span<T,Extent>::span(const span<U, N>& s)
   noexcept
   : m_storage{s.data(), detail::extent_storage<N>{s.size()}}
 {
@@ -535,7 +542,8 @@ inline constexpr bpstd::span<T,Extent>::span(const span<U, N>& s)
 //------------------------------------------------------------------------------
 
 template <typename T, std::size_t Extent>
-inline constexpr typename bpstd::span<T,Extent>::reference
+inline BPSTD_INLINE_VISIBILITY constexpr
+typename bpstd::span<T,Extent>::reference
   bpstd::span<T,Extent>::front()
   const noexcept
 {
@@ -543,7 +551,8 @@ inline constexpr typename bpstd::span<T,Extent>::reference
 }
 
 template <typename T, std::size_t Extent>
-inline constexpr typename bpstd::span<T,Extent>::reference
+inline BPSTD_INLINE_VISIBILITY constexpr
+typename bpstd::span<T,Extent>::reference
   bpstd::span<T,Extent>::back()
   const noexcept
 {
@@ -551,7 +560,8 @@ inline constexpr typename bpstd::span<T,Extent>::reference
 }
 
 template <typename T, std::size_t Extent>
-inline constexpr typename bpstd::span<T,Extent>::reference
+inline BPSTD_INLINE_VISIBILITY constexpr
+typename bpstd::span<T,Extent>::reference
   bpstd::span<T,Extent>::operator[](size_type idx)
   const noexcept
 {
@@ -559,7 +569,8 @@ inline constexpr typename bpstd::span<T,Extent>::reference
 }
 
 template <typename T, std::size_t Extent>
-inline constexpr typename bpstd::span<T,Extent>::pointer
+inline BPSTD_INLINE_VISIBILITY constexpr
+typename bpstd::span<T,Extent>::pointer
   bpstd::span<T,Extent>::data()
   const noexcept
 {
@@ -571,7 +582,8 @@ inline constexpr typename bpstd::span<T,Extent>::pointer
 //------------------------------------------------------------------------------
 
 template <typename T, std::size_t Extent>
-inline constexpr typename bpstd::span<T,Extent>::size_type
+inline BPSTD_INLINE_VISIBILITY constexpr
+typename bpstd::span<T,Extent>::size_type
   bpstd::span<T,Extent>::size()
   const noexcept
 {
@@ -579,7 +591,8 @@ inline constexpr typename bpstd::span<T,Extent>::size_type
 }
 
 template <typename T, std::size_t Extent>
-inline constexpr typename bpstd::span<T,Extent>::size_type
+inline BPSTD_INLINE_VISIBILITY constexpr
+typename bpstd::span<T,Extent>::size_type
   bpstd::span<T,Extent>::size_bytes()
   const noexcept
 {
@@ -587,7 +600,8 @@ inline constexpr typename bpstd::span<T,Extent>::size_type
 }
 
 template <typename T, std::size_t Extent>
-inline constexpr bool bpstd::span<T,Extent>::empty()
+inline BPSTD_INLINE_VISIBILITY constexpr
+bool bpstd::span<T,Extent>::empty()
   const noexcept
 {
   return size() == 0u;
@@ -599,7 +613,8 @@ inline constexpr bool bpstd::span<T,Extent>::empty()
 
 template <typename T, std::size_t Extent>
 template <std::size_t Count>
-inline constexpr bpstd::span<typename bpstd::span<T, Extent>::element_type, Count>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::span<typename bpstd::span<T, Extent>::element_type, Count>
   bpstd::span<T, Extent>::first()
   const
 {
@@ -612,7 +627,8 @@ inline constexpr bpstd::span<typename bpstd::span<T, Extent>::element_type, Coun
 }
 
 template <typename T, std::size_t Extent>
-inline constexpr bpstd::span<typename bpstd::span<T, Extent>::element_type>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::span<typename bpstd::span<T, Extent>::element_type>
   bpstd::span<T,Extent>::first(size_t count)
   const
 {
@@ -623,7 +639,8 @@ inline constexpr bpstd::span<typename bpstd::span<T, Extent>::element_type>
 
 template <typename T, std::size_t Extent>
 template <std::size_t Count>
-inline constexpr bpstd::span<typename bpstd::span<T, Extent>::element_type, Count>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::span<typename bpstd::span<T, Extent>::element_type, Count>
   bpstd::span<T, Extent>::last()
   const
 {
@@ -636,7 +653,8 @@ inline constexpr bpstd::span<typename bpstd::span<T, Extent>::element_type, Coun
 }
 
 template <typename T, std::size_t Extent>
-inline constexpr bpstd::span<typename bpstd::span<T, Extent>::element_type>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::span<typename bpstd::span<T, Extent>::element_type>
   bpstd::span<T,Extent>::last(size_t count)
   const
 {
@@ -647,7 +665,8 @@ inline constexpr bpstd::span<typename bpstd::span<T, Extent>::element_type>
 
 template <typename T, std::size_t Extent>
 template <std::size_t Offset, std::size_t Count>
-inline constexpr bpstd::span<typename bpstd::span<T, Extent>::element_type, bpstd::detail::compute_subspan_size<Extent,Offset,Count>::value>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::span<typename bpstd::span<T, Extent>::element_type, bpstd::detail::compute_subspan_size<Extent,Offset,Count>::value>
   bpstd::span<T, Extent>::subspan()
   const
 {
@@ -658,7 +677,8 @@ inline constexpr bpstd::span<typename bpstd::span<T, Extent>::element_type, bpst
 }
 
 template <typename T, std::size_t Extent>
-inline constexpr bpstd::span<typename bpstd::span<T, Extent>::element_type>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::span<typename bpstd::span<T, Extent>::element_type>
   bpstd::span<T, Extent>::subspan(std::size_t offset, std::size_t count)
   const
 {
@@ -673,7 +693,8 @@ inline constexpr bpstd::span<typename bpstd::span<T, Extent>::element_type>
 //------------------------------------------------------------------------------
 
 template <typename T, std::size_t Extent>
-inline constexpr typename bpstd::span<T,Extent>::iterator
+inline BPSTD_INLINE_VISIBILITY constexpr
+typename bpstd::span<T,Extent>::iterator
   bpstd::span<T,Extent>::begin()
   const noexcept
 {
@@ -681,7 +702,8 @@ inline constexpr typename bpstd::span<T,Extent>::iterator
 }
 
 template <typename T, std::size_t Extent>
-inline constexpr typename bpstd::span<T,Extent>::iterator
+inline BPSTD_INLINE_VISIBILITY constexpr
+typename bpstd::span<T,Extent>::iterator
   bpstd::span<T,Extent>::end()
   const noexcept
 {
@@ -689,7 +711,8 @@ inline constexpr typename bpstd::span<T,Extent>::iterator
 }
 
 template <typename T, std::size_t Extent>
-inline constexpr typename bpstd::span<T,Extent>::reverse_iterator
+inline BPSTD_INLINE_VISIBILITY constexpr
+typename bpstd::span<T,Extent>::reverse_iterator
   bpstd::span<T,Extent>::rbegin()
   const noexcept
 {
@@ -697,7 +720,8 @@ inline constexpr typename bpstd::span<T,Extent>::reverse_iterator
 }
 
 template <typename T, std::size_t Extent>
-inline constexpr typename bpstd::span<T,Extent>::reverse_iterator
+inline BPSTD_INLINE_VISIBILITY constexpr
+typename bpstd::span<T,Extent>::reverse_iterator
   bpstd::span<T,Extent>::rend()
   const noexcept
 {

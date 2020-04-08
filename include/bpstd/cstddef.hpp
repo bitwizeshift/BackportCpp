@@ -34,10 +34,11 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
+#include "detail/config.hpp"
 #include "type_traits.hpp"
-#include <type_traits> // std::is_integral
 
-#include <cstddef> // __cpp_lib_byte, and to proxy API
+#include <type_traits> // std::is_integral
+#include <cstddef>     // __cpp_lib_byte, and to proxy API
 
 // VS2017 15.8 added support for the __cpp_lib_byte definition
 // To do: drop _HAS_STD_BYTE when support for pre 15.8 expires
@@ -138,20 +139,23 @@ namespace bpstd {
 //------------------------------------------------------------------------------
 
 template <typename Integer, typename>
-inline constexpr bpstd::byte bpstd::operator<<(byte b, Integer shift)
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::byte bpstd::operator<<(byte b, Integer shift)
   noexcept
 {
   return static_cast<byte>(static_cast<unsigned char>(b) << shift);
 }
 
 template <typename Integer, typename>
-inline constexpr bpstd::byte bpstd::operator>>(byte b, Integer shift)
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::byte bpstd::operator>>(byte b, Integer shift)
   noexcept
 {
   return static_cast<byte>(static_cast<unsigned char>(b) >> shift);
 }
 
-inline constexpr bpstd::byte bpstd::operator|(byte lhs, byte rhs)
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::byte bpstd::operator|(byte lhs, byte rhs)
   noexcept
 {
   return static_cast<byte>(
@@ -159,7 +163,8 @@ inline constexpr bpstd::byte bpstd::operator|(byte lhs, byte rhs)
   );
 }
 
-inline constexpr bpstd::byte bpstd::operator&(byte lhs, byte rhs)
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::byte bpstd::operator&(byte lhs, byte rhs)
   noexcept
 {
   return static_cast<byte>(
@@ -167,7 +172,8 @@ inline constexpr bpstd::byte bpstd::operator&(byte lhs, byte rhs)
   );
 }
 
-inline constexpr bpstd::byte bpstd::operator^(byte lhs, byte rhs)
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::byte bpstd::operator^(byte lhs, byte rhs)
   noexcept
 {
   return static_cast<byte>(
@@ -175,7 +181,8 @@ inline constexpr bpstd::byte bpstd::operator^(byte lhs, byte rhs)
   );
 }
 
-inline constexpr bpstd::byte bpstd::operator~(byte b)
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::byte bpstd::operator~(byte b)
   noexcept
 {
   return static_cast<byte>(~static_cast<unsigned char>(b));
@@ -186,22 +193,23 @@ inline constexpr bpstd::byte bpstd::operator~(byte b)
 //------------------------------------------------------------------------------
 
 template <typename Integer, typename>
-inline BPSTD_CPP14_CONSTEXPR bpstd::byte& bpstd::operator<<=(byte& b, Integer shift)
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+bpstd::byte& bpstd::operator<<=(byte& b, Integer shift)
   noexcept
 {
   return b = static_cast<byte>(static_cast<unsigned char>(b) << shift);
 }
 
 template <typename Integer, typename>
-inline BPSTD_CPP14_CONSTEXPR
-  bpstd::byte& bpstd::operator>>=(byte& b, Integer shift)
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+bpstd::byte& bpstd::operator>>=(byte& b, Integer shift)
   noexcept
 {
   return b = static_cast<byte>(static_cast<unsigned char>(b) >> shift);
 }
 
-inline BPSTD_CPP14_CONSTEXPR
-  bpstd::byte& bpstd::operator|=(byte& lhs, byte rhs)
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+bpstd::byte& bpstd::operator|=(byte& lhs, byte rhs)
   noexcept
 {
   return lhs = static_cast<byte>(
@@ -209,8 +217,8 @@ inline BPSTD_CPP14_CONSTEXPR
   );
 }
 
-inline BPSTD_CPP14_CONSTEXPR
-  bpstd::byte& bpstd::operator&=(byte& lhs, byte rhs)
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+bpstd::byte& bpstd::operator&=(byte& lhs, byte rhs)
   noexcept
 {
   return lhs = static_cast<byte>(
@@ -218,8 +226,8 @@ inline BPSTD_CPP14_CONSTEXPR
   );
 }
 
-inline BPSTD_CPP14_CONSTEXPR
-  bpstd::byte& bpstd::operator^=(byte& lhs, byte rhs)
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+bpstd::byte& bpstd::operator^=(byte& lhs, byte rhs)
   noexcept
 {
   return lhs = static_cast<byte>(
@@ -234,7 +242,8 @@ inline BPSTD_CPP14_CONSTEXPR
 //------------------------------------------------------------------------------
 
 template <typename Integer, typename>
-inline constexpr Integer bpstd::to_integer(byte b)
+inline BPSTD_INLINE_VISIBILITY constexpr
+Integer bpstd::to_integer(byte b)
   noexcept
 {
   return static_cast<Integer>(b);

@@ -30,6 +30,8 @@
 #ifndef BPSTD_COMPLEX_HPP
 #define BPSTD_COMPLEX_HPP
 
+#include "detail/config.hpp"
+
 #include <complex>
 
 namespace bpstd {
@@ -65,44 +67,48 @@ namespace bpstd {
 // literals : class : complex
 //==============================================================================
 
-inline constexpr bpstd::complex<long double>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::complex<long double>
   bpstd::literals::complex_literals::operator""_il(long double i)
   noexcept
 {
   return complex<long double>{0, i};
 }
 
-inline constexpr bpstd::complex<long double>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::complex<long double>
   bpstd::literals::complex_literals::operator""_il(unsigned long long i)
   noexcept
 {
   return complex<long double>{0, static_cast<long double>(i)};
 }
 
-
-inline constexpr bpstd::complex<double>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::complex<double>
   bpstd::literals::complex_literals::operator""_i(long double i)
   noexcept
 {
   return complex<double>{0, static_cast<double>(i)};
 }
 
-inline constexpr bpstd::complex<double>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::complex<double>
   bpstd::literals::complex_literals::operator""_i(unsigned long long i)
   noexcept
 {
   return complex<double>{0, static_cast<double>(i)};
 }
 
-
-inline constexpr bpstd::complex<float>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::complex<float>
   bpstd::literals::complex_literals::operator""_if(long double i)
   noexcept
 {
   return complex<float>{0, static_cast<float>(i)};
 }
 
-inline constexpr bpstd::complex<float>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::complex<float>
   bpstd::literals::complex_literals::operator""_if(unsigned long long i)
   noexcept
 {

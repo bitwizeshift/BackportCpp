@@ -30,6 +30,8 @@
 #ifndef BPSTD_STRING_HPP
 #define BPSTD_STRING_HPP
 
+#include "detail/config.hpp"
+
 #include <string>
 
 namespace bpstd {
@@ -47,25 +49,29 @@ namespace bpstd {
 
 } // namespace bpstd
 
-inline std::string
+inline BPSTD_INLINE_VISIBILITY
+std::string
   bpstd::literals::string_literals::operator""_s(const char* s, std::size_t len)
 {
   return std::string{s, len};
 }
 
-inline std::u16string
+inline BPSTD_INLINE_VISIBILITY
+std::u16string
   bpstd::literals::string_literals::operator""_s(const char16_t* s, std::size_t len)
 {
   return std::u16string{s, len};
 }
 
-inline std::u32string
+inline BPSTD_INLINE_VISIBILITY
+std::u32string
   bpstd::literals::string_literals::operator""_s(const char32_t* s, std::size_t len)
 {
   return std::u32string{s, len};
 }
 
-inline std::wstring
+inline BPSTD_INLINE_VISIBILITY
+std::wstring
   bpstd::literals::string_literals::operator""_s(const wchar_t* s, std::size_t len)
 {
   return std::wstring{s, len};

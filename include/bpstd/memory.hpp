@@ -34,6 +34,7 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
+#include "detail/config.hpp"
 #include "type_traits.hpp" // conditional_t, void_t
 #include "utility.hpp"     // forward
 
@@ -178,28 +179,32 @@ namespace bpstd {
 } // namespace bpstd
 
 template <typename T, typename...Args>
-inline std::unique_ptr<typename bpstd::detail::make_unique_result<T>::object>
+inline BPSTD_INLINE_VISIBILITY
+std::unique_ptr<typename bpstd::detail::make_unique_result<T>::object>
   bpstd::make_unique(Args&&...args)
 {
   return std::unique_ptr<T>{new T(bpstd::forward<Args>(args)...)};
 }
 
 template <typename T>
-inline std::unique_ptr<typename bpstd::detail::make_unique_result<T>::unbounded_array>
+inline BPSTD_INLINE_VISIBILITY
+std::unique_ptr<typename bpstd::detail::make_unique_result<T>::unbounded_array>
   bpstd::make_unique(std::size_t size)
 {
   return std::unique_ptr<T>{new remove_extent_t<T>[size]()};
 }
 
 template <typename T>
-inline std::unique_ptr<typename bpstd::detail::make_unique_result<T>::object>
+inline BPSTD_INLINE_VISIBILITY
+std::unique_ptr<typename bpstd::detail::make_unique_result<T>::object>
   bpstd::make_unique_for_overwrite()
 {
   return std::unique_ptr<T>{new T};
 }
 
 template <typename T>
-inline std::unique_ptr<typename bpstd::detail::make_unique_result<T>::unbounded_array>
+inline BPSTD_INLINE_VISIBILITY
+std::unique_ptr<typename bpstd::detail::make_unique_result<T>::unbounded_array>
   bpstd::make_unique_for_overwrite(std::size_t size)
 {
   return std::unique_ptr<T>{new remove_extent_t<T>[size]};
@@ -209,16 +214,16 @@ namespace bpstd {
   namespace detail {
 
     template <typename T>
-    inline constexpr auto
-      to_address_impl(const T& p, std::true_type)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto to_address_impl(const T& p, std::true_type)
       -> decltype(std::pointer_traits<T>::to_address(std::declval<const T&>()))
     {
       return to_address(std::pointer_traits<T>::to_address(p));
     }
 
     template <typename T>
-    inline constexpr auto
-      to_address_impl(const T& p, std::false_type)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto to_address_impl(const T& p, std::false_type)
       -> decltype(std::declval<const T&>().operator->())
     {
       return to_address(p.operator->());
@@ -228,7 +233,8 @@ namespace bpstd {
 } // namespace bpstd
 
 template <typename T>
-inline constexpr T* bpstd::to_address(T* p)
+inline BPSTD_INLINE_VISIBILITY constexpr
+T* bpstd::to_address(T* p)
   noexcept
 {
   static_assert(
@@ -240,7 +246,8 @@ inline constexpr T* bpstd::to_address(T* p)
 }
 
 template <typename T>
-inline constexpr bpstd::detail::to_address_result_t<T>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::detail::to_address_result_t<T>
   bpstd::to_address(const T& p)
   noexcept
 {
