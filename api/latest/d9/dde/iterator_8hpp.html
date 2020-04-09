@@ -89,7 +89,8 @@ $(document).ready(function(){initNavTree('d9/dde/iterator_8hpp.html','../../');}
 
 <p>This header provides definitions from the C++ header &lt;iterator&gt;  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;detail/config.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>&quot;</code><br />
 <code>#include &lt;iterator&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;initializer_list&gt;</code><br />
@@ -118,14 +119,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a5476ce49c1b7cdf065d57b6ceecb3f7d"><td class="memTemplItemLeft" align="right" valign="top">constexpr reverse_iterator&lt; Iterator &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dde/iterator_8hpp.html#a5476ce49c1b7cdf065d57b6ceecb3f7d">bpstd::make_reverse_iterator</a> (Iterator i)</td></tr>
 <tr class="memdesc:a5476ce49c1b7cdf065d57b6ceecb3f7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes a reverse_iterator given an iterator <code>i</code>.  <a href="../../d9/dde/iterator_8hpp.html#a5476ce49c1b7cdf065d57b6ceecb3f7d">More...</a><br /></td></tr>
 <tr class="separator:a5476ce49c1b7cdf065d57b6ceecb3f7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2551eb714327c58ac08bad722f4b4a46"><td class="memTemplParams" colspan="2">template&lt;typename T , std::size_t N&gt; </td></tr>
-<tr class="memitem:a2551eb714327c58ac08bad722f4b4a46"><td class="memTemplItemLeft" align="right" valign="top">constexpr T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dde/iterator_8hpp.html#a2551eb714327c58ac08bad722f4b4a46">bpstd::data</a> (T(&amp;array)[N]) noexcept</td></tr>
-<tr class="memdesc:a2551eb714327c58ac08bad722f4b4a46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a pointer to the start of an array.  <a href="../../d9/dde/iterator_8hpp.html#a2551eb714327c58ac08bad722f4b4a46">More...</a><br /></td></tr>
-<tr class="separator:a2551eb714327c58ac08bad722f4b4a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a711abb4084519e5cee370c713df0a2"><td class="memTemplParams" colspan="2">template&lt;typename E &gt; </td></tr>
-<tr class="memitem:a0a711abb4084519e5cee370c713df0a2"><td class="memTemplItemLeft" align="right" valign="top">constexpr const E *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dde/iterator_8hpp.html#a0a711abb4084519e5cee370c713df0a2">bpstd::data</a> (std::initializer_list&lt; E &gt; il) noexcept</td></tr>
-<tr class="memdesc:a0a711abb4084519e5cee370c713df0a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a pointer to the start of an initializer list.  <a href="../../d9/dde/iterator_8hpp.html#a0a711abb4084519e5cee370c713df0a2">More...</a><br /></td></tr>
-<tr class="separator:a0a711abb4084519e5cee370c713df0a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b393bbaff98c775eb4318620a269be3"><td class="memTemplParams" colspan="2">template&lt;typename T , std::size_t N&gt; </td></tr>
+<tr class="memitem:a6b393bbaff98c775eb4318620a269be3"><td class="memTemplItemLeft" align="right" valign="top">constexpr T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dde/iterator_8hpp.html#a6b393bbaff98c775eb4318620a269be3">bpstd::data</a> (T(&amp;array)[N]) noexcept</td></tr>
+<tr class="memdesc:a6b393bbaff98c775eb4318620a269be3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a pointer to the start of an array.  <a href="../../d9/dde/iterator_8hpp.html#a6b393bbaff98c775eb4318620a269be3">More...</a><br /></td></tr>
+<tr class="separator:a6b393bbaff98c775eb4318620a269be3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad926328f51835d1fc34328dba172d656"><td class="memTemplParams" colspan="2">template&lt;typename E &gt; </td></tr>
+<tr class="memitem:ad926328f51835d1fc34328dba172d656"><td class="memTemplItemLeft" align="right" valign="top">constexpr const E *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dde/iterator_8hpp.html#ad926328f51835d1fc34328dba172d656">bpstd::data</a> (std::initializer_list&lt; E &gt; il) noexcept</td></tr>
+<tr class="memdesc:ad926328f51835d1fc34328dba172d656"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a pointer to the start of an initializer list.  <a href="../../d9/dde/iterator_8hpp.html#ad926328f51835d1fc34328dba172d656">More...</a><br /></td></tr>
+<tr class="separator:ad926328f51835d1fc34328dba172d656"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01aa47fa9dc5541ebe3dcabf3f3afde2"><td class="memTemplParams" colspan="2">template&lt;typename C &gt; </td></tr>
 <tr class="memitem:a01aa47fa9dc5541ebe3dcabf3f3afde2"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dde/iterator_8hpp.html#a01aa47fa9dc5541ebe3dcabf3f3afde2">bpstd::empty</a> (const C &amp;c) -&gt; decltype(c.empty())</td></tr>
 <tr class="memdesc:a01aa47fa9dc5541ebe3dcabf3f3afde2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queries whether <code>c</code> is empty.  <a href="../../d9/dde/iterator_8hpp.html#a01aa47fa9dc5541ebe3dcabf3f3afde2">More...</a><br /></td></tr>
@@ -176,23 +177,15 @@ Functions</h2></td></tr>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">constexpr auto bpstd::data </td>
           <td>(</td>
           <td class="paramtype">C &amp;&#160;</td>
           <td class="paramname"><em>c</em></td><td>)</td>
-          <td> -&gt; decltype(c.data())</td>
+          <td> -&gt;  decltype(c.data())</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Gets a pointer to the data from <code>c</code>. </p>
@@ -203,8 +196,6 @@ template&lt;typename C &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to the data </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00178">178</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
@@ -215,23 +206,15 @@ template&lt;typename C &gt; </div>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">constexpr auto bpstd::data </td>
           <td>(</td>
           <td class="paramtype">const C &amp;&#160;</td>
           <td class="paramname"><em>c</em></td><td>)</td>
-          <td> -&gt; decltype(c.data())</td>
+          <td> -&gt;  decltype(c.data())</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Gets a pointer to the data from <code>c</code>. </p>
@@ -243,12 +226,10 @@ template&lt;typename C &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to the data </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00185">185</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
-
 </div>
 </div>
-<a id="file_a2551eb714327c58ac08bad722f4b4a46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#file_a2551eb714327c58ac08bad722f4b4a46">&#9670;&nbsp;</a></span>data() <span class="overload">[3/4]</span></h2>
+<a id="file_a6b393bbaff98c775eb4318620a269be3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#file_a6b393bbaff98c775eb4318620a269be3">&#9670;&nbsp;</a></span>data() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -259,7 +240,7 @@ template&lt;typename T , std::size_t N&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr T * bpstd::data </td>
+          <td class="memname">constexpr T* bpstd::data </td>
           <td>(</td>
           <td class="paramtype">T(&amp;)&#160;</td>
           <td class="paramname"><em>array</em>[N]</td><td>)</td>
@@ -268,7 +249,7 @@ template&lt;typename T , std::size_t N&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -282,12 +263,10 @@ template&lt;typename T , std::size_t N&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to the data </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00191">191</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
-
 </div>
 </div>
-<a id="file_a0a711abb4084519e5cee370c713df0a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#file_a0a711abb4084519e5cee370c713df0a2">&#9670;&nbsp;</a></span>data() <span class="overload">[4/4]</span></h2>
+<a id="file_ad926328f51835d1fc34328dba172d656"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#file_ad926328f51835d1fc34328dba172d656">&#9670;&nbsp;</a></span>data() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -298,7 +277,7 @@ template&lt;typename E &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const E * bpstd::data </td>
+          <td class="memname">constexpr const E* bpstd::data </td>
           <td>(</td>
           <td class="paramtype">std::initializer_list&lt; E &gt;&#160;</td>
           <td class="paramname"><em>il</em></td><td>)</td>
@@ -307,7 +286,7 @@ template&lt;typename E &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -321,8 +300,6 @@ template&lt;typename E &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to the start of the initializer list </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00198">198</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
-
 </div>
 </div>
 <a id="file_a01aa47fa9dc5541ebe3dcabf3f3afde2"></a>
@@ -332,23 +309,15 @@ template&lt;typename E &gt; </div>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">constexpr auto bpstd::empty </td>
           <td>(</td>
           <td class="paramtype">const C &amp;&#160;</td>
           <td class="paramname"><em>c</em></td><td>)</td>
-          <td> -&gt; decltype(c.empty())</td>
+          <td> -&gt;  decltype(c.empty())</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Queries whether <code>c</code> is empty. </p>
@@ -359,8 +328,6 @@ template&lt;typename C &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if <code>is</code> empty </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00207">207</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
@@ -385,7 +352,7 @@ template&lt;typename T , std::size_t N&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -398,8 +365,6 @@ template&lt;typename T , std::size_t N&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if N is 0 </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00214">214</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
@@ -424,7 +389,7 @@ template&lt;typename E &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -437,8 +402,6 @@ template&lt;typename E &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if <code>il</code> is empty </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00221">221</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
@@ -479,23 +442,15 @@ template&lt;typename Iterator &gt; </div>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">constexpr auto bpstd::size </td>
           <td>(</td>
           <td class="paramtype">const C &amp;&#160;</td>
           <td class="paramname"><em>c</em></td><td>)</td>
-          <td> -&gt; decltype(c.size())</td>
+          <td> -&gt;  decltype(c.size())</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Gets the size of a container. </p>
@@ -506,8 +461,6 @@ template&lt;typename C &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the container's size </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00230">230</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
@@ -532,7 +485,7 @@ template&lt;typename T , std::size_t N&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -546,8 +499,6 @@ template&lt;typename T , std::size_t N&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the size of an array </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00237">237</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
-
 </div>
 </div>
 <a id="file_adf39ba3f605367af9049c01fe007b6dd"></a>
@@ -557,23 +508,15 @@ template&lt;typename T , std::size_t N&gt; </div>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">constexpr auto bpstd::ssize </td>
           <td>(</td>
           <td class="paramtype">const C &amp;&#160;</td>
           <td class="paramname"><em>c</em></td><td>)</td>
-          <td> -&gt; common_type_t&lt;std::ptrdiff_t, make_signed_t&lt;decltype(c.size())&gt;&gt;</td>
+          <td> -&gt;  common_type_t&lt; std::ptrdiff_t, make_signed_t&lt; decltype(c.size())&gt;&gt;</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Gets the signed-size of a container. </p>
@@ -584,8 +527,6 @@ template&lt;typename C &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the size of the container </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00246">246</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>
@@ -610,7 +551,7 @@ template&lt;typename T , std::ptrdiff_t N&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -623,8 +564,6 @@ template&lt;typename T , std::ptrdiff_t N&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the size of an array </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d9/dde/iterator_8hpp_source.html#l00255">255</a> of file <a class="el" href="../../d9/dde/iterator_8hpp_source.html">iterator.hpp</a>.</p>
 
 </div>
 </div>

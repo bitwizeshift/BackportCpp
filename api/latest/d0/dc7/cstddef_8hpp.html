@@ -90,7 +90,8 @@ $(document).ready(function(){initNavTree('d0/dc7/cstddef_8hpp.html','../../');})
 
 <p>This header provides definitions from the C++ header &lt;cstddef&gt;  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;detail/config.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>&quot;</code><br />
 <code>#include &lt;type_traits&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -130,18 +131,18 @@ template&lt;typename Integer , typename  = enable_if_t&lt;std::is_integral&lt;In
 template&lt;typename Integer , typename  = enable_if_t&lt;std::is_integral&lt;Integer&gt;::value&gt;&gt; </td></tr>
 <tr class="memitem:aca10883deeec0d263d5afafe81b29e7c"><td class="memTemplItemLeft" align="right" valign="top">constexpr byte&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::operator&gt;&gt;</b> (byte b, Integer shift) noexcept</td></tr>
 <tr class="separator:aca10883deeec0d263d5afafe81b29e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a408ad741c68d5ae91c3fbae484d11cc0"><td class="memItemLeft" align="right" valign="top"><a id="a408ad741c68d5ae91c3fbae484d11cc0"></a>
+<tr class="memitem:ae43d0e3fb6a108c4476d11df0e1bcb33"><td class="memItemLeft" align="right" valign="top"><a id="ae43d0e3fb6a108c4476d11df0e1bcb33"></a>
 constexpr byte&#160;</td><td class="memItemRight" valign="bottom"><b>bpstd::operator|</b> (byte lhs, byte rhs) noexcept</td></tr>
-<tr class="separator:a408ad741c68d5ae91c3fbae484d11cc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ae43d0e3fb6a108c4476d11df0e1bcb33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51af29583fd5ab3ee72744e6ef830823"><td class="memItemLeft" align="right" valign="top"><a id="a51af29583fd5ab3ee72744e6ef830823"></a>
 constexpr byte&#160;</td><td class="memItemRight" valign="bottom"><b>bpstd::operator &amp;</b> (byte lhs, byte rhs) noexcept</td></tr>
 <tr class="separator:a51af29583fd5ab3ee72744e6ef830823"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d762ec2c2f7b72d2e5aa7833b992e15"><td class="memItemLeft" align="right" valign="top"><a id="a6d762ec2c2f7b72d2e5aa7833b992e15"></a>
+<tr class="memitem:ac09c3dc2ec5bef8b09216680893634c4"><td class="memItemLeft" align="right" valign="top"><a id="ac09c3dc2ec5bef8b09216680893634c4"></a>
 constexpr byte&#160;</td><td class="memItemRight" valign="bottom"><b>bpstd::operator^</b> (byte lhs, byte rhs) noexcept</td></tr>
-<tr class="separator:a6d762ec2c2f7b72d2e5aa7833b992e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a473b23cf5da5bf98579b27cb1945ab55"><td class="memItemLeft" align="right" valign="top"><a id="a473b23cf5da5bf98579b27cb1945ab55"></a>
+<tr class="separator:ac09c3dc2ec5bef8b09216680893634c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2bbbb9323e0a8acd04b49c75e5982a4"><td class="memItemLeft" align="right" valign="top"><a id="aa2bbbb9323e0a8acd04b49c75e5982a4"></a>
 constexpr byte&#160;</td><td class="memItemRight" valign="bottom"><b>bpstd::operator~</b> (byte b) noexcept</td></tr>
-<tr class="separator:a473b23cf5da5bf98579b27cb1945ab55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:aa2bbbb9323e0a8acd04b49c75e5982a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e7a5777be485ed4f2843fa3f4f8ccd5"><td class="memTemplParams" colspan="2"><a id="a1e7a5777be485ed4f2843fa3f4f8ccd5"></a>
 template&lt;typename Integer , typename  = enable_if_t&lt;std::is_integral&lt;Integer&gt;::value&gt;&gt; </td></tr>
 <tr class="memitem:a1e7a5777be485ed4f2843fa3f4f8ccd5"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_CPP14_CONSTEXPR byte &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::operator&lt;&lt;=</b> (byte &amp;b, Integer shift) noexcept</td></tr>
@@ -150,15 +151,15 @@ template&lt;typename Integer , typename  = enable_if_t&lt;std::is_integral&lt;In
 template&lt;typename Integer , typename  = enable_if_t&lt;std::is_integral&lt;Integer&gt;::value&gt;&gt; </td></tr>
 <tr class="memitem:a62e5777f3aacf430816059416fe53cc2"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_CPP14_CONSTEXPR byte &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::operator&gt;&gt;=</b> (byte &amp;b, Integer shift) noexcept</td></tr>
 <tr class="separator:a62e5777f3aacf430816059416fe53cc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2592cd3488a7e44db235ec0186b5f1fe"><td class="memItemLeft" align="right" valign="top"><a id="a2592cd3488a7e44db235ec0186b5f1fe"></a>
+<tr class="memitem:ab5b1edc740037ba618ff94eedcbfd4ba"><td class="memItemLeft" align="right" valign="top"><a id="ab5b1edc740037ba618ff94eedcbfd4ba"></a>
 BPSTD_CPP14_CONSTEXPR byte &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>bpstd::operator|=</b> (byte &amp;lhs, byte rhs) noexcept</td></tr>
-<tr class="separator:a2592cd3488a7e44db235ec0186b5f1fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ab5b1edc740037ba618ff94eedcbfd4ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee3109fafc0bc390a1018bf437d06952"><td class="memItemLeft" align="right" valign="top"><a id="aee3109fafc0bc390a1018bf437d06952"></a>
 BPSTD_CPP14_CONSTEXPR byte &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>bpstd::operator &amp;=</b> (byte &amp;lhs, byte rhs) noexcept</td></tr>
 <tr class="separator:aee3109fafc0bc390a1018bf437d06952"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87a61715d994a7913d62986de9296afb"><td class="memItemLeft" align="right" valign="top"><a id="a87a61715d994a7913d62986de9296afb"></a>
+<tr class="memitem:ab85a9ab2ad1bdd9338cd59169eb41da5"><td class="memItemLeft" align="right" valign="top"><a id="ab85a9ab2ad1bdd9338cd59169eb41da5"></a>
 BPSTD_CPP14_CONSTEXPR byte &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>bpstd::operator^=</b> (byte &amp;lhs, byte rhs) noexcept</td></tr>
-<tr class="separator:a87a61715d994a7913d62986de9296afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ab85a9ab2ad1bdd9338cd59169eb41da5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56791bb6ab6793620cccd161e0fec264"><td class="memTemplParams" colspan="2"><a id="a56791bb6ab6793620cccd161e0fec264"></a>
 template&lt;typename Integer , typename  = enable_if_t&lt;std::is_integral&lt;Integer&gt;::value&gt;&gt; </td></tr>
 <tr class="memitem:a56791bb6ab6793620cccd161e0fec264"><td class="memTemplItemLeft" align="right" valign="top">constexpr Integer&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::to_integer</b> (byte b) noexcept</td></tr>

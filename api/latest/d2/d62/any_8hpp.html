@@ -89,7 +89,8 @@ $(document).ready(function(){initNavTree('d2/d62/any_8hpp.html','../../');});
 
 <p>This header provides definitions from the C++ header &lt;any&gt;  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;detail/config.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d1/d4e/utility_8hpp_source.html">utility.hpp</a>&quot;</code><br />
 <code>#include &lt;typeinfo&gt;</code><br />
 <code>#include &lt;initializer_list&gt;</code><br />
@@ -117,10 +118,10 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0fe0e1a35cb1cd37d1ed6b22cab8f53b"><td class="memItemLeft" align="right" valign="top"><a id="a0fe0e1a35cb1cd37d1ed6b22cab8f53b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d62/any_8hpp.html#a0fe0e1a35cb1cd37d1ed6b22cab8f53b">bpstd::swap</a> (any &amp;lhs, any &amp;rhs) noexcept</td></tr>
-<tr class="memdesc:a0fe0e1a35cb1cd37d1ed6b22cab8f53b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swaps the contents of <code>lhs</code> and <code>rhs</code>. <br /></td></tr>
-<tr class="separator:a0fe0e1a35cb1cd37d1ed6b22cab8f53b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fcca5d40d6f38e957126a0b91484e48"><td class="memItemLeft" align="right" valign="top"><a id="a3fcca5d40d6f38e957126a0b91484e48"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d62/any_8hpp.html#a3fcca5d40d6f38e957126a0b91484e48">bpstd::swap</a> (any &amp;lhs, any &amp;rhs) noexcept</td></tr>
+<tr class="memdesc:a3fcca5d40d6f38e957126a0b91484e48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swaps the contents of <code>lhs</code> and <code>rhs</code>. <br /></td></tr>
+<tr class="separator:a3fcca5d40d6f38e957126a0b91484e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:a5765d9b48a2e07e2d142ac83e4b60966"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a5765d9b48a2e07e2d142ac83e4b60966"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d2/d62/any_8hpp.html#a5765d9b48a2e07e2d142ac83e4b60966">bpstd::any_cast</a> (any &amp;operand)</td></tr>
@@ -135,14 +136,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../.
 <tr class="memdesc:a68de2b1426d0193370642e4de3352aea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to cast an any back to the underlying type T.  <a href="../../d2/d62/any_8hpp.html#a68de2b1426d0193370642e4de3352aea">More...</a><br /></td></tr>
 <tr class="separator:a68de2b1426d0193370642e4de3352aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:a8963125fae5da4575aabdb0a8d3b723b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a8963125fae5da4575aabdb0a8d3b723b"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d2/d62/any_8hpp.html#a8963125fae5da4575aabdb0a8d3b723b">bpstd::any_cast</a> (any *operand) noexcept</td></tr>
-<tr class="memdesc:a8963125fae5da4575aabdb0a8d3b723b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to cast an any back to the underlying type T.  <a href="../../d2/d62/any_8hpp.html#a8963125fae5da4575aabdb0a8d3b723b">More...</a><br /></td></tr>
-<tr class="separator:a8963125fae5da4575aabdb0a8d3b723b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad33352e7d689f84c6a2c2799bfe40210"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ad33352e7d689f84c6a2c2799bfe40210"><td class="memTemplItemLeft" align="right" valign="top">const T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d2/d62/any_8hpp.html#ad33352e7d689f84c6a2c2799bfe40210">bpstd::any_cast</a> (const any *operand) noexcept</td></tr>
-<tr class="memdesc:ad33352e7d689f84c6a2c2799bfe40210"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to cast an any back to the underlying type T.  <a href="../../d2/d62/any_8hpp.html#ad33352e7d689f84c6a2c2799bfe40210">More...</a><br /></td></tr>
-<tr class="separator:ad33352e7d689f84c6a2c2799bfe40210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fc3f15901782e4929f8198f266d70a8"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a1fc3f15901782e4929f8198f266d70a8"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d2/d62/any_8hpp.html#a1fc3f15901782e4929f8198f266d70a8">bpstd::any_cast</a> (any *operand) noexcept</td></tr>
+<tr class="memdesc:a1fc3f15901782e4929f8198f266d70a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to cast an any back to the underlying type T.  <a href="../../d2/d62/any_8hpp.html#a1fc3f15901782e4929f8198f266d70a8">More...</a><br /></td></tr>
+<tr class="separator:a1fc3f15901782e4929f8198f266d70a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0da7dd7c36d72b107dbbe5bd4c4406bb"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a0da7dd7c36d72b107dbbe5bd4c4406bb"><td class="memTemplItemLeft" align="right" valign="top">const T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d2/d62/any_8hpp.html#a0da7dd7c36d72b107dbbe5bd4c4406bb">bpstd::any_cast</a> (const any *operand) noexcept</td></tr>
+<tr class="memdesc:a0da7dd7c36d72b107dbbe5bd4c4406bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to cast an any back to the underlying type T.  <a href="../../d2/d62/any_8hpp.html#a0da7dd7c36d72b107dbbe5bd4c4406bb">More...</a><br /></td></tr>
+<tr class="separator:a0da7dd7c36d72b107dbbe5bd4c4406bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This header provides definitions from the C++ header &lt;any&gt; </p>
@@ -156,9 +157,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../.
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">T bpstd::any_cast </td>
@@ -168,11 +166,6 @@ template&lt;typename T &gt; </div>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Attempts to cast an any back to the underlying type T. </p>
@@ -189,8 +182,6 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the object </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d2/d62/any_8hpp_source.html#l00815">815</a> of file <a class="el" href="../../d2/d62/any_8hpp_source.html">any.hpp</a>.</p>
 
 </div>
 </div>
@@ -201,9 +192,6 @@ template&lt;typename T &gt; </div>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">T bpstd::any_cast </td>
@@ -213,11 +201,6 @@ template&lt;typename T &gt; </div>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Attempts to cast an any back to the underlying type T. </p>
@@ -234,8 +217,6 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the object </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d2/d62/any_8hpp_source.html#l00825">825</a> of file <a class="el" href="../../d2/d62/any_8hpp_source.html">any.hpp</a>.</p>
 
 </div>
 </div>
@@ -246,9 +227,6 @@ template&lt;typename T &gt; </div>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">T bpstd::any_cast </td>
@@ -258,11 +236,6 @@ template&lt;typename T &gt; </div>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Attempts to cast an any back to the underlying type T. </p>
@@ -280,12 +253,10 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the object </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d62/any_8hpp_source.html#l00835">835</a> of file <a class="el" href="../../d2/d62/any_8hpp_source.html">any.hpp</a>.</p>
-
 </div>
 </div>
-<a id="file_a8963125fae5da4575aabdb0a8d3b723b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#file_a8963125fae5da4575aabdb0a8d3b723b">&#9670;&nbsp;</a></span>any_cast() <span class="overload">[4/5]</span></h2>
+<a id="file_a1fc3f15901782e4929f8198f266d70a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#file_a1fc3f15901782e4929f8198f266d70a8">&#9670;&nbsp;</a></span>any_cast() <span class="overload">[4/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -296,7 +267,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">T * bpstd::any_cast </td>
+          <td class="memname">T* bpstd::any_cast </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d8/dbe/classbpstd_1_1any.html">any</a> *&#160;</td>
           <td class="paramname"><em>operand</em></td><td>)</td>
@@ -305,7 +276,7 @@ template&lt;typename T &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -319,12 +290,10 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the object if successfull, nullptr otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d62/any_8hpp_source.html#l00845">845</a> of file <a class="el" href="../../d2/d62/any_8hpp_source.html">any.hpp</a>.</p>
-
 </div>
 </div>
-<a id="file_ad33352e7d689f84c6a2c2799bfe40210"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#file_ad33352e7d689f84c6a2c2799bfe40210">&#9670;&nbsp;</a></span>any_cast() <span class="overload">[5/5]</span></h2>
+<a id="file_a0da7dd7c36d72b107dbbe5bd4c4406bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#file_a0da7dd7c36d72b107dbbe5bd4c4406bb">&#9670;&nbsp;</a></span>any_cast() <span class="overload">[5/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -335,7 +304,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const T * bpstd::any_cast </td>
+          <td class="memname">const T* bpstd::any_cast </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="../../d8/dbe/classbpstd_1_1any.html">any</a> *&#160;</td>
           <td class="paramname"><em>operand</em></td><td>)</td>
@@ -344,7 +313,7 @@ template&lt;typename T &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -357,8 +326,6 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the object if successfull, nullptr otherwise </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d2/d62/any_8hpp_source.html#l00862">862</a> of file <a class="el" href="../../d2/d62/any_8hpp_source.html">any.hpp</a>.</p>
 
 </div>
 </div>

@@ -5,6 +5,6 @@ var searchData=
   ['make_5freverse_5fiterator',['make_reverse_iterator',['../d9/dde/iterator_8hpp.html#a5476ce49c1b7cdf065d57b6ceecb3f7d',1,'bpstd']]],
   ['make_5funique',['make_unique',['../da/d3e/memory_8hpp.html#ad96b632bac18a5433ace61f2aa05f326',1,'bpstd::make_unique(Args &amp;&amp;...args)'],['../da/d3e/memory_8hpp.html#a10325c28ad6f05004bc2bff222f1a963',1,'bpstd::make_unique(std::size_t size)']]],
   ['make_5funique_5ffor_5foverwrite',['make_unique_for_overwrite',['../da/d3e/memory_8hpp.html#a04e9456cb358bc8376ab1f8884594607',1,'bpstd::make_unique_for_overwrite()'],['../da/d3e/memory_8hpp.html#a38907dc05d093c4df2f3f4e080536178',1,'bpstd::make_unique_for_overwrite(std::size_t size)']]],
-  ['max_5fsize',['max_size',['../db/dba/classbpstd_1_1basic__string__view.html#a9c952b16edfa5e5c52b5a5b0e67e3613',1,'bpstd::basic_string_view']]],
+  ['max_5fsize',['max_size',['../db/dba/classbpstd_1_1basic__string__view.html#adc08cb93b58e4df40bc811785414a44c',1,'bpstd::basic_string_view']]],
   ['move_5fif_5fnoexcept',['move_if_noexcept',['../d1/d4e/utility_8hpp.html#ab33218d828bfbf5033b89d1e22c8632f',1,'bpstd']]]
 ];

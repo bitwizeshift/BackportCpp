@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['last',['last',['../d4/dd8/classbpstd_1_1span.html#af61a391adabb8c1f3a623275f2e9c1bf',1,'bpstd::span::last() const'],['../d4/dd8/classbpstd_1_1span.html#ac062933ea02c47cfcfb595be09c01473',1,'bpstd::span::last(size_t count) const']]],
-  ['length',['length',['../db/dba/classbpstd_1_1basic__string__view.html#a8c34a17d711734f59f4553597d7d2309',1,'bpstd::basic_string_view']]],
+  ['last',['last',['../d4/dd8/classbpstd_1_1span.html#af61a391adabb8c1f3a623275f2e9c1bf',1,'bpstd::span::last() const'],['../d4/dd8/classbpstd_1_1span.html#a1007ca9cf43ab92a5e9414894e31aa22',1,'bpstd::span::last(size_t count) const']]],
+  ['length',['length',['../db/dba/classbpstd_1_1basic__string__view.html#afbef5a02a6f3905a91136a1ac265115c',1,'bpstd::basic_string_view']]],
   ['less',['less',['../d4/dcb/structbpstd_1_1less.html',1,'bpstd']]],
   ['less_3c_20void_20_3e',['less&lt; void &gt;',['../d2/d2f/structbpstd_1_1less_3_01void_01_4.html',1,'bpstd']]],
   ['less_5fequal',['less_equal',['../d9/df5/structbpstd_1_1less__equal.html',1,'bpstd']]],
