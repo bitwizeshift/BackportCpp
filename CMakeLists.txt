@@ -41,6 +41,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(header_files
+  "include/bpstd/detail/nth_type.hpp"
   "include/bpstd/detail/move.hpp"
   "include/bpstd/detail/invoke.hpp"
   "include/bpstd/detail/proxy_iterator.hpp"
