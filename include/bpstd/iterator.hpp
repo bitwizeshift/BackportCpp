@@ -34,6 +34,7 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
+#include "detail/config.hpp"
 #include "type_traits.hpp" // common_type_t
 
 #include <iterator>
@@ -160,7 +161,8 @@ namespace bpstd {
 //------------------------------------------------------------------------------
 
 template <typename Iterator>
-inline constexpr bpstd::reverse_iterator<Iterator>
+inline BPSTD_INLINE_VISIBILITY constexpr
+ bpstd::reverse_iterator<Iterator>
   bpstd::make_reverse_iterator(Iterator i)
 {
   return reverse_iterator<Iterator>{i};
@@ -175,27 +177,31 @@ inline constexpr bpstd::reverse_iterator<Iterator>
 //------------------------------------------------------------------------------
 
 template <typename C>
-inline constexpr auto bpstd::data(C& c)
+inline BPSTD_INLINE_VISIBILITY constexpr
+ auto bpstd::data(C& c)
   -> decltype(c.data())
 {
   return c.data();
 }
 
 template <typename C>
-inline constexpr auto bpstd::data(const C& c)
+inline BPSTD_INLINE_VISIBILITY constexpr
+ auto bpstd::data(const C& c)
   -> decltype(c.data())
 {
   return c.data();
 }
 template <typename T, std::size_t N>
-inline constexpr T* bpstd::data(T (&array)[N])
+inline BPSTD_INLINE_VISIBILITY constexpr
+ T* bpstd::data(T (&array)[N])
   noexcept
 {
   return array;
 }
 
 template <typename E>
-inline constexpr const E* bpstd::data(std::initializer_list<E> il)
+inline BPSTD_INLINE_VISIBILITY constexpr
+ const E* bpstd::data(std::initializer_list<E> il)
   noexcept
 {
   return il.begin();
@@ -204,21 +210,24 @@ inline constexpr const E* bpstd::data(std::initializer_list<E> il)
 //------------------------------------------------------------------------------
 
 template <typename C>
-inline constexpr auto bpstd::empty(const C& c)
+inline BPSTD_INLINE_VISIBILITY constexpr
+ auto bpstd::empty(const C& c)
   -> decltype(c.empty())
 {
   return c.empty();
 }
 
 template <typename T, std::size_t N>
-inline constexpr bool bpstd::empty(const T (&)[N])
+inline BPSTD_INLINE_VISIBILITY constexpr
+ bool bpstd::empty(const T (&)[N])
   noexcept
 {
   return N == 0;
 }
 
 template <typename E>
-inline constexpr bool bpstd::empty(std::initializer_list<E> il)
+inline BPSTD_INLINE_VISIBILITY constexpr
+ bool bpstd::empty(std::initializer_list<E> il)
   noexcept
 {
   return il.begin() == il.end();
@@ -227,14 +236,16 @@ inline constexpr bool bpstd::empty(std::initializer_list<E> il)
 //------------------------------------------------------------------------------
 
 template <typename C>
-inline constexpr auto bpstd::size(const C& c)
+inline BPSTD_INLINE_VISIBILITY constexpr
+ auto bpstd::size(const C& c)
   -> decltype(c.size())
 {
   return c.size();
 }
 
 template <typename T, std::size_t N>
-inline constexpr std::size_t bpstd::size(const T (&)[N])
+inline BPSTD_INLINE_VISIBILITY constexpr
+ std::size_t bpstd::size(const T (&)[N])
   noexcept
 {
   return N;
@@ -243,7 +254,8 @@ inline constexpr std::size_t bpstd::size(const T (&)[N])
 //------------------------------------------------------------------------------
 
 template <typename C>
-inline constexpr auto bpstd::ssize(const C& c)
+inline BPSTD_INLINE_VISIBILITY constexpr
+ auto bpstd::ssize(const C& c)
   -> bpstd::common_type_t<std::ptrdiff_t, bpstd::make_signed_t<decltype(c.size())>>
 {
   using type = bpstd::common_type_t<std::ptrdiff_t, bpstd::make_signed_t<decltype(c.size())>>;
@@ -252,7 +264,8 @@ inline constexpr auto bpstd::ssize(const C& c)
 }
 
 template <typename T, std::ptrdiff_t N>
-inline constexpr std::ptrdiff_t bpstd::ssize(const T (&)[N])
+inline BPSTD_INLINE_VISIBILITY constexpr
+ std::ptrdiff_t bpstd::ssize(const T (&)[N])
   noexcept
 {
   return N;

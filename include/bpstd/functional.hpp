@@ -60,7 +60,8 @@ namespace bpstd {
       Fn fn;
 
       template <typename...Args>
-      BPSTD_CPP14_CONSTEXPR auto operator()(Args&&... args) &
+      inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+      auto operator()(Args&&... args) &
         noexcept(noexcept(!::bpstd::invoke(fn, ::bpstd::forward<Args>(args)...)))
         -> decltype(!::bpstd::invoke(fn, ::bpstd::forward<Args>(args)...))
       {
@@ -68,7 +69,8 @@ namespace bpstd {
       }
 
       template <typename...Args>
-      BPSTD_CPP14_CONSTEXPR auto operator()(Args&&... args) &&
+      inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+      auto operator()(Args&&... args) &&
         noexcept(noexcept(!::bpstd::invoke(std::move(fn), ::bpstd::forward<Args>(args)...)))
         -> decltype(!::bpstd::invoke(std::move(fn), ::bpstd::forward<Args>(args)...))
       {
@@ -76,7 +78,8 @@ namespace bpstd {
       }
 
       template <typename...Args>
-      constexpr auto operator()(Args&&... args) const&
+      inline BPSTD_INLINE_VISIBILITY constexpr
+      auto operator()(Args&&... args) const&
         noexcept(noexcept(!::bpstd::invoke(fn, ::bpstd::forward<Args>(args)...)))
         -> decltype(!::bpstd::invoke(fn, ::bpstd::forward<Args>(args)...))
       {
@@ -84,7 +87,8 @@ namespace bpstd {
       }
 
       template <typename...Args>
-      constexpr auto operator()(Args&&... args) const&&
+      inline BPSTD_INLINE_VISIBILITY constexpr
+      auto operator()(Args&&... args) const&&
         noexcept(noexcept(!::bpstd::invoke(std::move(fn), ::bpstd::forward<Args>(args)...)))
         -> decltype(!::bpstd::invoke(std::move(fn), ::bpstd::forward<Args>(args)...))
       {
@@ -109,7 +113,8 @@ namespace bpstd {
   template <typename T = void>
   struct plus
   {
-    constexpr T operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    T operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs + rhs;
@@ -122,7 +127,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) + ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) + bpstd::forward<U>(rhs);
@@ -136,7 +142,8 @@ namespace bpstd {
   template <typename T = void>
   struct minus
   {
-    constexpr T operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    T operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs - rhs;
@@ -149,7 +156,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) - ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) - bpstd::forward<U>(rhs);
@@ -163,7 +171,8 @@ namespace bpstd {
   template <typename T = void>
   struct multiplies
   {
-    constexpr T operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    T operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs * rhs;
@@ -176,7 +185,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) * ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) * bpstd::forward<U>(rhs);
@@ -190,7 +200,8 @@ namespace bpstd {
   template <typename T = void>
   struct divides
   {
-    constexpr T operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    T operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs / rhs;
@@ -203,7 +214,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) / ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) / bpstd::forward<U>(rhs);
@@ -217,7 +229,8 @@ namespace bpstd {
   template <typename T = void>
   struct modulus
   {
-    constexpr T operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    T operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs % rhs;
@@ -230,7 +243,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) % ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) % bpstd::forward<U>(rhs);
@@ -244,7 +258,8 @@ namespace bpstd {
   template <typename T = void>
   struct negate
   {
-    constexpr T operator()(const T& arg)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    T operator()(const T& arg)
       const
     {
       return -arg;
@@ -257,7 +272,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T>
-    constexpr auto operator()(T&& arg) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& arg) const
       -> decltype(-::bpstd::forward<T>(arg))
     {
       return -bpstd::forward<T>(arg);
@@ -271,7 +287,8 @@ namespace bpstd {
   template <typename T = void>
   struct equal_to
   {
-    constexpr bool operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    bool operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs == rhs;
@@ -284,7 +301,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) == ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) == bpstd::forward<U>(rhs);
@@ -298,7 +316,8 @@ namespace bpstd {
   template <typename T = void>
   struct not_equal_to
   {
-    constexpr bool operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    bool operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs != rhs;
@@ -311,7 +330,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) != ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) != bpstd::forward<U>(rhs);
@@ -325,7 +345,8 @@ namespace bpstd {
   template <typename T = void>
   struct greater
   {
-    constexpr bool operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    bool operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs > rhs;
@@ -338,7 +359,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) > ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) > bpstd::forward<U>(rhs);
@@ -352,7 +374,8 @@ namespace bpstd {
   template <typename T = void>
   struct greater_equal
   {
-    constexpr bool operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    bool operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs >= rhs;
@@ -365,7 +388,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) >= ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) >= bpstd::forward<U>(rhs);
@@ -379,7 +403,8 @@ namespace bpstd {
   template <typename T = void>
   struct less
   {
-    constexpr bool operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    bool operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs < rhs;
@@ -392,7 +417,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) < ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) < bpstd::forward<U>(rhs);
@@ -406,7 +432,8 @@ namespace bpstd {
   template <typename T = void>
   struct less_equal
   {
-    constexpr bool operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    bool operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs <= rhs;
@@ -419,7 +446,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) <= ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) <= bpstd::forward<U>(rhs);
@@ -433,7 +461,8 @@ namespace bpstd {
   template <typename T = void>
   struct logical_and
   {
-    constexpr bool operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    bool operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs && rhs;
@@ -446,7 +475,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) && ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) && bpstd::forward<U>(rhs);
@@ -460,7 +490,8 @@ namespace bpstd {
   template <typename T = void>
   struct logical_or
   {
-    constexpr bool operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    bool operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs || rhs;
@@ -473,7 +504,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) || ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) || bpstd::forward<U>(rhs);
@@ -487,7 +519,8 @@ namespace bpstd {
   template <typename T = void>
   struct logical_not
   {
-    constexpr bool operator()(const T& arg)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    bool operator()(const T& arg)
       const
     {
       return !arg;
@@ -500,7 +533,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T>
-    constexpr auto operator()(T&& arg) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& arg) const
       -> decltype(!::bpstd::forward<T>(arg))
     {
       return !bpstd::forward<T>(arg);
@@ -514,7 +548,8 @@ namespace bpstd {
   template <typename T = void>
   struct bit_and
   {
-    constexpr T operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    T operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs & rhs;
@@ -527,7 +562,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) & ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) & bpstd::forward<U>(rhs);
@@ -541,7 +577,8 @@ namespace bpstd {
   template <typename T = void>
   struct bit_or
   {
-    constexpr T operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    T operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs | rhs;
@@ -554,7 +591,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) | ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) | bpstd::forward<U>(rhs);
@@ -568,7 +606,8 @@ namespace bpstd {
   template <typename T = void>
   struct bit_xor
   {
-    constexpr T operator()(const T& lhs, const T& rhs)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    T operator()(const T& lhs, const T& rhs)
       const
     {
       return lhs ^ rhs;
@@ -581,7 +620,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T, typename U>
-    constexpr auto operator()(T&& lhs, U&& rhs) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& lhs, U&& rhs) const
       -> decltype(::bpstd::forward<T>(lhs) ^ ::bpstd::forward<U>(rhs))
     {
       return bpstd::forward<T>(lhs) ^ bpstd::forward<U>(rhs);
@@ -595,7 +635,8 @@ namespace bpstd {
   template <typename T = void>
   struct bit_not
   {
-    constexpr T operator()(const T& arg)
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    T operator()(const T& arg)
       const
     {
       return ~arg;
@@ -608,7 +649,8 @@ namespace bpstd {
     using is_transparent = true_type;
 
     template <typename T>
-    constexpr auto operator()(T&& arg) const
+    inline BPSTD_INLINE_VISIBILITY constexpr
+    auto operator()(T&& arg) const
       -> decltype(~::bpstd::forward<T>(arg))
     {
       return ~bpstd::forward<T>(arg);
@@ -622,8 +664,8 @@ namespace bpstd {
 //==============================================================================
 
 template <typename Func, typename... Args>
-constexpr bpstd::invoke_result_t<Func,Args...>
-  bpstd::invoke(Func&& function, Args&&... args)
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::invoke_result_t<Func,Args...> bpstd::invoke(Func&& function, Args&&... args)
   noexcept(is_nothrow_invocable<Func,Args...>::value)
 {
   return detail::INVOKE(bpstd::forward<Func>(function), bpstd::forward<Args>(args)...);
@@ -635,7 +677,8 @@ constexpr bpstd::invoke_result_t<Func,Args...>
 //==============================================================================
 
 template <typename Fn>
-constexpr bpstd::detail::not_fn_t<bpstd::decay_t<Fn>> bpstd::not_fn(Fn&& fn)
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::detail::not_fn_t<bpstd::decay_t<Fn>> bpstd::not_fn(Fn&& fn)
 {
   static_assert(
     is_move_constructible<Fn>::value,

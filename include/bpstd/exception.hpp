@@ -34,6 +34,8 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
+#include "detail/config.hpp"
+
 #include <exception>
 
 // The large #if/endif block below, and the definition of
@@ -152,7 +154,8 @@ namespace bpstd {
 // Utilities
 //------------------------------------------------------------------------------
 
-inline int bpstd::uncaught_exceptions()
+inline BPSTD_INLINE_VISIBILITY
+int bpstd::uncaught_exceptions()
   noexcept
 {
 #if defined(BPSTD_HAS_UNCAUGHT_EXCEPTIONS)

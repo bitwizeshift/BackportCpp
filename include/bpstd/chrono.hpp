@@ -30,6 +30,8 @@
 #ifndef BPSTD_CHRONO_HPP
 #define BPSTD_CHRONO_HPP
 
+#include "detail/config.hpp"
+
 #include <chrono>  // std::chrono::duration, std::chrono::system_clock, etc
 #include <cstdint> // std::int32_t
 
@@ -97,72 +99,84 @@ namespace bpstd {
   } // inline namespace chrono
 } // namespace bpstd
 
-inline constexpr std::chrono::hours
+inline BPSTD_INLINE_VISIBILITY constexpr
+std::chrono::hours
   bpstd::literals::chrono_literals::operator""_h(unsigned long long x)
 {
   return chrono::hours{x};
 }
 
-inline constexpr std::chrono::duration<double, std::ratio<3600,1>>
+inline BPSTD_INLINE_VISIBILITY constexpr
+std::chrono::duration<double, std::ratio<3600,1>>
   bpstd::literals::chrono_literals::operator""_h(long double x)
 {
   return chrono::duration<double, std::ratio<3600,1>>{x};
 }
 
-inline constexpr bpstd::chrono::minutes
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::chrono::minutes
   bpstd::literals::chrono_literals::operator""_min(unsigned long long x)
 {
   return chrono::minutes{x};
 }
-inline constexpr bpstd::chrono::duration<double, std::ratio<60>>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::chrono::duration<double, std::ratio<60>>
   bpstd::literals::chrono_literals::operator""_min(long double x)
 {
   return chrono::duration<double, std::ratio<60>>{x};
 }
 
-inline constexpr bpstd::chrono::seconds
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::chrono::seconds
   bpstd::literals::chrono_literals::operator""_s(unsigned long long x)
 {
   return chrono::seconds{x};
 }
 
-inline constexpr bpstd::chrono::duration<double>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::chrono::duration<double>
   bpstd::literals::chrono_literals::operator""_s(long double x)
 {
   return chrono::duration<double>{x};
 }
 
-inline constexpr bpstd::chrono::milliseconds
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::chrono::milliseconds
   bpstd::literals::chrono_literals::operator""_ms(unsigned long long x)
 {
   return chrono::milliseconds{x};
 }
 
-inline constexpr bpstd::chrono::duration<double, std::milli>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::chrono::duration<double, std::milli>
   bpstd::literals::chrono_literals::operator""_ms(long double x)
 {
   return chrono::duration<double, std::milli>{x};
 }
 
-inline constexpr bpstd::chrono::microseconds
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::chrono::microseconds
   bpstd::literals::chrono_literals::operator ""_us(unsigned long long x)
 {
   return chrono::microseconds{x};
 }
 
-inline constexpr bpstd::chrono::duration<double, std::micro>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::chrono::duration<double, std::micro>
   bpstd::literals::chrono_literals::operator""_us(long double x)
 {
   return chrono::duration<double, std::micro>{x};
 }
 
-inline constexpr bpstd::chrono::nanoseconds
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::chrono::nanoseconds
   bpstd::literals::chrono_literals::operator""_ns(unsigned long long x)
 {
   return chrono::nanoseconds{x};
 }
 
-inline constexpr bpstd::chrono::duration<double, std::nano>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::chrono::duration<double, std::nano>
   bpstd::literals::chrono_literals::operator""_ns(long double x)
 {
   return chrono::duration<double, std::nano>{x};

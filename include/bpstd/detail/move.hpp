@@ -34,6 +34,8 @@
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
 
+#include "config.hpp"
+
 #include <type_traits>
 
 namespace bpstd {
@@ -75,28 +77,32 @@ namespace bpstd {
 //------------------------------------------------------------------------------
 
 template <typename T>
-inline constexpr T&& bpstd::forward(typename std::remove_reference<T>::type& t)
+inline BPSTD_INLINE_VISIBILITY constexpr
+T&& bpstd::forward(typename std::remove_reference<T>::type& t)
   noexcept
 {
   return static_cast<T&&>(t);
 }
 
 template <typename T>
-inline constexpr T&& bpstd::forward(typename std::remove_reference<T>::type&& t)
+inline BPSTD_INLINE_VISIBILITY constexpr
+T&& bpstd::forward(typename std::remove_reference<T>::type&& t)
   noexcept
 {
   return static_cast<T&&>(t);
 }
 
 template <typename T>
-inline constexpr T&& bpstd::move(T& x)
+inline BPSTD_INLINE_VISIBILITY constexpr
+T&& bpstd::move(T& x)
   noexcept
 {
   return static_cast<T&&>(x);
 }
 
 template <typename T>
-inline constexpr typename std::remove_reference<T>::type&& bpstd::move(T&& x)
+inline BPSTD_INLINE_VISIBILITY constexpr
+typename std::remove_reference<T>::type&& bpstd::move(T&& x)
   noexcept
 {
   return static_cast<T&&>(x);
