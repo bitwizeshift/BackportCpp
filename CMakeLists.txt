@@ -44,6 +44,7 @@ set(header_files
   "include/bpstd/detail/nth_type.hpp"
   "include/bpstd/detail/variant_fwds.hpp"
   "include/bpstd/detail/variant_union.hpp"
+  "include/bpstd/detail/variant_base.hpp"
   "include/bpstd/detail/variant_traits.hpp"
   "include/bpstd/detail/variant_visitors.hpp"
   "include/bpstd/detail/move.hpp"
@@ -65,6 +66,7 @@ set(header_files
   "include/bpstd/span.hpp"
   "include/bpstd/chrono.hpp"
   "include/bpstd/string.hpp"
+  "include/bpstd/variant.hpp"
 )
 
 add_library(${PROJECT_NAME} INTERFACE)
