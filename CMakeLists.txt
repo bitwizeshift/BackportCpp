@@ -45,6 +45,7 @@ set(header_files
   "include/bpstd/detail/variant_fwds.hpp"
   "include/bpstd/detail/variant_union.hpp"
   "include/bpstd/detail/variant_traits.hpp"
+  "include/bpstd/detail/variant_visitors.hpp"
   "include/bpstd/detail/move.hpp"
   "include/bpstd/detail/invoke.hpp"
   "include/bpstd/detail/proxy_iterator.hpp"
