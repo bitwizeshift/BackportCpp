@@ -15,6 +15,7 @@ set(source_files
   "src/bpstd/type_traits.test.cpp"
   "src/bpstd/iterator.test.cpp"
   "src/bpstd/utility.test.cpp"
+  "src/bpstd/variant.test.cpp"
 )
 
 add_executable(${PROJECT_NAME}.test

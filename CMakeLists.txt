@@ -41,6 +41,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(header_files
+  "include/bpstd/detail/nth_type.hpp"
+  "include/bpstd/detail/variant_fwds.hpp"
+  "include/bpstd/detail/variant_union.hpp"
+  "include/bpstd/detail/variant_base.hpp"
+  "include/bpstd/detail/variant_traits.hpp"
+  "include/bpstd/detail/variant_visitors.hpp"
   "include/bpstd/detail/move.hpp"
   "include/bpstd/detail/invoke.hpp"
   "include/bpstd/detail/proxy_iterator.hpp"
@@ -60,6 +66,7 @@ set(header_files
   "include/bpstd/span.hpp"
   "include/bpstd/chrono.hpp"
   "include/bpstd/string.hpp"
+  "include/bpstd/variant.hpp"
 )
 
 add_library(${PROJECT_NAME} INTERFACE)
@@ -79,6 +86,9 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang" AND
   # Disable the ridiculous compatibility warnings, since it fails on files not
   # ending in newlines
   add_compile_options(-Wno-c++98-compat -Wno-c++98-compat-pedantic)
+
+  # This gives an unbelievable amount of false-positives spuriously. Ignore it.
+  add_compile_options(-Wno-unneeded-member-function)
 elseif ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang" OR
         "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" )
   add_compile_options(-Wall -Werror -Wextra -pedantic -pedantic-errors)

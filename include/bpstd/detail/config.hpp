@@ -70,12 +70,16 @@
 # define BPSTD_MAY_ALIAS
 #endif // defined __clang__ || defined __GNUC__
 
-#if defined(__clang__) || defined(__GNUC__)
+// When using 'clang-cl', don't forceinline -- since it results in code generation
+// failures in 'variant'
+#if defined(__clang__) && defined(_MSC_VER)
+# define BPSTD_INLINE_VISIBILITY __attribute__((visibility("hidden"), no_instrument_function))
+#elif defined(__clang__) || defined(__GNUC__)
 # define BPSTD_INLINE_VISIBILITY __attribute__((visibility("hidden"), always_inline, no_instrument_function))
 #elif defined(_MSC_VER)
 # define BPSTD_INLINE_VISIBILITY __forceinline
 #else
-# define inline
+# define BPSTD_INLINE_VISIBILITY
 #endif
 
 #endif /* BPSTD_DETAIL_CONFIG_HPP */
