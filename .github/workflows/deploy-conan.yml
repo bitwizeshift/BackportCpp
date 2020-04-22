@@ -18,6 +18,7 @@ jobs:
 
       - name: Install
         run: |
+          sudo apt-get update
           sudo apt-get install -y g++-9 g++-9-multilib
           echo "::set-env name=CC::gcc-9"
           echo "::set-env name=CXX::g++-9"
