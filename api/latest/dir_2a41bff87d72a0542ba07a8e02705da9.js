@@ -14,5 +14,6 @@ var dir_2a41bff87d72a0542ba07a8e02705da9 =
     [ "string_view.hpp", "da/db5/string__view_8hpp.html", "da/db5/string__view_8hpp" ],
     [ "tuple.hpp", "d3/d6f/tuple_8hpp.html", "d3/d6f/tuple_8hpp" ],
     [ "type_traits.hpp", "dc/d54/type__traits_8hpp.html", "dc/d54/type__traits_8hpp" ],
-    [ "utility.hpp", "d1/d4e/utility_8hpp.html", "d1/d4e/utility_8hpp" ]
+    [ "utility.hpp", "d1/d4e/utility_8hpp.html", "d1/d4e/utility_8hpp" ],
+    [ "variant.hpp", "d9/d7a/variant_8hpp.html", "d9/d7a/variant_8hpp" ]
 ];

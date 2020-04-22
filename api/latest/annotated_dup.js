@@ -10,6 +10,7 @@ var annotated_dup =
       [ "any", "d8/dbe/classbpstd_1_1any.html", "d8/dbe/classbpstd_1_1any" ],
       [ "bad_any_cast", "da/d5e/classbpstd_1_1bad__any__cast.html", null ],
       [ "bad_optional_access", "df/dbf/classbpstd_1_1bad__optional__access.html", "df/dbf/classbpstd_1_1bad__optional__access" ],
+      [ "bad_variant_access", "de/da9/classbpstd_1_1bad__variant__access.html", "de/da9/classbpstd_1_1bad__variant__access" ],
       [ "basic_string_view", "db/dba/classbpstd_1_1basic__string__view.html", "db/dba/classbpstd_1_1basic__string__view" ],
       [ "bit_and", "de/dd2/structbpstd_1_1bit__and.html", "de/dd2/structbpstd_1_1bit__and" ],
       [ "bit_and< void >", "dc/d68/structbpstd_1_1bit__and_3_01void_01_4.html", "dc/d68/structbpstd_1_1bit__and_3_01void_01_4" ],
@@ -58,6 +59,7 @@ var annotated_dup =
       [ "minus< void >", "db/d4c/structbpstd_1_1minus_3_01void_01_4.html", "db/d4c/structbpstd_1_1minus_3_01void_01_4" ],
       [ "modulus", "d5/d5a/structbpstd_1_1modulus.html", "d5/d5a/structbpstd_1_1modulus" ],
       [ "modulus< void >", "d4/dd7/structbpstd_1_1modulus_3_01void_01_4.html", "d4/dd7/structbpstd_1_1modulus_3_01void_01_4" ],
+      [ "monostate", "d4/dd3/structbpstd_1_1monostate.html", null ],
       [ "multiplies", "d3/ddb/structbpstd_1_1multiplies.html", "d3/ddb/structbpstd_1_1multiplies" ],
       [ "multiplies< void >", "d2/d47/structbpstd_1_1multiplies_3_01void_01_4.html", "d2/d47/structbpstd_1_1multiplies_3_01void_01_4" ],
       [ "negate", "d6/dcf/structbpstd_1_1negate.html", "d6/dcf/structbpstd_1_1negate" ],
@@ -70,6 +72,17 @@ var annotated_dup =
       [ "plus", "df/d02/structbpstd_1_1plus.html", "df/d02/structbpstd_1_1plus" ],
       [ "plus< void >", "df/dd7/structbpstd_1_1plus_3_01void_01_4.html", "df/dd7/structbpstd_1_1plus_3_01void_01_4" ],
       [ "span", "d4/dd8/classbpstd_1_1span.html", "d4/dd8/classbpstd_1_1span" ],
-      [ "type_identity", "d8/d70/structbpstd_1_1type__identity.html", "d8/d70/structbpstd_1_1type__identity" ]
+      [ "type_identity", "d8/d70/structbpstd_1_1type__identity.html", "d8/d70/structbpstd_1_1type__identity" ],
+      [ "variant", "de/dc4/classbpstd_1_1variant.html", "de/dc4/classbpstd_1_1variant" ],
+      [ "variant_alternative", "d7/de4/structbpstd_1_1variant__alternative.html", null ],
+      [ "variant_alternative< I, const T >", "dc/d0c/structbpstd_1_1variant__alternative_3_01_i_00_01const_01_t_01_4.html", null ],
+      [ "variant_alternative< I, const volatile T >", "d0/de7/structbpstd_1_1variant__alternative_3_01_i_00_01const_01volatile_01_t_01_4.html", null ],
+      [ "variant_alternative< I, variant< Types... > >", "dc/d04/structbpstd_1_1variant__alternative_3_01_i_00_01variant_3_01_types_8_8_8_01_4_01_4.html", null ],
+      [ "variant_alternative< I, volatile T >", "dc/d69/structbpstd_1_1variant__alternative_3_01_i_00_01volatile_01_t_01_4.html", null ],
+      [ "variant_size", "d1/d13/structbpstd_1_1variant__size.html", null ],
+      [ "variant_size< const T >", "d2/d8f/structbpstd_1_1variant__size_3_01const_01_t_01_4.html", null ],
+      [ "variant_size< const volatile T >", "da/d3e/structbpstd_1_1variant__size_3_01const_01volatile_01_t_01_4.html", null ],
+      [ "variant_size< variant< Types... > >", "d2/d0f/structbpstd_1_1variant__size_3_01variant_3_01_types_8_8_8_01_4_01_4.html", null ],
+      [ "variant_size< volatile T >", "d9/d4a/structbpstd_1_1variant__size_3_01volatile_01_t_01_4.html", null ]
     ] ]
 ];

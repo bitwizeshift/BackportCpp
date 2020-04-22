@@ -3,13 +3,15 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node39 [label="std::exception",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
-  Node39 -> Node40 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node40 [label="std::bad_cast",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
-  Node40 -> Node41 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node41 [label="bpstd::bad_any_cast",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/d5e/classbpstd_1_1bad__any__cast.html"];
-  Node39 -> Node42 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node42 [label="std::logic_error",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
-  Node42 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node0 [label="bpstd::bad_optional\l_access",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/dbf/classbpstd_1_1bad__optional__access.html",tooltip="An exception thrown when an optional is attempted to be accessed while not containing a value..."];
+  Node51 [label="std::exception",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node51 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="bpstd::bad_variant\l_access",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/da9/classbpstd_1_1bad__variant__access.html",tooltip="Exception thrown by variant. "];
+  Node51 -> Node53 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node53 [label="std::bad_cast",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node53 -> Node54 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node54 [label="bpstd::bad_any_cast",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/d5e/classbpstd_1_1bad__any__cast.html"];
+  Node51 -> Node55 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node55 [label="std::logic_error",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip="STL class. "];
+  Node55 -> Node56 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node56 [label="bpstd::bad_optional\l_access",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/dbf/classbpstd_1_1bad__optional__access.html",tooltip="An exception thrown when an optional is attempted to be accessed while not containing a value..."];
 }

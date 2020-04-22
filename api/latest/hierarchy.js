@@ -1,5 +1,14 @@
 var hierarchy =
 [
+    [ "add_const", null, [
+      [ "bpstd::variant_alternative< I, const T >", "dc/d0c/structbpstd_1_1variant__alternative_3_01_i_00_01const_01_t_01_4.html", null ]
+    ] ],
+    [ "add_cv", null, [
+      [ "bpstd::variant_alternative< I, const volatile T >", "d0/de7/structbpstd_1_1variant__alternative_3_01_i_00_01const_01volatile_01_t_01_4.html", null ]
+    ] ],
+    [ "add_volatile", null, [
+      [ "bpstd::variant_alternative< I, volatile T >", "dc/d69/structbpstd_1_1variant__alternative_3_01_i_00_01volatile_01_t_01_4.html", null ]
+    ] ],
     [ "bpstd::aligned_storage< Size, Align >", "d0/d6d/structbpstd_1_1aligned__storage.html", null ],
     [ "bpstd::aligned_storage< buffer_size, buffer_align >", "d0/d6d/structbpstd_1_1aligned__storage.html", null ],
     [ "bpstd::aligned_union< Len, Ts >", "d1/d91/structbpstd_1_1aligned__union.html", null ],
@@ -32,6 +41,7 @@ var hierarchy =
     [ "bpstd::equal_to< T >", "de/d68/structbpstd_1_1equal__to.html", null ],
     [ "bpstd::equal_to< void >", "de/dd3/structbpstd_1_1equal__to_3_01void_01_4.html", null ],
     [ "std::exception", null, [
+      [ "bpstd::bad_variant_access", "de/da9/classbpstd_1_1bad__variant__access.html", null ],
       [ "std::bad_cast", null, [
         [ "bpstd::bad_any_cast", "da/d5e/classbpstd_1_1bad__any__cast.html", null ]
       ] ],
@@ -47,6 +57,9 @@ var hierarchy =
     [ "bpstd::in_place_t", "d9/d0e/structbpstd_1_1in__place__t.html", null ],
     [ "bpstd::in_place_type_t< T >", "da/d39/structbpstd_1_1in__place__type__t.html", null ],
     [ "bpstd::integer_sequence< T, Ints >", "d6/d35/structbpstd_1_1integer__sequence.html", null ],
+    [ "integral_constant", null, [
+      [ "bpstd::variant_size< variant< Types... > >", "d2/d0f/structbpstd_1_1variant__size_3_01variant_3_01_types_8_8_8_01_4_01_4.html", null ]
+    ] ],
     [ "bpstd::less< T >", "d4/dcb/structbpstd_1_1less.html", null ],
     [ "bpstd::less< void >", "d2/d2f/structbpstd_1_1less_3_01void_01_4.html", null ],
     [ "bpstd::less_equal< T >", "d9/df5/structbpstd_1_1less__equal.html", null ],
@@ -61,12 +74,16 @@ var hierarchy =
     [ "bpstd::minus< void >", "db/d4c/structbpstd_1_1minus_3_01void_01_4.html", null ],
     [ "bpstd::modulus< T >", "d5/d5a/structbpstd_1_1modulus.html", null ],
     [ "bpstd::modulus< void >", "d4/dd7/structbpstd_1_1modulus_3_01void_01_4.html", null ],
+    [ "bpstd::monostate", "d4/dd3/structbpstd_1_1monostate.html", null ],
     [ "bpstd::multiplies< T >", "d3/ddb/structbpstd_1_1multiplies.html", null ],
     [ "bpstd::multiplies< void >", "d2/d47/structbpstd_1_1multiplies_3_01void_01_4.html", null ],
     [ "bpstd::negate< T >", "d6/dcf/structbpstd_1_1negate.html", null ],
     [ "bpstd::negate< void >", "dd/d18/structbpstd_1_1negate_3_01void_01_4.html", null ],
     [ "bpstd::not_equal_to< T >", "dc/dfb/structbpstd_1_1not__equal__to.html", null ],
     [ "bpstd::not_equal_to< void >", "d1/d98/structbpstd_1_1not__equal__to_3_01void_01_4.html", null ],
+    [ "nth_type", null, [
+      [ "bpstd::variant_alternative< I, variant< Types... > >", "dc/d04/structbpstd_1_1variant__alternative_3_01_i_00_01variant_3_01_types_8_8_8_01_4_01_4.html", null ]
+    ] ],
     [ "bpstd::nullopt_t", "d7/dae/structbpstd_1_1nullopt__t.html", null ],
     [ "bpstd::detail::optional_base< T, std::is_trivially_destructible< T >::value >", null, [
       [ "bpstd::optional< T >", "d8/d86/classbpstd_1_1optional.html", null ]
@@ -74,11 +91,20 @@ var hierarchy =
     [ "bpstd::plus< T >", "df/d02/structbpstd_1_1plus.html", null ],
     [ "bpstd::plus< void >", "df/dd7/structbpstd_1_1plus_3_01void_01_4.html", null ],
     [ "bpstd::span< T, Extent >", "d4/dd8/classbpstd_1_1span.html", null ],
-    [ "bpstd::aligned_union< Len, Ts >::type", "d1/d91/structbpstd_1_1aligned__union.html#d4/d86/structbpstd_1_1aligned__union_1_1type", null ],
     [ "bpstd::aligned_storage< Size, Align >::type", "d0/d6d/structbpstd_1_1aligned__storage.html#dd/da4/structbpstd_1_1aligned__storage_1_1type", null ],
+    [ "bpstd::aligned_union< Len, Ts >::type", "d1/d91/structbpstd_1_1aligned__union.html#d4/d86/structbpstd_1_1aligned__union_1_1type", null ],
     [ "bpstd::type_identity< T >", "d8/d70/structbpstd_1_1type__identity.html", null ],
     [ "bpstd::type_identity< integer_sequence< T, Tails... > >", "d8/d70/structbpstd_1_1type__identity.html", null ],
     [ "bpstd::type_identity< void >", "d8/d70/structbpstd_1_1type__identity.html", null ],
+    [ "bpstd::variant_alternative< I, T >", "d7/de4/structbpstd_1_1variant__alternative.html", null ],
+    [ "variant_base", null, [
+      [ "bpstd::variant< Types >", "de/dc4/classbpstd_1_1variant.html", null ]
+    ] ],
+    [ "bpstd::variant_size< T >", "d1/d13/structbpstd_1_1variant__size.html", [
+      [ "bpstd::variant_size< const T >", "d2/d8f/structbpstd_1_1variant__size_3_01const_01_t_01_4.html", null ],
+      [ "bpstd::variant_size< const volatile T >", "da/d3e/structbpstd_1_1variant__size_3_01const_01volatile_01_t_01_4.html", null ],
+      [ "bpstd::variant_size< volatile T >", "d9/d4a/structbpstd_1_1variant__size_3_01volatile_01_t_01_4.html", null ]
+    ] ],
     [ "false_type", null, [
       [ "bpstd::disjunction<... >", "d1/d38/structbpstd_1_1disjunction.html", null ],
       [ "bpstd::is_bounded_array< T >", "d4/d05/structbpstd_1_1is__bounded__array.html", null ],

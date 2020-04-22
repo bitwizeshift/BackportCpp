@@ -2,6 +2,7 @@ var searchData=
 [
   ['bad_5fany_5fcast',['bad_any_cast',['../da/d5e/classbpstd_1_1bad__any__cast.html',1,'bpstd']]],
   ['bad_5foptional_5faccess',['bad_optional_access',['../df/dbf/classbpstd_1_1bad__optional__access.html',1,'bpstd']]],
+  ['bad_5fvariant_5faccess',['bad_variant_access',['../de/da9/classbpstd_1_1bad__variant__access.html',1,'bpstd']]],
   ['basic_5fstring_5fview',['basic_string_view',['../db/dba/classbpstd_1_1basic__string__view.html',1,'bpstd']]],
   ['bit_5fand',['bit_and',['../de/dd2/structbpstd_1_1bit__and.html',1,'bpstd']]],
   ['bit_5fand_3c_20void_20_3e',['bit_and&lt; void &gt;',['../dc/d68/structbpstd_1_1bit__and_3_01void_01_4.html',1,'bpstd']]],
