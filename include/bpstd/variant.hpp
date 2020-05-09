@@ -1585,6 +1585,10 @@ bpstd::detail::variant_visitor_invoke_result_t<Visitor,Variant>
 {
   using union_type = detail::match_cvref_t<Variant, decltype(v.m_union)>;
 
+  if (v.valueless_by_exception()) {
+    throw bad_variant_access{};
+  }
+
   return detail::visit_union(
     v.index(),
     bpstd::forward<Visitor>(visitor),
