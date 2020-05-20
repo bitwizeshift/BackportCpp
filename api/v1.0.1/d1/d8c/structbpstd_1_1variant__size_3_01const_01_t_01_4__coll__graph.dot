@@ -1,0 +1,8 @@
+digraph "bpstd::variant_size&lt; const T &gt;"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node2 [label="bpstd::variant_size\l\< const T \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="bpstd::variant_size\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/d13/structbpstd_1_1variant__size.html",tooltip="Provides access to the number of alternatives in a possibly cv-qualified variant as a compile-time co..."];
+}
