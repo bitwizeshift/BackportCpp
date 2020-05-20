@@ -842,7 +842,14 @@ template<typename T>
 inline BPSTD_INLINE_VISIBILITY
 T bpstd::any_cast(any& operand)
 {
-  auto* p = any_cast<T>(&operand);
+  using underlying_type = remove_cvref_t<T>;
+
+  static_assert(
+    is_constructible<T, underlying_type&>::value,
+    "A program is ill-formed if T is not constructible from U&"
+  );
+
+  auto* p = any_cast<underlying_type>(&operand);
   if (p == nullptr) {
     throw bad_any_cast{};
   }
@@ -853,7 +860,14 @@ template<typename T>
 inline BPSTD_INLINE_VISIBILITY
 T bpstd::any_cast(any&& operand)
 {
-  auto* p = any_cast<T>(&operand);
+  using underlying_type = remove_cvref_t<T>;
+
+  static_assert(
+    is_constructible<T, underlying_type>::value,
+    "A program is ill-formed if T is not constructible from U"
+  );
+
+  auto* p = any_cast<underlying_type>(&operand);
   if (p == nullptr) {
     throw bad_any_cast{};
   }
@@ -864,7 +878,14 @@ template<typename T>
 inline BPSTD_INLINE_VISIBILITY
 T bpstd::any_cast(const any& operand)
 {
-  auto* p = any_cast<T>(&operand);
+  using underlying_type = remove_cvref_t<T>;
+
+  static_assert(
+    is_constructible<T, const underlying_type&>::value,
+    "A program is ill-formed if T is not constructible from const U&"
+  );
+
+  const auto* p = any_cast<underlying_type>(&operand);
   if (p == nullptr) {
     throw bad_any_cast{};
   }
