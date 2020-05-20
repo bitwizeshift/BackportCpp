@@ -595,6 +595,12 @@ TEST_CASE("any_cast(any_cast&)", "[utilities]")
 
       REQUIRE(result == value);
     }
+    SECTION("Refers to the same underlying value")
+    {
+      auto& reference = bpstd::any_cast<int&>(sut);
+
+      REQUIRE(&reference == bpstd::any_cast<int>(&sut));
+    }
   }
 
   SECTION("Cast to incorrect type")
@@ -602,6 +608,36 @@ TEST_CASE("any_cast(any_cast&)", "[utilities]")
     SECTION("Throws bad_any_cast")
     {
       REQUIRE_THROWS_AS(bpstd::any_cast<long>(sut), bpstd::bad_any_cast);
+    }
+  }
+}
+
+TEST_CASE("any_cast(any_cast&&)", "[utilities]")
+{
+  const auto value = int{52};
+  auto sut = bpstd::any{value};
+
+  SECTION("Cast to correct type")
+  {
+    SECTION("Casts to the specified type")
+    {
+      const auto result = bpstd::any_cast<int>(std::move(sut));
+
+      REQUIRE(result == value);
+    }
+    SECTION("Refers to the same underlying value")
+    {
+      auto&& reference = bpstd::any_cast<int&&>(std::move(sut));
+
+      REQUIRE(&reference == bpstd::any_cast<int>(&sut));
+    }
+  }
+
+  SECTION("Cast to incorrect type")
+  {
+    SECTION("Throws bad_any_cast")
+    {
+      REQUIRE_THROWS_AS(bpstd::any_cast<long>(std::move(sut)), bpstd::bad_any_cast);
     }
   }
 }
@@ -618,6 +654,12 @@ TEST_CASE("any_cast(const any_cast&)", "[utilities]")
       const auto result = bpstd::any_cast<int>(sut);
 
       REQUIRE(result == value);
+    }
+    SECTION("Refers to the same underlying value")
+    {
+      const auto& reference = bpstd::any_cast<const int&>(sut);
+
+      REQUIRE(&reference == bpstd::any_cast<int>(&sut));
     }
   }
 
