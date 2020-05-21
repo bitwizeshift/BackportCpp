@@ -1,0 +1,8 @@
+digraph "include/bpstd/tuple.hpp"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node12 [label="include/bpstd/tuple.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node12 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="include/bpstd/variant.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/d7a/variant_8hpp.html",tooltip="This header provides definitions from the C++ header <variant> "];
+}

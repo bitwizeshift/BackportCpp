@@ -97,6 +97,7 @@ $(document).ready(function(){initNavTree('d9/d7a/variant_8hpp.html','../../');})
 <code>#include &quot;detail/variant_base.hpp&quot;</code><br />
 <code>#include &quot;detail/variant_visitors.hpp&quot;</code><br />
 <code>#include &quot;detail/variant_traits.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d3/d6f/tuple_8hpp_source.html">tuple.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d1/d4e/utility_8hpp_source.html">utility.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d2/db4/functional_8hpp_source.html">functional.hpp</a>&quot;</code><br />
@@ -224,10 +225,46 @@ template&lt;typename... Types&gt; </td></tr>
 <tr class="memitem:a85377e81254b0abf59b942e2b497f176"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_CPP14_CONSTEXPR bpstd::detail::variant_visitor_invoke_result_t&lt; Visitor, Variant &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/d7a/variant_8hpp.html#a85377e81254b0abf59b942e2b497f176">bpstd::visit</a> (Visitor &amp;&amp;visitor, Variant &amp;&amp;v)</td></tr>
 <tr class="memdesc:a85377e81254b0abf59b942e2b497f176"><td class="mdescLeft">&#160;</td><td class="mdescRight">Visits the variant <code>v</code> with the given <code>visitor</code>.  <a href="../../d9/d7a/variant_8hpp.html#a85377e81254b0abf59b942e2b497f176">More...</a><br /></td></tr>
 <tr class="separator:a85377e81254b0abf59b942e2b497f176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02d19289d7451aa712375d0ea5cc046a"><td class="memTemplParams" colspan="2"><a id="a02d19289d7451aa712375d0ea5cc046a"></a>
+template&lt;typename Visitor , typename Variant0 , typename... Variants&gt; </td></tr>
+<tr class="memitem:a02d19289d7451aa712375d0ea5cc046a"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_CPP14_CONSTEXPR bpstd::detail::variant_visitor_invoke_result_t&lt; Visitor, Variant0, Variants... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::visit</b> (Visitor &amp;&amp;visitor, Variant0 &amp;&amp;variant0, Variants &amp;&amp;...variants)</td></tr>
+<tr class="separator:a02d19289d7451aa712375d0ea5cc046a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace722bdffe02bece6d9d3bee98efe112"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Types&gt; </td></tr>
 <tr class="memitem:ace722bdffe02bece6d9d3bee98efe112"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/d7a/variant_8hpp.html#ace722bdffe02bece6d9d3bee98efe112">bpstd::holds_alternative</a> (const variant&lt; Types... &gt; &amp;v) noexcept</td></tr>
 <tr class="memdesc:ace722bdffe02bece6d9d3bee98efe112"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the variant v holds the alternative T.  <a href="../../d9/d7a/variant_8hpp.html#ace722bdffe02bece6d9d3bee98efe112">More...</a><br /></td></tr>
 <tr class="separator:ace722bdffe02bece6d9d3bee98efe112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8149f7c32b7965a05f8a3ee604762988"><td class="memTemplParams" colspan="2"><a id="a8149f7c32b7965a05f8a3ee604762988"></a>
+template&lt;typename Variant0 , typename... Variants&gt; </td></tr>
+<tr class="memitem:a8149f7c32b7965a05f8a3ee604762988"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_INLINE_VISIBILITY constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::detail::are_any_valueless_by_exception</b> (const Variant0 &amp;v0, const Variants &amp;...vs)</td></tr>
+<tr class="separator:a8149f7c32b7965a05f8a3ee604762988"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa0581f10d71ee052aa8dba9bdf604b3"><td class="memTemplParams" colspan="2"><a id="aaa0581f10d71ee052aa8dba9bdf604b3"></a>
+template&lt;typename Variant0 &gt; </td></tr>
+<tr class="memitem:aaa0581f10d71ee052aa8dba9bdf604b3"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_INLINE_VISIBILITY constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::detail::are_any_valueless_by_exception</b> (const Variant0 &amp;v0)</td></tr>
+<tr class="separator:aaa0581f10d71ee052aa8dba9bdf604b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9d3275eb304554362fb65f3385fb226"><td class="memTemplParams" colspan="2"><a id="ad9d3275eb304554362fb65f3385fb226"></a>
+template&lt;typename... Args, typename T , std::size_t... Idxs&gt; </td></tr>
+<tr class="memitem:ad9d3275eb304554362fb65f3385fb226"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR std::tuple&lt; Args &amp;&amp;..., T &amp;&amp; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::detail::tuple_push_back_aux</b> (std::tuple&lt; Args... &gt; &amp;args, T &amp;&amp;v, index_sequence&lt; Idxs... &gt;)</td></tr>
+<tr class="separator:ad9d3275eb304554362fb65f3385fb226"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1fdad52f5c1119f919458a744c4498e"><td class="memTemplParams" colspan="2"><a id="af1fdad52f5c1119f919458a744c4498e"></a>
+template&lt;typename... Args, typename T &gt; </td></tr>
+<tr class="memitem:af1fdad52f5c1119f919458a744c4498e"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR std::tuple&lt; Args &amp;&amp;..., T &amp;&amp; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::detail::tuple_push_back</b> (std::tuple&lt; Args... &gt; &amp;args, T &amp;&amp;t)</td></tr>
+<tr class="separator:af1fdad52f5c1119f919458a744c4498e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad29050a981ed5ed8985c6352d8311322"><td class="memTemplParams" colspan="2"><a id="ad29050a981ed5ed8985c6352d8311322"></a>
+template&lt;typename Arg0 , typename... Args, std::size_t... Idxs&gt; </td></tr>
+<tr class="memitem:ad29050a981ed5ed8985c6352d8311322"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR std::tuple&lt; Args... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::detail::tuple_pop_front_aux</b> (std::tuple&lt; Arg0, Args... &gt; &amp;args, index_sequence&lt; 0, Idxs... &gt;)</td></tr>
+<tr class="separator:ad29050a981ed5ed8985c6352d8311322"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a35ed421a1796791bba0187ac22b256"><td class="memTemplParams" colspan="2"><a id="a6a35ed421a1796791bba0187ac22b256"></a>
+template&lt;typename Arg0 , typename... Args&gt; </td></tr>
+<tr class="memitem:a6a35ed421a1796791bba0187ac22b256"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR std::tuple&lt; Args... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::detail::tuple_pop_front</b> (std::tuple&lt; Arg0, Args... &gt; &amp;args)</td></tr>
+<tr class="separator:a6a35ed421a1796791bba0187ac22b256"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a567248a67d67f0090e0f6e149407e4"><td class="memTemplParams" colspan="2"><a id="a0a567248a67d67f0090e0f6e149407e4"></a>
+template&lt;typename T , typename Visitor , typename Variants , typename Arguments &gt; </td></tr>
+<tr class="memitem:a0a567248a67d67f0090e0f6e149407e4"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_CPP14_CONSTEXPR multi_variant_visitor&lt; T, Visitor, remove_cvref_t&lt; Variants &gt;, remove_cvref_t&lt; Arguments &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::detail::make_multi_visitor</b> (Visitor &amp;&amp;vistior, Variants &amp;&amp;variants, Arguments &amp;&amp;args)</td></tr>
+<tr class="separator:a0a567248a67d67f0090e0f6e149407e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11e88acb72f88ac21d9bff3b904a540b"><td class="memTemplParams" colspan="2"><a id="a11e88acb72f88ac21d9bff3b904a540b"></a>
+template&lt;typename T , typename Visitor , typename Variants , typename Arguments &gt; </td></tr>
+<tr class="memitem:a11e88acb72f88ac21d9bff3b904a540b"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR multi_variant_visitor&lt; T, Visitor, remove_cvref_t&lt; Variants &gt;, remove_cvref_t&lt; Arguments &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::detail::make_multi_visitor</b> (Visitor &amp;&amp;visitor, Variants &amp;&amp;variants, Arguments &amp;&amp;args)</td></tr>
+<tr class="separator:a11e88acb72f88ac21d9bff3b904a540b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:abc9e1aeef36d5560ac821d10f1024588"><td class="memTemplParams" colspan="2">template&lt;std::size_t I, typename... Types&gt; </td></tr>
 <tr class="memitem:abc9e1aeef36d5560ac821d10f1024588"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_CPP14_CONSTEXPR variant_alternative_t&lt; I, variant&lt; Types... &gt; &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/d7a/variant_8hpp.html#abc9e1aeef36d5560ac821d10f1024588">bpstd::get</a> (variant&lt; Types... &gt; &amp;v)</td></tr>
@@ -316,7 +353,7 @@ template&lt;std::size_t I, typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d7a/variant_8hpp_source.html#l00152">152</a> of file <a class="el" href="../../d9/d7a/variant_8hpp_source.html">variant.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d7a/variant_8hpp_source.html#l00153">153</a> of file <a class="el" href="../../d9/d7a/variant_8hpp_source.html">variant.hpp</a>.</p>
 
 </div>
 </div>

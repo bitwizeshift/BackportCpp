@@ -103,6 +103,15 @@ $(document).ready(function(){initNavTree('d3/d6f/tuple_8hpp.html','../../');});
 <map name="include_2bpstd_2tuple_8hpp" id="include_2bpstd_2tuple_8hpp">
 </map>
 </div>
+</div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d71/tuple_8hpp__dep__incl.png" border="0" usemap="#include_2bpstd_2tuple_8hppdep" alt=""/></div>
+<map name="include_2bpstd_2tuple_8hppdep" id="include_2bpstd_2tuple_8hppdep">
+</map>
+</div>
 </div>
 <p><a href="../../d3/d6f/tuple_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -131,38 +140,30 @@ template&lt;typename Fn , typename Tuple &gt; </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a30c579742a1e27be4a39b7e15348b9f2"><td class="memTemplParams" colspan="2"><a id="a30c579742a1e27be4a39b7e15348b9f2"></a>
-template&lt;std::size_t N, typename... Types&gt; </td></tr>
-<tr class="memitem:a30c579742a1e27be4a39b7e15348b9f2"><td class="memTemplItemLeft" align="right" valign="top">constexpr tuple_element_t&lt; N, tuple&lt; Types... &gt; &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::get</b> (tuple&lt; Types... &gt; &amp;) noexcept</td></tr>
-<tr class="separator:a30c579742a1e27be4a39b7e15348b9f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ae5d32c8a5eac66479155a424c3fbe6"><td class="memTemplParams" colspan="2"><a id="a5ae5d32c8a5eac66479155a424c3fbe6"></a>
-template&lt;std::size_t N, typename... Types&gt; </td></tr>
-<tr class="memitem:a5ae5d32c8a5eac66479155a424c3fbe6"><td class="memTemplItemLeft" align="right" valign="top">constexpr tuple_element_t&lt; N, tuple&lt; Types... &gt; &gt; &amp;&amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::get</b> (tuple&lt; Types... &gt; &amp;&amp;) noexcept</td></tr>
-<tr class="separator:a5ae5d32c8a5eac66479155a424c3fbe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad794ad1896f7706062cedef0f755fe72"><td class="memTemplParams" colspan="2"><a id="ad794ad1896f7706062cedef0f755fe72"></a>
-template&lt;std::size_t N, typename... Types&gt; </td></tr>
-<tr class="memitem:ad794ad1896f7706062cedef0f755fe72"><td class="memTemplItemLeft" align="right" valign="top">constexpr const tuple_element_t&lt; N, tuple&lt; Types... &gt; &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::get</b> (const tuple&lt; Types... &gt; &amp;) noexcept</td></tr>
-<tr class="separator:ad794ad1896f7706062cedef0f755fe72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abace64307a1a0f2e6fcaae6fbed1a68d"><td class="memTemplParams" colspan="2"><a id="abace64307a1a0f2e6fcaae6fbed1a68d"></a>
-template&lt;std::size_t N, typename... Types&gt; </td></tr>
-<tr class="memitem:abace64307a1a0f2e6fcaae6fbed1a68d"><td class="memTemplItemLeft" align="right" valign="top">constexpr const tuple_element_t&lt; N, tuple&lt; Types... &gt; &gt; &amp;&amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::get</b> (const tuple&lt; Types... &gt; &amp;&amp;) noexcept</td></tr>
-<tr class="separator:abace64307a1a0f2e6fcaae6fbed1a68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa42af39302f03e36ac20ac2838ad6a13"><td class="memTemplParams" colspan="2"><a id="aa42af39302f03e36ac20ac2838ad6a13"></a>
+<tr class="memitem:a257b10a2ba98632ee901c9424515278f"><td class="memTemplParams" colspan="2"><a id="a257b10a2ba98632ee901c9424515278f"></a>
+template&lt;std::size_t N, typename Tuple , typename  = enable_if_t&lt;detail::is_tuple&lt;remove_cvref_t&lt;Tuple&gt;&gt;::value &amp;&amp; is_lvalue_reference&lt;Tuple&gt;::value&gt;&gt; </td></tr>
+<tr class="memitem:a257b10a2ba98632ee901c9424515278f"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR tuple_element_t&lt; N, remove_reference_t&lt; Tuple &gt; &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::get</b> (Tuple &amp;&amp;t) noexcept</td></tr>
+<tr class="separator:a257b10a2ba98632ee901c9424515278f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85ce4ba834913708af486c122af14bbe"><td class="memTemplParams" colspan="2"><a id="a85ce4ba834913708af486c122af14bbe"></a>
+template&lt;std::size_t N, typename Tuple , typename  = enable_if_t&lt;detail::is_tuple&lt;remove_cvref_t&lt;Tuple&gt;&gt;::value &amp;&amp; !is_lvalue_reference&lt;Tuple&gt;::value&gt;&gt; </td></tr>
+<tr class="memitem:a85ce4ba834913708af486c122af14bbe"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR tuple_element_t&lt; N, remove_reference_t&lt; Tuple &gt; &gt; &amp;&amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::get</b> (Tuple &amp;&amp;t) noexcept</td></tr>
+<tr class="separator:a85ce4ba834913708af486c122af14bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4052fa53173c7b09411e239358bab3e"><td class="memTemplParams" colspan="2"><a id="af4052fa53173c7b09411e239358bab3e"></a>
 template&lt;typename T , typename... Types&gt; </td></tr>
-<tr class="memitem:aa42af39302f03e36ac20ac2838ad6a13"><td class="memTemplItemLeft" align="right" valign="top">constexpr T &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::get</b> (tuple&lt; Types... &gt; &amp;t) noexcept</td></tr>
-<tr class="separator:aa42af39302f03e36ac20ac2838ad6a13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a545301d66d67bffa3f155e48796bdd88"><td class="memTemplParams" colspan="2"><a id="a545301d66d67bffa3f155e48796bdd88"></a>
+<tr class="memitem:af4052fa53173c7b09411e239358bab3e"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_CPP14_CONSTEXPR T &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::get</b> (tuple&lt; Types... &gt; &amp;t) noexcept</td></tr>
+<tr class="separator:af4052fa53173c7b09411e239358bab3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a104624ce41cfaba276bf89100bb4a791"><td class="memTemplParams" colspan="2"><a id="a104624ce41cfaba276bf89100bb4a791"></a>
 template&lt;typename T , typename... Types&gt; </td></tr>
-<tr class="memitem:a545301d66d67bffa3f155e48796bdd88"><td class="memTemplItemLeft" align="right" valign="top">constexpr T &amp;&amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::get</b> (tuple&lt; Types... &gt; &amp;&amp;t) noexcept</td></tr>
-<tr class="separator:a545301d66d67bffa3f155e48796bdd88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9c36b651808ff67e4bdc81a3d310fe0"><td class="memTemplParams" colspan="2"><a id="ac9c36b651808ff67e4bdc81a3d310fe0"></a>
+<tr class="memitem:a104624ce41cfaba276bf89100bb4a791"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_CPP14_CONSTEXPR T &amp;&amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::get</b> (tuple&lt; Types... &gt; &amp;&amp;t) noexcept</td></tr>
+<tr class="separator:a104624ce41cfaba276bf89100bb4a791"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac16ae3c684a29c41c56ba0c0dfc65f3"><td class="memTemplParams" colspan="2"><a id="aac16ae3c684a29c41c56ba0c0dfc65f3"></a>
 template&lt;typename T , typename... Types&gt; </td></tr>
-<tr class="memitem:ac9c36b651808ff67e4bdc81a3d310fe0"><td class="memTemplItemLeft" align="right" valign="top">constexpr const T &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::get</b> (const tuple&lt; Types... &gt; &amp;t) noexcept</td></tr>
-<tr class="separator:ac9c36b651808ff67e4bdc81a3d310fe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add1761b44eca23f74426ae765c6a1984"><td class="memTemplParams" colspan="2"><a id="add1761b44eca23f74426ae765c6a1984"></a>
+<tr class="memitem:aac16ae3c684a29c41c56ba0c0dfc65f3"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_CPP14_CONSTEXPR const T &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::get</b> (const tuple&lt; Types... &gt; &amp;t) noexcept</td></tr>
+<tr class="separator:aac16ae3c684a29c41c56ba0c0dfc65f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a89a85da837992aaad049e955e47304"><td class="memTemplParams" colspan="2"><a id="a7a89a85da837992aaad049e955e47304"></a>
 template&lt;typename T , typename... Types&gt; </td></tr>
-<tr class="memitem:add1761b44eca23f74426ae765c6a1984"><td class="memTemplItemLeft" align="right" valign="top">constexpr const T &amp;&amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::get</b> (const tuple&lt; Types... &gt; &amp;&amp;t) noexcept</td></tr>
-<tr class="separator:add1761b44eca23f74426ae765c6a1984"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a89a85da837992aaad049e955e47304"><td class="memTemplItemLeft" align="right" valign="top">BPSTD_CPP14_CONSTEXPR const T &amp;&amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::get</b> (const tuple&lt; Types... &gt; &amp;&amp;t) noexcept</td></tr>
+<tr class="separator:a7a89a85da837992aaad049e955e47304"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c9869015d0af0a9bd95fa42ce5232a8"><td class="memTemplParams" colspan="2">template&lt;typename Fn , typename Tuple &gt; </td></tr>
 <tr class="memitem:a2c9869015d0af0a9bd95fa42ce5232a8"><td class="memTemplItemLeft" align="right" valign="top">constexpr detail::apply_result_t&lt; Fn, Tuple &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d3/d6f/tuple_8hpp.html#a2c9869015d0af0a9bd95fa42ce5232a8">bpstd::apply</a> (Fn &amp;&amp;fn, Tuple &amp;&amp;tuple)</td></tr>
 <tr class="memdesc:a2c9869015d0af0a9bd95fa42ce5232a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invokes the function <code>fn</code> using the arguments in <code>tuple</code>.  <a href="../../d3/d6f/tuple_8hpp.html#a2c9869015d0af0a9bd95fa42ce5232a8">More...</a><br /></td></tr>

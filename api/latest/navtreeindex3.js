@@ -1,5 +1,12 @@
 var NAVTREEINDEX3 =
 {
+"de/dc4/classbpstd_1_1variant.html#a53afa070fc8036cebe9fb65480c94571":[0,0,0,68,15],
+"de/dc4/classbpstd_1_1variant.html#a59a598eaa6c8b505c61c78f38f288e85":[0,0,0,68,37],
+"de/dc4/classbpstd_1_1variant.html#a5eb042a1e2a1af9a5427232ebcb3bd59":[0,0,0,68,24],
+"de/dc4/classbpstd_1_1variant.html#a60bf51a90ae9a70cc22d71aca646104b":[0,0,0,68,41],
+"de/dc4/classbpstd_1_1variant.html#a620649e18f6387cd8ef18fef548bbaff":[0,0,0,68,43],
+"de/dc4/classbpstd_1_1variant.html#a65ac2550f7ac54eae9ba6a577605d2d4":[0,0,0,68,35],
+"de/dc4/classbpstd_1_1variant.html#a6c489e9f702d79187c64497ad1f48936":[0,0,0,68,16],
 "de/dc4/classbpstd_1_1variant.html#a6fdb672bb57bba7712f7da086f33c2a4":[0,0,0,68,12],
 "de/dc4/classbpstd_1_1variant.html#a707a4ff44e791ef3529a7fe7272b3c3a":[0,0,0,68,39],
 "de/dc4/classbpstd_1_1variant.html#a7cb6f22b8e16e165e91a596ade691cef":[0,0,0,68,32],
