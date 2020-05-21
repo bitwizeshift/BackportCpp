@@ -78,18 +78,31 @@ namespace bpstd {
   // Utilities
   //----------------------------------------------------------------------------
 
-  template <std::size_t N, typename... Types>
-  BPSTD_CPP14_CONSTEXPR tuple_element_t<N,tuple<Types...>>&
-    get(tuple<Types...>&) noexcept;
-  template <std::size_t N, typename... Types>
-  BPSTD_CPP14_CONSTEXPR tuple_element_t<N,tuple<Types...>>&&
-    get(tuple<Types...>&&) noexcept;
-  template <std::size_t N, typename... Types>
-  BPSTD_CPP14_CONSTEXPR const tuple_element_t<N,tuple<Types...>>&
-    get(const tuple<Types...>&) noexcept;
-  template <std::size_t N, typename... Types>
-  BPSTD_CPP14_CONSTEXPR const tuple_element_t<N,tuple<Types...>>&&
-    get(const tuple<Types...>&&) noexcept;
+  namespace detail {
+    template <typename T>
+    struct is_tuple : false_type{};
+
+    template <typename...Types>
+    struct is_tuple<std::tuple<Types...>> : true_type{};
+  } // namespace detail
+
+  template <std::size_t N, typename Tuple,
+            typename = enable_if_t<detail::is_tuple<remove_cvref_t<Tuple>>::value && is_lvalue_reference<Tuple>::value>>
+  inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+  tuple_element_t<N,remove_reference_t<Tuple>>&
+    get(Tuple&& t) noexcept
+  {
+    return std::get<N>(t);
+  }
+
+  template <std::size_t N, typename Tuple,
+            typename = enable_if_t<detail::is_tuple<remove_cvref_t<Tuple>>::value && !is_lvalue_reference<Tuple>::value>>
+  inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+  tuple_element_t<N,remove_reference_t<Tuple>>&&
+    get(Tuple&& t) noexcept
+  {
+    return bpstd::move(std::get<N>(t));
+  }
 
   template <typename T, typename... Types>
   BPSTD_CPP14_CONSTEXPR T& get(tuple<Types...>& t) noexcept;
@@ -150,42 +163,6 @@ namespace bpstd {
 //------------------------------------------------------------------------------
 // Utilities
 //------------------------------------------------------------------------------
-
-template <std::size_t N, typename... Types>
-inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
-bpstd::tuple_element_t<N,bpstd::tuple<Types...>>&
-  bpstd::get(tuple<Types...>& t)
-  noexcept
-{
-  return std::get<N>(t);
-}
-
-template <std::size_t N, typename... Types>
-inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
-bpstd::tuple_element_t<N,bpstd::tuple<Types...>>&&
-  bpstd::get(tuple<Types...>&& t)
-  noexcept
-{
-  return bpstd::move(std::get<N>(t));
-}
-
-template <std::size_t N, typename... Types>
-inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
-const bpstd::tuple_element_t<N,bpstd::tuple<Types...>>&
-  bpstd::get(const tuple<Types...>& t)
-  noexcept
-{
-  return std::get<N>(t);
-}
-
-template <std::size_t N, typename... Types>
-inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
-const bpstd::tuple_element_t<N,bpstd::tuple<Types...>>&&
-  bpstd::get(const tuple<Types...>&& t)
-  noexcept
-{
-  return bpstd::move(std::get<N>(t));
-}
 
 namespace bpstd { namespace detail {
 
