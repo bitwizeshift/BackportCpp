@@ -796,16 +796,16 @@ TEST_CASE("variant::swap( variant& )", "[modifiers]")
 
 namespace {
 
-template <typename ExpectedType>
+template <typename...ExpectedTypes>
 struct expecting_visitor
 {
-  bool operator()(ExpectedType)
+  bool operator()(ExpectedTypes...)
   {
     return true;
   }
 
-  template <typename U>
-  bool operator()(U&&)
+  template <typename...Args>
+  bool operator()(Args&&...)
   {
     return false;
   }
@@ -813,8 +813,8 @@ struct expecting_visitor
 
 struct empty_visitor
 {
-  template <typename U>
-  void operator()(U&&){}
+  template <typename...Args>
+  void operator()(Args&&...){}
 };
 
 } // namespace <anonymous>
@@ -932,6 +932,302 @@ TEST_CASE("visit( Visitor, const variant&& )", "[utilities]")
     {
       REQUIRE_THROWS_AS(bpstd::visit(::empty_visitor{}, bpstd::move(sut)), bpstd::bad_variant_access);
     }
+  }
+}
+
+TEST_CASE("visit( Visitor, variant&, variant& )", "[utilities]")
+{
+  SECTION("Variant contains value")
+  {
+    using variant_type = bpstd::variant<int, bool>;
+
+    auto sut0 = variant_type{true};
+    auto sut1 = variant_type{42};
+
+    SECTION("Visits the active element")
+    {
+      REQUIRE(bpstd::visit(::expecting_visitor<bool&, int&>{}, sut0, sut1));
+    }
+    SECTION("Does not visit the inactive elements")
+    {
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, bool&>{}, sut0, sut1));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, int&>{}, sut0, sut1));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&, bool&>{}, sut0, sut1));
+    }
+  }
+
+  SECTION("One of the variants is valueless_by_exception")
+  {
+    auto sut0 = make_valueless_by_exception<int>();
+    auto sut1 = make_test_variant<float>(3.14f);
+
+    SECTION("First is valueless by exception")
+    {
+      SECTION("Throws bad_variant_access")
+      {
+        REQUIRE_THROWS_AS(bpstd::visit(::empty_visitor{}, sut0, sut1), bpstd::bad_variant_access);
+      }
+    }
+
+    SECTION("Second is valueless by exception")
+    {
+      SECTION("Throws bad_variant_access")
+      {
+        REQUIRE_THROWS_AS(bpstd::visit(::empty_visitor{}, sut1, sut0), bpstd::bad_variant_access);
+      }
+    }
+  }
+}
+
+TEST_CASE("visit( Visitor, variant&, variant&& )", "[utilities]")
+{
+  SECTION("Variant contains value")
+  {
+    using variant_type = bpstd::variant<int, bool>;
+
+    auto sut0 = variant_type{true};
+    auto sut1 = variant_type{42};
+
+    SECTION("Visits the active element")
+    {
+      REQUIRE(bpstd::visit(::expecting_visitor<bool&, int&&>{}, sut0, bpstd::move(sut1)));
+    }
+    SECTION("Does not visit the inactive elements")
+    {
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, int&&>{}, sut0, bpstd::move(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, int&>{}, sut0, bpstd::move(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, bool&&>{}, sut0, bpstd::move(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, bool&>{}, sut0, bpstd::move(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&, int&>{}, sut0, bpstd::move(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&, bool&&>{}, sut0, bpstd::move(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&, bool&>{}, sut0, bpstd::move(sut1)));
+    }
+  }
+
+  SECTION("One of the variants is valueless_by_exception")
+  {
+    auto sut0 = make_valueless_by_exception<int>();
+    auto sut1 = make_test_variant<float>(3.14f);
+
+    SECTION("First is valueless by exception")
+    {
+      SECTION("Throws bad_variant_access")
+      {
+        REQUIRE_THROWS_AS(bpstd::visit(::empty_visitor{}, sut0, bpstd::move(sut1)), bpstd::bad_variant_access);
+      }
+    }
+
+    SECTION("Second is valueless by exception")
+    {
+      SECTION("Throws bad_variant_access")
+      {
+        REQUIRE_THROWS_AS(bpstd::visit(::empty_visitor{}, sut1, bpstd::move(sut0)), bpstd::bad_variant_access);
+      }
+    }
+  }
+}
+
+TEST_CASE("visit( Visitor, variant&, const variant& )", "[utilities]")
+{
+  SECTION("Variant contains value")
+  {
+    using variant_type = bpstd::variant<int, bool>;
+
+    auto sut0 = variant_type{true};
+    const auto sut1 = variant_type{42};
+
+    SECTION("Visits the active element")
+    {
+      REQUIRE(bpstd::visit(::expecting_visitor<bool&, const int&>{}, sut0, sut1));
+    }
+    SECTION("Does not visit the inactive elements")
+    {
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, const int&>{}, sut0, sut1));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, int&>{}, sut0, sut1));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, const bool&>{}, sut0, sut1));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, bool&>{}, sut0, sut1));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&, int&>{}, sut0, sut1));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&, const bool&>{}, sut0, sut1));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&, bool&>{}, sut0, sut1));
+    }
+  }
+
+  SECTION("One of the variants is valueless_by_exception")
+  {
+    auto sut0 = make_valueless_by_exception<int>();
+    auto sut1 = make_test_variant<float>(3.14f);
+
+    SECTION("First is valueless by exception")
+    {
+      SECTION("Throws bad_variant_access")
+      {
+        REQUIRE_THROWS_AS(bpstd::visit(::empty_visitor{}, sut0, bpstd::as_const(sut1)), bpstd::bad_variant_access);
+      }
+    }
+
+    SECTION("Second is valueless by exception")
+    {
+      SECTION("Throws bad_variant_access")
+      {
+        REQUIRE_THROWS_AS(bpstd::visit(::empty_visitor{}, sut1, bpstd::as_const(sut0)), bpstd::bad_variant_access);
+      }
+    }
+  }
+}
+
+TEST_CASE("visit( Visitor, variant&&, variant& )", "[utilities]")
+{
+  SECTION("Variant contains value")
+  {
+    using variant_type = bpstd::variant<int, bool>;
+
+    auto sut0 = variant_type{true};
+    auto sut1 = variant_type{42};
+
+    SECTION("Visits the active element")
+    {
+      REQUIRE(bpstd::visit(::expecting_visitor<bool&&, int&>{}, bpstd::move(sut0), sut1));
+    }
+    SECTION("Does not visit the inactive elements")
+    {
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&&, bool&>{}, bpstd::move(sut0), sut1));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, bool&>{}, bpstd::move(sut0), sut1));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&&, int&>{}, bpstd::move(sut0), sut1));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, int&>{}, bpstd::move(sut0), sut1));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&&, bool&>{}, bpstd::move(sut0), sut1));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&, bool&>{}, bpstd::move(sut0), sut1));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&, int&>{}, bpstd::move(sut0), sut1));
+    }
+  }
+
+  SECTION("One of the variants is valueless_by_exception")
+  {
+    auto sut0 = make_valueless_by_exception<int>();
+    auto sut1 = make_test_variant<float>(3.14f);
+
+    SECTION("First is valueless by exception")
+    {
+      SECTION("Throws bad_variant_access")
+      {
+        REQUIRE_THROWS_AS(bpstd::visit(::empty_visitor{}, bpstd::move(sut0), sut1), bpstd::bad_variant_access);
+      }
+    }
+
+    SECTION("Second is valueless by exception")
+    {
+      SECTION("Throws bad_variant_access")
+      {
+        REQUIRE_THROWS_AS(bpstd::visit(::empty_visitor{}, bpstd::move(sut1), sut0), bpstd::bad_variant_access);
+      }
+    }
+  }
+}
+
+TEST_CASE("visit( Visitor, variant&&, variant&& )", "[utilities]")
+{
+  SECTION("Variant contains value")
+  {
+    using variant_type = bpstd::variant<int, bool>;
+
+    auto sut0 = variant_type{true};
+    auto sut1 = variant_type{42};
+
+    SECTION("Visits the active element")
+    {
+      REQUIRE(bpstd::visit(::expecting_visitor<bool&&, int&&>{}, bpstd::move(sut0), bpstd::move(sut1)));
+    }
+    SECTION("Does not visit the inactive elements")
+    {
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&&, bool&&>{}, bpstd::move(sut0), bpstd::move(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, bool&&>{}, bpstd::move(sut0), bpstd::move(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&&, int&&>{}, bpstd::move(sut0), bpstd::move(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, int&&>{}, bpstd::move(sut0), bpstd::move(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&&, bool&&>{}, bpstd::move(sut0), bpstd::move(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&, bool&&>{}, bpstd::move(sut0), bpstd::move(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&, int&&>{}, bpstd::move(sut0), bpstd::move(sut1)));
+    }
+  }
+
+  SECTION("One of the variants is valueless_by_exception")
+  {
+    auto sut0 = make_valueless_by_exception<int>();
+    auto sut1 = make_test_variant<float>(3.14f);
+
+    SECTION("First is valueless by exception")
+    {
+      SECTION("Throws bad_variant_access")
+      {
+        REQUIRE_THROWS_AS(bpstd::visit(::empty_visitor{}, bpstd::move(sut0), bpstd::move(sut1)), bpstd::bad_variant_access);
+      }
+    }
+
+    SECTION("Second is valueless by exception")
+    {
+      SECTION("Throws bad_variant_access")
+      {
+        REQUIRE_THROWS_AS(bpstd::visit(::empty_visitor{}, bpstd::move(sut1), bpstd::move(sut0)), bpstd::bad_variant_access);
+      }
+    }
+  }
+}
+
+TEST_CASE("visit( Visitor, variant&&, const variant& )", "[utilities]")
+{
+  SECTION("Variant contains value")
+  {
+    using variant_type = bpstd::variant<int, bool>;
+
+    auto sut0 = variant_type{true};
+    auto sut1 = variant_type{42};
+
+    SECTION("Visits the active element")
+    {
+      REQUIRE(bpstd::visit(::expecting_visitor<bool&&, const int&>{}, bpstd::move(sut0), as_const(sut1)));
+    }
+    SECTION("Does not visit the inactive elements")
+    {
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&&, const bool&>{}, bpstd::move(sut0), as_const(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, const bool&>{}, bpstd::move(sut0), as_const(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&&, const int&>{}, bpstd::move(sut0), as_const(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<int&, const int&>{}, bpstd::move(sut0), as_const(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&&, const bool&>{}, bpstd::move(sut0), as_const(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&, const bool&>{}, bpstd::move(sut0), as_const(sut1)));
+      REQUIRE_FALSE(bpstd::visit(::expecting_visitor<bool&, const int&>{}, bpstd::move(sut0), as_const(sut1)));
+    }
+  }
+
+  SECTION("One of the variants is valueless_by_exception")
+  {
+    auto sut0 = make_valueless_by_exception<int>();
+    auto sut1 = make_test_variant<float>(3.14f);
+
+    SECTION("First is valueless by exception")
+    {
+      SECTION("Throws bad_variant_access")
+      {
+        REQUIRE_THROWS_AS(bpstd::visit(::empty_visitor{}, bpstd::move(sut0), bpstd::move(sut1)), bpstd::bad_variant_access);
+      }
+    }
+
+    SECTION("Second is valueless by exception")
+    {
+      SECTION("Throws bad_variant_access")
+      {
+        REQUIRE_THROWS_AS(bpstd::visit(::empty_visitor{}, bpstd::move(sut1), bpstd::move(sut0)), bpstd::bad_variant_access);
+      }
+    }
+  }
+}
+
+TEST_CASE("visit( Visitor, variant&, variant&&, const variant& )", "[utilities]")
+{
+  auto sut0 = bpstd::variant<int, bool>{true};
+  auto sut1 = bpstd::variant<std::string, float>{"hello world"};
+  auto sut2 = bpstd::variant<float, bool>{3.14f};
+
+  SECTION("Visits the active elements")
+  {
+    REQUIRE(bpstd::visit(::expecting_visitor<bool&, std::string&&, const float&>{}, sut0, bpstd::move(sut1), as_const(sut2)));
   }
 }
 
