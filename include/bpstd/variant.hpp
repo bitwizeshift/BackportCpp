@@ -40,6 +40,7 @@
 #include "detail/variant_base.hpp"
 #include "detail/variant_visitors.hpp"
 #include "detail/variant_traits.hpp"
+#include "tuple.hpp"
 #include "utility.hpp"     // in_place_index_t, in_place_type_t
 #include "type_traits.hpp" // conjunction
 #include "functional.hpp"  // less, greater, equal_to, etc
@@ -917,18 +918,15 @@ namespace bpstd {
   BPSTD_CPP14_CONSTEXPR bpstd::detail::variant_visitor_invoke_result_t<Visitor,Variant>
     visit(Visitor&& visitor, Variant&& v);
 
-  // /// \brief Visits the variants \p v0 and \p v1 with the given \p visitor
+  // /// \brief Visits the variants \p variant0 and \p variants
   // ///
   // /// \param visitor the visitor to visit the active entry of \p v0
-  // /// \param v0 the first variant to visit
-  // /// \param v1 the second variant to visit
-  // /// \return the result of visiting the variants \p v0 and \p v1
-  // template <typename Visitor, typename Variant, typename UVariant>
-  // void visit(Visitor&& visitor, Variant&& v0, UVariant&& v1);
-
-  // template <typename Visitor, typename...Variants,
-  //           typename = enable_if_t<(sizeof...(Variants) > 3)>>
-  // void visit(Visitor&& visitor, Variants&&...vrest);
+  // /// \param variant0 the first variant to visit
+  // /// \param variants the rest of the variant to visit
+  // /// \return the result of visiting the variants
+  template <typename Visitor, typename Variant0, typename...Variants>
+  BPSTD_CPP14_CONSTEXPR bpstd::detail::variant_visitor_invoke_result_t<Visitor,Variant0, Variants...>
+    visit(Visitor&& visitor, Variant0&& variant0, Variants&&...variants);
 
   //----------------------------------------------------------------------------
 
@@ -1595,6 +1593,190 @@ bpstd::detail::variant_visitor_invoke_result_t<Visitor,Variant>
     static_cast<union_type>(v.m_union)
   );
 }
+
+namespace bpstd { namespace detail {
+
+template <typename Variant0, typename...Variants>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bool are_any_valueless_by_exception(const Variant0& v0, const Variants&...vs)
+{
+  return v0.valueless_by_exception() || are_any_valueless_by_exception(vs...);
+}
+
+template <typename Variant0>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bool are_any_valueless_by_exception(const Variant0& v0)
+{
+  return v0.valueless_by_exception();
+}
+
+template <typename...Args, typename T, std::size_t...Idxs>
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+std::tuple<Args&&...,T&&> tuple_push_back_aux(std::tuple<Args...>& args, T&& v, index_sequence<Idxs...>)
+{
+  (void) args;
+  return std::forward_as_tuple(std::get<Idxs>(bpstd::move(args))..., bpstd::forward<T>(v));
+}
+
+// Appends an element to a forwarding tuple
+// Returns with '&&' to reference-collapse returned types
+template <typename...Args, typename T>
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+std::tuple<Args&&...,T&&> tuple_push_back(std::tuple<Args...>& args, T&& t)
+{
+  static_assert(
+    conjunction<is_reference<Args>...,true_type>::value,
+    "'args' must be a forwarding tuple'"
+  );
+  // return std::tuple_cat(args, std::forward_as_tuple(std::forward<T>(t)));
+  return tuple_push_back_aux(args, bpstd::forward<T>(t), index_sequence_for<Args...>{});
+}
+
+template <typename Arg0, typename...Args, std::size_t...Idxs>
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+std::tuple<Args...> tuple_pop_front_aux(std::tuple<Arg0,Args...>& args, index_sequence<0, Idxs...>)
+{
+  (void) args;
+  return std::forward_as_tuple(std::get<Idxs>(bpstd::move(args))...);
+}
+
+// Removes the front element of a forwarding tuple
+template <typename Arg0, typename...Args>
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+std::tuple<Args...> tuple_pop_front(std::tuple<Arg0,Args...>& args)
+{
+  static_assert(
+    conjunction<is_reference<Arg0>,is_reference<Args>...>::value,
+    "'args' must be a forwarding tuple'"
+  );
+
+  return tuple_pop_front_aux(args, index_sequence_for<Arg0,Args...>{});
+}
+
+template <typename Return, typename Visitor, typename Variants, typename Arguments>
+class multi_variant_visitor;
+
+template <typename T, typename Visitor, typename Variants, typename Arguments>
+BPSTD_CPP14_CONSTEXPR
+multi_variant_visitor<T, Visitor, remove_cvref_t<Variants>, remove_cvref_t<Arguments>>
+  make_multi_visitor(Visitor&& vistior, Variants&& variants, Arguments&& args);
+
+template <typename Return, typename Visitor, typename Variant0, typename...Variants, typename...Args>
+class multi_variant_visitor<Return, Visitor, std::tuple<Variant0,Variants...>, std::tuple<Args...>>
+{
+  static_assert(
+    conjunction<is_reference<Variant0>, is_reference<Variants>...>::value,
+    "All Variants must be captured by reference"
+  );
+  static_assert(
+    conjunction<is_reference<Args>...,true_type>::value,
+    "All arguments must be captured by reference"
+  );
+
+public:
+  template <typename UVisitor, typename UVariants, typename Arguments>
+  inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+  multi_variant_visitor(UVisitor&& visitor, UVariants&& variants, Arguments&& args)
+    : m_visitor(bpstd::forward<UVisitor>(visitor)),
+      m_variants(bpstd::forward<UVariants>(variants)),
+      m_args(bpstd::forward<Arguments>(args))
+  {
+
+  }
+
+  template <typename T>
+  inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+  Return operator()(T&& v)
+  {
+    // static_assert(is_reference<T>::value, "T should always be a reference type");
+
+    return visit(
+      detail::make_multi_visitor<Return>(
+        bpstd::forward<Visitor>(m_visitor),
+        tuple_pop_front(m_variants),
+        tuple_push_back(m_args, bpstd::forward<T>(v))
+      ),
+      std::get<0>(bpstd::move(m_variants)) // 'move' used for reference collapse
+    );
+  }
+
+private:
+
+  Visitor m_visitor;
+  std::tuple<Variant0, Variants...> m_variants;
+  std::tuple<Args...> m_args;
+};
+
+template <typename Return, typename Visitor, typename...Args>
+class multi_variant_visitor<Return,Visitor,std::tuple<>,std::tuple<Args...>>
+{
+  static_assert(
+    conjunction<is_reference<Args>...,true_type>::value,
+    "All arguments must be captured by reference"
+  );
+
+public:
+  template <typename UVisitor, typename Variants, typename Arguments>
+  inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+  multi_variant_visitor(UVisitor&& visitor, Variants&&, Arguments&& args)
+    : m_visitor(bpstd::forward<UVisitor>(visitor)),
+      m_args(bpstd::forward<Arguments>(args))
+  {
+
+  }
+
+  template <typename T>
+  inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+  Return operator()(T&& v)
+  {
+    return apply(
+      bpstd::forward<Visitor>(m_visitor),
+      tuple_push_back(m_args, bpstd::forward<T>(v))
+    );
+  }
+
+private:
+
+  Visitor m_visitor;
+  std::tuple<Args...> m_args;
+};
+
+template <typename T, typename Visitor, typename Variants, typename Arguments>
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+multi_variant_visitor<T,Visitor, remove_cvref_t<Variants>, remove_cvref_t<Arguments>>
+  make_multi_visitor(Visitor&& visitor, Variants&& variants, Arguments&& args)
+{
+  return {
+    bpstd::forward<Visitor>(visitor),
+    bpstd::forward<Variants>(variants),
+    bpstd::forward<Arguments>(args)
+  };
+}
+
+}} // namespace bpstd::detail
+
+template <typename Visitor, typename Variant0, typename...Variants>
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
+bpstd::detail::variant_visitor_invoke_result_t<Visitor,Variant0, Variants...>
+  bpstd::visit(Visitor&& visitor, Variant0&& variant0, Variants&&...variants)
+{
+  using type = bpstd::detail::variant_visitor_invoke_result_t<Visitor,Variant0, Variants...>;
+
+  if (detail::are_any_valueless_by_exception(variant0, variants...)) {
+    throw bad_variant_access{};
+  }
+
+  return visit(
+    detail::make_multi_visitor<type>(
+      bpstd::forward<Visitor>(visitor),
+      std::forward_as_tuple(bpstd::forward<Variants>(variants)...),
+      std::make_tuple()
+    ),
+    bpstd::forward<Variant0>(variant0)
+  );
+
+}
+
 
 template <typename T, typename...Types>
 inline BPSTD_INLINE_VISIBILITY constexpr
