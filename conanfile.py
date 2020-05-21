@@ -6,7 +6,7 @@ class BackportConan(ConanFile):
 
   # Package Info
   name = "Backport"
-  version = "1.0.1"
+  version = "1.1.0"
   description = "Modern C++ backported to C++11"
   url = "https://github.com/bitwizeshift/bpstd"
   author = "Matthew Rodusek <matthew.rodusek@gmail.com>"
