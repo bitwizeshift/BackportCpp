@@ -79,26 +79,26 @@ namespace bpstd {
   //----------------------------------------------------------------------------
 
   template <std::size_t N, typename... Types>
-  constexpr tuple_element_t<N,tuple<Types...>>&
+  BPSTD_CPP14_CONSTEXPR tuple_element_t<N,tuple<Types...>>&
     get(tuple<Types...>&) noexcept;
   template <std::size_t N, typename... Types>
-  constexpr tuple_element_t<N,tuple<Types...>>&&
+  BPSTD_CPP14_CONSTEXPR tuple_element_t<N,tuple<Types...>>&&
     get(tuple<Types...>&&) noexcept;
   template <std::size_t N, typename... Types>
-  constexpr const tuple_element_t<N,tuple<Types...>>&
+  BPSTD_CPP14_CONSTEXPR const tuple_element_t<N,tuple<Types...>>&
     get(const tuple<Types...>&) noexcept;
   template <std::size_t N, typename... Types>
-  constexpr const tuple_element_t<N,tuple<Types...>>&&
+  BPSTD_CPP14_CONSTEXPR const tuple_element_t<N,tuple<Types...>>&&
     get(const tuple<Types...>&&) noexcept;
 
   template <typename T, typename... Types>
-  constexpr T& get(tuple<Types...>& t) noexcept;
+  BPSTD_CPP14_CONSTEXPR T& get(tuple<Types...>& t) noexcept;
   template <typename T, typename... Types>
-  constexpr T&& get(tuple<Types...>&& t) noexcept;
+  BPSTD_CPP14_CONSTEXPR T&& get(tuple<Types...>&& t) noexcept;
   template <typename T, typename... Types>
-  constexpr const T& get(const tuple<Types...>& t) noexcept;
+  BPSTD_CPP14_CONSTEXPR const T& get(const tuple<Types...>& t) noexcept;
   template <typename T, typename... Types>
-  constexpr const T&& get(const tuple<Types...>&& t) noexcept;
+  BPSTD_CPP14_CONSTEXPR const T&& get(const tuple<Types...>&& t) noexcept;
 
   //----------------------------------------------------------------------------
 
@@ -152,7 +152,7 @@ namespace bpstd {
 //------------------------------------------------------------------------------
 
 template <std::size_t N, typename... Types>
-inline BPSTD_INLINE_VISIBILITY constexpr
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
 bpstd::tuple_element_t<N,bpstd::tuple<Types...>>&
   bpstd::get(tuple<Types...>& t)
   noexcept
@@ -161,16 +161,16 @@ bpstd::tuple_element_t<N,bpstd::tuple<Types...>>&
 }
 
 template <std::size_t N, typename... Types>
-inline BPSTD_INLINE_VISIBILITY constexpr
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
 bpstd::tuple_element_t<N,bpstd::tuple<Types...>>&&
   bpstd::get(tuple<Types...>&& t)
   noexcept
 {
-  return move(std::get<N>(t));
+  return bpstd::move(std::get<N>(t));
 }
 
 template <std::size_t N, typename... Types>
-inline BPSTD_INLINE_VISIBILITY constexpr
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
 const bpstd::tuple_element_t<N,bpstd::tuple<Types...>>&
   bpstd::get(const tuple<Types...>& t)
   noexcept
@@ -179,12 +179,12 @@ const bpstd::tuple_element_t<N,bpstd::tuple<Types...>>&
 }
 
 template <std::size_t N, typename... Types>
-inline BPSTD_INLINE_VISIBILITY constexpr
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
 const bpstd::tuple_element_t<N,bpstd::tuple<Types...>>&&
   bpstd::get(const tuple<Types...>&& t)
   noexcept
 {
-  return move(std::get<N>(t));
+  return bpstd::move(std::get<N>(t));
 }
 
 namespace bpstd { namespace detail {
@@ -206,7 +206,7 @@ namespace bpstd { namespace detail {
 }} // namespace bpstd::detail
 
 template <typename T, typename... Types>
-inline BPSTD_INLINE_VISIBILITY constexpr
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
 T& bpstd::get(tuple<Types...>& t)
   noexcept
 {
@@ -214,7 +214,7 @@ T& bpstd::get(tuple<Types...>& t)
 }
 
 template <typename T, typename... Types>
-inline BPSTD_INLINE_VISIBILITY constexpr
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
 T&& bpstd::get(tuple<Types...>&& t)
   noexcept
 {
@@ -222,7 +222,7 @@ T&& bpstd::get(tuple<Types...>&& t)
 }
 
 template <typename T, typename... Types>
-inline BPSTD_INLINE_VISIBILITY constexpr
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
 const T& bpstd::get(const tuple<Types...>& t)
   noexcept
 {
@@ -230,7 +230,7 @@ const T& bpstd::get(const tuple<Types...>& t)
 }
 
 template <typename T, typename... Types>
-inline BPSTD_INLINE_VISIBILITY constexpr
+inline BPSTD_INLINE_VISIBILITY BPSTD_CPP14_CONSTEXPR
 const T&& bpstd::get(const tuple<Types...>&& t)
   noexcept
 {
