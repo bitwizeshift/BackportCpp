@@ -60,6 +60,14 @@ var hierarchy =
     [ "integral_constant", null, [
       [ "bpstd::variant_size< variant< Types... > >", "d2/d0f/structbpstd_1_1variant__size_3_01variant_3_01_types_8_8_8_01_4_01_4.html", null ]
     ] ],
+    [ "is_convertible", null, [
+      [ "bpstd::detail::is_invocable_return< is_invocable< Fn, Args... >::value, R, Fn, Args... >", null, [
+        [ "bpstd::is_invocable_r< R, Fn, Args >", "d4/d46/structbpstd_1_1is__invocable__r.html", null ]
+      ] ],
+      [ "bpstd::detail::is_invocable_return< is_nothrow_invocable< Fn, Args... >::value, R, Fn, Args... >", null, [
+        [ "bpstd::is_nothrow_invocable_r< R, Fn, Args >", "df/df2/structbpstd_1_1is__nothrow__invocable__r.html", null ]
+      ] ]
+    ] ],
     [ "bpstd::less< T >", "d4/dcb/structbpstd_1_1less.html", null ],
     [ "bpstd::less< void >", "d2/d2f/structbpstd_1_1less_3_01void_01_4.html", null ],
     [ "bpstd::less_equal< T >", "d9/df5/structbpstd_1_1less__equal.html", null ],
@@ -91,8 +99,8 @@ var hierarchy =
     [ "bpstd::plus< T >", "df/d02/structbpstd_1_1plus.html", null ],
     [ "bpstd::plus< void >", "df/dd7/structbpstd_1_1plus_3_01void_01_4.html", null ],
     [ "bpstd::span< T, Extent >", "d4/dd8/classbpstd_1_1span.html", null ],
-    [ "bpstd::aligned_union< Len, Ts >::type", "d1/d91/structbpstd_1_1aligned__union.html#d4/d86/structbpstd_1_1aligned__union_1_1type", null ],
     [ "bpstd::aligned_storage< Size, Align >::type", "d0/d6d/structbpstd_1_1aligned__storage.html#dd/da4/structbpstd_1_1aligned__storage_1_1type", null ],
+    [ "bpstd::aligned_union< Len, Ts >::type", "d1/d91/structbpstd_1_1aligned__union.html#d4/d86/structbpstd_1_1aligned__union_1_1type", null ],
     [ "bpstd::type_identity< T >", "d8/d70/structbpstd_1_1type__identity.html", [
       [ "bpstd::detail::underlying_type_impl< is_enum< T >::value, T >", null, [
         [ "bpstd::underlying_type< T >", "d1/dee/structbpstd_1_1underlying__type.html", null ]

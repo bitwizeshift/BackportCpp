@@ -3,9 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="bpstd::type_identity\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d70/structbpstd_1_1type__identity.html"];
-  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="bpstd::detail::underlying\l_type_impl\< is_enum\< T\l \>::value, T \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="bpstd::underlying_type\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dee/structbpstd_1_1underlying__type.html"];
+  Node0 [label="bpstd::type_identity\l\< integer_sequence\< T,\l Tails... \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d70/structbpstd_1_1type__identity.html"];
 }

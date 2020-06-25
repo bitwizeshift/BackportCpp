@@ -41,6 +41,8 @@ var annotated_dup =
       [ "is_bounded_array", "d4/d05/structbpstd_1_1is__bounded__array.html", null ],
       [ "is_bounded_array< T[N]>", "df/d39/structbpstd_1_1is__bounded__array_3_01_t[_n]_4.html", null ],
       [ "is_final", "dc/df9/structbpstd_1_1is__final.html", null ],
+      [ "is_invocable_r", "d4/d46/structbpstd_1_1is__invocable__r.html", null ],
+      [ "is_nothrow_invocable_r", "df/df2/structbpstd_1_1is__nothrow__invocable__r.html", null ],
       [ "is_null_pointer", "de/d22/structbpstd_1_1is__null__pointer.html", null ],
       [ "is_null_pointer< decltype(nullptr)>", "d2/dd6/structbpstd_1_1is__null__pointer_3_01decltype_07nullptr_08_4.html", null ],
       [ "is_unbounded_array", "db/dde/structbpstd_1_1is__unbounded__array.html", null ],

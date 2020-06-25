@@ -3,5 +3,7 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="bpstd::variant_alternative\l\< I, T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/de4/structbpstd_1_1variant__alternative.html",tooltip="Helper variable template for extracting variant_size<T>::value. "];
+  Node94 [label="add_cv",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node94 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="bpstd::variant_alternative\l\< I, const volatile T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/de7/structbpstd_1_1variant__alternative_3_01_i_00_01const_01volatile_01_t_01_4.html"];
 }

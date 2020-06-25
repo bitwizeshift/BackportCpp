@@ -7,6 +7,8 @@ var searchData=
   ['is_5fbounded_5farray',['is_bounded_array',['../d4/d05/structbpstd_1_1is__bounded__array.html',1,'bpstd']]],
   ['is_5fbounded_5farray_3c_20t_5bn_5d_3e',['is_bounded_array&lt; T[N]&gt;',['../df/d39/structbpstd_1_1is__bounded__array_3_01_t[_n]_4.html',1,'bpstd']]],
   ['is_5ffinal',['is_final',['../dc/df9/structbpstd_1_1is__final.html',1,'bpstd']]],
+  ['is_5finvocable_5fr',['is_invocable_r',['../d4/d46/structbpstd_1_1is__invocable__r.html',1,'bpstd']]],
+  ['is_5fnothrow_5finvocable_5fr',['is_nothrow_invocable_r',['../df/df2/structbpstd_1_1is__nothrow__invocable__r.html',1,'bpstd']]],
   ['is_5fnull_5fpointer',['is_null_pointer',['../de/d22/structbpstd_1_1is__null__pointer.html',1,'bpstd']]],
   ['is_5fnull_5fpointer_3c_20decltype_28nullptr_29_3e',['is_null_pointer&lt; decltype(nullptr)&gt;',['../d2/dd6/structbpstd_1_1is__null__pointer_3_01decltype_07nullptr_08_4.html',1,'bpstd']]],
   ['is_5funbounded_5farray',['is_unbounded_array',['../db/dde/structbpstd_1_1is__unbounded__array.html',1,'bpstd']]],

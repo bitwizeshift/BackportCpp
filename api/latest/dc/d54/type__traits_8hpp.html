@@ -137,6 +137,10 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dbd/structbpstd_1_1negation.html">bpstd::negation&lt; B &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility metafunction for negating a bool_constant.  <a href="../../d1/dbd/structbpstd_1_1negation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d46/structbpstd_1_1is__invocable__r.html">bpstd::is_invocable_r&lt; R, Fn, Args &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/df2/structbpstd_1_1is__nothrow__invocable__r.html">bpstd::is_nothrow_invocable_r&lt; R, Fn, Args &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d22/structbpstd_1_1is__null__pointer.html">bpstd::is_null_pointer&lt; T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dd6/structbpstd_1_1is__null__pointer_3_01decltype_07nullptr_08_4.html">bpstd::is_null_pointer&lt; decltype(nullptr)&gt;</a></td></tr>
@@ -198,14 +202,6 @@ template&lt;bool B, typename True , typename False &gt; </td></tr>
 template&lt;bool B, typename True , typename False &gt; </td></tr>
 <tr class="memitem:a53e83b3959395bc80eb09f77b99f0c23"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::conditional_t</b> = typename conditional&lt; B, True, False &gt;::type</td></tr>
 <tr class="separator:a53e83b3959395bc80eb09f77b99f0c23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a556c503d3ad89fee94627c21bd726ae9"><td class="memTemplParams" colspan="2"><a id="a556c503d3ad89fee94627c21bd726ae9"></a>
-template&lt;typename Fn , typename... Args&gt; </td></tr>
-<tr class="memitem:a556c503d3ad89fee94627c21bd726ae9"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::is_invocable</b> = detail::is_invocable&lt; Fn, Args... &gt;</td></tr>
-<tr class="separator:a556c503d3ad89fee94627c21bd726ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f5c152e28df559350102b730448b5f5"><td class="memTemplParams" colspan="2"><a id="a3f5c152e28df559350102b730448b5f5"></a>
-template&lt;typename Fn , typename... Args&gt; </td></tr>
-<tr class="memitem:a3f5c152e28df559350102b730448b5f5"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::is_nothrow_invocable</b> = detail::is_nothrow_invocable&lt; Fn, Args... &gt;</td></tr>
-<tr class="separator:a3f5c152e28df559350102b730448b5f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65c14fd16d1097fd53995d16772adae6"><td class="memTemplParams" colspan="2"><a id="a65c14fd16d1097fd53995d16772adae6"></a>
 template&lt;typename Fn , typename... Args&gt; </td></tr>
 <tr class="memitem:a65c14fd16d1097fd53995d16772adae6"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::invoke_result</b> = detail::invoke_result&lt; Fn, Args... &gt;</td></tr>
@@ -214,6 +210,14 @@ template&lt;typename Fn , typename... Args&gt; </td></tr>
 template&lt;typename Fn , typename... Args&gt; </td></tr>
 <tr class="memitem:a1cc89f90db59a8e47a2856625cb17cf1"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::invoke_result_t</b> = typename invoke_result&lt; Fn, Args... &gt;::type</td></tr>
 <tr class="separator:a1cc89f90db59a8e47a2856625cb17cf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a556c503d3ad89fee94627c21bd726ae9"><td class="memTemplParams" colspan="2"><a id="a556c503d3ad89fee94627c21bd726ae9"></a>
+template&lt;typename Fn , typename... Args&gt; </td></tr>
+<tr class="memitem:a556c503d3ad89fee94627c21bd726ae9"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::is_invocable</b> = detail::is_invocable&lt; Fn, Args... &gt;</td></tr>
+<tr class="separator:a556c503d3ad89fee94627c21bd726ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5c152e28df559350102b730448b5f5"><td class="memTemplParams" colspan="2"><a id="a3f5c152e28df559350102b730448b5f5"></a>
+template&lt;typename Fn , typename... Args&gt; </td></tr>
+<tr class="memitem:a3f5c152e28df559350102b730448b5f5"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::is_nothrow_invocable</b> = detail::is_nothrow_invocable&lt; Fn, Args... &gt;</td></tr>
+<tr class="separator:a3f5c152e28df559350102b730448b5f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a092f2b2c05eb977c526356badd722b61"><td class="memTemplParams" colspan="2"><a id="a092f2b2c05eb977c526356badd722b61"></a>
 template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a092f2b2c05eb977c526356badd722b61"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::is_void</b> = std::is_void&lt; T &gt;</td></tr>
@@ -659,7 +663,7 @@ template&lt;typename T &gt; </td></tr>
 struct bpstd::aligned_storage&lt; Size, Align &gt;::type</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d54/type__traits_8hpp_source.html#l00745">745</a> of file <a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d54/type__traits_8hpp_source.html#l00778">778</a> of file <a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">
@@ -687,7 +691,7 @@ storage[Size]</td>
 struct bpstd::aligned_union&lt; Len, Ts &gt;::type</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d54/type__traits_8hpp_source.html#l00777">777</a> of file <a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d54/type__traits_8hpp_source.html#l00810">810</a> of file <a class="el" href="../../dc/d54/type__traits_8hpp_source.html">type_traits.hpp</a>.</p>
 </div><table class="fieldtable">
 <tr><th colspan="3">Class Members</th></tr>
 <tr><td class="fieldtype">

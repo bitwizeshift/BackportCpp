@@ -3,5 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="bpstd::modulus\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/d5a/structbpstd_1_1modulus.html"];
+  Node0 [label="bpstd::minus\< void \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d4c/structbpstd_1_1minus_3_01void_01_4.html"];
 }
