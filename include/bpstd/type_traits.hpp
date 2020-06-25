@@ -158,11 +158,40 @@ namespace bpstd {
   //----------------------------------------------------------------------------
 
   template <typename Fn, typename...Args>
+  using invoke_result = detail::invoke_result<Fn,Args...>;
+
+  template <typename Fn, typename...Args>
+  using invoke_result_t = typename invoke_result<Fn,Args...>::type;
+
+  //----------------------------------------------------------------------------
+
+  namespace detail {
+
+    template <bool IsInvocable, typename R, typename Fn, typename...Args>
+    struct is_invocable_return : std::is_convertible<invoke_result_t<Fn,Args...>, R>{};
+
+    template <typename R, typename Fn, typename...Args>
+    struct is_invocable_return<false, R, Fn, Args...> : false_type{};
+
+  } // namespace detail
+
+  template <typename Fn, typename...Args>
   using is_invocable = detail::is_invocable<Fn, Args...>;
 
 #if BPSTD_HAS_TEMPLATE_VARIABLES
   template<typename Fn, typename...Args>
   BPSTD_CPP17_INLINE constexpr auto is_invocable_v = is_invocable<Fn, Args...>::value;
+#endif
+
+  //----------------------------------------------------------------------------
+
+  template <typename R, typename Fn, typename...Args>
+  struct is_invocable_r
+    : detail::is_invocable_return<is_invocable<Fn,Args...>::value, R, Fn, Args...>{};
+
+#if BPSTD_HAS_TEMPLATE_VARIABLES
+  template <typename R, typename Fn, typename...Args>
+  BPSTD_CPP17_INLINE constexpr auto is_invocable_r_v = is_invocable_r<R, Fn, Args...>::value;
 #endif
 
   //----------------------------------------------------------------------------
@@ -177,11 +206,15 @@ namespace bpstd {
 
   //----------------------------------------------------------------------------
 
-  template <typename Fn, typename...Args>
-  using invoke_result = detail::invoke_result<Fn,Args...>;
+  template <typename R, typename Fn, typename...Args>
+  struct is_nothrow_invocable_r
+    : detail::is_invocable_return<is_nothrow_invocable<Fn,Args...>::value, R, Fn, Args...>{};
 
-  template <typename Fn, typename...Args>
-  using invoke_result_t = typename invoke_result<Fn,Args...>::type;
+#if BPSTD_HAS_TEMPLATE_VARIABLES
+  template <typename R, typename Fn, typename...Args>
+  BPSTD_CPP17_INLINE constexpr auto is_nothrow_invocable_r_v
+    = is_nothrow_invocable_r<R, Fn, Args...>::value;
+#endif
 
   //============================================================================
   // Type categories

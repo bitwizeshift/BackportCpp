@@ -53,6 +53,60 @@ static_assert(
 );
 
 //==============================================================================
+// is_invocable_r
+//==============================================================================
+
+namespace {
+
+bool invocable_test(int) { return false; }
+
+struct nothrow_invocable
+{
+  const char* operator()() noexcept { return "hello world"; }
+};
+
+static_assert(
+  bpstd::is_invocable<decltype(&::invocable_test), int>::value,
+  "invocable_test should be invocable with int"
+);
+static_assert(
+  bpstd::is_invocable<decltype(&::invocable_test), float>::value,
+  "invocable_test should be invocable with floats due to implicit conversion to int"
+);
+static_assert(
+  !bpstd::is_invocable<decltype(&::invocable_test)>::value,
+  "invocable_test should not be invocable without an argument"
+);
+static_assert(
+  bpstd::is_invocable_r<bool, decltype(&::invocable_test), int>::value,
+  "invocable_test returns a 'bool'"
+);
+static_assert(
+  bpstd::is_invocable_r<int, decltype(&::invocable_test), int>::value,
+  "invocable_test returns a 'bool', which is convertible to 'int'"
+);
+
+// C++11 and C++14 don't encode 'noexcept' in the type, so we can't test for
+// noexcept status on function or member function pointers.. So test with a
+// functor instead
+
+static_assert(
+  bpstd::is_nothrow_invocable<nothrow_invocable>::value,
+  "nothrow_invocable should be nothrow invocable"
+);
+static_assert(
+  bpstd::is_nothrow_invocable_r<std::string,nothrow_invocable>::value,
+  "nothrow_invocable returns a type convertible to std::string"
+);
+static_assert(
+  !bpstd::is_nothrow_invocable_r<bool,decltype(&::invocable_test)>::value,
+  "invocable_test is not noexcept, does not check type conversion"
+);
+
+} // anonymous namespace
+
+
+//==============================================================================
 // is_swappable_with
 //==============================================================================
 
