@@ -27,6 +27,7 @@ var type__traits_8hpp =
     [ "type", "d1/d91/structbpstd_1_1aligned__union.html#d4/d86/structbpstd_1_1aligned__union_1_1type", [
       [ "buffer", "d1/d91/structbpstd_1_1aligned__union.html#add1681dc58e99d22763ae41dee7fbd21", null ]
     ] ],
+    [ "underlying_type", "d1/dee/structbpstd_1_1underlying__type.html", "d1/dee/structbpstd_1_1underlying__type" ],
     [ "BPSTD_HAS_TRIVIAL_TYPE_TRAITS", "dc/d54/type__traits_8hpp.html#a3edd72b06f4e50a28e97b7e3c6af8ae0", null ],
     [ "add_const", "dc/d54/type__traits_8hpp.html#a9e4d27371695ebbb4ca68a4cb932aaab", null ],
     [ "add_const_t", "dc/d54/type__traits_8hpp.html#ac4d30754a0aee0071b13daf5e6ce120f", null ],
@@ -143,7 +144,6 @@ var type__traits_8hpp =
     [ "remove_volatile_t", "dc/d54/type__traits_8hpp.html#ac54e34a0f78b7926f5ce83da55c16ad4", null ],
     [ "result_of", "dc/d54/type__traits_8hpp.html#a6b1358f6ff64a3816cbb5076fb792d57", null ],
     [ "result_of_t", "dc/d54/type__traits_8hpp.html#a7f8f8fb1e902658648ca37519798c45b", null ],
-    [ "underlying_type", "dc/d54/type__traits_8hpp.html#a3571fb4f2f55b74a147746043b6f06ee", null ],
     [ "underlying_type_t", "dc/d54/type__traits_8hpp.html#ade2aafa7a38095ce66e9390c2a5bd2c8", null ],
     [ "void_t", "dc/d54/type__traits_8hpp.html#a1bfad89646cc2efb20d1c803e15a27fb", null ]
 ];

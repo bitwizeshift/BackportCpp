@@ -93,7 +93,11 @@ var hierarchy =
     [ "bpstd::span< T, Extent >", "d4/dd8/classbpstd_1_1span.html", null ],
     [ "bpstd::aligned_union< Len, Ts >::type", "d1/d91/structbpstd_1_1aligned__union.html#d4/d86/structbpstd_1_1aligned__union_1_1type", null ],
     [ "bpstd::aligned_storage< Size, Align >::type", "d0/d6d/structbpstd_1_1aligned__storage.html#dd/da4/structbpstd_1_1aligned__storage_1_1type", null ],
-    [ "bpstd::type_identity< T >", "d8/d70/structbpstd_1_1type__identity.html", null ],
+    [ "bpstd::type_identity< T >", "d8/d70/structbpstd_1_1type__identity.html", [
+      [ "bpstd::detail::underlying_type_impl< is_enum< T >::value, T >", null, [
+        [ "bpstd::underlying_type< T >", "d1/dee/structbpstd_1_1underlying__type.html", null ]
+      ] ]
+    ] ],
     [ "bpstd::type_identity< integer_sequence< T, Tails... > >", "d8/d70/structbpstd_1_1type__identity.html", null ],
     [ "bpstd::type_identity< void >", "d8/d70/structbpstd_1_1type__identity.html", null ],
     [ "bpstd::variant_alternative< I, T >", "d7/de4/structbpstd_1_1variant__alternative.html", null ],

@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"d8/d86/classbpstd_1_1optional.html#a466b63b1cbcbf03615d7a66ae7532122":[0,0,0,63,38],
+"d8/d86/classbpstd_1_1optional.html#a4c31f0e805e5b9bf71222b918d4bbb18":[0,0,0,63,20],
 "d8/d86/classbpstd_1_1optional.html#a58f82285281f4db084a0074aa9498efc":[0,0,0,63,29],
 "d8/d86/classbpstd_1_1optional.html#a591405954190f2b4173ff1a30dbdf6fc":[0,0,0,63,48],
 "d8/d86/classbpstd_1_1optional.html#a5f3f58be0c9d23871546f4863ab2d4e3":[0,0,0,63,12],
@@ -59,7 +61,7 @@ var NAVTREEINDEX1 =
 "d8/dbe/classbpstd_1_1any.html#adba39c562cc3ec1deb2e61e1a021158f":[0,0,0,2,2],
 "d9/d0e/structbpstd_1_1in__place__t.html":[0,0,0,30],
 "d9/d0e/structbpstd_1_1in__place__t.html#a3fd57c140ecba0a101a9709e9ddc6ef4":[0,0,0,30,0],
-"d9/d4a/structbpstd_1_1variant__size_3_01volatile_01_t_01_4.html":[0,0,0,78],
+"d9/d4a/structbpstd_1_1variant__size_3_01volatile_01_t_01_4.html":[0,0,0,79],
 "d9/d7a/variant_8hpp.html":[1,0,0,0,15],
 "d9/d7a/variant_8hpp.html#a018ed70e22a1ee1e045b31839a2c26fb":[1,0,0,0,15,27],
 "d9/d7a/variant_8hpp.html#a02d19289d7451aa712375d0ea5cc046a":[1,0,0,0,15,53],
@@ -135,7 +137,7 @@ var NAVTREEINDEX1 =
 "da/d3e/memory_8hpp.html#ad527a2c4de6b86a512d7afb9786dbabb":[1,0,0,0,7,3],
 "da/d3e/memory_8hpp.html#ad96b632bac18a5433ace61f2aa05f326":[1,0,0,0,7,1],
 "da/d3e/memory_8hpp_source.html":[1,0,0,0,7],
-"da/d3e/structbpstd_1_1variant__size_3_01const_01volatile_01_t_01_4.html":[0,0,0,76],
+"da/d3e/structbpstd_1_1variant__size_3_01const_01volatile_01_t_01_4.html":[0,0,0,77],
 "da/d5e/classbpstd_1_1bad__any__cast.html":[0,0,0,3],
 "da/db5/string__view_8hpp.html":[1,0,0,0,11],
 "da/db5/string__view_8hpp.html#a09b308fd6d0201d304fc25d2f64afa97":[1,0,0,0,11,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "db/dba/classbpstd_1_1basic__string__view.html#aa4679e18f44e6036a791ad4b4caf5cb0":[0,0,0,6,0],
 "db/dba/classbpstd_1_1basic__string__view.html#aa7bae919cec85e45ba3fa4190175c087":[0,0,0,6,15],
 "db/dba/classbpstd_1_1basic__string__view.html#aabafc6ff1ca6f6678af6fad666fe705c":[0,0,0,6,61],
-"db/dba/classbpstd_1_1basic__string__view.html#ab069286637691c658a789a0f8c9a648f":[0,0,0,6,7],
-"db/dba/classbpstd_1_1basic__string__view.html#ab071464330e2237551dafe19735e413d":[0,0,0,6,2],
-"db/dba/classbpstd_1_1basic__string__view.html#ac76433de66ad7f495ccd7641c313a3f4":[0,0,0,6,71]
+"db/dba/classbpstd_1_1basic__string__view.html#ab069286637691c658a789a0f8c9a648f":[0,0,0,6,7]
 };

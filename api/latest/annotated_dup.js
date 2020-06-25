@@ -73,6 +73,7 @@ var annotated_dup =
       [ "plus< void >", "df/dd7/structbpstd_1_1plus_3_01void_01_4.html", "df/dd7/structbpstd_1_1plus_3_01void_01_4" ],
       [ "span", "d4/dd8/classbpstd_1_1span.html", "d4/dd8/classbpstd_1_1span" ],
       [ "type_identity", "d8/d70/structbpstd_1_1type__identity.html", "d8/d70/structbpstd_1_1type__identity" ],
+      [ "underlying_type", "d1/dee/structbpstd_1_1underlying__type.html", "d1/dee/structbpstd_1_1underlying__type" ],
       [ "variant", "de/dc4/classbpstd_1_1variant.html", "de/dc4/classbpstd_1_1variant" ],
       [ "variant_alternative", "d7/de4/structbpstd_1_1variant__alternative.html", null ],
       [ "variant_alternative< I, const T >", "dc/d0c/structbpstd_1_1variant__alternative_3_01_i_00_01const_01_t_01_4.html", null ],
