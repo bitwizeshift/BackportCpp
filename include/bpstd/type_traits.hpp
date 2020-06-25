@@ -804,8 +804,18 @@ namespace bpstd {
 
   //----------------------------------------------------------------------------
 
+  namespace detail {
+
+    template <bool IsEnum, typename T>
+    struct underlying_type_impl : type_identity<T>{};
+
+    template <typename T>
+    struct underlying_type_impl<false, T>{};
+
+  } // namespace detail
+
   template <typename T>
-  using underlying_type = std::underlying_type<T>;
+  struct underlying_type : detail::underlying_type_impl<is_enum<T>::value, T>{};
 
   template <typename T>
   using underlying_type_t = typename underlying_type<T>::type;
