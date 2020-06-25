@@ -91,6 +91,34 @@ static_assert(
   !bpstd::is_swappable_with<int,long>::value, ""
 );
 
+//=============================================================================
+// underlying_type sfinae test
+//=============================================================================
+
+namespace {
+
+template <typename Enum>
+typename bpstd::underlying_type<Enum>::type to_int(Enum e)
+{
+    return static_cast<typename bpstd::underlying_type<Enum>::type>(e);
+}
+template <typename T, typename = bpstd::enable_if_t<bpstd::is_integral<T>::value>>
+T to_int(T t)
+{
+  return t;
+}
+
+enum class example_enum{};
+
+// Make sure the calls are well-formed and properly triggers SFINAE
+void underlying_type_sfinae_test()
+{
+  to_int(5);
+  to_int(example_enum{});
+}
+
+}
+
 #if defined(__clang__)
 # pragma clang diagnostic pop
 #endif
