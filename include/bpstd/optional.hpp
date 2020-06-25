@@ -964,7 +964,8 @@ void bpstd::detail::optional_base<T,true>::destruct()
 //-----------------------------------------------------------------------------
 
 template <typename T>
-inline bpstd::detail::optional_base<T,false>
+inline BPSTD_INLINE_VISIBILITY
+bpstd::detail::optional_base<T,false>
   ::optional_base(nullopt_t)
   noexcept
   : m_storage{},
@@ -974,7 +975,8 @@ inline bpstd::detail::optional_base<T,false>
 
 template <typename T>
 template <typename...Args>
-inline bpstd::detail::optional_base<T,false>
+inline BPSTD_INLINE_VISIBILITY
+bpstd::detail::optional_base<T,false>
   ::optional_base(in_place_t, Args&&...args)
   noexcept(std::is_nothrow_constructible<T,Args...>::value)
   : m_storage(in_place, bpstd::forward<Args>(args)...),
@@ -986,7 +988,8 @@ inline bpstd::detail::optional_base<T,false>
 //-----------------------------------------------------------------------------
 
 template <typename T>
-inline bpstd::detail::optional_base<T,false>::~optional_base()
+inline BPSTD_INLINE_VISIBILITY
+bpstd::detail::optional_base<T,false>::~optional_base()
   noexcept(std::is_nothrow_destructible<T>::value)
 {
   if (m_engaged) {
@@ -1015,7 +1018,8 @@ const T* bpstd::detail::optional_base<T,false>::val()
 }
 
 template <typename T>
-inline bool bpstd::detail::optional_base<T,false>::contains_value()
+inline BPSTD_INLINE_VISIBILITY
+bool bpstd::detail::optional_base<T,false>::contains_value()
   const noexcept
 {
   return m_engaged;
@@ -1073,7 +1077,8 @@ bpstd::optional<T>::optional(nullopt_t)
 //-----------------------------------------------------------------------------
 
 template <typename T>
-inline bpstd::optional<T>
+inline BPSTD_INLINE_VISIBILITY
+bpstd::optional<T>
   ::optional(detail::enable_overload_if_t<std::is_copy_constructible<T>::value,const optional&> other)
   : optional{}
 {
@@ -1084,7 +1089,8 @@ inline bpstd::optional<T>
 }
 
 template <typename T>
-inline bpstd::optional<T>
+inline BPSTD_INLINE_VISIBILITY
+bpstd::optional<T>
   ::optional(detail::enable_overload_if_t<std::is_move_constructible<T>::value,optional&&> other)
   : optional{}
 {
@@ -1099,7 +1105,8 @@ inline bpstd::optional<T>
 template <typename T>
 template <typename U,
          bpstd::enable_if_t<bpstd::detail::optional_is_copy_convertible<T,U>::value && std::is_convertible<const U&, T>::value>*>
-inline bpstd::optional<T>::optional(const optional<U>& other)
+inline BPSTD_INLINE_VISIBILITY
+bpstd::optional<T>::optional(const optional<U>& other)
   : optional{}
 {
   if (other.has_value())
@@ -1111,7 +1118,8 @@ inline bpstd::optional<T>::optional(const optional<U>& other)
 template <typename T>
 template <typename U,
          bpstd::enable_if_t<bpstd::detail::optional_is_copy_convertible<T,U>::value && !std::is_convertible<const U&, T>::value>*>
-inline bpstd::optional<T>::optional(const optional<U>& other)
+inline BPSTD_INLINE_VISIBILITY
+bpstd::optional<T>::optional(const optional<U>& other)
   : optional{}
 {
   if (other.has_value())
@@ -1125,7 +1133,8 @@ inline bpstd::optional<T>::optional(const optional<U>& other)
 template <typename T>
 template <typename U,
          bpstd::enable_if_t<bpstd::detail::optional_is_move_convertible<T,U>::value && std::is_convertible<U&&, T>::value>*>
-inline bpstd::optional<T>::optional(optional<U>&& other)
+inline BPSTD_INLINE_VISIBILITY
+bpstd::optional<T>::optional(optional<U>&& other)
   : optional{}
 {
   if (other.has_value())
@@ -1136,7 +1145,8 @@ inline bpstd::optional<T>::optional(optional<U>&& other)
 template <typename T>
 template <typename U,
          bpstd::enable_if_t<bpstd::detail::optional_is_move_convertible<T,U>::value && !std::is_convertible<U&&, T>::value>*>
-inline bpstd::optional<T>::optional(optional<U>&& other)
+inline BPSTD_INLINE_VISIBILITY
+bpstd::optional<T>::optional(optional<U>&& other)
   : optional{}
 {
   if (other.has_value())
@@ -1189,14 +1199,16 @@ bpstd::optional<T>::optional(U&& value)
 //-----------------------------------------------------------------------------
 
 template <typename T>
-inline bpstd::optional<T>& bpstd::optional<T>::operator=(nullopt_t)
+inline BPSTD_INLINE_VISIBILITY
+bpstd::optional<T>& bpstd::optional<T>::operator=(nullopt_t)
 {
   base_type::destruct();
   return (*this);
 }
 
 template <typename T>
-inline bpstd::optional<T>&
+inline BPSTD_INLINE_VISIBILITY
+bpstd::optional<T>&
   bpstd::optional<T>::operator=(detail::enable_overload_if_t<std::is_copy_constructible<T>::value && std::is_copy_assignable<T>::value,const optional&> other)
 {
   if (has_value() && other.has_value()) {
@@ -1211,7 +1223,8 @@ inline bpstd::optional<T>&
 }
 
 template <typename T>
-inline bpstd::optional<T>&
+inline BPSTD_INLINE_VISIBILITY
+bpstd::optional<T>&
   bpstd::optional<T>::operator=(detail::enable_overload_if_t<std::is_move_constructible<T>::value && std::is_move_assignable<T>::value,optional&&> other)
 {
   if (has_value() && other.has_value()) {
@@ -1227,8 +1240,8 @@ inline bpstd::optional<T>&
 
 template <typename T>
 template <typename U, typename>
-inline bpstd::optional<T>&
-  bpstd::optional<T>::operator=(U&& value)
+inline BPSTD_INLINE_VISIBILITY
+bpstd::optional<T>& bpstd::optional<T>::operator=(U&& value)
 {
   if (has_value()) {
     (*base_type::val()) = bpstd::forward<U>(value);
