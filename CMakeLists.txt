@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
 
+# Disable defaulting the warning flags for MSVC
+# this isn't bad, it's just inconvenient
+cmake_policy(SET CMP0092 NEW)
+
 if (PROJECT_NAME)
   set(IS_SUBPROJECT TRUE)
 endif ()
@@ -93,7 +97,7 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang" OR
         "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" )
   add_compile_options(-Wall -Werror -Wextra -pedantic -pedantic-errors)
 elseif( "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC" )
-  # TODO: Determine MSVC necessary compiler flags
+  add_compile_options(/W4 /WX)
 endif ()
 
 # Header Self-Containment Tests
