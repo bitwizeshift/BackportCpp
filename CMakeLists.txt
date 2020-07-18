@@ -73,6 +73,9 @@ set(header_files
   "include/bpstd/variant.hpp"
 )
 
+include(SourceGroup)
+source_group_tree("include" PREFIX "Header Files" FILES ${header_files})
+
 add_library(${PROJECT_NAME} INTERFACE)
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
