@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"d8/d86/classbpstd_1_1optional.html#a2903812495c6d7e6c5f57e1508c08dd2":[0,0,0,65,38],
+"d8/d86/classbpstd_1_1optional.html#a335d8f7431914172f8a9a2ebc334b5b1":[0,0,0,65,27],
 "d8/d86/classbpstd_1_1optional.html#a3ce47aec173659002c696560177bd703":[0,0,0,65,20],
 "d8/d86/classbpstd_1_1optional.html#a40e31e71be59365f6adc5e43b7b7e3e0":[0,0,0,65,32],
 "d8/d86/classbpstd_1_1optional.html#a4c31f0e805e5b9bf71222b918d4bbb18":[0,0,0,65,22],
@@ -187,9 +189,11 @@ var NAVTREEINDEX1 =
 "da/db5/string__view_8hpp.html#ae9c2529094498917c694ddb6e6cd4202":[1,0,0,0,11,30],
 "da/db5/string__view_8hpp_source.html":[1,0,0,0,11],
 "da/de1/span_8hpp.html":[1,0,0,0,9],
-"da/de1/span_8hpp.html#a3683b09ae6daa868061118c9d71bb1b1":[1,0,0,0,9,2],
-"da/de1/span_8hpp.html#a7f7ee8026f57d8444fd383dc729edb90":[1,0,0,0,9,3],
-"da/de1/span_8hpp.html#aca862dbbf0467180e40d467dd325be2d":[1,0,0,0,9,1],
+"da/de1/span_8hpp.html#a06092cc29463b87d01cb8640ab98a20b":[1,0,0,0,9,2],
+"da/de1/span_8hpp.html#a3683b09ae6daa868061118c9d71bb1b1":[1,0,0,0,9,4],
+"da/de1/span_8hpp.html#a783c7fa667a6a7a9c3adfb5009a4cd6c":[1,0,0,0,9,1],
+"da/de1/span_8hpp.html#a7f7ee8026f57d8444fd383dc729edb90":[1,0,0,0,9,5],
+"da/de1/span_8hpp.html#aca862dbbf0467180e40d467dd325be2d":[1,0,0,0,9,3],
 "da/de1/span_8hpp_source.html":[1,0,0,0,9],
 "db/d3d/structbpstd_1_1disjunction_3_01_b1_01_4.html":[0,0,0,19],
 "db/d4c/structbpstd_1_1minus_3_01void_01_4.html":[0,0,0,53],
@@ -245,9 +249,5 @@ var NAVTREEINDEX1 =
 "db/dba/classbpstd_1_1basic__string__view.html#a920969223a70cb7727a6ffe34171255f":[0,0,0,6,63],
 "db/dba/classbpstd_1_1basic__string__view.html#a94cbce07b65924625d2c89c38753ade9":[0,0,0,6,35],
 "db/dba/classbpstd_1_1basic__string__view.html#a9888c7e31d13e8029688761a914cbc89":[0,0,0,6,28],
-"db/dba/classbpstd_1_1basic__string__view.html#a98f23065d747d76bd757b359593d08da":[0,0,0,6,12],
-"db/dba/classbpstd_1_1basic__string__view.html#a9b843a06217a86fe6ab47e5cbb036a83":[0,0,0,6,67],
-"db/dba/classbpstd_1_1basic__string__view.html#aa0b98af9d41ff42b02a47b4c3e6c9674":[0,0,0,6,25],
-"db/dba/classbpstd_1_1basic__string__view.html#aa25d8c904628cbb88af9427efdb49175":[0,0,0,6,70],
-"db/dba/classbpstd_1_1basic__string__view.html#aa4679e18f44e6036a791ad4b4caf5cb0":[0,0,0,6,0]
+"db/dba/classbpstd_1_1basic__string__view.html#a98f23065d747d76bd757b359593d08da":[0,0,0,6,12]
 };

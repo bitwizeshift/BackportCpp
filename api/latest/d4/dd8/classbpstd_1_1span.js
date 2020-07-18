@@ -12,6 +12,8 @@ var classbpstd_1_1span =
     [ "value_type", "d4/dd8/classbpstd_1_1span.html#a678269ffb727fde6fade90e4913217b9", null ],
     [ "span", "d4/dd8/classbpstd_1_1span.html#a7746ecbd7ee766151ec142bd056648a2", null ],
     [ "span", "d4/dd8/classbpstd_1_1span.html#a16aa9ceed977a0e8399727b2c4673d35", null ],
+    [ "span", "d4/dd8/classbpstd_1_1span.html#a16aa9ceed977a0e8399727b2c4673d35", null ],
+    [ "span", "d4/dd8/classbpstd_1_1span.html#a6f10cc3beeb8b58fe75fc8bf0d938aee", null ],
     [ "span", "d4/dd8/classbpstd_1_1span.html#a6f10cc3beeb8b58fe75fc8bf0d938aee", null ],
     [ "span", "d4/dd8/classbpstd_1_1span.html#a4282f11e488cbf9ce05bfee631c46cf8", null ],
     [ "span", "d4/dd8/classbpstd_1_1span.html#ac11ae65409114a99a633d2b180234e98", null ],

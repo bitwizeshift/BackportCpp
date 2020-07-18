@@ -81,6 +81,7 @@ $(document).ready(function(){initNavTree('da/de1/span_8hpp.html','../../');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -115,6 +116,17 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd8/classbpstd_1_1span.html">bpstd::span&lt; T, Extent &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is a non-owning view of a contiguous piece of memory.  <a href="../../d4/dd8/classbpstd_1_1span.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a06092cc29463b87d01cb8640ab98a20b"><td class="memTemplParams" colspan="2"><a id="a06092cc29463b87d01cb8640ab98a20b"></a>
+template&lt;typename It &gt; </td></tr>
+<tr class="memitem:a06092cc29463b87d01cb8640ab98a20b"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::detail::iter_reference</b> = typename std::iterator_traits&lt; It &gt;::reference</td></tr>
+<tr class="separator:a06092cc29463b87d01cb8640ab98a20b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a783c7fa667a6a7a9c3adfb5009a4cd6c"><td class="memTemplParams" colspan="2"><a id="a783c7fa667a6a7a9c3adfb5009a4cd6c"></a>
+template&lt;typename It , typename T &gt; </td></tr>
+<tr class="memitem:a783c7fa667a6a7a9c3adfb5009a4cd6c"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>bpstd::detail::is_iter_convertible</b> = conjunction&lt; is_same&lt; remove_cvref_t&lt; iter_reference&lt; It &gt; &gt;, remove_cv_t&lt; T &gt; &gt;, is_convertible&lt; iter_reference&lt; It &gt;, remove_cv_t&lt; T &gt; &gt; &gt;</td></tr>
+<tr class="separator:a783c7fa667a6a7a9c3adfb5009a4cd6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
