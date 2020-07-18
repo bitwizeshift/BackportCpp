@@ -149,6 +149,15 @@ namespace bpstd {
           : ((Extent != dynamic_extent) ? (Extent - Offset) : Extent)
         >{};
 
+    template <typename It>
+    using iter_reference = typename std::iterator_traits<It>::reference;
+
+    template <typename It, typename T>
+    using is_iter_convertible = conjunction<
+      is_same<remove_cvref_t<iter_reference<It>>,remove_cv_t<T>>,
+      is_convertible<iter_reference<It>,remove_cv_t<T>>
+    >;
+
   } // namespace detail
 
   //============================================================================
@@ -170,15 +179,6 @@ namespace bpstd {
   template <typename T, std::size_t Extent = dynamic_extent>
   class span
   {
-    template <typename It>
-    using iter_reference = typename std::iterator_traits<It>::reference;
-
-    template <typename It>
-    using is_iter_convertible = conjunction<
-      is_same<remove_cvref_t<iter_reference<It>>,remove_cv_t<T>>,
-      is_convertible<iter_reference<It>,remove_cv_t<T>>
-    >;
-
     //--------------------------------------------------------------------------
     // Public Member Types
     //--------------------------------------------------------------------------
@@ -217,6 +217,7 @@ namespace bpstd {
               typename = enable_if_t<detail::is_allowed_extent_conversion<0,UExtent>::value>>
     constexpr span() noexcept;
 
+    /// \{
     /// \brief Constructs a span from an iterator \p it and the \p count
     ///
     /// This constructor only participates in overload resolution if the
@@ -224,11 +225,19 @@ namespace bpstd {
     /// * Extent is dynamic_extent
     /// * to_address(it) is convertible to T*
     ///
+    /// This constructor is explicit if `Extent` != `dynamic_extent`
+    ///
     /// \param it the iterator
     /// \param count the number of entries in the sequence
     template <typename It,
-              typename = enable_if_t<is_iter_convertible<It>::value>>
+              enable_if_t<(Extent == bpstd::dynamic_extent) &&
+                           bpstd::detail::is_iter_convertible<It, T>::value,int> = 0>
     constexpr span(It it, size_type count) noexcept;
+    template <typename It,
+              enable_if_t<(Extent != bpstd::dynamic_extent) &&
+                           bpstd::detail::is_iter_convertible<It, T>::value,int> = 0>
+    constexpr explicit span(It it, size_type count) noexcept;
+    /// \}
 
     /// \brief Constructs a span from an iterator range
     ///
@@ -240,8 +249,13 @@ namespace bpstd {
     /// \param it the iterator
     /// \param end the end iterator
     template <typename It, typename End,
-              typename = enable_if_t<is_iter_convertible<It>::value>>
+              enable_if_t<(Extent == bpstd::dynamic_extent) &&
+                           bpstd::detail::is_iter_convertible<It, T>::value, int> = 0>
     constexpr span(It it, End end) noexcept;
+    template <typename It, typename End,
+              enable_if_t<(Extent != bpstd::dynamic_extent) &&
+                           bpstd::detail::is_iter_convertible<It, T>::value, int> = 0>
+    constexpr explicit span(It it, End end) noexcept;
 
     /// \brief Constructs a span from an array reference
     ///
@@ -274,6 +288,8 @@ namespace bpstd {
     // cppcheck-suppress noExplicitConstructor
     constexpr span(const std::array<U, N>& arr) noexcept;
     /// \}
+
+    // range-constructor omitted since ranges are not part of backport yet
 
     /// \brief Constructs a span from a different span
     ///
@@ -478,7 +494,9 @@ bpstd::span<T,Extent>::span()
 }
 
 template <typename T, std::size_t Extent>
-template <typename It, typename>
+template <typename It,
+          bpstd::enable_if_t<(Extent == bpstd::dynamic_extent) &&
+                              bpstd::detail::is_iter_convertible<It, T>::value,int>>
 inline BPSTD_INLINE_VISIBILITY constexpr
 bpstd::span<T,Extent>::span(It it, size_type count)
   noexcept
@@ -488,7 +506,33 @@ bpstd::span<T,Extent>::span(It it, size_type count)
 }
 
 template <typename T, std::size_t Extent>
-template <typename It, typename End, typename>
+template <typename It,
+          bpstd::enable_if_t<(Extent != bpstd::dynamic_extent) &&
+                              bpstd::detail::is_iter_convertible<It, T>::value,int>>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::span<T,Extent>::span(It it, size_type count)
+  noexcept
+  : m_storage{to_address(it), count}
+{
+
+}
+
+template <typename T, std::size_t Extent>
+template <typename It, typename End,
+          bpstd::enable_if_t<(Extent == bpstd::dynamic_extent) &&
+                              bpstd::detail::is_iter_convertible<It, T>::value, int>>
+inline BPSTD_INLINE_VISIBILITY constexpr
+bpstd::span<T,Extent>::span(It it, End end)
+  noexcept
+  : m_storage{to_address(it), static_cast<size_type>(end - it)}
+{
+
+}
+
+template <typename T, std::size_t Extent>
+template <typename It, typename End,
+          bpstd::enable_if_t<(Extent != bpstd::dynamic_extent) &&
+                              bpstd::detail::is_iter_convertible<It, T>::value, int>>
 inline BPSTD_INLINE_VISIBILITY constexpr
 bpstd::span<T,Extent>::span(It it, End end)
   noexcept
@@ -623,7 +667,7 @@ bpstd::span<typename bpstd::span<T, Extent>::element_type, Count>
     "A Count larger than Extent is ill-formed"
   );
 
-  return {data(), Count};
+  return span<element_type, Count>{data(), Count};
 }
 
 template <typename T, std::size_t Extent>
@@ -649,7 +693,7 @@ bpstd::span<typename bpstd::span<T, Extent>::element_type, Count>
     "A Count larger than Extent is ill-formed"
   );
 
-  return {data() + (size() - Count), Count};
+  return span<element_type, Count>{data() + (size() - Count), Count};
 }
 
 template <typename T, std::size_t Extent>
@@ -670,7 +714,12 @@ bpstd::span<typename bpstd::span<T, Extent>::element_type, bpstd::detail::comput
   bpstd::span<T, Extent>::subspan()
   const
 {
-  return {
+  using result_type = span<
+    element_type,
+    detail::compute_subspan_size<Extent,Offset,Count>::value
+  >;
+
+  return result_type{
     data() + Offset,
     (Count == dynamic_extent) ? (size() - Offset) : Count
   };
