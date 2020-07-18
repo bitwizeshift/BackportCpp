@@ -41,6 +41,8 @@
 #include <tuple>   // std::tuple_element, and to proxy API
 #include <cstddef> // std::size_t
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
 
   //============================================================================
@@ -285,5 +287,7 @@ T bpstd::make_from_tuple(Tuple&& tuple)
     make_index_sequence<tuple_size<remove_reference_t<Tuple>>::value>{}
   );
 }
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_TUPLE_HPP */

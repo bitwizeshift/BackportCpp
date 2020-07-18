@@ -41,6 +41,8 @@
 #include <array>    // std::array
 #include <iterator> // std::iterator_traits
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
 
   //============================================================================
@@ -749,5 +751,7 @@ inline bpstd::span<bpstd::byte, sizeof(T) * N> bpstd::as_writable_bytes(span<T, 
 {
   return {reinterpret_cast<byte*>(s.data()), s.size_bytes()};
 }
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_SPAN_HPP */

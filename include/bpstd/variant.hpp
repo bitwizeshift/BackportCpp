@@ -51,6 +51,8 @@
 #include <cstddef>          // std::size_t
 #include <utility>          // std::forward, std::move
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
 
   //============================================================================
@@ -1948,5 +1950,7 @@ bpstd::add_pointer_t<const T>
 
   return get_if<index_type::value>(pv);
 }
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_VARIANT_HPP */

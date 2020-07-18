@@ -34,6 +34,8 @@
 
 #include <string>
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
 
   inline namespace literals {
@@ -77,5 +79,6 @@ std::wstring
   return std::wstring{s, len};
 }
 
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_STRING_HPP */

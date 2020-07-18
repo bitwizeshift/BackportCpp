@@ -45,6 +45,8 @@
 #include <iterator>   // std::reverse_iterator
 #include <ios>        // std::streamsize
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd { // back-port std
 
   //////////////////////////////////////////////////////////////////////////////
@@ -1521,5 +1523,7 @@ namespace bpstd {
   }
 
 } // namespace bpstd
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_STRING_VIEW_HPP */

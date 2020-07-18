@@ -38,6 +38,8 @@
 #include "config.hpp"
 #include <iterator>
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
   namespace detail {
 
@@ -443,5 +445,6 @@ inline BPSTD_CPP14_CONSTEXPR bpstd::detail::proxy_iterator<Iterator,U>
   return proxy_iterator<Iterator,U>{lhs} -= rhs;
 }
 
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_DETAIL_PROXY_ITERATOR_HPP */

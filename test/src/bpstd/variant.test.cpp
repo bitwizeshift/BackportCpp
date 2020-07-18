@@ -32,6 +32,13 @@
 #include <stdexcept> // std::runtime_error
 #include <cassert>   // assert
 
+// MSVC 2015 seems to emit an error that __forceinline'd functions may not be
+// __forceinline'd at the *end of the translation unit* using it, for some
+// stupid reason.
+#if defined(_MSC_VER)
+# pragma warning(disable:4714)
+#endif
+
 static_assert(
   std::is_trivially_destructible<bpstd::variant<int,bool>>::value,
   "Variant containing trivially destructible types must be trivially destructible"

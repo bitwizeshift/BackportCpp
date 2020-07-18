@@ -41,6 +41,8 @@
 #include <utility> // to proxy the API
 #include <cstddef> // std::size_t
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
 
   //============================================================================
@@ -374,5 +376,7 @@ const T&& bpstd::get(const pair<U, T>&& p)
 {
   return move(p.second);
 }
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_UTILITY_HPP */

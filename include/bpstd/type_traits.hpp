@@ -41,6 +41,8 @@
 #include <type_traits>
 #include <cstddef> // std::size_t
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 // GCC versions prior to gcc-5 did not implement the type traits for triviality
 // in completion. Several traits are implemented under a different names from
 // pre-standardization, such as 'has_trivial_copy_destructor' instead of
@@ -1390,5 +1392,7 @@ namespace bpstd {
 #endif
 
 } // namespace bpstd
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_TYPE_TRAITS_HPP */

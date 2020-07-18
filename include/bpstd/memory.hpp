@@ -42,6 +42,8 @@
 #include <cstddef>     // std::size_t
 #include <type_traits> // std::declval
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
 
   namespace detail {
@@ -253,5 +255,7 @@ bpstd::detail::to_address_result_t<T>
 {
   return detail::to_address_impl(p, detail::has_to_address<T>{});
 }
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_MEMORY_HPP */

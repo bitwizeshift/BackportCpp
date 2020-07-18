@@ -37,6 +37,8 @@
 #include <cstddef> // std::size_t
 #include <utility> // std::forward
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
   namespace detail {
 
@@ -223,5 +225,7 @@ void bpstd::detail::variant_base<false,Types...>::destroy_active_object()
   visit_union(m_index, destroy_visitor{}, m_union);
   m_index = static_cast<std::size_t>(-1);
 }
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_DETAIL_VARIANT_BASE_HPP */

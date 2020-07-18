@@ -35,6 +35,8 @@
 #include <chrono>  // std::chrono::duration, std::chrono::system_clock, etc
 #include <cstdint> // std::int32_t
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
   namespace chrono {
 
@@ -182,5 +184,6 @@ bpstd::chrono::duration<double, std::nano>
   return chrono::duration<double, std::nano>{x};
 }
 
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_CHRONO_HPP */
