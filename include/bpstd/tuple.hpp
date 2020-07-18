@@ -218,6 +218,11 @@ const T&& bpstd::get(const tuple<Types...>&& t)
 // definition : apply
 //==============================================================================
 
+#if defined(_MSC_VER)
+# pragma warning(push)
+# pragma warning(disable:4100) // MSVC warns that 'tuple' is not used below
+#endif
+
 namespace bpstd {
   namespace detail {
     template <typename Fn, typename Tuple, std::size_t... I>
@@ -231,6 +236,10 @@ namespace bpstd {
     }
   } // namespace detail
 } // namespace bpstd
+
+#if defined(_MSC_VER)
+# pragma warning(pop)
+#endif
 
 template <typename Fn, typename Tuple>
 inline BPSTD_INLINE_VISIBILITY constexpr
@@ -247,6 +256,11 @@ bpstd::detail::apply_result_t<Fn, Tuple> bpstd::apply(Fn&& fn, Tuple&& tuple)
 // definition : make_from_tuple
 //==============================================================================
 
+#if defined(_MSC_VER)
+# pragma warning(push)
+# pragma warning(disable:4100) // MSVC warns that 'tuple' is not used below
+#endif
+
 namespace bpstd {
   namespace detail {
     template <typename T, typename Tuple, std::size_t... I>
@@ -257,6 +271,10 @@ namespace bpstd {
     }
   } // namespace detail
 } // namespace bpstd
+
+#if defined(_MSC_VER)
+# pragma warning(pop)
+#endif
 
 template <typename T, typename Tuple>
 inline BPSTD_INLINE_VISIBILITY constexpr
