@@ -40,6 +40,10 @@
 #include <type_traits> // std::is_integral
 #include <cstddef>     // __cpp_lib_byte, and to proxy API
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
+// The below implementation is based on GSL's implementation of 'gsl::byte'
+
 // VS2017 15.8 added support for the __cpp_lib_byte definition
 // To do: drop _HAS_STD_BYTE when support for pre 15.8 expires
 #if defined(_MSC_VER)
@@ -248,5 +252,7 @@ Integer bpstd::to_integer(byte b)
 {
   return static_cast<Integer>(b);
 }
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_CSTDDEF_HPP */

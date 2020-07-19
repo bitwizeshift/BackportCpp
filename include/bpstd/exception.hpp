@@ -38,6 +38,8 @@
 
 #include <exception>
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 // The large #if/endif block below, and the definition of
 // bpstd::uncaught_exceptions is taken from boost:
 // https://beta.boost.org/doc/libs/develop/boost/core/uncaught_exceptions.hpp
@@ -191,5 +193,7 @@ int bpstd::uncaught_exceptions()
   return static_cast<int>(std::uncaught_exception());
 #endif
 }
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_EXCEPTION_HPP */

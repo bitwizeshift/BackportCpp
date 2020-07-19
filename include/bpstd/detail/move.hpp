@@ -38,6 +38,8 @@
 
 #include <type_traits>
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
 
   //----------------------------------------------------------------------------
@@ -107,5 +109,7 @@ typename std::remove_reference<T>::type&& bpstd::move(T&& x)
 {
   return static_cast<T&&>(x);
 }
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_DETAIL_MOVE_HPP */

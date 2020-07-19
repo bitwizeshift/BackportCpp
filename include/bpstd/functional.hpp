@@ -41,6 +41,8 @@
 
 #include <functional> // to proxy API
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
 
   /// \brief Invoke the Callable object \p function with the parameters \p args.
@@ -691,5 +693,7 @@ bpstd::detail::not_fn_t<bpstd::decay_t<Fn>> bpstd::not_fn(Fn&& fn)
 
   return { bpstd::forward<Fn>(fn) };
 }
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_FUNCTIONAL_HPP */

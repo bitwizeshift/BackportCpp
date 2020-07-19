@@ -43,6 +43,8 @@
 #include <new>              // placement-new
 #include <cassert>          // assert
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
 
   class any;
@@ -927,5 +929,7 @@ const T* bpstd::any_cast(const any* operand)
                                        nullptr);
   return static_cast<const T*>(p);
 }
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_ANY_HPP */

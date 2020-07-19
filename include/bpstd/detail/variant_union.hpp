@@ -40,6 +40,8 @@
 #include <type_traits> // std::decay
 #include <initializer_list>
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
   namespace detail {
 
@@ -572,5 +574,7 @@ const bpstd::detail::nth_type_t<N,Types...>&&
 
   return bpstd::move(do_union_get(variant_index_tag<N>{}, u));
 }
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_DETAIL_VARIANT_UNION_HPP */

@@ -41,6 +41,8 @@
 #include <cstddef> // std::size_t
 #include <initializer_list>
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
 
   //============================================================================
@@ -270,5 +272,7 @@ inline BPSTD_INLINE_VISIBILITY constexpr
 {
   return N;
 }
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_ITERATOR_HPP */

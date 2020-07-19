@@ -82,4 +82,20 @@
 # define BPSTD_INLINE_VISIBILITY
 #endif
 
+#if defined(_MSC_VER)
+# define BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE \
+  __pragma(warning(push)) \
+  __pragma(warning(disable:4714)) \
+  __pragma(warning(disable:4100)) 
+#else
+# define BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+#endif
+
+#if defined(_MSC_VER)
+# define BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE \
+  __pragma(warning(pop))
+#else
+# define BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
+#endif
+
 #endif /* BPSTD_DETAIL_CONFIG_HPP */

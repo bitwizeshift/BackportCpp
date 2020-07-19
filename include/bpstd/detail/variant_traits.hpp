@@ -31,8 +31,11 @@
 #ifndef BPSTD_DETAIL_VARIANT_TRAITS_HPP
 #define BPSTD_DETAIL_VARIANT_TRAITS_HPP
 
+#include "config.hpp"
 #include "variant_fwds.hpp"
 #include "invoke.hpp" // invoke_result
+
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
 
 namespace bpstd {
   namespace detail {
@@ -103,5 +106,7 @@ namespace bpstd {
 
   } // namespace detail
 } // namespace bpstd
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_DETAIL_VARIANT_TRAITS_HPP */

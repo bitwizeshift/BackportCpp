@@ -46,6 +46,8 @@
 #include <stdexcept>        // std::logic_error
 #include <new>              // placement new
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
 
   template <typename> class optional;
@@ -1766,5 +1768,7 @@ void bpstd::swap(optional<T>& lhs, optional<T>& rhs)
 {
   lhs.swap(rhs);
 }
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_OPTIONAL_HPP */

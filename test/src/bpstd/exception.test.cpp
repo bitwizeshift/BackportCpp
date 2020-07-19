@@ -26,6 +26,13 @@
 #include <catch2/catch.hpp>
 #include <exception>
 
+// MSVC 2015 seems to emit an error that __forceinline'd functions may not be
+// __forceinline'd at the *end of the translation unit* using it, for some
+// stupid reason.
+#if defined(_MSC_VER)
+# pragma warning(disable:4714)
+#endif
+
 namespace {
   template <int Count>
   struct require_exception_in_dtor

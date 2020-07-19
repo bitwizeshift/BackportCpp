@@ -34,6 +34,8 @@
 
 #include <complex>
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
 
   //============================================================================
@@ -115,5 +117,6 @@ bpstd::complex<float>
   return complex<float>{0, static_cast<float>(i)};
 }
 
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_COMPLEX_HPP */

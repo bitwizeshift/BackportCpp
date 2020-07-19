@@ -41,6 +41,8 @@
 #include <new>     // placement new
 #include <utility> // std::swap
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
   namespace detail {
 
@@ -187,5 +189,7 @@ namespace bpstd {
 
   } // namespace detail
 } // namespace bpstd
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_DETAIL_VARIANT_VISITORS_HPP */

@@ -28,6 +28,13 @@
 #include <vector>
 #include <algorithm>
 
+// MSVC 2015 seems to emit an error that __forceinline'd functions may not be
+// __forceinline'd at the *end of the translation unit* using it, for some
+// stupid reason.
+#if defined(_MSC_VER)
+# pragma warning(disable:4714)
+#endif
+
 TEST_CASE("make_reverse_iterator(...)", "[iterator]")
 {
   const auto input    = std::vector<int>{1,2,3,4,5};

@@ -45,6 +45,8 @@
 #include <iterator>   // std::reverse_iterator
 #include <ios>        // std::streamsize
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd { // back-port std
 
   //////////////////////////////////////////////////////////////////////////////
@@ -712,8 +714,13 @@ typename bpstd::basic_string_view<CharT,Traits>::size_type
     throw std::out_of_range("Index out of range in basic_string_view::copy");
   }
 
-  const size_type rcount = std::min(m_size - pos,count+1);
-  std::copy( m_str + pos, m_str + pos + rcount, dest);
+  const auto rcount = std::min(m_size - pos,count+1);
+  auto* const begin = m_str + pos;
+  auto* const end = m_str + pos + rcount;
+  for (auto it = begin; it != end; ++it) {
+    *dest = *it;
+    ++dest;
+  }
   return rcount;
 }
 
@@ -1516,5 +1523,7 @@ namespace bpstd {
   }
 
 } // namespace bpstd
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_STRING_VIEW_HPP */

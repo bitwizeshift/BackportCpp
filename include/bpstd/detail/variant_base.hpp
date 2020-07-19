@@ -37,6 +37,8 @@
 #include <cstddef> // std::size_t
 #include <utility> // std::forward
 
+BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
+
 namespace bpstd {
   namespace detail {
 
@@ -188,16 +190,25 @@ bpstd::detail::variant_base<false,Types...>::variant_base()
 
 }
 
+#if defined(_MSC_VER)
+# pragma warning(push)
+# pragma warning(disable:4702)
+#endif
+
 template <typename...Types>
 template <std::size_t N, typename...Args>
 inline BPSTD_INLINE_VISIBILITY constexpr
 bpstd::detail::variant_base<false,Types...>::variant_base(variant_index_tag<N>,
-                                                         Args&&...args)
+                                                          Args&&...args)
   : m_union{variant_index_tag<N>{}, std::forward<Args>(args)...},
     m_index{N}
 {
 
 }
+
+#if defined(_MSC_VER)
+# pragma warning(pop)
+#endif
 
 //------------------------------------------------------------------------------
 
@@ -223,5 +234,7 @@ void bpstd::detail::variant_base<false,Types...>::destroy_active_object()
   visit_union(m_index, destroy_visitor{}, m_union);
   m_index = static_cast<std::size_t>(-1);
 }
+
+BPSTD_COMPILER_DIAGNOSTIC_POSTAMBLE
 
 #endif /* BPSTD_DETAIL_VARIANT_BASE_HPP */
