@@ -1,0 +1,15 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node43 [label="is_convertible",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node43 -> Node44 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node44 [label="bpstd::detail::is_invocable\l_return\< is_invocable\< Fn,\l Args... \>::value, R, Fn,\l Args... \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node44 -> Node45 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node45 [label="bpstd::is_invocable\l_r\< R, Fn, Args \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d46/structbpstd_1_1is__invocable__r.html"];
+  Node43 -> Node46 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node46 [label="bpstd::detail::is_invocable\l_return\< is_nothrow_invocable\l\< Fn, Args... \>::value, R, Fn,\l Args... \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node46 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="bpstd::is_nothrow_invocable\l_r\< R, Fn, Args \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/df2/structbpstd_1_1is__nothrow__invocable__r.html"];
+}
