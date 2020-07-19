@@ -22,6 +22,13 @@
   SOFTWARE.
 */
 
+// MSVC 2015 seems to emit "unreachable code" diagnostics in the wrong function
+// whenever a function is inlined. The error will not be seen in the inlined
+// function, but it may be seen in the surrounding scope of the inlined function
+#if defined(_MSC_VER)
+# pragma warning(disable:4702)
+#endif
+
 #include <bpstd/variant.hpp>
 #include <bpstd/memory.hpp>
 
@@ -37,6 +44,7 @@
 // stupid reason.
 #if defined(_MSC_VER)
 # pragma warning(disable:4714)
+# pragma warning(disable:4702)
 #endif
 
 static_assert(

@@ -86,7 +86,7 @@
 # define BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE \
   __pragma(warning(push)) \
   __pragma(warning(disable:4714)) \
-  __pragma(warning(disable:4100))
+  __pragma(warning(disable:4100)) 
 #else
 # define BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
 #endif

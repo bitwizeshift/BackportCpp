@@ -190,16 +190,25 @@ bpstd::detail::variant_base<false,Types...>::variant_base()
 
 }
 
+#if defined(_MSC_VER)
+# pragma warning(push)
+# pragma warning(disable:4702)
+#endif
+
 template <typename...Types>
 template <std::size_t N, typename...Args>
 inline BPSTD_INLINE_VISIBILITY constexpr
 bpstd::detail::variant_base<false,Types...>::variant_base(variant_index_tag<N>,
-                                                         Args&&...args)
+                                                          Args&&...args)
   : m_union{variant_index_tag<N>{}, std::forward<Args>(args)...},
     m_index{N}
 {
 
 }
+
+#if defined(_MSC_VER)
+# pragma warning(pop)
+#endif
 
 //------------------------------------------------------------------------------
 
