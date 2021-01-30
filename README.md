@@ -1,16 +1,13 @@
 ![Backport C++](doc/images/backport-logo.png)
 
-[![Ubuntu Build Status](https://github.com/bitwizeshift/backportcpp/workflows/Ubuntu/badge.svg?branch=master)](https://github.com/bitwizeshift/backportcpp/actions?query=workflow%3AUbuntu)
-[![macOS Build Status](https://github.com/bitwizeshift/backportcpp/workflows/macOS/badge.svg?branch=master)](https://github.com/bitwizeshift/backportcpp/actions?query=workflow%3AmacOS)
-[![Windows Build Status](https://github.com/bitwizeshift/backportcpp/workflows/Windows/badge.svg?branch=master)](https://github.com/bitwizeshift/backportcpp/actions?query=workflow%3AWindows)
-
+[![Ubuntu Build Status](https://github.com/bitwizeshift/BackportCpp/workflows/Ubuntu/badge.svg?branch=master)](https://github.com/bitwizeshift/BackportCpp/actions?query=workflow%3AUbuntu)
+[![macOS Build Status](https://github.com/bitwizeshift/BackportCpp/workflows/macOS/badge.svg?branch=master)](https://github.com/bitwizeshift/BackportCpp/actions?query=workflow%3AmacOS)
+[![Windows Build Status](https://github.com/bitwizeshift/BackportCpp/workflows/Windows/badge.svg?branch=master)](https://github.com/bitwizeshift/BackportCpp/actions?query=workflow%3AWindows)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/64b1ffd7f95b488eb70a11ee21eb1792)](https://www.codacy.com/manual/bitwizeshift/BackportCpp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bitwizeshift/BackportCpp&amp;utm_campaign=Badge_Grade)
 [![Github Issues](https://img.shields.io/github/issues/bitwizeshift/BackportCpp.svg)](http://github.com/bitwizeshift/BackportCpp/issues)
-[![Tested Compilers](https://img.shields.io/badge/compilers-gcc%20%7C%20clang%20%7C%20msvc-blue.svg)](#tested-compilers)
-[![Documentation](https://img.shields.io/badge/docs-doxygen-blue.svg)](https://bitwizeshift.github.io/BackportCpp/api/latest)
-[![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/bitwizeshift/BackportCpp/master/LICENSE)
+<br>
 [![Github Releases](https://img.shields.io/github/v/release/bitwizeshift/BackportCpp.svg?include_prereleases)](https://github.com/bitwizeshift/BackportCpp/releases)
-[![Download](https://api.bintray.com/packages/bitwizeshift/Backport/Backport%3Abackport/images/download.svg)](https://bintray.com/bitwizeshift/Backport/Backport%3Abackport/_latestVersion)
+[![Bintray Releases](https://api.bintray.com/packages/bitwizeshift/public-conan/Backport%3Abackport/images/download.svg) ](https://bintray.com/bitwizeshift/public-conan/Backport%3Abackport/_latestVersion)
 
 **Backport** is an ongoing effort to bring modern C++ utilities to be compatible
 with C++11.
