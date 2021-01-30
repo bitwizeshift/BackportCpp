@@ -1,0 +1,136 @@
+name: macOS
+
+on:
+  push:
+    paths:
+      - 'include/**.hpp'
+      - 'test/**.cpp'
+      - '**.cmake'
+      - 'conanfile.py'
+      - 'CMakeLists.txt'
+      - 'test/CMakeLists.txt'
+      - '.github/workflows/build-macos.yml'
+  pull_request:
+    paths:
+      - 'include/**.hpp'
+      - 'test/**.cpp'
+      - '**.cmake'
+      - 'conanfile.py'
+      - 'CMakeLists.txt'
+      - 'test/CMakeLists.txt'
+      - '.github/workflows/build-macos.yml'
+
+jobs:
+  test:
+    name: macOS Xcode ${{matrix.compiler.version}}
+    runs-on: macos-latest
+
+    env:
+      build-directory: build
+
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler:
+          # Xcode Versions
+          - { name: "xcode", version: "10.3" }
+          - { name: "xcode", version: "11.2" }
+          - { name: "xcode", version: "11.3" }
+          - { name: "xcode", version: "12.3" }
+
+    steps:
+      - name: Clone
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+
+      - name: Prepare Environment
+        run: |
+          ls -ls /Applications/
+          sudo xcode-select -switch /Applications/Xcode_${{ matrix.compiler.version }}.app
+
+          python -m pip install --upgrade pip
+          pip install conan
+          cmake -E make_directory ${{env.build-directory}}
+          cmake -E chdir ${{env.build-directory}} conan install ..
+
+      # Debug Configuration
+
+      - name: Configure (Debug)
+        working-directory: ${{env.build-directory}}
+        env:
+          CC: clang
+          CXX: clang++
+        run: cmake .. -DCMAKE_BUILD_TYPE=Debug -DBACKPORT_COMPILE_UNIT_TESTS=On
+
+      - name: Build (Debug)
+        working-directory: ${{env.build-directory}}
+        run: cmake --build .
+
+      - name: Test (Debug)
+        working-directory: ${{env.build-directory}}
+        run: ctest --output-on-failure
+
+      # Release Configuration
+
+      - name: Configure (Release)
+        working-directory: ${{env.build-directory}}
+        run: cmake .. -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build (Release)
+        working-directory: ${{env.build-directory}}
+        run: cmake --build .
+
+      - name: Test (Release)
+        working-directory: ${{env.build-directory}}
+        run: ctest --output-on-failure
+
+  sanitize:
+    name: macOS Xcode ${{matrix.compiler.version}} '${{matrix.sanitizer}}' sanitizer
+    runs-on: macos-latest
+    needs: test
+
+    env:
+      build-directory: build
+
+    strategy:
+      matrix:
+        sanitizer: [address, undefined]
+
+    steps:
+      - name: Clone
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+
+      - name: Prepare Environment
+        run: |
+          python -m pip install --upgrade pip
+          pip install conan
+          cmake -E make_directory ${{env.build-directory}}
+          cmake -E chdir ${{env.build-directory}} conan install ..
+
+      - name: Configure
+        working-directory: ${{env.build-directory}}
+        env:
+          CC: clang
+          CXX: clang++
+        run: |
+          cmake ..                                                            \
+            -DCMAKE_BUILD_TYPE=Debug                                          \
+            -DBACKPORT_COMPILE_UNIT_TESTS=On                                  \
+            -DCMAKE_CXX_FLAGS="-fsanitize=${{matrix.sanitizer}}"
+
+      - name: Build
+        working-directory: ${{env.build-directory}}
+        run: cmake --build .
+
+      - name: Test (Sanitize)
+        working-directory: ${{env.build-directory}}
+        run: ctest --output-on-failure

@@ -1,6 +1,9 @@
 ![Backport C++](doc/images/backport-logo.png)
 
-[![Build Status](https://github.com/bitwizeshift/BackportCpp/workflows/build/badge.svg)](https://github.com/bitwizeshift/BackportCpp/actions)
+[![Ubuntu Build Status](https://github.com/bitwizeshift/backportcpp/workflows/Ubuntu/badge.svg?branch=master)](https://github.com/bitwizeshift/backportcpp/actions?query=workflow%3AUbuntu)
+[![macOS Build Status](https://github.com/bitwizeshift/backportcpp/workflows/macOS/badge.svg?branch=master)](https://github.com/bitwizeshift/backportcpp/actions?query=workflow%3AmacOS)
+[![Windows Build Status](https://github.com/bitwizeshift/backportcpp/workflows/Windows/badge.svg?branch=master)](https://github.com/bitwizeshift/backportcpp/actions?query=workflow%3AWindows)
+
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/64b1ffd7f95b488eb70a11ee21eb1792)](https://www.codacy.com/manual/bitwizeshift/BackportCpp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bitwizeshift/BackportCpp&amp;utm_campaign=Badge_Grade)
 [![Github Issues](https://img.shields.io/github/issues/bitwizeshift/BackportCpp.svg)](http://github.com/bitwizeshift/BackportCpp/issues)
 [![Tested Compilers](https://img.shields.io/badge/compilers-gcc%20%7C%20clang%20%7C%20msvc-blue.svg)](#tested-compilers)
