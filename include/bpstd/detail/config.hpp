@@ -70,23 +70,25 @@
 # define BPSTD_MAY_ALIAS
 #endif // defined __clang__ || defined __GNUC__
 
+#if !defined(BPSTD_INLINE_VISIBILITY)
 // When using 'clang-cl', don't forceinline -- since it results in code generation
 // failures in 'variant'
-#if defined(__clang__) && defined(_MSC_VER)
-# define BPSTD_INLINE_VISIBILITY __attribute__((visibility("hidden"), no_instrument_function))
-#elif defined(__clang__) || defined(__GNUC__)
-# define BPSTD_INLINE_VISIBILITY __attribute__((visibility("hidden"), always_inline, no_instrument_function))
-#elif defined(_MSC_VER)
-# define BPSTD_INLINE_VISIBILITY __forceinline
-#else
-# define BPSTD_INLINE_VISIBILITY
-#endif
+# if defined(__clang__) && defined(_MSC_VER)
+#  define BPSTD_INLINE_VISIBILITY __attribute__((visibility("hidden"), no_instrument_function))
+# elif defined(__clang__) || defined(__GNUC__)
+#  define BPSTD_INLINE_VISIBILITY __attribute__((visibility("hidden"), always_inline, no_instrument_function))
+# elif defined(_MSC_VER)
+#  define BPSTD_INLINE_VISIBILITY __forceinline
+# else
+#  define BPSTD_INLINE_VISIBILITY
+# endif
+#endif // !defined(BPSTD_INLINE_VISIBILITY)
 
 #if defined(_MSC_VER)
 # define BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE \
   __pragma(warning(push)) \
   __pragma(warning(disable:4714)) \
-  __pragma(warning(disable:4100)) 
+  __pragma(warning(disable:4100))
 #else
 # define BPSTD_COMPILER_DIAGNOSTIC_PREAMBLE
 #endif
