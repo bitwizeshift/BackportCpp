@@ -1,0 +1,65 @@
+name: "Code Scanning"
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'include/**.hpp'
+      - 'test/**.cpp'
+      - '**.cmake'
+      - 'conanfile.py'
+      - 'CMakeLists.txt'
+      - 'test/CMakeLists.txt'
+      - '.github/workflows/analysis.yml'
+  pull_request:
+    branches: [master]
+    paths:
+      - 'include/**.hpp'
+      - 'test/**.cpp'
+      - '**.cmake'
+      - 'conanfile.py'
+      - 'CMakeLists.txt'
+      - 'test/CMakeLists.txt'
+      - '.github/workflows/analysis.yml'
+
+jobs:
+  analysis:
+    name: CodeQL Analysis
+    runs-on: ubuntu-20.04
+
+    env:
+      build-directory: build
+
+    strategy:
+      matrix:
+        language: ['cpp']
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+
+      - name: Prepare Environment
+        run: |
+          python -m pip install --upgrade pip
+          pip install conan
+          cmake -E make_directory ${{env.build-directory}}
+          cmake -E chdir ${{env.build-directory}} conan install ..
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+
+      - name: Configure
+        working-directory: ${{env.build-directory}}
+        run: cmake .. -DCMAKE_BUILD_TYPE=Debug -DBACKPORT_COMPILE_UNIT_TESTS=On
+
+      - name: Build
+        working-directory: ${{env.build-directory}}
+        run: cmake --build .
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1

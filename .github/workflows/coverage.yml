@@ -1,0 +1,106 @@
+name: "Code Coverage"
+
+on:
+  push:
+    paths:
+      - 'include/**.hpp'
+      - 'test/**.cpp'
+      - '**.cmake'
+      - 'conanfile.py'
+      - 'CMakeLists.txt'
+      - 'test/CMakeLists.txt'
+      - '.github/workflows/coverage.yml'
+  pull_request:
+    paths:
+      - 'include/**.hpp'
+      - 'test/**.cpp'
+      - '**.cmake'
+      - 'conanfile.py'
+      - 'CMakeLists.txt'
+      - 'test/CMakeLists.txt'
+      - '.github/workflows/coverage.yml'
+
+jobs:
+  coverage:
+    name: Ubuntu ${{matrix.compiler.cc}} Coverage
+    runs-on: ubuntu-20.04
+
+    env:
+      build-directory: build
+
+    strategy:
+      matrix:
+        compiler:
+          - { cc: gcc, cxx: g++, version: "10" }
+          - { cc: clang, cxx: clang++, version: "10" }
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+
+      - name: Prepare Environment
+        run: |
+          sudo apt-get install -y ${{matrix.compiler.cxx}}-${{matrix.compiler.version}}
+          if [["${{matrix.compiler.cc}}" = "clang"]]; then
+            sudo apt-get install -y llvm-${{matrix.compiler.version}}
+          fi
+          sudo apt-get install lcov
+          python -m pip install --upgrade pip
+          pip install conan
+          cmake -E make_directory ${{env.build-directory}}
+          cmake -E chdir ${{env.build-directory}} conan install ..
+
+      - name: Configure
+        working-directory: ${{env.build-directory}}
+        env:
+          CC: ${{matrix.compiler.cc}}-${{matrix.compiler.version}}
+          CXX: ${{matrix.compiler.cxx}}-${{matrix.compiler.version}}
+        run: |
+          cmake .. -DCMAKE_BUILD_TYPE=Debug                                   \
+            -DBACKPORT_COMPILE_UNIT_TESTS=On                                  \
+            -DCMAKE_CXX_FLAGS="--coverage -DBPSTD_INLINE_VISIBILITY="         \
+
+      - name: Build
+        working-directory: ${{env.build-directory}}
+        run: cmake --build .
+
+      - name: Test
+        working-directory: ${{env.build-directory}}
+        run: ctest --output-on-failure
+
+      - name: Process Coverage Data
+        working-directory: ${{env.build-directory}}
+        run: |
+          # Create a script for which gcov to use (needed for lcov)
+          echo "#!/bin/bash" > gcov-executable.sh
+          if [[ "${{matrix.compiler.cc}}" =~ "gcc" ]]; then
+            echo 'gcov $@' >> gcov-executable.sh
+          else
+            echo 'llvm-cov-${{matrix.compiler.version}} gcov $@' >> gcov-executable.sh
+          fi
+          chmod +x gcov-executable.sh
+          ./gcov-executable.sh $(find $(pwd) -name '*.o' -type f)
+
+          # Generate coverage information
+          lcov --capture                                                      \
+            --gcov-tool $(pwd)/gcov-executable.sh                             \
+            --directory .                                                     \
+            --output-file coverage_unfiltered.info
+
+          # Strip symbols from 'test' directory
+          lcov --remove coverage_unfiltered.info -o coverage.info             \
+            --gcov-tool $(pwd)/gcov-executable.sh                             \
+            "$(cd ..; pwd)/test/*"                                            \
+            "${HOME}/.conan/*"                                                \
+            "/usr/*"                                                          \
+
+      - name: Generate Coverage
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          path-to-lcov: ${{env.build-directory}}/coverage.info

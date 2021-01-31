@@ -16,7 +16,7 @@ integration:
 ## Conan
 
 This project provides a `conanfile.py` and public hosting on
-[bintray](https://bintray.com/bitwizeshift/Backport) for packages.
+[bintray](https://bintray.com/bitwizeshift/public-conan/Backport%3Abackport) for packages.
 
 Just follow the instructions in the bintray link for setting up this
 source as a conan repository, and add
