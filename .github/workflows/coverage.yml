@@ -23,7 +23,7 @@ on:
 jobs:
   coverage:
     name: Ubuntu ${{matrix.compiler.cc}} Coverage
-    runs-on: ubuntu-20.04
+    runs-on: ${{matrix.runner}}
 
     env:
       build-directory: build
@@ -33,6 +33,9 @@ jobs:
         compiler:
           - { cc: gcc, cxx: g++, version: "10" }
           - { cc: clang, cxx: clang++, version: "10" }
+
+        runner:
+          - ubuntu-20.04
 
     steps:
       - name: Checkout repository
@@ -93,14 +96,48 @@ jobs:
             --output-file coverage_unfiltered.info
 
           # Strip symbols from 'test' directory
-          lcov --remove coverage_unfiltered.info -o coverage.info             \
+          lcov --remove coverage_unfiltered.info                              \
+            -o ${{matrix.runner}}-${{matrix.compiler.cc}}-coverage.info       \
             --gcov-tool $(pwd)/gcov-executable.sh                             \
             "$(cd ..; pwd)/test/*"                                            \
             "${HOME}/.conan/*"                                                \
             "/usr/*"                                                          \
 
+      - name: Upload Coverage for ${{matrix.compiler.cc}} on ${{matrix.runner}}
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{matrix.runner}}-${{matrix.compiler.cc}}-coverage
+          path: ${{env.build-directory}}/${{matrix.runner}}-${{matrix.compiler.cc}}-coverage.info
+
+  publish:
+    name: Publish Coverage Report
+    runs-on: ubuntu-20.04
+    needs: coverage
+
+    steps:
+      - name: Prepare Environment
+        run: |
+          sudo apt-get install lcov
+
+      - name: Download Coverage for Clang on Ubuntu-20.04
+        uses: actions/download-artifact@v2
+        with:
+          name: ubuntu-20.04-clang-coverage
+
+      - name: Download Coverage for GCC on Ubuntu-20.04
+        uses: actions/download-artifact@v2
+        with:
+          name: ubuntu-20.04-gcc-coverage
+
+      - name: Merge Coverage Data
+        run: |
+          lcov \
+            --add-tracefile ubuntu-20.04-clang-coverage.info
+            --add-tracefile ubuntu-20.04-gcc-coverage.info
+            -o coverage.info
+
       - name: Generate Coverage
         uses: coverallsapp/github-action@v1.1.2
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
-          path-to-lcov: ${{env.build-directory}}/coverage.info
+          path-to-lcov: coverage.info
