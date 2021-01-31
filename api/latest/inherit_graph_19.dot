@@ -1,7 +1,8 @@
 digraph "Graphical Class Hierarchy"
 {
+ // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="bpstd::conjunction\l\< is_nothrow_move_constructible\l\< remove_cvref_t\< remove_extent\l_t\< T \> \> \>, is_nothrow_move_assignable\l\< remove_cvref_t\< remove_extent_t\< T\l \> \> \>, is_lvalue_reference\< T \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d3f/structbpstd_1_1conjunction.html"];
+  Node0 [label="bpstd::conjunction\l\< is_nothrow_move_constructible\l\< remove_cvref_t\< remove_extent\l_t\< T \> \> \>, is_nothrow_move_assignable\l\< remove_cvref_t\< remove_extent_t\< T\l \> \> \>, is_lvalue_reference\< T \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d3f/structbpstd_1_1conjunction.html",tooltip=" "];
 }

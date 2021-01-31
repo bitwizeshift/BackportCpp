@@ -14,9 +14,9 @@ var type__traits_8hpp =
     [ "is_null_pointer< decltype(nullptr)>", "d2/dd6/structbpstd_1_1is__null__pointer_3_01decltype_07nullptr_08_4.html", null ],
     [ "is_final", "dc/df9/structbpstd_1_1is__final.html", null ],
     [ "is_bounded_array", "d4/d05/structbpstd_1_1is__bounded__array.html", null ],
-    [ "is_bounded_array< T[N]>", "df/d39/structbpstd_1_1is__bounded__array_3_01_t[_n]_4.html", null ],
+    [ "is_bounded_array< T[N]>", "de/dfb/structbpstd_1_1is__bounded__array_3_01_t_0f_n_0e_4.html", null ],
     [ "is_unbounded_array", "db/dde/structbpstd_1_1is__unbounded__array.html", null ],
-    [ "is_unbounded_array< T[]>", "dc/da5/structbpstd_1_1is__unbounded__array_3_01_t[]_4.html", null ],
+    [ "is_unbounded_array< T[]>", "d9/dc9/structbpstd_1_1is__unbounded__array_3_01_t_0f_0e_4.html", null ],
     [ "aligned_storage", "d0/d6d/structbpstd_1_1aligned__storage.html", [
       [ "type", "d0/d6d/structbpstd_1_1aligned__storage.html#dd/da4/structbpstd_1_1aligned__storage_1_1type", [
         [ "storage", "d0/d6d/structbpstd_1_1aligned__storage.html#ad0c4a8b8d94cb80824c5305e51462e2c", null ]

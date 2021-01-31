@@ -93,9 +93,7 @@ var hierarchy =
       [ "bpstd::variant_alternative< I, variant< Types... > >", "dc/d04/structbpstd_1_1variant__alternative_3_01_i_00_01variant_3_01_types_8_8_8_01_4_01_4.html", null ]
     ] ],
     [ "bpstd::nullopt_t", "d7/dae/structbpstd_1_1nullopt__t.html", null ],
-    [ "bpstd::detail::optional_base< T, std::is_trivially_destructible< T >::value >", null, [
-      [ "bpstd::optional< T >", "d8/d86/classbpstd_1_1optional.html", null ]
-    ] ],
+    [ "bpstd::optional< T >", "d8/d86/classbpstd_1_1optional.html", null ],
     [ "bpstd::plus< T >", "df/d02/structbpstd_1_1plus.html", null ],
     [ "bpstd::plus< void >", "df/dd7/structbpstd_1_1plus_3_01void_01_4.html", null ],
     [ "bpstd::span< T, Extent >", "d4/dd8/classbpstd_1_1span.html", null ],
@@ -108,10 +106,8 @@ var hierarchy =
     ] ],
     [ "bpstd::type_identity< integer_sequence< T, Tails... > >", "d8/d70/structbpstd_1_1type__identity.html", null ],
     [ "bpstd::type_identity< void >", "d8/d70/structbpstd_1_1type__identity.html", null ],
+    [ "bpstd::variant< Types >", "de/dc4/classbpstd_1_1variant.html", null ],
     [ "bpstd::variant_alternative< I, T >", "d7/de4/structbpstd_1_1variant__alternative.html", null ],
-    [ "variant_base", null, [
-      [ "bpstd::variant< Types >", "de/dc4/classbpstd_1_1variant.html", null ]
-    ] ],
     [ "bpstd::variant_size< T >", "d1/d13/structbpstd_1_1variant__size.html", [
       [ "bpstd::variant_size< const T >", "d2/d8f/structbpstd_1_1variant__size_3_01const_01_t_01_4.html", null ],
       [ "bpstd::variant_size< const volatile T >", "da/d3e/structbpstd_1_1variant__size_3_01const_01volatile_01_t_01_4.html", null ],
@@ -125,8 +121,8 @@ var hierarchy =
       [ "bpstd::is_unbounded_array< T >", "db/dde/structbpstd_1_1is__unbounded__array.html", null ]
     ] ],
     [ "true_type", null, [
-      [ "bpstd::is_bounded_array< T[N]>", "df/d39/structbpstd_1_1is__bounded__array_3_01_t[_n]_4.html", null ],
+      [ "bpstd::is_bounded_array< T[N]>", "de/dfb/structbpstd_1_1is__bounded__array_3_01_t_0f_n_0e_4.html", null ],
       [ "bpstd::is_null_pointer< decltype(nullptr)>", "d2/dd6/structbpstd_1_1is__null__pointer_3_01decltype_07nullptr_08_4.html", null ],
-      [ "bpstd::is_unbounded_array< T[]>", "dc/da5/structbpstd_1_1is__unbounded__array_3_01_t[]_4.html", null ]
+      [ "bpstd::is_unbounded_array< T[]>", "d9/dc9/structbpstd_1_1is__unbounded__array_3_01_t_0f_0e_4.html", null ]
     ] ]
 ];
