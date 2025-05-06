@@ -1186,7 +1186,7 @@ typename bpstd::basic_string_view<CharT,Traits>::const_iterator
   bpstd::basic_string_view<CharT,Traits>::cend()
   const noexcept
 {
-  return cend();
+  return m_str + m_size;
 }
 
 template <typename CharT, typename Traits>
